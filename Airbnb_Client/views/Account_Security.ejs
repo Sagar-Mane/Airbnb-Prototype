@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+
+<html lang="en-IN" xmlns:fb="http://ogp.me/ns/fb#"><!--<![endif]-->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="dns-prefetch" href="https://maps.googleapis.com/">
+    <link rel="dns-prefetch" href="https://maps.gstatic.com/">
+    <link rel="dns-prefetch" href="https://mts0.googleapis.com/">
+    <link rel="dns-prefetch" href="https://mts1.googleapis.com/">
+
+    
+
+    <!--[if IE]><![endif]-->
+    <meta charset="utf-8">
+
+    <!--[if IE 8]>
+    <link media="all" type="text/css" rel="stylesheet" href="http://makent.trioangle.com/css/common_ie8.css">
+
+    <![endif]-->
+    <!--[if !(IE 8)]><!-->
+    <link media="all" type="text/css" rel="stylesheet" href="css/common.css">
+
+    <link media="all" type="text/css" rel="stylesheet" href="css/home.css">
+
+    <link media="all" type="text/css" rel="stylesheet" href="css/themes.css">
+
+    <link media="all" type="text/css" rel="stylesheet" href="css/dynamic.css">
+
+    <!--<![endif]-->
+
+    <!--[if lt IE 9]>
+    <link media="all" type="text/css" rel="stylesheet" href="http://makent.trioangle.com/css/airglyphs-ie8.css">
+
+    <![endif]-->
+
+    <style type="text/css">
+        .ui-selecting {
+            background: #FECA40;
+        }
+
+        .ui-selected {
+            background: #F39814;
+            color: white;
+        }
+    </style>
+
+    <title>Account </title>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+
+    <meta name="description" content="Account">
+    <meta name="keywords" content="">
+
+
+    <meta name="twitter:widgets:csp" content="on">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="search" type="application/opensearchdescription+xml" href="#" title="">
+
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <meta name="theme-color" content="#f5f5f5">
+
+</head>
+<body class="" ng-app="App">
+
+<% include header.ejs %>
+<% include modal.ejs %>
+
+<main id="site-content" role="main" ng-controller="account_user_management">
+
+    <div class="subnav hide-print">
+        <div class="page-container-responsive">
+            <ul class="subnav-list">
+                <li>
+                    <a href="/getDashBoardPage" aria-selected="false" class="subnav-item">Dashboard</a>
+                </li>
+                <li>
+                    <a href="/yourListings" aria-selected="false" class="subnav-item">Your Listings</a>
+                </li>
+                <li>
+                    <a href="/yourTrips" aria-selected="false" class="subnav-item">Your Trips</a>
+                </li>
+                <li>
+                    <a href="/editProfilePage" aria-selected="false" class="subnav-item">Profile</a>
+                </li>
+                <li>
+                    <a href="#" aria-selected="true" class="subnav-item">Account</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="page-container-responsive row-space-top-4 row-space-4">
+        <div class="row">
+            <div class="col-md-3">
+                <ul class="sidenav-list">
+                    <li>
+                        <a href="/Account_Payment_Method" aria-selected="false" class="sidenav-item">Payment Method</a>
+                    </li>
+
+                    <li>
+                        <a href="/Account_Transactions" aria-selected="false" class="sidenav-item">Transaction
+                            History</a>
+                    </li>
+
+
+                    <li>
+                        <a href="/Account_Security" aria-selected="true" class="sidenav-item">Security</a>
+                    </li>
+
+
+                </ul>
+            </div>
+            <div class="col-md-9">
+                <!-- Change Your Password -->
+                <form accept-charset="UTF-8" class="show">
+                    <div id="change_your_password" class="panel row-space-4">
+                        <div class="panel-header">
+                            Change Your Password
+                        </div>
+                        <div class="panel-body">
+                            <!--<input id="id" name="id" type="hidden" value="33661974">
+                            <input id="redirect_on_error" name="redirect_on_error" type="hidden" value="/users/security?id=33661974">
+                            <input id="user_password_ok" name="user[password_ok]" type="hidden" value="true">-->
+                            <div class="row">
+                                <div class="col-lg-7">
+                                    <div class="row row-condensed row-space-2">
+                                        <div class="col-md-5 text-right">
+                                            <label for="old_password">
+                                                Old Password
+                                            </label>
+                                        </div>
+                                        <div class="col-md-7">
+                                            <input class="input-block" id="old_password" name="old_password"
+                                                   type="password" ng-model="old_password" required>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-7">
+                                    <div class="row row-condensed row-space-2">
+                                        <div class="col-md-5 text-right">
+                                            <label for="user_password">
+                                                New Password
+                                            </label>
+                                        </div>
+                                        <div class="col-7">
+                                            <input class="input-block" data-hook="new_password" id="new_password"
+                                                   name="new_password" size="30" type="password" ng-model="new_password"
+                                                   required>
+                                        </div>
+                                    </div>
+
+                                    <div class="row row-condensed row-space-2">
+                                        <div class="col-md-5 text-right">
+                                            <label for="user_password_confirmation">
+                                                Confirm Password
+                                            </label>
+                                        </div>
+                                        <div class="col-md-7">
+                                            <input class="input-block" id="user_password_confirmation"
+                                                   name="password_confirmation" size="30" type="password"
+                                                   ng-model="cpassword" ng-change="check()" required>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="alert alert-success" ng-show="alert1">
+                                Password Success Fully Updated
+                            </div>
+                            <div class="alert alert-danger" ng-show="rockerSa">
+                                <span style="color: red;">Passwords do not match!</span>
+                            </div>
+                            <div class="alert alert-danger" ng-show="rockerSo">
+                                <span style="color: red;">Incorrect Old Password!</span>
+                            </div>
+                        </div>
+                        <div class="panel-footer" ng-show="rockerSb">
+                            <button type="submit" class="btn btn-primary" ng-click="updatePassword()">
+                                Update Password
+                            </button>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+</main>
+
+<% include footer.ejs %>
+
+<div id="gmap-preload" class="hide"></div>
+
+<div class="ipad-interstitial-wrapper"><span data-reactid=".1"></span></div>
+
+<div id="fb-root"></div>
+
+<script type="text/javascript"
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBXyRBiyRcEzHDJ8iU00zECMUP4cXBIm6A&sensor=false&libraries=places"></script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+<script type="text/javascript" src="http://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
+
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.2/angular.min.js"></script>
+
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/angular-sanitize/1.3.2/angular-sanitize.min.js"></script>
+
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/ResponsiveSlides.js/1.53/responsiveslides.min.js"></script>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.login_popup_head').click(function (e) {
+            e.preventDefault();
+            $("body").addClass("pos-fix");
+            $(".login_popup").show();
+            $(".signup_popup").hide();
+            $(".signup_popup2").hide();
+        });
+        $('.login-close').click(function (event) {
+            $("body").removeClass("pos-fix");
+            $(".login_popup").hide();
+        });
+        $('.top-home').click(function (event) {
+            event.stopPropagation();
+        });
+    });
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.forgot-password-popup').click(function (e) {
+            e.preventDefault();
+            $("body").addClass("pos-fix");
+            $(".login_popup").hide();
+            $(".forgot-passward").show();
+        });
+        $('.login-close').click(function (event) {
+            $("body").removeClass("pos-fix");
+            $(".forgot-passward").hide();
+        });
+        $('.top-home').click(function (event) {
+            event.stopPropagation();
+        });
+    });
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.signup_popup_head').click(function (e) {
+            e.preventDefault();
+            $("body").addClass("pos-fix");
+            $(".signup_popup").show();
+            $(".login_popup").hide();
+        });
+        $('.login-close').click(function () {
+            $("body").removeClass("pos-fix");
+            $(".signup_popup").hide();
+        });
+        $('.top-home').click(function (event) {
+            event.stopPropagation();
+        });
+    });
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.signup_popup_head2').click(function (e) {
+            e.preventDefault();
+            $("body").addClass("pos-fix");
+            $(".signup_popup2").show();
+            $(".signup_popup").hide();
+        });
+        $('.login-close').click(function () {
+            $("body").removeClass("pos-fix");
+            $(".signup_popup2").hide();
+        });
+        $('.top-home').click(function (event) {
+            event.stopPropagation();
+        });
+    });
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('ul.menu-group li a').click(function () {
+            $('.nav--sm').css('visibility', 'hidden');
+        });
+    });
+</script>
+<script>
+    var app = angular.module('App', ['ngSanitize']);
+    var APP_URL = "http:\/\/localhost:3000";
+    $.datepicker.setDefaults($.datepicker.regional["en"])
+</script>
+
+
+<script type="application/javascript" src="js/common.js"></script>
+
+<script type="application/javascript" src="controller/common_controller.js"></script>
+
+<script src="https://angular-file-upload.appspot.com/js/ng-file-upload-shim.js"></script>
+<script src="https://angular-file-upload.appspot.com/js/ng-file-upload.js"></script>
+
+<!-- ver. 87c23752f8dfbd60bf83837d2c8b2dcd0ec660a9 -->
+<div class="tooltip tooltip-bottom-middle" role="tooltip" aria-hidden="true">
+    <p class="panel-body">To sign up, you must be 18 or older. Other people won’t see your birthday.</p>
+</div>
+</body>
+</html>

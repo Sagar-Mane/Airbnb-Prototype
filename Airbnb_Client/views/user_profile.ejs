@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+
+<html ng-app="App" lang="en-IN" xmlns:fb="http://ogp.me/ns/fb#"><!--<![endif]-->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="dns-prefetch" href="https://maps.googleapis.com/">
+    <link rel="dns-prefetch" href="https://maps.gstatic.com/">
+    <link rel="dns-prefetch" href="https://mts0.googleapis.com/">
+    <link rel="dns-prefetch" href="https://mts1.googleapis.com/">
+
+
+    <!--[if IE]><![endif]-->
+    <meta charset="utf-8">
+
+    <!--[if IE 8]>
+    <link media="all" type="text/css" rel="stylesheet" href="http://makent.trioangle.com/css/common_ie8.css">
+
+    <![endif]-->
+    <!--[if !(IE 8)]><!-->
+    <link media="all" type="text/css" rel="stylesheet" href="/css/common.css">
+
+    <link media="all" type="text/css" rel="stylesheet" href="/css/home.css">
+
+    <link media="all" type="text/css" rel="stylesheet" href="/css/themes.css">
+
+    <link media="all" type="text/css" rel="stylesheet" href="/css/dynamic.css">
+
+    <!--<![endif]-->
+
+    <!--[if lt IE 9]>
+    <link media="all" type="text/css" rel="stylesheet" href="http://makent.trioangle.com/css/airglyphs-ie8.css">
+
+    <![endif]-->
+
+
+    <link media="all" type="text/css" rel="stylesheet" href="http://makent.trioangle.com/css/profile.css">
+
+
+    <style type="text/css">
+        .ui-selecting {
+            background: #FECA40;
+        }
+
+        .ui-selected {
+            background: #F39814;
+            color: white;
+        }
+    </style>
+
+    <title>Profile </title>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+
+
+    <meta name="twitter:widgets:csp" content="on">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="search" type="application/opensearchdescription+xml" href="#" title="">
+
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <meta name="theme-color" content="#f5f5f5">
+
+</head>
+<body class="" ng-app="App">
+
+<% include header.ejs %>
+<% include modal.ejs %>
+
+<main id="site-content" role="main" ng-controller="profile_controller" ng-init="initProfile('<%= userSSN %>')">
+
+    <div class="page-container page-container-responsive row-space-top-4 row-space-8">
+        <div class="row">
+            <div class="col-lg-3 col-md-4 hide-sm">
+                <div id="user" class="row-space-4">
+                    <div>
+                        <div class="row-space-2" id="user-media-container">
+                            <div id="slideshow" class="slideshow">
+                                <div class="slideshow-preload"></div>
+                                <ul class="slideshow-images">
+                                    <li class="active media-photo media-photo-block">
+                                        <img class="img-responsive"
+                                             src="/images/{{ user.profileImage }}"
+                                             width="225" height="225" style="height:225px;">
+                                    </li>
+                                    <li class="media-photo media-photo-block"></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="panel row-space-4 verifications">
+                    <div class="panel-header row">
+                        <div class="pull-left">
+                            Verifications
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <ul class="list-unstyled">
+                            <li class="row row-condensed">
+                                <div class="media">
+                                    <i class="icon icon-ok icon-lima h3 pull-left"></i>
+                                    <div class="media-body">
+                                        <div>
+                                            Email Address
+                                        </div>
+                                        <div class="text-muted">
+                                            Verified
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-lg-9 col-md-8 col-sm-12">
+                <div class="row row-space-4">
+                    <div class="col-sm-8 col-md-12 col-lg-12">
+                        <h1>
+                            Hey, I'm {{user.firstName}}!
+                        </h1>
+                        <div class="h5 row-space-top-2">
+                      <span class="text-normal">
+              Member since {{user.createdDate | date:'MMM yyyy'}}
+            </span>
+                        </div>
+                        <div class="flag_controls text-muted row-space-top-2 hide"></div>
+                    </div>
+                </div>
+                <div class="row-space-top-2">
+                    <p></p>
+                </div>
+                <div class="row-space-6 row-space-top-6 row row-condensed">
+                </div>
+                <div class="social_connections_and_reviews">
+                    <div class="row-space-6 hide-sm">
+                        <h2 class="row-space-3">
+                            Property List
+                            <small>({{numberOfProperties}})</small>
+                        </h2>
+                        <div class="row">
+                            <div ng-repeat="property in listed" class="col-lg-4 col-md-6">
+                                <div class="panel">
+                                    <a href=""
+                                       class="panel-image media-photo media-link media-photo-block wishlist-unit">
+                                        <div class="media-cover media-cover-dark wishlist-bg-img"
+                                             style="background-image:url('/images/{{property.mediaId.imageUrl[0]}}');">
+                                        </div>
+                                        <div class="row row-table row-full-height">
+                                            <div class="col-12 col-middle text-center text-contrast">
+                                                <div class="panel-body">
+                                                    <div class="h2"><strong>{{property.city}}</strong></div>
+                                                </div>
+                                                <div class="btn btn-guest">View Listing</div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row-space-top-2">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="social_connections_and_reviews">
+                    <div id="reviews" class="reviews row-space-4">
+                        <h2>
+                            Reviews
+                            <small>({{numberOfTotalReviews}})</small>
+                        </h2>
+                        <div>
+                            <div class="reviews_section as_guest row-space-top-3">
+                                <h4 class="row-space-4">
+                                    Reviews From Users
+                                </h4>
+                                <div class="reviews" ng-repeat="review in hostReviews">
+                                    <div id="review-1" class="row text-center-sm">
+                                        <div class="col-md-2 col-sm-12">
+                                            <div class="avatar-wrapper">
+                                                <a class="text-muted"
+                                                   href="/profile/{{review.userId.userId}}">
+                                                    <div class="media-photo media-round row-space-1">
+                                                        <img style="display: inline;" title="Test"
+                                                             src="/images/{{review.userId.profileImage}}"
+                                                             class="lazy" alt="Test" width="68" height="68">
+                                                    </div>
+                                                    <div class="text-center profile-name text-wrap">
+                                                        {{review.userId.firstName}}
+                                                    </div>
+                                                </a>
+                                                <div class="text-muted date show-sm">{{review.userId.createdDate}}</div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-10 col-sm-12">
+                                            <div class="row-space-2">
+                                                <div class="comment-container expandable expandable-trigger-more row-space-2 expanded">
+                                                    <div class="expandable-content">
+                                                        <p>{{review.review}}</p>
+                                                        <div class="expandable-indicator"></div>
+                                                    </div>
+                                                    <a href=""
+                                                       class="expandable-trigger-more text-muted">
+                                                        <strong>+ More</strong>
+                                                    </a>
+                                                </div>
+                                                <div class="text-muted date hide-sm pull-left">
+                                                    {{review.userId.createdDate | date: 'MMM yyyy'}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row row-space-2 line-separation">
+                                        <div class="col-10 col-offset-2">
+                                            <hr>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="reviews_section as_guest row-space-top-3">
+                                <h4 class="row-space-4">
+                                    Reviews From Hosts
+                                </h4>
+                                <div class="reviews" ng-repeat="review in userReviews">
+                                    <div id="review-1" class="row text-center-sm">
+                                        <div class="col-md-2 col-sm-12">
+                                            <div class="avatar-wrapper">
+                                                <a class="text-muted"
+                                                   href="/profile/{{review.hostId.userId}}">
+                                                    <div class="media-photo media-round row-space-1">
+                                                        <img style="display: inline;" title="Test"
+                                                             src="/images/{{review.hostId.profileImage}}"
+                                                             class="lazy" alt="Test" width="68" height="68">
+                                                    </div>
+                                                    <div class="text-center profile-name text-wrap">
+                                                        {{review.hostId.firstName}}
+                                                    </div>
+                                                </a>
+                                                <div class="text-muted date show-sm">{{review.hostId.createdDate}}</div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-10 col-sm-12">
+                                            <div class="row-space-2">
+                                                <div class="comment-container expandable expandable-trigger-more row-space-2 expanded">
+                                                    <div class="expandable-content">
+                                                        <p>{{review.review}}</p>
+                                                        <div class="expandable-indicator"></div>
+                                                    </div>
+                                                    <a href=""
+                                                       class="expandable-trigger-more text-muted">
+                                                        <strong>+ More</strong>
+                                                    </a>
+                                                </div>
+                                                <div class="text-muted date hide-sm pull-left">
+                                                    {{review.hostId.createdDate | date: 'MMM yyyy'}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row row-space-2 line-separation">
+                                        <div class="col-10 col-offset-2">
+                                            <hr>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="staged-photos"></div>
+</main>
+
+<% include footer.ejs %>
+
+<div id="gmap-preload" class="hide"></div>
+
+<div class="ipad-interstitial-wrapper"><span data-reactid=".1"></span></div>
+
+<div id="fb-root"></div>
+
+<script type="text/javascript"
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBXyRBiyRcEzHDJ8iU00zECMUP4cXBIm6A&sensor=false&libraries=places"></script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+<script type="text/javascript" src="http://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
+
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.2/angular.min.js"></script>
+
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/angular-sanitize/1.3.2/angular-sanitize.min.js"></script>
+
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/ResponsiveSlides.js/1.53/responsiveslides.min.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.login_popup_head').click(function (e) {
+            e.preventDefault();
+            $("body").addClass("pos-fix");
+            $(".login_popup").show();
+            $(".signup_popup").hide();
+            $(".signup_popup2").hide();
+        });
+        $('.login-close').click(function (event) {
+            $("body").removeClass("pos-fix");
+            $(".login_popup").hide();
+        });
+        $('.top-home').click(function (event) {
+            event.stopPropagation();
+        });
+    });
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.forgot-password-popup').click(function (e) {
+            e.preventDefault();
+            $("body").addClass("pos-fix");
+            $(".login_popup").hide();
+            $(".forgot-passward").show();
+        });
+        $('.login-close').click(function (event) {
+            $("body").removeClass("pos-fix");
+            $(".forgot-passward").hide();
+        });
+        $('.top-home').click(function (event) {
+            event.stopPropagation();
+        });
+    });
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.signup_popup_head').click(function (e) {
+            e.preventDefault();
+            $("body").addClass("pos-fix");
+            $(".signup_popup").show();
+            $(".login_popup").hide();
+        });
+        $('.login-close').click(function () {
+            $("body").removeClass("pos-fix");
+            $(".signup_popup").hide();
+        });
+        $('.top-home').click(function (event) {
+            event.stopPropagation();
+        });
+    });
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.signup_popup_head2').click(function (e) {
+            e.preventDefault();
+            $("body").addClass("pos-fix");
+            $(".signup_popup2").show();
+            $(".signup_popup").hide();
+        });
+        $('.login-close').click(function () {
+            $("body").removeClass("pos-fix");
+            $(".signup_popup2").hide();
+        });
+        $('.top-home').click(function (event) {
+            event.stopPropagation();
+        });
+    });
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('ul.menu-group li a').click(function () {
+            $('.nav--sm').css('visibility', 'hidden');
+        });
+    });
+</script>
+
+<script>
+    var app = angular.module('App', ['ngSanitize']);
+    var APP_URL = "http:\/\/localhost:3000";
+    $.datepicker.setDefaults($.datepicker.regional["en"])
+</script>
+
+<script src="/js/common.js"></script>
+
+<script src="/controller/common_controller.js"></script>
+
+<script src="https://angular-file-upload.appspot.com/js/ng-file-upload-shim.js"></script>
+<script src="https://angular-file-upload.appspot.com/js/ng-file-upload.js"></script>
+
+<!-- ver. 87c23752f8dfbd60bf83837d2c8b2dcd0ec660a9 -->
+<div class="tooltip tooltip-bottom-middle" role="tooltip" aria-hidden="true">
+    <p class="panel-body">To sign up, you must be 18 or older. Other people won’t see your birthday.</p>
+</div>
+</body>
+</html>

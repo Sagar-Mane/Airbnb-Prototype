@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+
+<html lang="en-IN" xmlns:fb="http://ogp.me/ns/fb#"><!--<![endif]-->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="dns-prefetch" href="https://maps.googleapis.com/">
+    <link rel="dns-prefetch" href="https://maps.gstatic.com/">
+    <link rel="dns-prefetch" href="https://mts0.googleapis.com/">
+    <link rel="dns-prefetch" href="https://mts1.googleapis.com/">
+
+    <!--[if IE]><![endif]-->
+    <meta charset="utf-8">
+
+    <!--[if IE 8]>
+    <link media="all" type="text/css" rel="stylesheet" href="http://makent.trioangle.com/css/common_ie8.css">
+
+    <![endif]-->
+    <!--[if !(IE 8)]><!-->
+    <link media="all" type="text/css" rel="stylesheet" href="css/common.css">
+
+    <link media="all" type="text/css" rel="stylesheet" href="css/home.css">
+
+    <link media="all" type="text/css" rel="stylesheet" href="css/themes.css">
+
+    <link media="all" type="text/css" rel="stylesheet" href="css/dynamic.css">
+
+    <!--<![endif]-->
+
+    <!--[if lt IE 9]>
+    <link media="all" type="text/css" rel="stylesheet" href="http://makent.trioangle.com/css/airglyphs-ie8.css">
+
+    <![endif]-->
+
+
+    <style type="text/css">
+        .ui-selecting {
+            background: #FECA40;
+        }
+
+        .ui-selected {
+            background: #F39814;
+            color: white;
+        }
+    </style>
+
+    <title>Account </title>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+
+    <meta name="description" content="Account">
+    <meta name="keywords" content="">
+
+
+    <meta name="twitter:widgets:csp" content="on">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="search" type="application/opensearchdescription+xml" href="#" title="">
+
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <meta name="theme-color" content="#f5f5f5">
+
+</head>
+<body class="" ng-app="App">
+<% include header.ejs %>
+<% include modal.ejs %>
+<main id="site-content" role="main" ng-controller="account_user_management" ng-init="paymentInit()">
+
+    <div class="subnav hide-print">
+        <div class="page-container-responsive">
+            <ul class="subnav-list">
+                <li>
+                    <a href="/getDashBoardPage" aria-selected="false" class="subnav-item">Dashboard</a>
+                </li>
+                <li>
+                    <a href="/yourListings" aria-selected="false" class="subnav-item">Your Listings</a>
+                </li>
+                <li>
+                    <a href="/yourTrips" aria-selected="false" class="subnav-item">Your Trips</a>
+                </li>
+                <li>
+                    <a href="/editProfilePage" aria-selected="false" class="subnav-item">Profile</a>
+                </li>
+                <li>
+                    <a href="#" aria-selected="true" class="subnav-item">Account</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="page-container-responsive row-space-top-4 row-space-4">
+        <div class="row">
+            <div class="col-md-3">
+                <ul class="sidenav-list">
+
+                    <li>
+                        <a href="/Account_Payment_Method" aria-selected="true" class="sidenav-item">Payment Method</a>
+                    </li>
+
+                    <li>
+                        <a href="/Account_Transactions" aria-selected="false" class="sidenav-item">Transaction
+                            History</a>
+                    </li>
+                    <li>
+                        <a href="/Account_Security" aria-selected="false" class="sidenav-item">Security</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-9">
+                <div class="" id="payout_setup">
+                    <div class="panel row-space-4">
+                        <div class="panel-header">
+                            Payment Methods
+                        </div>
+                        <div class="panel-body" id="payout_intro">
+                            <p>
+                                Your credit card information
+                            </p>
+                            <div class="container" ng-controller="account_user_management">
+                                <form class="form-horizontal" ng-submit="creditCard()" name="checkFrom" id="myForm"
+                                      ng-submit="checkoutFinal()">
+                                    <fieldset>
+                                        <legend align="center">Payment</legend>
+                                        <br>
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label" for="card-holder-name">Name on
+                                                Card</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" class="form-control" name="cname"
+                                                       ng-model="cname" id="card-holder-name"
+                                                       placeholder="Card Holder's Name" required>
+                                                <br>
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label" for="card-number">Card Number</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" class="form-control" name="cnum" ng-model="cnum"
+                                                       ng-pattern="/^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|6(?:011|5[0-9][0-9])[0-9]{12}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|(?:2131|1800|35\d{3})\d{11})$/"
+                                                       id="card-number" placeholder="Debit/Credit Card Number" required>
+                                                <br>
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label" for="expiry-month">Expiration
+                                                Date</label>
+                                            <div class="col-sm-9">
+                                                <div class="col-xs-3">
+                                                    <select class="form-control col-sm-2" ng-model="expMonth"
+                                                            name="expiryMonth" id="expiry-month" required>
+                                                        <option value="01">Jan (01)</option>
+                                                        <option value="02">Feb (02)</option>
+                                                        <option value="03">Mar (03)</option>
+                                                        <option value="04">Apr (04)</option>
+                                                        <option value="05">May (05)</option>
+                                                        <option value="06">June(06)</option>
+                                                        <option value="07">July(07)</option>
+                                                        <option value="08">Aug (08)</option>
+                                                        <option value="09">Sep (09)</option>
+                                                        <option value="10">Oct (10)</option>
+                                                        <option value="11">Nov (11)</option>
+                                                        <option value="12" selected="selected">Dec (12)</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-xs-3">
+                                                    <select class="form-control col-sm-2" name="expiryYear"
+                                                            ng-model="expYear" required>
+                                                        <option value="2017">2017</option>
+                                                        <option value="2018">2018</option>
+                                                        <option value="2019">2019</option>
+                                                        <option value="2020">2020</option>
+                                                        <option value="2021">2021</option>
+                                                        <option value="2022">2022</option>
+                                                        <option value="2023">2023</option>
+                                                        <option value="2024">2024</option>
+                                                        <option value="2025">2025</option>
+                                                        <option value="2026">2026</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label" for="cvv">Card CVV</label>
+                                            <div class="col-sm-3">
+                                                <br>
+                                                <input type="number" class="form-control" min="100" max="999" name="ccv"
+                                                       ng-model="ccv" id="cvv" placeholder="Security Code" required>
+                                                <br>
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <div class="form-group"
+                                             ng-show="!checkFrom.cname.$invalid && !checkFrom.cnum.$invalid && !checkFrom.ccv.$invalid">
+                                            <div class="col-sm-offset-3 col-sm-9">
+                                                <input type="submit" class="btn btn-primary" value="Add Payout Method"
+                                                       id="add-payout-method-button"/>
+                                                <br>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-sm-offset-3 col-sm-9">
+                                                <div class="form-group"
+                                                     ng-show="checkFrom.ccv.$touched && checkFrom.ccv.$invalid">
+                                                    <br>
+                                                    <span style="color: red">Invalid Credit Card CVV</span>
+                                                </div>
+                                                <div class="form-group"
+                                                     ng-show="checkFrom.cnum.$touched && checkFrom.cnum.$invalid && checkFrom.cnum.$error.pattern">
+                                                    <br>
+                                                    <span style="color: red">Invalid Credit Card number</span>
+                                                </div>
+                                                <div class="form-group"
+                                                     ng-show="checkFrom.cname.$touched && checkFrom.cname.$invalid">
+                                                    <br>
+                                                    <span style="color: red">Enter Credit Card Holder Name</span>
+                                                </div>
+                                                <div class="alert alert-success" ng-show=alert2>
+                                                    Payment Method Success Fully Updated
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="display:none;" class="add_payout_section" id="payout_new_select"></div>
+                    <div style="display:none;" class="add_payout_section" id="payout_edit"></div>
+                </div>
+                <div id="taxes"></div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<!--
+<ul data-sticky="true" data-trigger="#payout-options-2" class="tooltip tooltip-top-left list-unstyled dropdown-menu"
+    aria-hidden="true" role="tooltip" style="left: 1019.45px; top: 232.967px;">
+    <li>
+        <a rel="nofollow" data-method="post" class="link-reset menu-item"
+           href="http://makent.trioangle.com/users/payout_default/2">Set default</a>
+    </li>
+</ul>-->
+
+<% include footer.ejs %>
+<div id="gmap-preload" class="hide"></div>
+
+<div class="ipad-interstitial-wrapper"><span data-reactid=".1"></span></div>
+
+<div id="fb-root"></div>
+
+<script type="text/javascript"
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBXyRBiyRcEzHDJ8iU00zECMUP4cXBIm6A&sensor=false&libraries=places"></script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+<script type="text/javascript" src="http://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
+
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.2/angular.min.js"></script>
+
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/angular-sanitize/1.3.2/angular-sanitize.min.js"></script>
+
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/ResponsiveSlides.js/1.53/responsiveslides.min.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.login_popup_head').click(function (e) {
+            e.preventDefault();
+            $("body").addClass("pos-fix");
+            $(".login_popup").show();
+            $(".signup_popup").hide();
+            $(".signup_popup2").hide();
+        });
+        $('.login-close').click(function (event) {
+            $("body").removeClass("pos-fix");
+            $(".login_popup").hide();
+        });
+        $('.top-home').click(function (event) {
+            event.stopPropagation();
+        });
+    });
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.forgot-password-popup').click(function (e) {
+            e.preventDefault();
+            $("body").addClass("pos-fix");
+            $(".login_popup").hide();
+            $(".forgot-passward").show();
+        });
+        $('.login-close').click(function (event) {
+            $("body").removeClass("pos-fix");
+            $(".forgot-passward").hide();
+        });
+        $('.top-home').click(function (event) {
+            event.stopPropagation();
+        });
+    });
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.signup_popup_head').click(function (e) {
+            e.preventDefault();
+            $("body").addClass("pos-fix");
+            $(".signup_popup").show();
+            $(".login_popup").hide();
+        });
+        $('.login-close').click(function () {
+            $("body").removeClass("pos-fix");
+            $(".signup_popup").hide();
+        });
+        $('.top-home').click(function (event) {
+            event.stopPropagation();
+        });
+    });
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.signup_popup_head2').click(function (e) {
+            e.preventDefault();
+            $("body").addClass("pos-fix");
+            $(".signup_popup2").show();
+            $(".signup_popup").hide();
+        });
+        $('.login-close').click(function () {
+            $("body").removeClass("pos-fix");
+            $(".signup_popup2").hide();
+        });
+        $('.top-home').click(function (event) {
+            event.stopPropagation();
+        });
+    });
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('ul.menu-group li a').click(function () {
+            $('.nav--sm').css('visibility', 'hidden');
+        });
+    });
+</script>
+<script>
+    var app = angular.module('App', ['ngSanitize']);
+    var APP_URL = "http:\/\/localhost:3000";
+    $.datepicker.setDefaults($.datepicker.regional["en"])
+</script>
+
+
+<script type="application/javascript" src="js/common.js"></script>
+
+<script type="application/javascript" src="controller/common_controller.js"></script>
+
+<script src="https://angular-file-upload.appspot.com/js/ng-file-upload-shim.js"></script>
+<script src="https://angular-file-upload.appspot.com/js/ng-file-upload.js"></script>
+
+<!-- ver. 87c23752f8dfbd60bf83837d2c8b2dcd0ec660a9 -->
+<div class="tooltip tooltip-bottom-middle" role="tooltip" aria-hidden="true">
+    <p class="panel-body">To sign up, you must be 18 or older. Other people won’t see your birthday.</p>
+</div>
+</body>
+</html>

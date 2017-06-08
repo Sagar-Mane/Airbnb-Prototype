@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+
+<html lang="en-IN" xmlns:fb="http://ogp.me/ns/fb#"><!--<![endif]-->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="dns-prefetch" href="https://maps.googleapis.com/">
+    <link rel="dns-prefetch" href="https://maps.gstatic.com/">
+    <link rel="dns-prefetch" href="https://mts0.googleapis.com/">
+    <link rel="dns-prefetch" href="https://mts1.googleapis.com/">
+
+
+    <meta charset="utf-8">
+
+
+    <link media="all" type="text/css" rel="stylesheet" href="css/common.css">
+
+    <link media="all" type="text/css" rel="stylesheet" href="css/home.css">
+
+    <link media="all" type="text/css" rel="stylesheet" href="css/themes.css">
+
+    <link media="all" type="text/css" rel="stylesheet" href="css/pcss.css">
+
+
+    <link media="all" type="text/css" rel="stylesheet" href="css/manage_listing.css">
+
+
+    <style type="text/css">
+        .ui-selecting {
+            background: #FECA40;
+        }
+
+        .ui-selected {
+            background: #F39814;
+            color: white;
+        }
+    </style>
+
+    <title>Edit Listing </title>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+
+    <meta name="description" content="Edit Listing">
+    <meta name="keywords" content="">
+
+
+    <meta name="twitter:widgets:csp" content="on">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="search" type="application/opensearchdescription+xml" href="#" title="">
+
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <meta name="theme-color" content="#f5f5f5">
+
+</head>
+<body class="" ng-app="App">
+<% include header.ejs %>
+
+<main id="site-content" role="main" ng-controller="manage_listing">
+
+    <div class="manage-listing  never-listed" id="js-manage-listing">
+        <div class="manage-listing-alerts">
+            <div id="js-disaster-alert"></div>
+        </div>
+
+        <div id="ajax_header">
+            <div class="manage-listing-header" id="js-manage-listing-header">
+                <div class="subnav ml-header-subnav">
+                    <ul class="subnav-list ">
+                        <li class="show-if-collapsed-nav" id="collapsed-nav">
+                            <a href="" data-prevent-default="" class="subnav-item show-collapsed-nav-link"
+                               id="price-id">
+                                <i class="icon icon-reorder show-collapsed-nav-link--icon"></i>
+                                <span class="show-collapsed-nav-link--text">
+          Pricing, listing details…
+        </span>
+                            </a>
+                        </li>
+                        <li class="subnav-text">
+      <span id="listing-name">
+      <span ng-hide="name">Entire home/apt in San Jose</span>
+      <span ng-show="name"><span ng-bind="name"></span></span>
+      </span>
+                            <span class="see-all-listings-link">
+        <span class="text-very-muted">(</span><span class="text-muted"><a href="#" class="text-normal link-underline">see all listings</a></span><span
+                                        class="text-very-muted">)</span>
+      </span>
+                        </li>
+                        <li>
+                            <a href="#" data-track="preview" class="subnav-item pull-right" id="preview-btn"
+                               title="Preview your listing as it will appear when active." target="_blank">
+
+                                <i class="icon icon-eye"></i>
+
+                                Preview
+
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="subnav-list has-collapsed-nav hide-md">
+                        <li class="show-if-collapsed-nav" id="collapsed-nav">
+                            <a href="" data-prevent-default="" class="subnav-item show-collapsed-nav-link">
+                                <i class="icon icon-reorder show-collapsed-nav-link--icon"></i>
+                                <span class="show-collapsed-nav-link--text">
+          Pricing, listing details…
+        </span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Center Part Starting  -->
+        <div class="manage-listing-row-container ">
+            <div class="col-lg-2 col-md-3 listing-nav-sm nopad pos-abs " id="js-manage-listing-nav">
+
+                <div class="nav-sections">
+
+
+                    <div class="h6 section-header row-space-1 pre-listed">
+                        Listing
+                    </div>
+                    <ul class="list-unstyled margin-bot-5 list-nav-link">
+
+                        <li class="nav-item nav-basics pre-listed" data-track="basics"
+                            ng-class="(step == 'basics') ? 'nav-active' : ''">
+                            <a href="" id="href_basics">
+                                <div class="row nav-item">
+                                    <div class="col-sm-12 va-container">
+                                        <span class="va-middle">Basics</span>
+
+                                        <div class="instant-book-status pull-right">
+                                            <div class="instant-book-status__on hide">
+                                                <i class="icon icon-bolt icon-beach h3"></i>
+                                            </div>
+                                            <div class="instant-book-status__off hide">
+                                                <i class="icon icon-bolt icon-light-gray h3"></i>
+                                            </div>
+                                        </div>
+                                        <div class="js-new-section-icon not-post-listed pull-right transition visible">
+                                            <i class="nav-icon icon icon-add icon-grey"></i>
+                                        </div>
+
+                                        <div class="pull-right">
+                                            <i class="nav-icon icon icon-ok-alt icon-babu not-post-listed hide"></i>
+                                            <i class="dot dot-success hide"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+
+                        <li class="nav-item nav-description pre-listed" data-track="description"
+                            ng-class="(step == 'description') ? 'nav-active' : ''">
+                            <a href="#" id="href_description">
+                                <div class="row nav-item">
+                                    <div class="col-sm-12 va-container">
+                                        <span class="va-middle">Description</span>
+
+                                        <div class="instant-book-status pull-right">
+                                            <div class="instant-book-status__on hide">
+                                                <i class="icon icon-bolt icon-beach h3"></i>
+                                            </div>
+                                            <div class="instant-book-status__off hide">
+                                                <i class="icon icon-bolt icon-light-gray h3"></i>
+                                            </div>
+                                        </div>
+                                        <div class="js-new-section-icon not-post-listed pull-right transition visible">
+                                            <i class="nav-icon icon icon-add icon-grey"></i>
+                                        </div>
+
+                                        <div class="pull-right">
+                                            <i class="nav-icon icon icon-ok-alt icon-babu not-post-listed hide"></i>
+                                            <i class="dot dot-success hide"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+
+                        <li class="nav-item nav-location pre-listed" data-track="location"
+                            ng-class="(step == 'location') ? 'nav-active' : ''">
+                            <a href="#" id="href_location">
+                                <div class="row nav-item">
+                                    <div class="col-sm-12 va-container">
+                                        <span class="va-middle">Location</span>
+
+                                        <div class="instant-book-status pull-right">
+                                            <div class="instant-book-status__on hide">
+                                                <i class="icon icon-bolt icon-beach h3"></i>
+                                            </div>
+                                            <div class="instant-book-status__off hide">
+                                                <i class="icon icon-bolt icon-light-gray h3"></i>
+                                            </div>
+                                        </div>
+                                        <div class="js-new-section-icon not-post-listed pull-right transition visible">
+                                            <i class="nav-icon icon icon-add icon-grey"></i>
+                                        </div>
+
+                                        <div class="pull-right">
+                                            <i class="nav-icon icon icon-ok-alt icon-babu not-post-listed hide"></i>
+                                            <i class="dot dot-success hide"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+
+                        <li class="nav-item nav-amenities pre-listed" data-track="amenities"
+                            ng-class="(step == 'amenities') ? 'nav-active' : ''">
+                            <a ng-click="reloadRoute()"
+                               href="" id="href_amenities">
+                                <div class="row nav-item">
+                                    <div class="col-sm-12 va-container">
+                                        <span class="va-middle">Amenities</span>
+
+                                        <div class="instant-book-status pull-right">
+                                            <div class="instant-book-status__on hide">
+                                                <i class="icon icon-bolt icon-beach h3"></i>
+                                            </div>
+                                            <div class="instant-book-status__off hide">
+                                                <i class="icon icon-bolt icon-light-gray h3"></i>
+                                            </div>
+                                        </div>
+
+                                        <div class="pull-right">
+                                            <i class="nav-icon icon icon-ok-alt icon-babu nav-icon-checked not-post-listed"></i>
+                                            <i class="dot dot-success hide"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+
+                        <li class="nav-item nav-photos pre-listed" data-track="photos"
+                            ng-class="(step == 'photos') ? 'nav-active' : ''">
+                            <a href="" id="href_photos">
+                                <div class="row nav-item">
+                                    <div class="col-sm-12 va-container">
+                                        <span class="va-middle">Photos</span>
+
+                                        <div class="instant-book-status pull-right">
+                                            <div class="instant-book-status__on hide">
+                                                <i class="icon icon-bolt icon-beach h3"></i>
+                                            </div>
+                                            <div class="instant-book-status__off hide">
+                                                <i class="icon icon-bolt icon-light-gray h3"></i>
+                                            </div>
+                                        </div>
+                                        <div class="js-new-section-icon not-post-listed pull-right transition visible">
+                                            <i class="nav-icon icon icon-add icon-grey"></i>
+                                        </div>
+
+                                        <div class="pull-right">
+                                            <i class="nav-icon icon icon-ok-alt icon-babu not-post-listed hide"></i>
+                                            <i class="dot dot-success hide"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+
+
+                    </ul>
+
+
+                    <div class="h6 section-header row-space-1 pre-listed">
+                        Hosting
+                    </div>
+                    <ul class="list-unstyled margin-bot-5 list-nav-link list-nav-link">
+
+                        <li class="nav-item nav-pricing pre-listed" data-track="pricing"
+                            ng-class="(step == 'pricing') ? 'nav-active' : ''">
+                            <a href="#" id="href_pricing">
+                                <div class="row nav-item">
+                                    <div class="col-sm-12 va-container">
+                                        <span class="va-middle">Pricing</span>
+
+                                        <div class="instant-book-status pull-right">
+                                            <div class="instant-book-status__on hide">
+                                                <i class="icon icon-bolt icon-beach h3"></i>
+                                            </div>
+                                            <div class="instant-book-status__off hide">
+                                                <i class="icon icon-bolt icon-light-gray h3"></i>
+                                            </div>
+                                        </div>
+
+                                        <div class="js-new-section-icon not-post-listed pull-right transition visible">
+                                            <i class="nav-icon icon icon-add icon-grey"></i>
+                                        </div>
+
+                                        <div class="pull-right">
+                                            <i class="nav-icon icon icon-ok-alt icon-babu not-post-listed hide"></i>
+                                            <i class="dot dot-success hide"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+
+                        <li class="nav-item nav-calendar pre-listed" id="remove-manage" data-track="calendar"
+                            ng-class="(step == 'calendar') ? 'nav-active' : ''">
+                            <a href="#" id="href_calendar">
+                                <div class="row nav-item">
+                                    <div class="col-sm-12 va-container">
+                                        <span class="va-middle">Calendar</span>
+
+                                        <div class="instant-book-status pull-right">
+                                            <div class="instant-book-status__on hide">
+                                                <i class="icon icon-bolt icon-beach h3"></i>
+                                            </div>
+                                            <div class="instant-book-status__off hide">
+                                                <i class="icon icon-bolt icon-light-gray h3"></i>
+                                            </div>
+                                        </div>
+
+                                        <div class="js-new-section-icon not-post-listed pull-right transition hide">
+                                            <i class="nav-icon icon icon-add icon-grey"></i>
+                                        </div>
+
+                                        <div class="pull-right">
+                                            <i class="nav-icon icon icon-ok-alt icon-babu not-post-listed "></i>
+                                            <i class="dot dot-success hide"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+
+                    </ul>
+
+                </div>
+
+
+            </div>
+            <div id="ajax_container" class="col-lg-10 col-md-9 mar-left-cont">
+                <div id="js-manage-listing-content-container" class="manage-listing-content-container">
+                    <div class="manage-listing-content-wrapper">
+                        <div id="js-manage-listing-content" class="manage-listing-content col-lg-7 col-md-7">
+                            <div id="photos">
+                                <div class="row-space-4">
+                                    <div class="row">
+                                        <h3 class="col-12">Photos Can Bring Your Space to Life</h3>
+                                    </div>
+                                    <p class="text-muted">Add photos of areas guests have access to. You can always come
+                                        back later and add more.</p>
+                                </div>
+
+                                <div id="js-photos-grid" class="photo-encourage">
+                                    <div class="row row-table">
+                                        <div class="col-md-6">
+                                            <div class="add-photos-button">
+                                                <input type="file" class="hide" name="photos[]" multiple="true"
+                                                       id="upload_photos" accept="image/*">
+                                                <button id="photo-uploader" class="btn btn-large row-space-2"
+                                                        style="position: relative; z-index: 0;">
+                                                    <i class="icon icon-upload"></i> Add Photos
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                        <div class="h4 text-right text-muted" id="photo_count"
+                                             ng-show="photos_list.length > 0" style=&quot;display:none;&quot;>
+                                            <small>{{ photos_list.length }} photo<span ng-show="photos_list.length > 1">s</span>
+                                            </small>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <hr>
+
+                                <div class="row">
+                                    <div id="js-first-photo-text" class="col-12 row-space-2 h5 ">
+                                        Click corner button to set featured image.
+                                    </div>
+                                </div>
+
+                                <ul id="js-photo-grid" class="row list-unstyled sortable">
+
+                                    <li ng-repeat="item in photos_list" class="col-lg-4 col-md-6 row-space-4"
+                                        data-id="{{ item.id }}" data-index="0" draggable="true"
+                                        style="display: list-item;" ng-mouseover="over_first_photo($index)"
+                                        ng-mouseout="out_first_photo($index)">
+                                        <div class="panel photo-item">
+                                            <!-- <div class="first-photo-ribbon"><i class="icon icon-star text-center"></i></div> -->
+                                            <div class="first-photo-ribbon"
+                                                 style="z-index:9; background:none; margin:0; padding:0; "><input
+                                                        type="radio" name="featured_image"
+                                                        ng-click="featured_image($index, item.id);"
+                                                        ng-checked="(item.featured == 'Yes') ? true : false"></div>
+
+                                            <div class="photo-size photo-drag-target js-photo-link"
+                                                 id="photo-{{ item.id }}"></div>
+                                            <a class="media-photo media-photo-block text-center photo-size" href="#">
+                                                <img src="#" class="img-responsive-height" alt="">
+                                            </a>
+                                            <button data-photo-id="{{ item.id }}" ng-click="delete_photo(item,item.id)"
+                                                    class="delete-photo-btn overlay-btn js-delete-photo-btn">
+                                                <i class="icon icon-trash"></i>
+                                            </button>
+                                            <div class="panel-body panel-condensed">
+                                                <textarea name="{{ item.id }}" ng-model="item.highlights"
+                                                          ng-keyup="keyup_highlights(item.id, item.highlights)" rows="3"
+                                                          placeholder="What are the highlights of this photo?"
+                                                          class="input-large highlights" tabindex="1"></textarea>
+                                            </div>
+                                        </div>
+                                    </li>
+
+                                    <input type="file" class="hide" name="photos[]" multiple="true" id="upload_photos2"
+                                           accept="image/*">
+
+                                </ul>
+
+                                <hr>
+
+                                <div class="not-post-listed row row-space-top-6 progress-buttons">
+                                    <div class="col-12">
+                                        <div class="separator"></div>
+                                    </div>
+                                    <div class="col-2 row-space-top-1 next_step">
+
+                                        <a data-prevent-default="" href="#" class="back-section-button">Back</a>
+
+                                    </div>
+                                    <div class="col-10 text-right next_step">
+
+                                        <a data-prevent-default="" href="#"
+                                           class="btn btn-large btn-primary next-section-button">
+                                            Next
+                                        </a>
+
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div id="js-manage-listing-help" class="manage-listing-help col-lg-4 pos-fix col-md-4 hide-sm">
+                            <div class="manage-listing-help-panel-wrapper">
+                                <div class="panel manage-listing-help-panel" style="top: 250.867px;">
+                                    <div class="help-header-icon-container text-center va-container-h">
+                                        <img width="50" height="50" class="col-center" src="images/lightbulb2x.png">
+                                    </div>
+                                    <div class="panel-body">
+                                        <h4 class="text-center">Guests Love Photos</h4>
+
+                                        <p class="text-center no-margin-bottom">Include a few well-lit photos.</p>
+                                        <p class="text-center">Cell phone photos are just fine.</p>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="manage-listing-content-background"></div>
+                </div>
+            </div>
+
+        </div>
+        <!-- Center Part Ending -->
+
+        <div class="manage-listing-footer" id="js-manage-listing-footer">
+            <div class="container-brand-dark footer-panel">
+                <div class="row row-table">
+                    <div class="col-2 col-foot site"><span class="text-muted">© Airbnb, Inc.</span></div>
+                    <div class="col-8 col-foot site-list text-center text-muted">
+                        <a href="#" class="text-muted">
+                            Terms of Service
+                        </a> |
+                        <a href="#" class="text-muted">
+                            Privacy Policy
+                        </a> |
+                        <a href="#" class="text-muted">
+                            Host Guarantee
+                        </a> |
+                        <a href="#" class="text-muted">
+                            Guest Refund
+                        </a> |
+                        <a href="#" class="text-muted">
+                            Copyright Policy
+                        </a> |
+                        <a href="#" class="text-muted">
+                            Consent Disagree
+                        </a> |
+                        <a href="#" class="text-muted">
+                            About Us
+                        </a>
+                    </div>
+                    <div class="col-2 col-foot">
+                        <div class="language-curr-picker pull-right">
+                            <div class="select select-large select-block row-space-2">
+                                <label id="language-selector-label" class="screen-reader-only">
+                                    messages.footer.change_language
+                                </label>
+                                <select class="language-selector" aria-labelledby="language-selector-label"
+                                        id="language_footer" name="language">
+                                    <option value="id">Bahasa Indonesia</option>
+                                    <option value="ms">Bahasa Melayu</option>
+                                    <option value="ca">Catal&agrave;</option>
+                                    <option value="da">Dansk</option>
+                                    <option value="de">Deutsch</option>
+                                    <option value="en" selected="selected">English</option>
+                                    <option value="es">Espa&ntilde;ol</option>
+                                    <option value="el">E&lambda;&lambda;&eta;&nu;&iota;&kappa;ά</option>
+                                    <option value="fr">Fran&ccedil;ais</option>
+                                    <option value="it">Italiano</option>
+                                    <option value="hu">Magyar</option>
+                                    <option value="nl">Nederlands</option>
+                                    <option value="pl">Polski</option>
+                                    <option value="pt">Portugu&ecirc;s</option>
+                                    <option value="fi">Suomi</option>
+                                    <option value="tr">T&uuml;rk&ccedil;e</option>
+                                    <option value="ru">Русский</option>
+                                    <option value="th">ภาษาไทย</option>
+                                    <option value="zh">中文 (简体)</option>
+                                </select>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            var map_key = "AIzaSyBXyRBiyRcEzHDJ8iU00zECMUP4cXBIm6A";
+        </script>
+    </div>
+
+    <div id="gmap-preload" class="hide"></div>
+
+    <div class="ipad-interstitial-wrapper"><span data-reactid=".2"></span></div>
+
+    <input type="hidden" id="room_id" value="10017">
+    <input type="hidden" id="room_status" value="">
+
+</main>
+
+<% include footer.ejs %>
+
+<div id="gmap-preload" class="hide"></div>
+
+<div class="ipad-interstitial-wrapper"><span data-reactid=".1"></span></div>
+
+
+<script type="text/javascript"
+        src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&sensor=false"></script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+<script type="text/javascript" src="http://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
+
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.2/angular.min.js"></script>
+
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/angular-sanitize/1.3.2/angular-sanitize.min.js"></script>
+
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/ResponsiveSlides.js/1.53/responsiveslides.min.js"></script>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.login_popup_head').click(function (e) {
+            e.preventDefault();
+            $("body").addClass("pos-fix");
+            $(".login_popup").show();
+            $(".signup_popup").hide();
+            $(".signup_popup2").hide();
+        });
+        $('.login-close').click(function (event) {
+            $("body").removeClass("pos-fix");
+            $(".login_popup").hide();
+        });
+        $('.top-home').click(function (event) {
+            event.stopPropagation();
+        });
+    });
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.forgot-password-popup').click(function (e) {
+            e.preventDefault();
+            $("body").addClass("pos-fix");
+            $(".login_popup").hide();
+            $(".forgot-passward").show();
+        });
+        $('.login-close').click(function (event) {
+            $("body").removeClass("pos-fix");
+            $(".forgot-passward").hide();
+        });
+        $('.top-home').click(function (event) {
+            event.stopPropagation();
+        });
+    });
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.signup_popup_head').click(function (e) {
+            e.preventDefault();
+            $("body").addClass("pos-fix");
+            $(".signup_popup").show();
+            $(".login_popup").hide();
+        });
+        $('.login-close').click(function () {
+            $("body").removeClass("pos-fix");
+            $(".signup_popup").hide();
+        });
+        $('.top-home').click(function (event) {
+            event.stopPropagation();
+        });
+    });
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.signup_popup_head2').click(function (e) {
+            e.preventDefault();
+            $("body").addClass("pos-fix");
+            $(".signup_popup2").show();
+            $(".signup_popup").hide();
+        });
+        $('.login-close').click(function () {
+            $("body").removeClass("pos-fix");
+            $(".signup_popup2").hide();
+        });
+        $('.top-home').click(function (event) {
+            event.stopPropagation();
+        });
+    });
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('ul.menu-group li a').click(function () {
+            $('.nav--sm').css('visibility', 'hidden');
+        });
+    });
+</script>
+<script>
+    var app = angular.module('App', ['ngSanitize']);
+    var APP_URL = "http:\/\/localhost:3000";
+    $.datepicker.setDefaults($.datepicker.regional["en"])
+</script>
+
+
+<script src="js/common.js"></script>
+
+<script src="js/manage_listing.js"></script>
+
+<script src="https://angular-file-upload.appspot.com/js/ng-file-upload-shim.js"></script>
+<script src="https://angular-file-upload.appspot.com/js/ng-file-upload.js"></script>
+
+<div class="tooltip tooltip-bottom-middle" role="tooltip" aria-hidden="true">
+    <p class="panel-body">To sign up, you must be 18 or older. Other people won’t see your birthday.</p>
+</div>
+</body>
+</html>

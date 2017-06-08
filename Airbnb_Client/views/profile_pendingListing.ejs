@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+
+<html lang="en-IN" xmlns:fb="http://ogp.me/ns/fb#"><!--<![endif]-->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="dns-prefetch" href="https://maps.googleapis.com/">
+    <link rel="dns-prefetch" href="https://maps.gstatic.com/">
+    <link rel="dns-prefetch" href="https://mts0.googleapis.com/">
+    <link rel="dns-prefetch" href="https://mts1.googleapis.com/">
+    <meta charset="utf-8">
+    <link media="all" type="text/css" rel="stylesheet" href="css/common.css">
+
+    <link media="all" type="text/css" rel="stylesheet" href="css/home.css">
+
+    <link media="all" type="text/css" rel="stylesheet" href="css/themes.css">
+
+    <link media="all" type="text/css" rel="stylesheet" href="css/dynamic.css">
+
+
+    <link media="all" type="text/css" rel="stylesheet" href="css/index.css">
+    <link media="all" type="text/css" rel="stylesheet" href="css/unlist_modal.css">
+
+    <link media="all" type="text/css" rel="stylesheet" href="css/dashboard.css">
+
+    <style type="text/css">
+        .ui-selecting {
+            background: #FECA40;
+        }
+
+        .ui-selected {
+            background: #F39814;
+            color: white;
+        }
+    </style>
+    <title>Pending Listings </title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="description" content="Your Trips">
+    <meta name="keywords" content="">
+    <meta name="twitter:widgets:csp" content="on">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="search" type="application/opensearchdescription+xml" href="#" title="">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#f5f5f5">
+</head>
+<body ng-app='App'>
+<% include header.ejs %>
+<% include modal.ejs %>
+<main id="site-content" role="main">
+
+    <div class="subnav hide-print">
+        <div class="page-container-responsive">
+            <ul class="subnav-list">
+                <li>
+                    <a href="/getDashBoardPage" aria-selected="false" class="subnav-item">Dashboard</a>
+                </li>
+                <li>
+                    <a href="#" aria-selected="true" class="subnav-item">Your Listings</a>
+                </li>
+                <li>
+                    <a href="/yourTrips" aria-selected="false" class="subnav-item">Your Trips</a>
+                </li>
+                <li>
+                    <a href="/editProfilePage" aria-selected="false" class="subnav-item">Profile</a>
+                </li>
+                <li>
+                    <a href="/Account_Transactions" aria-selected="false" class="subnav-item">Account</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="page-container-responsive space-top-4 space-4">
+        <div class="row">
+            <div class="col-md-3">
+
+                <ul class="sidenav-list">
+
+                    <li>
+                        <a ng-click="clickActive()" href="" aria-selected="{{activeListings}}" class="sidenav-item">Active
+                            Listings</a>
+                    </li>
+                    <li>
+                        <a ng-click="clickPending()" href="" aria-selected="{{pendingListings}}" class="sidenav-item">Pending
+                            Listings</a>
+                    </li>
+                    <li>
+                        <a ng-click="clickReservation()" href="" aria-selected={{reservationListings}}
+                           class="sidenav-item">Your Reservations</a>
+                    </li>
+                    <li>
+                        <a ng-click="clickUnapprovedReservation()" href=""
+                           aria-selected="{{unapprovedReservationListings}}" class="sidenav-item">Unapproved
+                            Reservations</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col-md-9">
+                <div class="your-listings-flash-container"></div>
+                <div id="listings-container">
+                    <div>
+                        <div class="suspension-container">
+                            <div class="suspension-overlay hide"></div>
+
+                            <div class="panel row-space-4">
+                                <div class="panel-header active-panel-header">
+                                    <div class="row">
+                                        <div class="col-6 active-panel-padding">Listed</div>
+                                        <div id="ib-master-switch-container" class="col-6"></div>
+                                    </div>
+                                </div>
+                                <ul class="list-unstyled list-layout">
+                                    <li class="listing panel-body">
+                                        <div class="row row-table">
+                                            <div class="col-2 col-middle">
+                                                <a href="#">
+                                                    <div class="media-photo media-photo-block">
+                                                        <div class="media-cover text-center">
+                                                            <img src="/images/{{listing.mediaId.imageUrl[0]}}"
+                                                                 class="img-responsive-height">
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                            <div class="col-lg-7 col-md-10 col-middle">
+        <span class="h4">
+        <a href="#" class="text-normal">Castro one-bedroom suite</a>
+        </span>
+                                                <div class="actions row-space-top-1">
+                                                    <a class="listing-link-space" href="#">Manage Listing and
+                                                        Calendar</a>
+                                                </div>
+                                                <div class="listing-criteria-header activation-notification hide-lg space-top-2">
+                                                    <div class="listing-criteria-header-message">
+                                                        <div id="availability-dropdown" data-room-id="div_10001">
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-3 col-middle text-right hide-md hide-sm">
+                                                <div class="listing-criteria-header activation-notification show-lg">
+                                                    <div class="listing-criteria-header-message">
+                                                        <div id="availability-dropdown" data-room-id="div_10001">
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+
+
+                                </ul>
+                            </div>
+
+                            <div class="panel row-space-4">
+                                <div class="panel-header active-panel-header">
+                                    <div class="row">
+                                        <div class="col-6 active-panel-padding">Unlisted</div>
+                                        <div id="ib-master-switch-container" class="col-6"></div>
+                                    </div>
+                                </div>
+                                <ul class="list-unstyled list-layout">
+                                    <li class="listing panel-body">
+                                        <div class="row row-table">
+                                            <div class="col-2 col-middle">
+                                                <a href="#">
+                                                    <div class="media-photo media-photo-block">
+                                                        <div class="media-cover text-center">
+                                                            <img src="../images/1454911487_beautiful.jpg"
+                                                                 class="img-responsive-height">
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                            <div class="col-lg-7 col-md-10 col-middle">
+        <span class="h4">
+        <a href="#" class="text-normal">The city at your doorstep</a>
+        </span>
+                                                <div class="actions row-space-top-1">
+                                                    <a href="#">Manage Listing and Calendar</a>
+                                                </div>
+                                                <div class="listing-criteria-header activation-notification hide-lg space-top-2">
+                                                    <div class="listing-criteria-header-message">
+                                                        <div id="availability-dropdown" data-room-id="div_10003">
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-3 col-middle text-right hide-md hide-sm">
+                                                <div class="listing-criteria-header activation-notification show-lg">
+                                                    <div class="listing-criteria-header-message">
+                                                        <div id="availability-dropdown" data-room-id="div_10003">
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="listing panel-body">
+                                        <div class="row row-table">
+                                            <div class="col-2 col-middle">
+                                                <a href="#">
+                                                    <div class="media-photo media-photo-block">
+                                                        <div class="media-cover text-center">
+                                                            <img src="/images/{{listing.mediaId.imageUrl[0]}}"
+                                                                 class="img-responsive-height" alt="">
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                            <div class="col-lg-7 col-md-10 col-middle">
+        <span class="h4">
+        <a href="" class="text-normal">Haleakala B&amp;B-Aloha Rm / Prvt Entry</a>
+        </span>
+                                                <div class="actions row-space-top-1">
+                                                    <a href="">Manage Listing and Calendar</a>
+                                                </div>
+                                                <div class="listing-criteria-header activation-notification hide-lg space-top-2">
+
+                                                </div>
+                                            </div>
+                                            <div class="col-3 col-middle text-right hide-md hide-sm">
+                                                <div class="listing-criteria-header activation-notification show-lg">
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<% include footer.ejs %>
+
+<div id="gmap-preload" class="hide"></div>
+<div class="ipad-interstitial-wrapper"><span data-reactid=".1"></span></div>
+<div id="fb-root"></div>
+<script type="text/javascript"
+        src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&sensor=false"></script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+<script type="text/javascript" src="http://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
+
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.2/angular.min.js"></script>
+
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/angular-sanitize/1.3.2/angular-sanitize.min.js"></script>
+
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/ResponsiveSlides.js/1.53/responsiveslides.min.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.login_popup_head').click(function (e) {
+            e.preventDefault();
+            $("body").addClass("pos-fix");
+            $(".login_popup").show();
+            $(".signup_popup").hide();
+            $(".signup_popup2").hide();
+        });
+        $('.login-close').click(function (event) {
+            $("body").removeClass("pos-fix");
+            $(".login_popup").hide();
+        });
+        $('.top-home').click(function (event) {
+            event.stopPropagation();
+        });
+    });
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.forgot-password-popup').click(function (e) {
+            e.preventDefault();
+            $("body").addClass("pos-fix");
+            $(".login_popup").hide();
+            $(".forgot-passward").show();
+        });
+        $('.login-close').click(function (event) {
+            $("body").removeClass("pos-fix");
+            $(".forgot-passward").hide();
+        });
+        $('.top-home').click(function (event) {
+            event.stopPropagation();
+        });
+    });
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.signup_popup_head').click(function (e) {
+            e.preventDefault();
+            $("body").addClass("pos-fix");
+            $(".signup_popup").show();
+            $(".login_popup").hide();
+        });
+        $('.login-close').click(function () {
+            $("body").removeClass("pos-fix");
+            $(".signup_popup").hide();
+        });
+        $('.top-home').click(function (event) {
+            event.stopPropagation();
+        });
+    });
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.signup_popup_head2').click(function (e) {
+            e.preventDefault();
+            $("body").addClass("pos-fix");
+            $(".signup_popup2").show();
+            $(".signup_popup").hide();
+        });
+        $('.login-close').click(function () {
+            $("body").removeClass("pos-fix");
+            $(".signup_popup2").hide();
+        });
+        $('.top-home').click(function (event) {
+            event.stopPropagation();
+        });
+    });
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('ul.menu-group li a').click(function () {
+            $('.nav--sm').css('visibility', 'hidden');
+        });
+    });
+</script>
+<script>
+    var app = angular.module('App', ['ngSanitize']);
+    var APP_URL = "http:\/\/localhost:3000";
+    $.datepicker.setDefaults($.datepicker.regional["en"])
+</script>
+<script src="../js/common.js"></script>
+
+<script src="https://angular-file-upload.appspot.com/js/ng-file-upload-shim.js"></script>
+<script src="https://angular-file-upload.appspot.com/js/ng-file-upload.js"></script>
+</body>
+</html>

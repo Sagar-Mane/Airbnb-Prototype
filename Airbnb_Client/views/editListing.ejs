@@ -1,0 +1,2148 @@
+<!DOCTYPE html>
+
+<html lang="en-IN" xmlns:fb="http://ogp.me/ns/fb#"><!--<![endif]-->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="dns-prefetch" href="https://maps.googleapis.com/">
+    <link rel="dns-prefetch" href="https://maps.gstatic.com/">
+    <link rel="dns-prefetch" href="https://mts0.googleapis.com/">
+    <link rel="dns-prefetch" href="https://mts1.googleapis.com/">
+
+
+    <!--[if IE]><![endif]-->
+    <meta charset="utf-8">
+
+
+    <link media="all" type="text/css" rel="stylesheet" href="css/common.css">
+
+    <link media="all" type="text/css" rel="stylesheet" href="css/home.css">
+
+    <link media="all" type="text/css" rel="stylesheet" href="css/themes.css">
+
+    <link media="all" type="text/css" rel="stylesheet" href="css/pcss.css">
+
+
+    <link media="all" type="text/css" rel="stylesheet" href="css/manage_listing.css">
+
+
+    <style type="text/css">
+        .ui-selecting {
+            background: #FECA40;
+        }
+
+        .ui-selected {
+            background: #F39814;
+            color: white;
+        }
+    </style>
+
+    <title>Edit Listing </title>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+
+    <meta name="description" content="Edit Listing">
+    <meta name="keywords" content="">
+
+
+    <meta name="twitter:widgets:csp" content="on">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="search" type="application/opensearchdescription+xml" href="#" title="">
+
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <meta name="theme-color" content="#f5f5f5">
+
+</head>
+<body class="" ng-app="App">
+<% include header.ejs %>
+
+<main id="site-content" role="main" ng-controller="manage_listing">
+
+    <div class="manage-listing  never-listed" id="js-manage-listing">
+        <div class="manage-listing-alerts">
+            <div id="js-disaster-alert"></div>
+        </div>
+
+        <div id="ajax_header">
+            <div class="manage-listing-header" id="js-manage-listing-header">
+                <div class="subnav ml-header-subnav">
+                    <ul class="subnav-list ">
+                        <li class="show-if-collapsed-nav" id="collapsed-nav">
+                            <a href="" data-prevent-default="" class="subnav-item show-collapsed-nav-link"
+                               id="price-id">
+                                <i class="icon icon-reorder show-collapsed-nav-link--icon"></i>
+                                <span class="show-collapsed-nav-link--text">
+          Pricing, listing details…
+        </span>
+                            </a>
+                        </li>
+                        <li class="subnav-text">
+      <span id="listing-name">
+      <span ng-hide="name">Entire home/apt in San Jose</span>
+      <span ng-show="name"><span ng-bind="name"></span></span>
+      </span>
+                            <span class="see-all-listings-link">
+        <span class="text-very-muted">(</span><span class="text-muted"><a href="#" class="text-normal link-underline">see all listings</a></span><span
+                                        class="text-very-muted">)</span>
+      </span>
+                        </li>
+                        <li>
+                            <a href="#" data-track="preview" class="subnav-item pull-right" id="preview-btn"
+                               title="Preview your listing as it will appear when active." target="_blank">
+
+                                <i class="icon icon-eye"></i>
+
+                                Preview
+
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="subnav-list has-collapsed-nav hide-md">
+                        <li class="show-if-collapsed-nav" id="collapsed-nav">
+                            <a href="" data-prevent-default="" class="subnav-item show-collapsed-nav-link">
+                                <i class="icon icon-reorder show-collapsed-nav-link--icon"></i>
+                                <span class="show-collapsed-nav-link--text">
+          Pricing, listing details…
+        </span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Center Part Starting  -->
+        <div class="manage-listing-row-container ">
+            <div class="col-lg-2 col-md-3 listing-nav-sm nopad pos-abs " id="js-manage-listing-nav">
+
+
+            </div>
+            <div id="ajax_container" class="col-lg-10 col-md-9 mar-left-cont">
+                ﻿<!-- Center Part Starting  -->
+                <div class="manage-listing-content-container" id="js-manage-listing-content-container"
+                     style="position:relative;top: -22px;">
+                    <div class="manage-listing-content-wrapper">
+                        <div class="manage-listing-content col-lg-7 col-md-7" id="js-manage-listing-content">
+
+                            <div>
+
+                                <hr class="row-space-top-6 row-space-5 post-listed">
+
+                                <div class="js-section" ng-init="bedrooms='';beds='';bathrooms='';bed_type='';">
+
+
+                                    <h4>Rooms and Beds</h4>
+
+                                    <!-- HTML for rooms and beds subsection -->
+                                    <div class="row row-space-2">
+                                        <div class="col-4">
+                                            <label class="label-large">Bedrooms</label>
+                                            <div id="bedrooms-select">
+                                                <div class="select
+            select-large
+            select-block" data-behavior="tooltip" data-position="right"
+                                                     aria-label="Number of bedrooms can only be set if the room type is <strong>Entire home/apt</strong>.">
+                                                    <select name="bedrooms" id="basics-select-bedrooms"
+                                                            data-saving="basics1" ng-model="bedrooms"
+                                                            class="ng-pristine ng-untouched ng-valid">
+
+                                                        <option disabled="" selected="" value="">Select...</option>
+
+                                                        <option value="0">Studio</option>
+
+                                                        <option value="1">
+                                                            1
+                                                        </option>
+                                                        <option value="2">
+                                                            2
+                                                        </option>
+                                                        <option value="3">
+                                                            3
+                                                        </option>
+                                                        <option value="4">
+                                                            4
+                                                        </option>
+                                                        <option value="5">
+                                                            5
+                                                        </option>
+                                                        <option value="6">
+                                                            6
+                                                        </option>
+                                                        <option value="7">
+                                                            7
+                                                        </option>
+                                                        <option value="8">
+                                                            8
+                                                        </option>
+                                                        <option value="9">
+                                                            9
+                                                        </option>
+                                                        <option value="10">
+                                                            10
+                                                        </option>
+
+
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-4">
+                                            <label class="label-large">Beds</label>
+                                            <div id="beds-select">
+                                                <div class="select
+            select-large
+            select-block">
+                                                    <select name="beds" id="basics-select-beds" data-saving="basics1"
+                                                            ng-model="beds" class="ng-pristine ng-untouched ng-valid">
+
+                                                        <option disabled="" selected="" value="">Select...</option>
+
+                                                        <option value="1">
+                                                            1
+                                                        </option>
+                                                        <option value="2">
+                                                            2
+                                                        </option>
+                                                        <option value="3">
+                                                            3
+                                                        </option>
+                                                        <option value="4">
+                                                            4
+                                                        </option>
+                                                        <option value="5">
+                                                            5
+                                                        </option>
+                                                        <option value="6">
+                                                            6
+                                                        </option>
+                                                        <option value="7">
+                                                            7
+                                                        </option>
+                                                        <option value="8">
+                                                            8
+                                                        </option>
+                                                        <option value="9">
+                                                            9
+                                                        </option>
+                                                        <option value="10">
+                                                            10
+                                                        </option>
+                                                        <option value="11">
+                                                            11
+                                                        </option>
+                                                        <option value="12">
+                                                            12
+                                                        </option>
+                                                        <option value="13">
+                                                            13
+                                                        </option>
+                                                        <option value="14">
+                                                            14
+                                                        </option>
+                                                        <option value="15">
+                                                            15
+                                                        </option>
+                                                        <option value="16">
+                                                            16+
+                                                        </option>
+
+
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="js-bathrooms_select-container" class="col-4">
+                                            <label class="label-large">Bathrooms</label>
+                                            <div id="bathrooms-select">
+                                                <div class="select
+            select-large
+            select-block">
+                                                    <select name="bathrooms" id="basics-select-bathrooms"
+                                                            data-saving="basics1" ng-model="bathrooms"
+                                                            class="ng-pristine ng-untouched ng-valid">
+
+                                                        <option disabled="" value="" selected="">Select...</option>
+
+                                                        <option value="0">0</option>
+
+                                                        <option class="bathrooms" value="0.5">
+                                                            0.5
+                                                        </option>
+                                                        <option class="bathrooms" value="1">
+                                                            1
+                                                        </option>
+                                                        <option class="bathrooms" value="1.5">
+                                                            1.5
+                                                        </option>
+                                                        <option class="bathrooms" value="2">
+                                                            2
+                                                        </option>
+                                                        <option class="bathrooms" value="2.5">
+                                                            2.5
+                                                        </option>
+                                                        <option class="bathrooms" value="3">
+                                                            3
+                                                        </option>
+                                                        <option class="bathrooms" value="3.5">
+                                                            3.5
+                                                        </option>
+                                                        <option class="bathrooms" value="4">
+                                                            4
+                                                        </option>
+                                                        <option class="bathrooms" value="4.5">
+                                                            4.5
+                                                        </option>
+                                                        <option class="bathrooms" value="5">
+                                                            5
+                                                        </option>
+                                                        <option class="bathrooms" value="5.5">
+                                                            5.5
+                                                        </option>
+                                                        <option class="bathrooms" value="6">
+                                                            6
+                                                        </option>
+                                                        <option class="bathrooms" value="6.5">
+                                                            6.5
+                                                        </option>
+                                                        <option class="bathrooms" value="7">
+                                                            7
+                                                        </option>
+                                                        <option class="bathrooms" value="7.5">
+                                                            7.5
+                                                        </option>
+                                                        <option class="bathrooms" value="8">
+                                                            8+
+                                                        </option>
+
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row row-space-2" id="beds_show" style="display:none;">
+                                        <div class="col-4">
+                                            <label class="label-large">Bed Type</label>
+                                            <div id="bedtype-select">
+                                                <div class="select
+            select-large
+            select-block">
+                                                    <select id="basics-select-bed_type" name="bed_type"
+                                                            data-saving="basics1" ng-model="bed_type"
+                                                            class="ng-pristine ng-untouched ng-valid">
+
+                                                        <option value="" selected="" disabled="">Select...</option>
+
+                                                        <option value="1">Airbed</option>
+                                                        <option value="2">Futon</option>
+                                                        <option value="3">Pull-out Sofa</option>
+                                                        <option value="4">Couch</option>
+                                                        <option value="5">Real Bed</option>
+
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <hr class="row-space-top-6 row-space-5">
+
+                                <div class="js-section">
+                                    <div class="js-saving-progress saving-progress basics2" style="display: none;">
+                                        <h5>Select...</h5>
+                                    </div>
+
+                                    <h4>Listing</h4>
+
+                                    <!-- HTML for listing info subsection -->
+                                    <div class="row row-space-2">
+                                        <div class="col-4">
+                                            <label class="label-large">Property Type</label>
+                                            <div id="property-type-select">
+                                                <div class="select
+            select-large
+            select-block">
+                                                    <select id="basics-select-property_type" data-saving="basics2"
+                                                            name="property_type">
+                                                        <option value="1" selected="selected">Apartment</option>
+                                                        <option value="2">House</option>
+                                                        <option value="3">Bed &amp; Break Fast</option>
+                                                        <option value="4">Loft</option>
+                                                        <option value="5">Townhouse</option>
+                                                        <option value="6">Condominium</option>
+                                                        <option value="7">Bungalow</option>
+                                                        <option value="8">Cabin</option>
+                                                        <option value="9">Villa</option>
+                                                        <option value="10">Castle</option>
+                                                        <option value="11">Dorm</option>
+                                                        <option value="12">Treehouse</option>
+                                                        <option value="13">Boat</option>
+                                                        <option value="14">Plane</option>
+                                                        <option value="15">Camper/RV</option>
+                                                        <option value="16">Lgloo</option>
+                                                        <option value="17">Lighthouse</option>
+                                                        <option value="18">Yurt</option>
+                                                        <option value="19">Tipi</option>
+                                                        <option value="20">Cave</option>
+                                                        <option value="21">Island</option>
+                                                        <option value="22">Chalet</option>
+                                                        <option value="23">Earth House</option>
+                                                        <option value="24">Hut</option>
+                                                        <option value="25">Train</option>
+                                                        <option value="26">Tent</option>
+                                                        <option value="27">Other</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-4">
+                                            <label class="label-large">Room Type</label>
+                                            <div id="room-type-select">
+                                                <div class="select
+            select-large
+            select-block">
+                                                    <select id="basics-select-room_type" data-saving="basics2"
+                                                            name="room_type">
+                                                        <option value="1" selected="selected">Entire home/apt</option>
+                                                        <option value="2">Private room</option>
+                                                        <option value="3">Shared room</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-4">
+                                            <label class="label-large">Accommodates</label>
+                                            <div id="person-capacity-select">
+                                                <div class="select
+            select-large
+            select-block">
+                                                    <select name="accommodates" id="basics-select-accommodates"
+                                                            data-saving="basics2">
+
+                                                        <option class="accommodates" value="1">
+                                                            1
+                                                        </option>
+                                                        <option class="accommodates" value="2">
+                                                            2
+                                                        </option>
+                                                        <option class="accommodates" value="3">
+                                                            3
+                                                        </option>
+                                                        <option class="accommodates" value="4">
+                                                            4
+                                                        </option>
+                                                        <option class="accommodates" value="5">
+                                                            5
+                                                        </option>
+                                                        <option class="accommodates" value="6">
+                                                            6
+                                                        </option>
+                                                        <option class="accommodates" value="7">
+                                                            7
+                                                        </option>
+                                                        <option class="accommodates" value="8">
+                                                            8
+                                                        </option>
+                                                        <option class="accommodates" value="9">
+                                                            9
+                                                        </option>
+                                                        <option class="accommodates" value="10" selected="">
+                                                            10
+                                                        </option>
+                                                        <option class="accommodates" value="11">
+                                                            11
+                                                        </option>
+                                                        <option class="accommodates" value="12">
+                                                            12
+                                                        </option>
+                                                        <option class="accommodates" value="13">
+                                                            13
+                                                        </option>
+                                                        <option class="accommodates" value="14">
+                                                            14
+                                                        </option>
+                                                        <option class="accommodates" value="15">
+                                                            15
+                                                        </option>
+                                                        <option class="accommodates" value="16">
+                                                            16+
+                                                        </option>
+
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <hr>
+                                <form name="overview">
+                                    <div class="js-section" ng-init='name=""; summary=""'>
+                                        <div class="js-saving-progress saving-progress" style="display: none;">
+                                            <h5>Saving...</h5>
+                                        </div>
+
+                                        <div class="row-space-2 clearfix" id="help-panel-name">
+                                            <div class="row row-space-top-2">
+                                                <div class="col-4">
+                                                    <label class="label-large">Listing Name</label>
+                                                </div>
+                                                <div class="col-8">
+                                                    <div id="js-name-count"
+                                                         class="row-space-top-1 h6 label-large text-right">
+                                                        <span ng-bind="35 - name.length">35</span> characters left
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <input type="text" name="name" value=""
+                                                   class="overview-title input-large name_required"
+                                                   placeholder="Be clear and descriptive." maxlength="35"
+                                                   ng-model="name">
+                                            <p class="hide icon-rausch error-too-long row-space-top-1">Please shorten to
+                                                save changes</p>
+
+                                            <p class="hide icon-rausch error-value-required row-space-top-1 name_required_msg">
+                                                A value is required to save changes</p>
+
+                                        </div>
+
+                                        <div id="help-panel-summary">
+                                            <div class="row">
+                                                <div class="col-4">
+                                                    <label class="label-large">Summary</label>
+                                                </div>
+                                                <div class="col-8">
+                                                    <div id="js-summary-count"
+                                                         class="row-space-top-1 h6 label-large text-right">
+                                                        <span ng-bind="500 - summary.length">500</span> characters left
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <textarea class="overview-summary input-large summary_required"
+                                                      name="summary" rows="6"
+                                                      placeholder="Tell travelers what you love about the space. You can include details about the decor, the amenities it includes, and the neighborhood."
+                                                      maxlength="500" ng-model="summary"></textarea>
+                                        </div>
+                                        <p class="hide icon-rausch error-too-long row-space-top-1">Please shorten to
+                                            save changes</p>
+
+                                        <p class="hide icon-rausch error-value-required row-space-top-1 summary_required_msg">
+                                            A value is required to save changes</p>
+
+                                    </div>
+                                </form>
+
+
+                                <hr>
+
+                                <div id="js-location-container" class="js-section">
+                                    <div style="display: none;" class="js-saving-progress saving-progress">
+                                        <h5>Saving...</h5>
+                                    </div>
+
+                                    <h4>Address</h4>
+
+                                    <p>While guests can see approximately where your listing is located in search
+                                        results, your exact address is private and will only be shown to guests after
+                                        they book your listing.</p>
+
+                                    <div class="media-photo address-static-map">
+
+                                        <div class="location-map-pin-v2 map-pin moving"></div>
+
+
+                                    </div>
+                                    <div class="panel">
+                                        <div class="panel-body text-center">
+
+                                            <div class="text-center">
+                                                <button id="js-add-address" class="btn btn-large">
+                                                    Add Address
+                                                </button>
+                                            </div>
+
+                                            <address class="hide">
+                                                <span class="address-line"
+                                                      ng-init="address_line_1 = &#39;&#39;; address_line_2 = &#39;&#39;"> </span>
+                                                <span class="address-line"
+                                                      ng-init="city = &#39;San Jose&#39;; state = &#39;California&#39;">San Jose California</span>
+                                                <span class="address-line" ng-init="postal_code = &#39;&#39;"></span>
+                                                <span class="address-line"
+                                                      ng-init="country=&#39;US&#39;;latitude=&#39;37.3382082&#39;;longitude=&#39;-121.88632860000001&#39;">United States</span>
+                                            </address>
+
+                                            <a data-event-name="edit_address_click" id="js-edit-address"
+                                               class="js-edit-address-link edit-address-link hide" href="#">
+                                                Edit Address
+                                            </a>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div>
+
+                                    <div>
+                                        <div class="js-section">
+                                            <div style="display:none;" class="js-saving-progress saving-progress 1">
+                                                <h5>Saving...</h5>
+                                            </div>
+
+                                            <h4>Common Amenities</h4>
+
+
+                                            <ul class="list-unstyled amenity-list">
+
+                                                <li>
+                                                    <span>&nbsp;&nbsp;</span>
+                                                    <label class="label-large label-inline amenity-label pos-rel">
+                                                        <input type="checkbox" value="1" name="amenities"
+                                                               data-saving="1">
+                                                        <span>Essentials</span>
+
+                                                        <span>&nbsp;</span>
+
+                                                        <span style="position:relative">
+        <i class="icon icon-question" id="amenity-tooltip-1" data-id="1"></i>
+        <div class="tooltip-amenity tooltip-left-middle" id="ame-tooltip-1" role="tooltip" data-sticky="true"
+             aria-hidden="true" style="left: 30px;top: -10px;">
+          <dl class="panel-body" style="padding:10px;">
+            <dt>Essentials</dt>
+          </dl>
+        </div>
+      </span>
+                                                    </label>
+
+                                                </li>
+
+
+                                                <li>
+                                                    <span>&nbsp;&nbsp;</span>
+                                                    <label class="label-large label-inline amenity-label pos-rel">
+                                                        <input type="checkbox" value="2" name="amenities"
+                                                               data-saving="1">
+                                                        <span>TV</span>
+
+                                                        <span>&nbsp;</span>
+
+                                                    </label>
+
+                                                </li>
+
+
+                                                <li>
+                                                    <span>&nbsp;&nbsp;</span>
+                                                    <label class="label-large label-inline amenity-label pos-rel">
+                                                        <input type="checkbox" value="3" name="amenities"
+                                                               data-saving="1">
+                                                        <span>Cable TV</span>
+
+                                                        <span>&nbsp;</span>
+
+                                                    </label>
+
+                                                </li>
+
+
+                                                <li>
+                                                    <span>&nbsp;&nbsp;</span>
+                                                    <label class="label-large label-inline amenity-label pos-rel">
+                                                        <input type="checkbox" value="4" name="amenities"
+                                                               data-saving="1">
+                                                        <span>Air Conditioning </span>
+
+                                                        <span>&nbsp;</span>
+
+                                                    </label>
+
+                                                </li>
+
+
+                                                <li>
+                                                    <span>&nbsp;&nbsp;</span>
+                                                    <label class="label-large label-inline amenity-label pos-rel">
+                                                        <input type="checkbox" value="5" name="amenities"
+                                                               data-saving="1">
+                                                        <span>Heating</span>
+
+                                                        <span>&nbsp;</span>
+
+                                                        <span style="position:relative">
+        <i class="icon icon-question" id="amenity-tooltip-5" data-id="5"></i>
+        <div class="tooltip-amenity tooltip-left-middle" id="ame-tooltip-5" role="tooltip" data-sticky="true"
+             aria-hidden="true" style="left: 30px;top: -10px;">
+          <dl class="panel-body" style="padding:10px;">
+            <dt>Heating</dt>
+          </dl>
+        </div>
+      </span>
+                                                    </label>
+
+                                                </li>
+
+
+                                                <li>
+                                                    <span>&nbsp;&nbsp;</span>
+                                                    <label class="label-large label-inline amenity-label pos-rel">
+                                                        <input type="checkbox" value="6" name="amenities"
+                                                               data-saving="1">
+                                                        <span>Kitchen</span>
+
+                                                        <span>&nbsp;</span>
+
+                                                        <span style="position:relative">
+        <i class="icon icon-question" id="amenity-tooltip-6" data-id="6"></i>
+        <div class="tooltip-amenity tooltip-left-middle" id="ame-tooltip-6" role="tooltip" data-sticky="true"
+             aria-hidden="true" style="left: 30px;top: -10px;">
+          <dl class="panel-body" style="padding:10px;">
+            <dt>Kitchen</dt>
+          </dl>
+        </div>
+      </span>
+                                                    </label>
+
+                                                </li>
+
+
+                                                <li>
+                                                    <span>&nbsp;&nbsp;</span>
+                                                    <label class="label-large label-inline amenity-label pos-rel">
+                                                        <input type="checkbox" value="7" name="amenities"
+                                                               data-saving="1">
+                                                        <span>Internet</span>
+
+                                                        <span>&nbsp;</span>
+
+                                                        <span style="position:relative">
+        <i class="icon icon-question" id="amenity-tooltip-7" data-id="7"></i>
+        <div class="tooltip-amenity tooltip-left-middle" id="ame-tooltip-7" role="tooltip" data-sticky="true"
+             aria-hidden="true" style="left: 30px;top: -10px;">
+          <dl class="panel-body" style="padding:10px;">
+            <dt>Internet</dt>
+          </dl>
+        </div>
+      </span>
+                                                    </label>
+
+                                                </li>
+
+
+                                                <li>
+                                                    <span>&nbsp;&nbsp;</span>
+                                                    <label class="label-large label-inline amenity-label pos-rel">
+                                                        <input type="checkbox" value="8" name="amenities"
+                                                               data-saving="1">
+                                                        <span>Wireless Internet</span>
+
+                                                        <span>&nbsp;</span>
+
+                                                        <span style="position:relative">
+        <i class="icon icon-question" id="amenity-tooltip-8" data-id="8"></i>
+        <div class="tooltip-amenity tooltip-left-middle" id="ame-tooltip-8" role="tooltip" data-sticky="true"
+             aria-hidden="true" style="left: 30px;top: -10px;">
+          <dl class="panel-body" style="padding:10px;">
+            <dt>Wireless Internet</dt>
+          </dl>
+        </div>
+      </span>
+                                                    </label>
+
+                                                </li>
+
+                                            </ul>
+
+                                            <hr class="space-top-4 space-4">
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <div class="js-section">
+                                            <div style="display:none;" class="js-saving-progress saving-progress 2">
+                                                <h5>Saving...</h5>
+                                            </div>
+
+                                            <h4>Additional Amenities</h4>
+
+
+                                            <ul class="list-unstyled amenity-list">
+
+                                                <li>
+                                                    <span>&nbsp;&nbsp;</span>
+                                                    <label class="label-large label-inline amenity-label pos-rel">
+                                                        <input type="checkbox" value="9" name="amenities"
+                                                               data-saving="2">
+                                                        <span>Hot Tub</span>
+
+                                                        <span>&nbsp;</span>
+
+                                                    </label>
+
+                                                </li>
+
+
+                                                <li>
+                                                    <span>&nbsp;&nbsp;</span>
+                                                    <label class="label-large label-inline amenity-label pos-rel">
+                                                        <input type="checkbox" value="10" name="amenities"
+                                                               data-saving="2">
+                                                        <span>Washer</span>
+
+                                                        <span>&nbsp;</span>
+
+                                                        <span style="position:relative">
+        <i class="icon icon-question" id="amenity-tooltip-10" data-id="10"></i>
+        <div class="tooltip-amenity tooltip-left-middle" id="ame-tooltip-10" role="tooltip" data-sticky="true"
+             aria-hidden="true" style="left: 30px;top: -10px;">
+          <dl class="panel-body" style="padding:10px;">
+            <dt>Washer</dt>
+          </dl>
+        </div>
+      </span>
+                                                    </label>
+
+                                                </li>
+
+
+                                                <li>
+                                                    <span>&nbsp;&nbsp;</span>
+                                                    <label class="label-large label-inline amenity-label pos-rel">
+                                                        <input type="checkbox" value="11" name="amenities"
+                                                               data-saving="2">
+                                                        <span>Pool</span>
+
+                                                        <span>&nbsp;</span>
+
+                                                        <span style="position:relative">
+        <i class="icon icon-question" id="amenity-tooltip-11" data-id="11"></i>
+        <div class="tooltip-amenity tooltip-left-middle" id="ame-tooltip-11" role="tooltip" data-sticky="true"
+             aria-hidden="true" style="left: 30px;top: -10px;">
+          <dl class="panel-body" style="padding:10px;">
+            <dt>Pool</dt>
+          </dl>
+        </div>
+      </span>
+                                                    </label>
+
+                                                </li>
+
+
+                                                <li>
+                                                    <span>&nbsp;&nbsp;</span>
+                                                    <label class="label-large label-inline amenity-label pos-rel">
+                                                        <input type="checkbox" value="12" name="amenities"
+                                                               data-saving="2">
+                                                        <span>Dryer</span>
+
+                                                        <span>&nbsp;</span>
+
+                                                        <span style="position:relative">
+        <i class="icon icon-question" id="amenity-tooltip-12" data-id="12"></i>
+        <div class="tooltip-amenity tooltip-left-middle" id="ame-tooltip-12" role="tooltip" data-sticky="true"
+             aria-hidden="true" style="left: 30px;top: -10px;">
+          <dl class="panel-body" style="padding:10px;">
+            <dt>Dryer</dt>
+          </dl>
+        </div>
+      </span>
+                                                    </label>
+
+                                                </li>
+
+
+                                                <li>
+                                                    <span>&nbsp;&nbsp;</span>
+                                                    <label class="label-large label-inline amenity-label pos-rel">
+                                                        <input type="checkbox" value="13" name="amenities"
+                                                               data-saving="2">
+                                                        <span>Breakfast</span>
+
+                                                        <span>&nbsp;</span>
+
+                                                        <span style="position:relative">
+        <i class="icon icon-question" id="amenity-tooltip-13" data-id="13"></i>
+        <div class="tooltip-amenity tooltip-left-middle" id="ame-tooltip-13" role="tooltip" data-sticky="true"
+             aria-hidden="true" style="left: 30px;top: -10px;">
+          <dl class="panel-body" style="padding:10px;">
+            <dt>Breakfast</dt>
+          </dl>
+        </div>
+      </span>
+                                                    </label>
+
+                                                </li>
+
+
+                                                <li>
+                                                    <span>&nbsp;&nbsp;</span>
+                                                    <label class="label-large label-inline amenity-label pos-rel">
+                                                        <input type="checkbox" value="14" name="amenities"
+                                                               data-saving="2">
+                                                        <span>Free Parking on Premises</span>
+
+                                                        <span>&nbsp;</span>
+
+                                                    </label>
+
+                                                </li>
+
+
+                                                <li>
+                                                    <span>&nbsp;&nbsp;</span>
+                                                    <label class="label-large label-inline amenity-label pos-rel">
+                                                        <input type="checkbox" value="15" name="amenities"
+                                                               data-saving="2">
+                                                        <span>Gym</span>
+
+                                                        <span>&nbsp;</span>
+
+                                                        <span style="position:relative">
+        <i class="icon icon-question" id="amenity-tooltip-15" data-id="15"></i>
+        <div class="tooltip-amenity tooltip-left-middle" id="ame-tooltip-15" role="tooltip" data-sticky="true"
+             aria-hidden="true" style="left: 30px;top: -10px;">
+          <dl class="panel-body" style="padding:10px;">
+            <dt>Gym</dt>
+          </dl>
+        </div>
+      </span>
+                                                    </label>
+
+                                                </li>
+
+
+                                                <li>
+                                                    <span>&nbsp;&nbsp;</span>
+                                                    <label class="label-large label-inline amenity-label pos-rel">
+                                                        <input type="checkbox" value="16" name="amenities"
+                                                               data-saving="2">
+                                                        <span>Elevator in Building</span>
+
+                                                        <span>&nbsp;</span>
+
+                                                    </label>
+
+                                                </li>
+
+
+                                                <li>
+                                                    <span>&nbsp;&nbsp;</span>
+                                                    <label class="label-large label-inline amenity-label pos-rel">
+                                                        <input type="checkbox" value="17" name="amenities"
+                                                               data-saving="2">
+                                                        <span>Indoor Fireplace</span>
+
+                                                        <span>&nbsp;</span>
+
+                                                    </label>
+
+                                                </li>
+
+
+                                                <li>
+                                                    <span>&nbsp;&nbsp;</span>
+                                                    <label class="label-large label-inline amenity-label pos-rel">
+                                                        <input type="checkbox" value="18" name="amenities"
+                                                               data-saving="2">
+                                                        <span>Buzzer/Wireless Intercom</span>
+
+                                                        <span>&nbsp;</span>
+
+                                                    </label>
+
+                                                </li>
+
+
+                                                <li>
+                                                    <span>&nbsp;&nbsp;</span>
+                                                    <label class="label-large label-inline amenity-label pos-rel">
+                                                        <input type="checkbox" value="19" name="amenities"
+                                                               data-saving="2">
+                                                        <span>Doorman</span>
+
+                                                        <span>&nbsp;</span>
+
+                                                    </label>
+
+                                                </li>
+
+
+                                                <li>
+                                                    <span>&nbsp;&nbsp;</span>
+                                                    <label class="label-large label-inline amenity-label pos-rel">
+                                                        <input type="checkbox" value="20" name="amenities"
+                                                               data-saving="2">
+                                                        <span>Shampoo</span>
+
+                                                        <span>&nbsp;</span>
+
+                                                    </label>
+
+                                                </li>
+
+                                            </ul>
+
+                                            <hr class="space-top-4 space-4">
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <div class="js-section">
+                                            <div style="display:none;" class="js-saving-progress saving-progress 3">
+                                                <h5>Saving...</h5>
+                                            </div>
+
+                                            <h4>Special Features</h4>
+
+                                            <p class="text-muted">Features of your listing for guests with specific
+                                                needs.</p>
+
+                                            <ul class="list-unstyled amenity-list">
+
+                                                <li>
+                                                    <span>&nbsp;&nbsp;</span>
+                                                    <label class="label-large label-inline amenity-label pos-rel">
+                                                        <input type="checkbox" value="21" name="amenities"
+                                                               data-saving="3">
+                                                        <span>Family/Kid Friendly</span>
+
+                                                        <span>&nbsp;</span>
+
+                                                        <span style="position:relative">
+        <i class="icon icon-question" id="amenity-tooltip-21" data-id="21"></i>
+        <div class="tooltip-amenity tooltip-left-middle" id="ame-tooltip-21" role="tooltip" data-sticky="true"
+             aria-hidden="true" style="left: 30px;top: -10px;">
+          <dl class="panel-body" style="padding:10px;">
+            <dt>Family/Kid Friendly</dt>
+          </dl>
+        </div>
+      </span>
+                                                    </label>
+
+                                                </li>
+
+
+                                                <li>
+                                                    <span>&nbsp;&nbsp;</span>
+                                                    <label class="label-large label-inline amenity-label pos-rel">
+                                                        <input type="checkbox" value="22" name="amenities"
+                                                               data-saving="3">
+                                                        <span>Smoking Allowed</span>
+
+                                                        <span>&nbsp;</span>
+
+                                                    </label>
+
+                                                </li>
+
+
+                                                <li>
+                                                    <span>&nbsp;&nbsp;</span>
+                                                    <label class="label-large label-inline amenity-label pos-rel">
+                                                        <input type="checkbox" value="23" name="amenities"
+                                                               data-saving="3">
+                                                        <span>Suitable for Events</span>
+
+                                                        <span>&nbsp;</span>
+
+                                                        <span style="position:relative">
+        <i class="icon icon-question" id="amenity-tooltip-23" data-id="23"></i>
+        <div class="tooltip-amenity tooltip-left-middle" id="ame-tooltip-23" role="tooltip" data-sticky="true"
+             aria-hidden="true" style="left: 30px;top: -10px;">
+          <dl class="panel-body" style="padding:10px;">
+            <dt>Suitable for Events</dt>
+          </dl>
+        </div>
+      </span>
+                                                    </label>
+
+                                                </li>
+
+
+                                                <li>
+                                                    <span>&nbsp;&nbsp;</span>
+                                                    <label class="label-large label-inline amenity-label pos-rel">
+                                                        <input type="checkbox" value="24" name="amenities"
+                                                               data-saving="3">
+                                                        <span>Pets Allowed</span>
+
+                                                        <span>&nbsp;</span>
+
+                                                    </label>
+
+                                                </li>
+
+
+                                                <li>
+                                                    <span>&nbsp;&nbsp;</span>
+                                                    <label class="label-large label-inline amenity-label pos-rel">
+                                                        <input type="checkbox" value="25" name="amenities"
+                                                               data-saving="3">
+                                                        <span>Pets live on this property</span>
+
+                                                        <span>&nbsp;</span>
+
+                                                    </label>
+
+                                                </li>
+
+
+                                                <li>
+                                                    <span>&nbsp;&nbsp;</span>
+                                                    <label class="label-large label-inline amenity-label pos-rel">
+                                                        <input type="checkbox" value="26" name="amenities"
+                                                               data-saving="3">
+                                                        <span>Wheelchair Accessible</span>
+
+                                                        <span>&nbsp;</span>
+
+                                                        <span style="position:relative">
+        <i class="icon icon-question" id="amenity-tooltip-26" data-id="26"></i>
+        <div class="tooltip-amenity tooltip-left-middle" id="ame-tooltip-26" role="tooltip" data-sticky="true"
+             aria-hidden="true" style="left: 30px;top: -10px;">
+          <dl class="panel-body" style="padding:10px;">
+            <dt>Wheelchair Accessible</dt>
+          </dl>
+        </div>
+      </span>
+                                                    </label>
+
+                                                </li>
+
+
+                                            </ul>
+
+                                            <hr class="space-top-4 space-4">
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <div class="js-section">
+                                            <div style="display:none;" class="js-saving-progress saving-progress 4">
+                                                <h5>Saving...</h5>
+                                            </div>
+
+                                            <h4>Home Safety</h4>
+
+                                            <p class="text-muted">Smoke and carbon monoxide detectors are strongly
+                                                encouraged for all listings.</p>
+
+                                            <ul class="list-unstyled amenity-list">
+
+                                                <li>
+                                                    <span>&nbsp;&nbsp;</span>
+                                                    <label class="label-large label-inline amenity-label pos-rel">
+                                                        <input type="checkbox" value="27" name="amenities"
+                                                               data-saving="4">
+                                                        <span>Smoke Detector</span>
+
+                                                        <span>&nbsp;</span>
+
+                                                        <span style="position:relative">
+        <i class="icon icon-question" id="amenity-tooltip-27" data-id="27"></i>
+        <div class="tooltip-amenity tooltip-left-middle" id="ame-tooltip-27" role="tooltip" data-sticky="true"
+             aria-hidden="true" style="left: 30px;top: -10px;">
+          <dl class="panel-body" style="padding:10px;">
+            <dt>Smoke Detector</dt>
+          </dl>
+        </div>
+      </span>
+                                                    </label>
+
+                                                </li>
+
+
+                                                <li>
+                                                    <span>&nbsp;&nbsp;</span>
+                                                    <label class="label-large label-inline amenity-label pos-rel">
+                                                        <input type="checkbox" value="28" name="amenities"
+                                                               data-saving="4">
+                                                        <span>Carbon Monoxide Detector</span>
+
+                                                        <span>&nbsp;</span>
+
+                                                        <span style="position:relative">
+        <i class="icon icon-question" id="amenity-tooltip-28" data-id="28"></i>
+        <div class="tooltip-amenity tooltip-left-middle" id="ame-tooltip-28" role="tooltip" data-sticky="true"
+             aria-hidden="true" style="left: 30px;top: -10px;">
+          <dl class="panel-body" style="padding:10px;">
+            <dt>Carbon Monoxide Detector</dt>
+          </dl>
+        </div>
+      </span>
+                                                    </label>
+
+                                                </li>
+
+
+                                                <li>
+                                                    <span>&nbsp;&nbsp;</span>
+                                                    <label class="label-large label-inline amenity-label pos-rel">
+                                                        <input type="checkbox" value="29" name="amenities"
+                                                               data-saving="4">
+                                                        <span>First Aid Kit</span>
+
+                                                        <span>&nbsp;</span>
+
+                                                    </label>
+
+                                                </li>
+
+
+                                                <li>
+                                                    <span>&nbsp;&nbsp;</span>
+                                                    <label class="label-large label-inline amenity-label pos-rel">
+                                                        <input type="checkbox" value="30" name="amenities"
+                                                               data-saving="4">
+                                                        <span>Safety Card</span>
+
+                                                        <span>&nbsp;</span>
+
+                                                        <span style="position:relative">
+        <i class="icon icon-question" id="amenity-tooltip-30" data-id="30"></i>
+        <div class="tooltip-amenity tooltip-left-middle" id="ame-tooltip-30" role="tooltip" data-sticky="true"
+             aria-hidden="true" style="left: 30px;top: -10px;">
+          <dl class="panel-body" style="padding:10px;">
+            <dt>Safety Card</dt>
+          </dl>
+        </div>
+      </span>
+                                                    </label>
+
+                                                </li>
+
+
+                                                <li>
+                                                    <span>&nbsp;&nbsp;</span>
+                                                    <label class="label-large label-inline amenity-label pos-rel">
+                                                        <input type="checkbox" value="31" name="amenities"
+                                                               data-saving="4">
+                                                        <span>Fire Extinguisher</span>
+
+                                                        <span>&nbsp;</span>
+
+                                                        <span style="position:relative">
+        <i class="icon icon-question" id="amenity-tooltip-31" data-id="31"></i>
+        <div class="tooltip-amenity tooltip-left-middle" id="ame-tooltip-31" role="tooltip" data-sticky="true"
+             aria-hidden="true" style="left: 30px;top: -10px;">
+          <dl class="panel-body" style="padding:10px;">
+            <dt>Essentials</dt>
+          </dl>
+        </div>
+      </span>
+                                                    </label>
+
+                                                </li>
+
+
+                                            </ul>
+
+                                            <hr>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+                                <div id="photos">
+                                    <div class="row-space-4">
+
+                                        <p class="text-muted">Add photos of areas guests have access to. You can always
+                                            come back later and add more.</p>
+                                    </div>
+
+                                    <div id="js-photos-grid" class="photo-encourage">
+                                        <div class="row row-table">
+                                            <div class="col-md-6">
+                                                <div class="add-photos-button">
+                                                    <input type="file" class="hide" name="photos[]" multiple="true"
+                                                           id="upload_photos" accept="image/*">
+                                                    <button id="photo-uploader" class="btn btn-large row-space-2"
+                                                            style="position: relative; z-index: 0;">
+                                                        <i class="icon icon-upload"></i> Add Photos
+                                                    </button>
+                                                </div>
+                                            </div>
+
+                                            <div class="h4 text-right text-muted" id="photo_count"
+                                                 ng-show="photos_list.length > 0" style=&quot;display:none;&quot;>
+                                                <small>{{ photos_list.length }} photo<span
+                                                            ng-show="photos_list.length > 1">s</span></small>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <ul id="js-photo-grid" class="row list-unstyled sortable">
+
+                                        <li ng-repeat="item in photos_list" class="col-lg-4 col-md-6 row-space-4"
+                                            data-id="{{ item.id }}" data-index="0" draggable="true"
+                                            style="display: list-item;" ng-mouseover="over_first_photo($index)"
+                                            ng-mouseout="out_first_photo($index)">
+                                            <div class="panel photo-item">
+                                                <!-- <div class="first-photo-ribbon"><i class="icon icon-star text-center"></i></div> -->
+                                                <div class="first-photo-ribbon"
+                                                     style="z-index:9; background:none; margin:0; padding:0; "><input
+                                                            type="radio" name="featured_image"
+                                                            ng-click="featured_image($index, item.id);"
+                                                            ng-checked="(item.featured == 'Yes') ? true : false"></div>
+
+                                                <div class="photo-size photo-drag-target js-photo-link"
+                                                     id="photo-{{ item.id }}"></div>
+                                                <a class="media-photo media-photo-block text-center photo-size"
+                                                   href="#">
+                                                    <img src="#" class="img-responsive-height" alt="">
+                                                </a>
+                                                <button data-photo-id="{{ item.id }}"
+                                                        ng-click="delete_photo(item,item.id)"
+                                                        class="delete-photo-btn overlay-btn js-delete-photo-btn">
+                                                    <i class="icon icon-trash"></i>
+                                                </button>
+                                                <div class="panel-body panel-condensed">
+                                                    <textarea name="{{ item.id }}" ng-model="item.highlights"
+                                                              ng-keyup="keyup_highlights(item.id, item.highlights)"
+                                                              rows="3"
+                                                              placeholder="What are the highlights of this photo?"
+                                                              class="input-large highlights" tabindex="1"></textarea>
+                                                </div>
+                                            </div>
+                                        </li>
+
+                                        <input type="file" class="hide" name="photos[]" multiple="true"
+                                               id="upload_photos2" accept="image/*">
+
+                                    </ul>
+
+
+                                </div>
+
+
+                                <div>
+
+
+                                    <hr>
+
+                                    <div id="help-panel-nightly-price" class="js-section">
+                                        <div style="display: none;"
+                                             class="js-saving-progress saving-progress base_price">
+                                            <h5>Saving...</h5>
+                                        </div>
+
+                                        <h4>Base price</h4>
+
+                                        <label for="listing_price_native" class="label-large">Nightly Price</label>
+                                        <div class="row row-table row-space-1">
+                                            <div class="col-4 col-middle">
+                                                <div class="input-addon">
+                                                    <span class="input-prefix">&#36;</span>
+                                                    <input type="number" min="0" limit-to=9 data-suggested=""
+                                                           id="price-night" value="" name="night"
+                                                           class="input-stem input-large autosubmit-text"
+                                                           data-saving="base_price">
+                                                    <input type="hidden" id="price-night-old" value="" name="night_old"
+                                                           class="input-stem input-large autosubmit-text">
+                                                </div>
+                                            </div>
+                                            <div class="col-8 col-middle">
+
+                                            </div>
+                                        </div>
+
+                                        <p data-error="price" class="ml-error"></p>
+
+                                        <div class="row row-space-top-3">
+                                            <div class="col-4">
+                                                <label class="label-large">Currency</label>
+                                                <div id="currency-picker">
+                                                    <div class="select
+            select-large
+            select-block">
+                                                        <select id="price-select-currency_code" data-saving="base_price"
+                                                                name="currency_code">
+                                                            <option value="USD" selected="selected">USD</option>
+                                                            <option value="GBP">GBP</option>
+                                                            <option value="EUR">EUR</option>
+                                                            <option value="AUD">AUD</option>
+                                                            <option value="SGD">SGD</option>
+                                                            <option value="SEK">SEK</option>
+                                                            <option value="DKK">DKK</option>
+                                                            <option value="MXN">MXN</option>
+                                                            <option value="BRL">BRL</option>
+                                                            <option value="MYR">MYR</option>
+                                                            <option value="PHP">PHP</option>
+                                                            <option value="CHF">CHF</option>
+                                                            <option value="INR">INR</option>
+                                                            <option value="ARS">ARS</option>
+                                                            <option value="CAD">CAD</option>
+                                                            <option value="CNY">CNY</option>
+                                                            <option value="CZK">CZK</option>
+                                                            <option value="HKD">HKD</option>
+                                                            <option value="HUF">HUF</option>
+                                                            <option value="IDR">IDR</option>
+                                                            <option value="ILS">ILS</option>
+                                                            <option value="JPY">JPY</option>
+                                                            <option value="KRW">KRW</option>
+                                                            <option value="NOK">NOK</option>
+                                                            <option value="NZD">NZD</option>
+                                                            <option value="PLN">PLN</option>
+                                                            <option value="RUB">RUB</option>
+                                                            <option value="THB">THB</option>
+                                                            <option value="TRY">TRY</option>
+                                                            <option value="TWD">TWD</option>
+                                                            <option value="VND">VND</option>
+                                                            <option value="ZAR">ZAR</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <p id="js-set-long-term-prices"
+                                       class="row-space-top-6 text-center text-muted set-long-term-prices">
+                                        You can offer discounts for longer stays by setting <a data-prevent-default=""
+                                                                                               href="#"
+                                                                                               id="show_long_term">weekly
+                                            and monthly</a> prices.
+                                    </p>
+
+                                    <hr class="row-space-top-6 row-space-5 set-long-term-prices">
+
+                                    <div id="js-advanced-pricing-content">
+                                        <!-- Modal for advanced pricing goes here -->
+                                    </div>
+
+                                    <div class="row-space-top-8 row-space-8 hide" id="js-long-term-prices">
+
+                                        <div id="js-long-term-prices" class="js-section">
+                                            <div style="display: none;"
+                                                 class="js-saving-progress saving-progress long_price">
+                                                <h5>Saving...</h5>
+                                            </div>
+
+                                            <h4>Long-term prices</h4>
+
+                                            <div class="row-space-3">
+                                                <div>
+                                                    <label for="listing_weekly_price_native" class="label-large">
+                                                        Weekly Price
+                                                    </label>
+                                                    <div class="row row-table row-space-1">
+                                                        <div class="col-4 col-middle">
+                                                            <div class="input-addon">
+                                                                <span class="input-prefix">&#36;</span>
+                                                                <input type="number" min="0" data-suggested=""
+                                                                       id="price-week"
+                                                                       class="input-stem input-large autosubmit-text"
+                                                                       value="" name="week" data-saving="long_price">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-8 col-middle text-highlight">
+
+
+                                                        </div>
+                                                    </div>
+
+                                                    <p data-error="week" class="ml-error hide"></p>
+                                                    <div class="js-advanced-weekly-pricing"></div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row-space-3">
+                                                <div>
+                                                    <label for="listing_monthly_price_native" class="label-large">
+                                                        Monthly Price
+                                                    </label>
+                                                    <div class="row row-table row-space-1">
+                                                        <div class="col-4 col-middle">
+                                                            <div class="input-addon">
+                                                                <span class="input-prefix">&#36;</span>
+                                                                <input type="number" min="0" data-suggested="₹16905"
+                                                                       id="price-month"
+                                                                       class="autosubmit-text input-stem input-large"
+                                                                       value="" name="month" data-saving="long_price">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-8 col-middle text-highlight">
+
+                                                        </div>
+                                                    </div>
+
+                                                    <p data-error="month" class="ml-error hide"></p>
+                                                    <span class="js-advanced-monthly-pricing"></span>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                    <hr class="row-space-top-6 row-space-5 post-listed">
+
+
+                                    <div id="js-donation-tool-placeholder"></div>
+
+
+                                </div>
+
+
+                                <div>
+                                    <div id="calendar-container">
+                                        <div class="calendar-prompt-container">
+
+                                            <div class="row-space-4">
+                                                <div class="row">
+
+                                                    <h3 class="col-12">Show Travelers When They Can Book</h3>
+
+                                                </div>
+                                                <p class="text-muted">You can always manually update your calendar to
+                                                    block dates or make them available. Start by selecting the option
+                                                    that best describes your hosting plans.</p>
+                                            </div>
+
+                                            <div class="space-4"></div>
+
+                                        </div>
+
+                                        <div class="calendar-settings-btn-container pull-right post-listed">
+    <span class="label-contrast label-new
+      hide">NEW</span>
+                                            <a href="#" id="js-calendar-settings-btn" class="text-normal link-icon">
+                                                <i class="icon icon-cog text-lead"></i>
+                                                <span class="link-icon__text">messages.lys.header</span>
+                                            </a>
+                                        </div>
+
+                                        <div id="calendar">
+                                            <div class="row" id="wizard-container">
+                                                <div class="wizard-pane row row-table">
+                                                    <div class="col-12 col-middle">
+                                                        <hr>
+                                                        <div class="row row-space-top-6">
+                                                            <h4 class="col-6">Select an option:</h4>
+                                                            <div class="col-6 text-right section-availability-dates">
+                                                                <div style="display: none;"
+                                                                     class="js-saving-progress saving-progress">
+                                                                    <h5>Saving...</h5>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+
+                                                        <ul class="list-unstyled row text-center row-space-top-1 display-flex"
+                                                            ng-init="selected_calendar = ''">
+
+                                                            <li class="availability-option col-4 display-flex">
+                                                                <div data-slug="always"
+                                                                     class="option-container available-always "
+                                                                     id="available-always">
+                                                                    <div class="calendar-image available-always"></div>
+                                                                    <p class="row-space-top-4 row-space-1">Always
+                                                                        Available</p>
+                                                                    <div class="h6 choice-description row-space-1">A
+                                                                        completely open calendar
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div id="calendar-settings-container" class="row-space-6 hide">
+                                                <hr>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="pricing-tips-sidebar-container"></div>
+                                </div>
+
+
+                                <div class="not-post-listed row row-space-top-6 progress-buttons">
+                                    <div class="col-12">
+                                        <div class="separator"></div>
+                                    </div>
+                                    <div class="col-2 row-space-top-1 next_step">
+                                    </div>
+                                    <div class="col-10 text-right next_step">
+
+                                        <a class="btn btn-large btn-primary next-section-button" href="#"
+                                           data-prevent-default="">
+                                            Save
+                                        </a>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="manage-listing-help hide" id="js-manage-listing-help"></div>
+                    </div>
+                    <div class="manage-listing-content-background"></div>
+                </div>
+            </div>
+            <hr class="row-space-top-6 row-space-5 post-listed">
+
+
+            <div id="js-donation-tool-placeholder"></div>
+
+
+        </div>
+    </div>
+    <div id="js-manage-listing-help" class="manage-listing-help col-lg-4 pos-fix col-md-4 hide-sm">
+
+
+    </div>
+    </div>
+    <div class="manage-listing-content-background"></div>
+    </div>      </div>
+
+    </div>
+    <!-- Center Part Ending -->
+
+    <div class="manage-listing-footer" id="js-manage-listing-footer">
+        <div class="container-brand-dark footer-panel">
+            <div class="row row-table">
+                <div class="col-2 col-foot site"><span class="text-muted">© Airbnb, Inc.</span></div>
+                <div class="col-8 col-foot site-list text-center text-muted">
+                    <a href="#" class="text-muted">
+                        Terms of Service
+                    </a> |
+                    <a href="#" class="text-muted">
+                        Privacy Policy
+                    </a> |
+                    <a href="#" class="text-muted">
+                        Host Guarantee
+                    </a> |
+                    <a href="#" class="text-muted">
+                        Guest Refund
+                    </a> |
+                    <a href="#" class="text-muted">
+                        Copyright Policy
+                    </a> |
+                    <a href="#" class="text-muted">
+                        Consent Disagree
+                    </a> |
+                    <a href="#" class="text-muted">
+                        About Us
+                    </a>
+                </div>
+                <div class="col-2 col-foot">
+                    <div class="language-curr-picker pull-right">
+                        <div class="select select-large select-block row-space-2">
+                            <label id="language-selector-label" class="screen-reader-only">
+                                messages.footer.change_language
+                            </label>
+                            <select class="language-selector" aria-labelledby="language-selector-label"
+                                    id="language_footer" name="language">
+                                <option value="id">Bahasa Indonesia</option>
+                                <option value="ms">Bahasa Melayu</option>
+                                <option value="ca">Catal&agrave;</option>
+                                <option value="da">Dansk</option>
+                                <option value="de">Deutsch</option>
+                                <option value="en" selected="selected">English</option>
+                                <option value="es">Espa&ntilde;ol</option>
+                                <option value="el">E&lambda;&lambda;&eta;&nu;&iota;&kappa;ά</option>
+                                <option value="fr">Fran&ccedil;ais</option>
+                                <option value="it">Italiano</option>
+                                <option value="hu">Magyar</option>
+                                <option value="nl">Nederlands</option>
+                                <option value="pl">Polski</option>
+                                <option value="pt">Portugu&ecirc;s</option>
+                                <option value="fi">Suomi</option>
+                                <option value="tr">T&uuml;rk&ccedil;e</option>
+                                <option value="ru">Русский</option>
+                                <option value="th">ภาษาไทย</option>
+                                <option value="zh">中文 (简体)</option>
+                            </select>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        var map_key = "AIzaSyBXyRBiyRcEzHDJ8iU00zECMUP4cXBIm6A";
+    </script>
+    </div>
+
+    <div id="gmap-preload" class="hide"></div>
+
+    <div class="ipad-interstitial-wrapper"><span data-reactid=".2"></span></div>
+
+    <div id="address-flow-view">
+        <div aria-hidden="true" style="display: none;" class="modal" role="dialog" data-sticky="true">
+            <div class="modal-table">
+                <div class="modal-cell" style="padding-top:30px; padding-bottom:10px;">
+                    <div class="modal-content">
+                        <div id="js-address-container" class="enter_address">
+                            <div class="panel ng-scope">
+                                <div class="panel-header">
+                                    <a data-behavior="modal-close" class="modal-close" href="#"></a>
+                                    <div class="h4 js-address-nav-heading">
+                                        Enter Address<br>
+                                        <small>What is your listing's address?</small>
+                                    </div>
+                                </div>
+                                <div class="flash-container" id="js-flash-error-clicked-frozen-field"></div>
+                                <div class="panel-body">
+                                    <div id="js-disaster-address-alert" class="media row-space-2 hide">
+                                        <i class="icon icon-flag icon-beach pull-left icon-size-2"></i>
+                                        <div class="media-body">
+                                            <strong>Your new location is outside of the disaster area.</strong><br>
+                                            <span class="text-muted">Your price has been reset to the daily rate.</span>
+                                        </div>
+                                    </div>
+
+                                    <form id="js-address-fields-form" name="enter_address" class="ng-pristine ng-valid">
+                                        <div class="row-space-1">
+                                            <label for="country">Country</label>
+                                            <div id="country-select">
+                                                <div class="select select-block">
+                                                    <select id="country" name="country_code">
+                                                        <option value="AF">Afghanistan</option>
+                                                        <option value="AL">Albania</option>
+                                                        <option value="DZ">Algeria</option>
+                                                        <option value="AS">American Samoa</option>
+                                                        <option value="AD">Andorra</option>
+                                                        <option value="AO">Angola</option>
+                                                        <option value="AI">Anguilla</option>
+                                                        <option value="AQ">Antarctica</option>
+                                                        <option value="AG">Antigua and Barbuda</option>
+                                                        <option value="AR">Argentina</option>
+                                                        <option value="AM">Armenia</option>
+                                                        <option value="AW">Aruba</option>
+                                                        <option value="AU">Australia</option>
+                                                        <option value="AT">Austria</option>
+                                                        <option value="AZ">Azerbaijan</option>
+                                                        <option value="BS">Bahamas</option>
+                                                        <option value="BH">Bahrain</option>
+                                                        <option value="BD">Bangladesh</option>
+                                                        <option value="BB">Barbados</option>
+                                                        <option value="BY">Belarus</option>
+                                                        <option value="BE">Belgium</option>
+                                                        <option value="BZ">Belize</option>
+                                                        <option value="BJ">Benin</option>
+                                                        <option value="BM">Bermuda</option>
+                                                        <option value="BT">Bhutan</option>
+                                                        <option value="BO">Bolivia</option>
+                                                        <option value="BA">Bosnia and Herzegovina</option>
+                                                        <option value="BW">Botswana</option>
+                                                        <option value="BV">Bouvet Island</option>
+                                                        <option value="BR">Brazil</option>
+                                                        <option value="IO">British Indian Ocean Territory</option>
+                                                        <option value="BN">Brunei Darussalam</option>
+                                                        <option value="BG">Bulgaria</option>
+                                                        <option value="BF">Burkina Faso</option>
+                                                        <option value="BI">Burundi</option>
+                                                        <option value="KH">Cambodia</option>
+                                                        <option value="CM">Cameroon</option>
+                                                        <option value="CA">Canada</option>
+                                                        <option value="CV">Cape Verde</option>
+                                                        <option value="KY">Cayman Islands</option>
+                                                        <option value="CF">Central African Republic</option>
+                                                        <option value="TD">Chad</option>
+                                                        <option value="CL">Chile</option>
+                                                        <option value="CN">China</option>
+                                                        <option value="CX">Christmas Island</option>
+                                                        <option value="CC">Cocos (Keeling) Islands</option>
+                                                        <option value="CO">Colombia</option>
+                                                        <option value="KM">Comoros</option>
+                                                        <option value="CG">Congo</option>
+                                                        <option value="CD">Congo, the Democratic Republic of the
+                                                        </option>
+                                                        <option value="CK">Cook Islands</option>
+                                                        <option value="CR">Costa Rica</option>
+                                                        <option value="CI">Cote D'Ivoire</option>
+                                                        <option value="HR">Croatia</option>
+                                                        <option value="CU">Cuba</option>
+                                                        <option value="CY">Cyprus</option>
+                                                        <option value="CZ">Czech Republic</option>
+                                                        <option value="DK">Denmark</option>
+                                                        <option value="DJ">Djibouti</option>
+                                                        <option value="DM">Dominica</option>
+                                                        <option value="DO">Dominican Republic</option>
+                                                        <option value="EC">Ecuador</option>
+                                                        <option value="EG">Egypt</option>
+                                                        <option value="SV">El Salvador</option>
+                                                        <option value="GQ">Equatorial Guinea</option>
+                                                        <option value="ER">Eritrea</option>
+                                                        <option value="EE">Estonia</option>
+                                                        <option value="ET">Ethiopia</option>
+                                                        <option value="FK">Falkland Islands (Malvinas)</option>
+                                                        <option value="FO">Faroe Islands</option>
+                                                        <option value="FJ">Fiji</option>
+                                                        <option value="FI">Finland</option>
+                                                        <option value="FR">France</option>
+                                                        <option value="GF">French Guiana</option>
+                                                        <option value="PF">French Polynesia</option>
+                                                        <option value="TF">French Southern Territories</option>
+                                                        <option value="GA">Gabon</option>
+                                                        <option value="GM">Gambia</option>
+                                                        <option value="GE">Georgia</option>
+                                                        <option value="DE">Germany</option>
+                                                        <option value="GH">Ghana</option>
+                                                        <option value="GI">Gibraltar</option>
+                                                        <option value="GR">Greece</option>
+                                                        <option value="GL">Greenland</option>
+                                                        <option value="GD">Grenada</option>
+                                                        <option value="GP">Guadeloupe</option>
+                                                        <option value="GU">Guam</option>
+                                                        <option value="GT">Guatemala</option>
+                                                        <option value="GN">Guinea</option>
+                                                        <option value="GW">Guinea-Bissau</option>
+                                                        <option value="GY">Guyana</option>
+                                                        <option value="HT">Haiti</option>
+                                                        <option value="HM">Heard Island and Mcdonald Islands</option>
+                                                        <option value="VA">Holy See (Vatican City State)</option>
+                                                        <option value="HN">Honduras</option>
+                                                        <option value="HK">Hong Kong</option>
+                                                        <option value="HU">Hungary</option>
+                                                        <option value="IS">Iceland</option>
+                                                        <option value="IN">India</option>
+                                                        <option value="ID">Indonesia</option>
+                                                        <option value="IR">Iran, Islamic Republic of</option>
+                                                        <option value="IQ">Iraq</option>
+                                                        <option value="IE">Ireland</option>
+                                                        <option value="IL">Israel</option>
+                                                        <option value="IT">Italy</option>
+                                                        <option value="JM">Jamaica</option>
+                                                        <option value="JP">Japan</option>
+                                                        <option value="JO">Jordan</option>
+                                                        <option value="KZ">Kazakhstan</option>
+                                                        <option value="KE">Kenya</option>
+                                                        <option value="KI">Kiribati</option>
+                                                        <option value="KP">Korea, Democratic People's Republic of
+                                                        </option>
+                                                        <option value="KR">Korea, Republic of</option>
+                                                        <option value="KW">Kuwait</option>
+                                                        <option value="KG">Kyrgyzstan</option>
+                                                        <option value="LA">Lao People's Democratic Republic</option>
+                                                        <option value="LV">Latvia</option>
+                                                        <option value="LB">Lebanon</option>
+                                                        <option value="LS">Lesotho</option>
+                                                        <option value="LR">Liberia</option>
+                                                        <option value="LY">Libyan Arab Jamahiriya</option>
+                                                        <option value="LI">Liechtenstein</option>
+                                                        <option value="LT">Lithuania</option>
+                                                        <option value="LU">Luxembourg</option>
+                                                        <option value="MO">Macao</option>
+                                                        <option value="MK">Macedonia, the Former Yugoslav Republic of
+                                                        </option>
+                                                        <option value="MG">Madagascar</option>
+                                                        <option value="MW">Malawi</option>
+                                                        <option value="MY">Malaysia</option>
+                                                        <option value="MV">Maldives</option>
+                                                        <option value="ML">Mali</option>
+                                                        <option value="MT">Malta</option>
+                                                        <option value="MH">Marshall Islands</option>
+                                                        <option value="MQ">Martinique</option>
+                                                        <option value="MR">Mauritania</option>
+                                                        <option value="MU">Mauritius</option>
+                                                        <option value="YT">Mayotte</option>
+                                                        <option value="MX">Mexico</option>
+                                                        <option value="FM">Micronesia, Federated States of</option>
+                                                        <option value="MD">Moldova, Republic of</option>
+                                                        <option value="MC">Monaco</option>
+                                                        <option value="MN">Mongolia</option>
+                                                        <option value="MS">Montserrat</option>
+                                                        <option value="MA">Morocco</option>
+                                                        <option value="MZ">Mozambique</option>
+                                                        <option value="MM">Myanmar</option>
+                                                        <option value="NA">Namibia</option>
+                                                        <option value="NR">Nauru</option>
+                                                        <option value="NP">Nepal</option>
+                                                        <option value="NL">Netherlands</option>
+                                                        <option value="AN">Netherlands Antilles</option>
+                                                        <option value="NC">New Caledonia</option>
+                                                        <option value="NZ">New Zealand</option>
+                                                        <option value="NI">Nicaragua</option>
+                                                        <option value="NE">Niger</option>
+                                                        <option value="NG">Nigeria</option>
+                                                        <option value="NU">Niue</option>
+                                                        <option value="NF">Norfolk Island</option>
+                                                        <option value="MP">Northern Mariana Islands</option>
+                                                        <option value="NO">Norway</option>
+                                                        <option value="OM">Oman</option>
+                                                        <option value="PK">Pakistan</option>
+                                                        <option value="PW">Palau</option>
+                                                        <option value="PS">Palestinian Territory, Occupied</option>
+                                                        <option value="PA">Panama</option>
+                                                        <option value="PG">Papua New Guinea</option>
+                                                        <option value="PY">Paraguay</option>
+                                                        <option value="PE">Peru</option>
+                                                        <option value="PH">Philippines</option>
+                                                        <option value="PN">Pitcairn</option>
+                                                        <option value="PL">Poland</option>
+                                                        <option value="PT">Portugal</option>
+                                                        <option value="PR">Puerto Rico</option>
+                                                        <option value="QA">Qatar</option>
+                                                        <option value="RE">Reunion</option>
+                                                        <option value="RO">Romania</option>
+                                                        <option value="RU">Russian Federation</option>
+                                                        <option value="RW">Rwanda</option>
+                                                        <option value="SH">Saint Helena</option>
+                                                        <option value="KN">Saint Kitts and Nevis</option>
+                                                        <option value="LC">Saint Lucia</option>
+                                                        <option value="PM">Saint Pierre and Miquelon</option>
+                                                        <option value="VC">Saint Vincent and the Grenadines</option>
+                                                        <option value="WS">Samoa</option>
+                                                        <option value="SM">San Marino</option>
+                                                        <option value="ST">Sao Tome and Principe</option>
+                                                        <option value="SA">Saudi Arabia</option>
+                                                        <option value="SN">Senegal</option>
+                                                        <option value="RS">Serbia and Montenegro</option>
+                                                        <option value="SC">Seychelles</option>
+                                                        <option value="SL">Sierra Leone</option>
+                                                        <option value="SG">Singapore</option>
+                                                        <option value="SK">Slovakia</option>
+                                                        <option value="SI">Slovenia</option>
+                                                        <option value="SB">Solomon Islands</option>
+                                                        <option value="SO">Somalia</option>
+                                                        <option value="ZA">South Africa</option>
+                                                        <option value="GS">South Georgia and the South Sandwich
+                                                            Islands
+                                                        </option>
+                                                        <option value="ES">Spain</option>
+                                                        <option value="LK">Sri Lanka</option>
+                                                        <option value="SD">Sudan</option>
+                                                        <option value="SR">Suriname</option>
+                                                        <option value="SJ">Svalbard and Jan Mayen</option>
+                                                        <option value="SZ">Swaziland</option>
+                                                        <option value="SE">Sweden</option>
+                                                        <option value="CH">Switzerland</option>
+                                                        <option value="SY">Syrian Arab Republic</option>
+                                                        <option value="TW">Taiwan, Province of China</option>
+                                                        <option value="TJ">Tajikistan</option>
+                                                        <option value="TZ">Tanzania, United Republic of</option>
+                                                        <option value="TH">Thailand</option>
+                                                        <option value="TL">Timor-Leste</option>
+                                                        <option value="TG">Togo</option>
+                                                        <option value="TK">Tokelau</option>
+                                                        <option value="TO">Tonga</option>
+                                                        <option value="TT">Trinidad and Tobago</option>
+                                                        <option value="TN">Tunisia</option>
+                                                        <option value="TR">Turkey</option>
+                                                        <option value="TM">Turkmenistan</option>
+                                                        <option value="TC">Turks and Caicos Islands</option>
+                                                        <option value="TV">Tuvalu</option>
+                                                        <option value="UG">Uganda</option>
+                                                        <option value="UA">Ukraine</option>
+                                                        <option value="AE">United Arab Emirates</option>
+                                                        <option value="GB">United Kingdom</option>
+                                                        <option value="US" selected="selected">United States</option>
+                                                        <option value="UM">United States Minor Outlying Islands</option>
+                                                        <option value="UY">Uruguay</option>
+                                                        <option value="UZ">Uzbekistan</option>
+                                                        <option value="VU">Vanuatu</option>
+                                                        <option value="VE">Venezuela</option>
+                                                        <option value="VN">Viet Nam</option>
+                                                        <option value="VG">Virgin Islands, British</option>
+                                                        <option value="VI">Virgin Islands, U.s.</option>
+                                                        <option value="WF">Wallis and Futuna</option>
+                                                        <option value="EH">Western Sahara</option>
+                                                        <option value="YE">Yemen</option>
+                                                        <option value="ZM">Zambia</option>
+                                                        <option value="ZW">Zimbabwe</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="localized-fields">
+                                            <div class="row-space-1">
+                                                <label for="address_line_1">Address Line 1</label>
+                                                <input type="text" placeholder="House name/number + street/road"
+                                                       value="" class="focus" id="address_line_1" name="address_line_1"
+                                                       autocomplete="off">
+                                            </div>
+
+                                            <div class="row-space-1">
+                                                <label for="address_line_2">Address Line 2</label>
+                                                <input type="text" placeholder="Apt., suite, building access code"
+                                                       value="" class="focus" id="address_line_2" name="address_line_2">
+                                            </div>
+
+                                            <div class="row-space-1">
+                                                <label for="city">City / Town / District</label>
+                                                <input type="text" placeholder="" class="focus" value="San Jose"
+                                                       id="city" name="city" required="true">
+                                            </div>
+
+                                            <div class="row-space-1">
+                                                <label for="state">State / Province / County / Region</label>
+                                                <input type="text" placeholder="" class="focus" value="California"
+                                                       id="state" name="state" required="true">
+                                            </div>
+
+                                            <div class="row-space-1">
+                                                <label for="postal_code">ZIP / Postal Code</label>
+                                                <input type="text" placeholder="" class="focus" value=""
+                                                       id="postal_code" name="postal_code">
+                                            </div>
+
+                                        </div>
+                                    </form>
+                                </div>
+
+                                <div class="panel-footer">
+                                    <div class="force-oneline">
+                                        <button data-behavior="modal-close" class="btn js-secondary-btn">
+                                            Cancel
+                                        </button>
+                                        <button id="js-next-btn" class="btn btn-primary js-next-btn">
+                                            Next
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <input type="hidden" id="room_id" value="10017">
+    <input type="hidden" id="room_status" value="">
+
+</main>
+
+<% include footer.ejs %>
+
+<div id="gmap-preload" class="hide"></div>
+
+<div class="ipad-interstitial-wrapper"><span data-reactid=".1"></span></div>
+
+<div id="fb-root"></div>
+
+
+<script type="text/javascript"
+        src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&sensor=false"></script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+<script type="text/javascript" src="http://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
+
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.2/angular.min.js"></script>
+
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/angular-sanitize/1.3.2/angular-sanitize.min.js"></script>
+
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/ResponsiveSlides.js/1.53/responsiveslides.min.js"></script>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.login_popup_head').click(function (e) {
+            e.preventDefault();
+            $("body").addClass("pos-fix");
+            $(".login_popup").show();
+            $(".signup_popup").hide();
+            $(".signup_popup2").hide();
+        });
+        $('.login-close').click(function (event) {
+            $("body").removeClass("pos-fix");
+            $(".login_popup").hide();
+        });
+        $('.top-home').click(function (event) {
+            event.stopPropagation();
+        });
+    });
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.forgot-password-popup').click(function (e) {
+            e.preventDefault();
+            $("body").addClass("pos-fix");
+            $(".login_popup").hide();
+            $(".forgot-passward").show();
+        });
+        $('.login-close').click(function (event) {
+            $("body").removeClass("pos-fix");
+            $(".forgot-passward").hide();
+        });
+        $('.top-home').click(function (event) {
+            event.stopPropagation();
+        });
+    });
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.signup_popup_head').click(function (e) {
+            e.preventDefault();
+            $("body").addClass("pos-fix");
+            $(".signup_popup").show();
+            $(".login_popup").hide();
+        });
+        $('.login-close').click(function () {
+            $("body").removeClass("pos-fix");
+            $(".signup_popup").hide();
+        });
+        $('.top-home').click(function (event) {
+            event.stopPropagation();
+        });
+    });
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.signup_popup_head2').click(function (e) {
+            e.preventDefault();
+            $("body").addClass("pos-fix");
+            $(".signup_popup2").show();
+            $(".signup_popup").hide();
+        });
+        $('.login-close').click(function () {
+            $("body").removeClass("pos-fix");
+            $(".signup_popup2").hide();
+        });
+        $('.top-home').click(function (event) {
+            event.stopPropagation();
+        });
+    });
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('ul.menu-group li a').click(function () {
+            $('.nav--sm').css('visibility', 'hidden');
+        });
+    });
+</script>
+<script>
+    var app = angular.module('App', ['ngSanitize']);
+    var APP_URL = "http:\/\/localhost:3000";
+    $.datepicker.setDefaults($.datepicker.regional["en"])
+</script>
+
+
+<script src="js/common.js"></script>
+
+<script src="js/manage_listing.js"></script>
+
+<script src="https://angular-file-upload.appspot.com/js/ng-file-upload-shim.js"></script>
+<script src="https://angular-file-upload.appspot.com/js/ng-file-upload.js"></script>
+
+<div class="tooltip tooltip-bottom-middle" role="tooltip" aria-hidden="true">
+    <p class="panel-body">To sign up, you must be 18 or older. Other people won’t see your birthday.</p>
+</div>
+</body>
+</html>

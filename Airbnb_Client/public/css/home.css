@@ -1,0 +1,114 @@
+.login_popup, .signup_popup, .signup_popup2, .forgot-passward{display: none;
+    position: fixed;
+    top: 0px;
+    z-index: 2000;
+    left: 0;
+    right: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    background: rgba(0,0,0,0.8);
+    padding:100px 0px 230px 0px;
+    height: 100%;
+}
+.login_popup .panel, .signup_popup .panel, .signup_popup2 .panel, .forgot-passward .panel{margin-bottom: 20px;}
+.signup_popup2{padding: 10px 0px 50px 0px !important;}
+.signup_popup2 .top-home .btn-large {
+    padding: 15px 27px !important;
+    margin-top: 10px !important;
+}
+.login-close {
+    position: absolute;
+    padding: 5px;
+    right: 4px !important;
+    top: -30px;
+}
+.pos-fix{
+    position: fixed;
+    left: 0px;
+    right: 0px;
+}
+.login_popup[aria-hidden="true"] { opacity: 0; }
+.login_popup[aria-hidden="false"] { opacity: 1; }
+.decorative-input{height: 48px !important;}
+.decorative-input[type="email"] {
+    background-position: right -30px !important;
+}
+.decorative-input[type="password"]{
+    background-position: right -72px !important;
+}
+.top-home .btn-large {
+    padding: 20px 27px !important;
+}
+.icon-btn.btn-large .icon{top: 16px !important;}
+.bor-none{border: 0px !important;}
+@media(max-width: 767px){.login_popup, .signup_popup, .signup_popup2, .forgot-passward{height: 100% !important;overflow: auto !important;}
+    .com-header{
+        position: absolute;
+        top: 11px;
+        left: 0px;
+        right: 0px;
+    }
+    .com-header a:hover{
+        color: white !important;
+        text-decoration: none;
+    }
+    .com-header a{
+        background-color: #007a87;
+        color: #fff;
+        white-space: normal;
+        font-weight: bold;
+        padding: 10px;
+        text-align: center;
+        font-size: 15px;
+    }
+    .com-img{
+        margin: 25px 0px;
+    }
+    .com-link-img
+    {display: inline-block;
+        background: black;
+    }
+    .com-link-img img{
+        display: block;
+
+        -webkit-transition: all 0.5s linear;
+        -moz-transition: all 0.5s linear;
+        -ms-transition: all 0.5s linear;
+        -o-transition: all 0.5s linear;
+        transition: all 0.5s linear;
+    }
+    .com-link-img:hover img{opacity: 0.7;}
+
+    .com-img img{
+        height: 500px;
+    }
+    .com-sub{
+        position: absolute;
+        bottom: 25px;
+        padding: 10px 15px;
+        color: white;
+    }
+    .com-sub h2{
+        font-size: 30px;
+        font-weight: bold;
+        color: white;
+    }
+    .com-sub-2{
+        bottom: 60px !important;
+    }
+    .com-header-2{
+        background: #393c3d !important;
+    }
+    .com-header-3{
+        background: #7b0051 !important;
+    }
+    .com-sub-link:hover{
+        color: white;
+        text-decoration: underline;
+    }
+    .com-sub-link{color: white;}
+    @media (max-width: 1099px){
+        .com-img img{
+            height: auto !important;
+        }
+    }

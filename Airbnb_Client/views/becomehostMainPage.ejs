@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+
+
+<html ng-app="App" lang="en-IN" xmlns:fb="http://ogp.me/ns/fb#"><!--<![endif]-->
+<head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="dns-prefetch" href="https://maps.googleapis.com/">
+    <link rel="dns-prefetch" href="https://maps.gstatic.com/">
+    <link rel="dns-prefetch" href="https://mts0.googleapis.com/">
+    <link rel="dns-prefetch" href="https://mts1.googleapis.com/">
+
+    <meta charset="utf-8">
+    <link media="all" type="text/css" rel="stylesheet" href="css/common.css">
+
+    <link media="all" type="text/css" rel="stylesheet" href="css/home.css">
+
+    <link media="all" type="text/css" rel="stylesheet" href="css/themes.css">
+
+    <link media="all" type="text/css" rel="stylesheet" href="css/pcss.css">
+    <link media="all" type="text/css" rel="stylesheet" href="css/new.css">
+
+
+    <style type="text/css">
+        .ui-selecting {
+            background: #FECA40;
+        }
+
+        .ui-selected {
+            background: #F39814;
+            color: white;
+        }
+    </style>
+    <title>Rent Out Your Room, House or Apartment</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="description" content="Your Trips">
+    <meta name="keywords" content="">
+    <meta name="twitter:widgets:csp" content="on">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="search" type="application/opensearchdescription+xml" href="#" title="">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#f5f5f5">
+</head>
+<body class="">
+<% include header.ejs %>
+
+<main id="site-content" role="main" ng-controller="addProperty_controller">
+
+    <div class="page-container-full">
+
+
+        <div class="panel lys-panel-header">
+            <div class="panel-body panel-light">
+
+                <div></div>
+                <div class="row space-top-6 space-6">
+                    <div class="col-sm-10 col-center text-center">
+                        <h1 class="h2">Become a Host</h1>
+                        <p class="text-lead">
+                            Airbnb lets you make money renting out your place.
+                        </p>
+                    </div>
+                </div>
+                <div></div>
+            </div>
+
+            <div class="panel-body panel-medium">
+                <div class="page-container-responsive">
+                    <div class="row">
+                        <div class="col-lg-9 col-md-11 col-md-push-1 col-lg-push-2 list-space">
+
+                            <div id="alert-row" class="row">
+                                <div id="alert-status" class="col-lg-10 col-md-11 lys-alert"></div>
+                            </div>
+
+                            <form method="POST" action="#" accept-charset="UTF-8" class="host-onboarding-form"
+                                  name="lys_new"><input name="_token" type="hidden"
+                                                        value="zi8mJ2ck2jYEPPofcOMwUF6Khh5ed3Tt1lu9sLB1">
+
+                                <input id="property_type_id" ng-model="property_type_id" required="required"
+                                       ng-value="property_type_id" name="hosting[property_type_id]" type="hidden"
+                                       value="">
+
+                                <input id="person_capacity" ng-model="selected_accommodates" required="required"
+                                       ng-value="selected_accommodates" name="hosting[person_capacity]" type="hidden"
+                                       value="">
+
+                                <input id="room_type" ng-model="room_type_id" required="required"
+                                       ng-value="room_type_id" name="hosting[room_type]" type="hidden" value="">
+
+                                <input id="address" ng-model="address" ng-value="address" name="hosting[address]"
+                                       type="hidden" value="">
+
+                                <input id="street_number" ng-model="street_number" ng-value="street_number"
+                                       name="hosting[street_number]" type="hidden" value="">
+                                <input id="route" ng-model="route" ng-value="route" name="hosting[route]" type="hidden"
+                                       value="">
+                                <input id="postal_code" ng-model="postal_code" ng-value="postal_code"
+                                       name="hosting[postal_code]" type="hidden" value="">
+
+                                <input id="city" ng-model="city" ng-value="city" name="hosting[city]" type="hidden"
+                                       value="">
+                                <input id="state" ng-model="state" ng-value="state" name="hosting[state]" type="hidden"
+                                       value="">
+                                <input id="country" ng-model="country" ng-value="country" name="hosting[country]"
+                                       type="hidden" value="">
+                                <input id="latitude" ng-model="latitude" ng-value="latitude" name="hosting[latitude]"
+                                       type="hidden" value="">
+                                <input id="longitude" ng-model="longitude" ng-value="longitude"
+                                       name="hosting[longitude]" type="hidden" value="">
+                                <div class="row space-top-3 space-1">
+                                    <div id="room-type-header" class="h5 text-light">
+                                        <strong>
+                                            Property Type
+                                        </strong>
+                                    </div>
+                                </div>
+                                <div class="row fieldset fieldset_room_type">
+                                    <div class="btn-group" ng-hide="room_type_id">
+
+                                        <button class="btn btn-large type alert-highlighted-element hover-select-highlight"
+                                                data-name="Entire home/apt" data-slug="entire_home_apt"
+                                                data-type="Entire home/apt" data-type-id="1"
+                                                data-icon-class="icon-entire-place" data-behavior="tooltip"
+                                                type="button" data-position="bottom"
+                                                aria-label="You&#39;re renting out an entire home."
+                                                ng-click="room_type('1', 'Entire home/apt', 'icon-entire-place')">
+                                            <i class="icon icon-entire-place h4 icon-kazan"></i>
+                                            Entire home/apt
+                                        </button>
+
+
+                                        <button class="btn btn-large type alert-highlighted-element hover-select-highlight"
+                                                data-name="Private room" data-slug="private_room"
+                                                data-type="Private room" data-type-id="2"
+                                                data-icon-class="icon-private-room" data-behavior="tooltip"
+                                                type="button" data-position="bottom"
+                                                aria-label="You&#39;re renting out a private room within a home."
+                                                ng-click="room_type('2', 'Private room', 'icon-private-room')">
+                                            <i class="icon icon-private-room h4 icon-kazan"></i>
+                                            Private room
+                                        </button>
+
+
+                                        <button class="btn btn-large type alert-highlighted-element hover-select-highlight"
+                                                data-name="Shared room" data-slug="shared_room" data-type="Shared room"
+                                                data-type-id="3" data-icon-class="icon-shared-room"
+                                                data-behavior="tooltip" type="button" data-position="bottom"
+                                                aria-label="You&#39;re renting out a common area, such as an airbed in a living room."
+                                                ng-click="room_type('3', 'Shared room', 'icon-shared-room')">
+                                            <i class="icon icon-shared-room h4 icon-kazan"></i>
+                                            Shared room
+                                        </button>
+                                    </div>
+
+                                    <div class="active-selection" ng-show="room_type_id" ng-click="room_type_rm()"
+                                         style="display:none;">
+                                        <div data-type="room_type_id" class="selected-item room_type_id">
+
+                                            <div class="active-panel">
+                                                <div class="active-title active-col">
+                                                    <div class="h4 title-value">
+                                                        <i class="icon icon-kazan h4 {{ room_type_icon }}"></i>
+                                                        {{ selected_room_type }}
+                                                    </div>
+                                                </div>
+                                                <div class="active-caret active-col">
+                                                    <i class="icon icon-caret-right"></i>
+                                                </div>
+                                                <div class="active-message active-col">
+                                                    Room type is one of the most important criteria for Airbnb guests.
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="row space-top-3 space-1">
+                                    <div id="person-capacity-header" class="h5 text-light">
+                                        <strong>
+                                            Accommodates
+                                        </strong>
+                                    </div>
+                                </div>
+                                <div class="row fieldset fieldset_person_capacity wmpw-spacing">
+                                    <div class="unselected row row-condensed" ng-hide="selected_accommodates">
+                                        <div class="col-sm-3">
+                                            <div class="panel accommodates-panel">
+                                                <div class="panel-body panel-light alert-highlighted-element hover-select-highlight">
+                                                    <div class="row">
+                                                        <div class="col-sm-offset-2 col-sm-2 va-container">
+                                                            <i class="icon icon-group h4 icon-kazan va-middle icons-accommodates"></i>
+                                                        </div>
+                                                        <div class="col-sm-5">
+                                                            <div class="select select-large">
+                                                                <select id="accomodates-select"
+                                                                        class="hover-select-highlight"
+                                                                        ng-model="accommodates_value"
+                                                                        ng-change="change_accommodates(accommodates_value)">
+                                                                    <option class="accommodates" data-accommodates="1"
+                                                                            value="1">
+                                                                        1
+                                                                    </option>
+                                                                    <option class="accommodates" data-accommodates="2"
+                                                                            value="2">
+                                                                        2
+                                                                    </option>
+                                                                    <option class="accommodates" data-accommodates="3"
+                                                                            value="3">
+                                                                        3
+                                                                    </option>
+                                                                    <option class="accommodates" data-accommodates="4"
+                                                                            value="4">
+                                                                        4
+                                                                    </option>
+                                                                    <option class="accommodates" data-accommodates="5"
+                                                                            value="5">
+                                                                        5
+                                                                    </option>
+                                                                    <option class="accommodates" data-accommodates="6"
+                                                                            value="6">
+                                                                        6
+                                                                    </option>
+                                                                    <option class="accommodates" data-accommodates="7"
+                                                                            value="7">
+                                                                        7
+                                                                    </option>
+                                                                    <option class="accommodates" data-accommodates="8"
+                                                                            value="8">
+                                                                        8
+                                                                    </option>
+                                                                    <option class="accommodates" data-accommodates="9"
+                                                                            value="9">
+                                                                        9
+                                                                    </option>
+                                                                    <option class="accommodates" data-accommodates="10"
+                                                                            value="10">
+                                                                        10
+                                                                    </option>
+                                                                    <option class="accommodates" data-accommodates="11"
+                                                                            value="11">
+                                                                        11
+                                                                    </option>
+                                                                    <option class="accommodates" data-accommodates="12"
+                                                                            value="12">
+                                                                        12
+                                                                    </option>
+                                                                    <option class="accommodates" data-accommodates="13"
+                                                                            value="13">
+                                                                        13
+                                                                    </option>
+                                                                    <option class="accommodates" data-accommodates="14"
+                                                                            value="14">
+                                                                        14
+                                                                    </option>
+                                                                    <option class="accommodates" data-accommodates="15"
+                                                                            value="15">
+                                                                        15
+                                                                    </option>
+                                                                    <option class="accommodates" data-accommodates="16+"
+                                                                            value="16+">
+                                                                        16
+                                                                    </option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="active-selection" ng-init="accomodates=selected_accommodates"
+                                         ng-model="accomodates" ng-show="selected_accommodates"
+                                         ng-click="accommodates_rm()" style="display:none;">
+                                        <div data-type="person_capacity" class="selected-item person_capacity">
+                                            <div class="active-panel">
+                                                <div class="active-title active-col">
+                                                    <div class="h4 title-value">
+                                                        <i class="icon icon-kazan h4 icon-group"></i>
+                                                        {{ selected_accommodates }}
+                                                    </div>
+                                                </div>
+                                                <div class="active-caret active-col">
+                                                    <i class="icon icon-caret-right"></i>
+                                                </div>
+                                                <div class="active-message active-col">
+                                                    Whether you&#039;re hosting a lone traveler or a large group, it&#039;s
+                                                    important for your guests to feel comfortable.
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="row space-top-3 space-1">
+                                    <div id="city-header" class="h5 text-light">
+                                        <strong>
+                                            City
+                                        </strong>
+                                    </div>
+                                </div>
+
+                                <div class="row fieldset fieldset_city">
+
+                                    <div class="row" ng-hide="city_show">
+                                        <div class="col-sm-12">
+                                            <div class="panel location lys-location alert-highlighted-element">
+                                                <div class="panel-body panel-light panel-border location-panel-body clearfix">
+                                                    <div class="col location-input-frame">
+                                                        <i class="icon icon icon-map-marker icon-kazan h4 pull-left"></i>
+                                                        <input class="pull-left alert-highlighted-element geocomplete"
+                                                               name="location_input" type="text" value=""
+                                                               placeholder="Enter a location" autocomplete="off"
+                                                               ng-click="city_click()" ng-model="address"
+                                                               id="location_input">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="active-selection" ng-show="city_show" ng-click="city_rm()"
+                                         style="display:none;">
+                                        <div class="selected-item city" data-type="city">
+                                            <div class="active-panel">
+                                                <div class="active-title active-col">
+                                                    <div class="h4 title-value">
+                                                        <i class="icon icon-kazan h4 icon-map-marker"></i>
+                                                        {{ address }}
+                                                    </div>
+                                                </div>
+                                                <div class="active-caret active-col">
+                                                    <i class="icon icon-caret-right"></i>
+                                                </div>
+                                                <div class="active-message active-col">
+                                                    What a great place to call home
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row text-left space-top-3">
+                                    <div class="" id="js-submit-button">
+                                        <div class="lys-continue-button-wrapper col-3">
+                                            <!--<button type="submit" class="btn btn-primary btn-large btn-block submit" ng-disabled="((city_show == false) || lys_new.$invalid)">-->
+                                            <button type="button" class="btn btn-primary btn-large btn-block submit"
+                                                    ng-click="saveFormData();"
+                                                    ng-disabled="((city_show == false))">
+                                                Continue
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div id="cohosting-signup-widget-banner" class="hide-sm hide-md"></div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="space-5 row"></div>
+                </div>
+            </div>
+
+            <div class="panel-medium">
+                <div class="page-container-responsive col-center">
+                    <div class="row space-5">
+                        <div class="col-md-4 text-center">
+                            <i class="icon icon-handshake icon-kazan icon-size-3"></i>
+                            <h4>Trust &amp; Safety</h4>
+                            <div class="text-lead text-color-light">
+                                Trust &amp; safety tools help you accept a booking only if you&rsquo;re 100%
+                                comfortable.
+                            </div>
+                        </div>
+                        <div class="col-md-4 text-center">
+                            <i class="icon icon-host-guarantee icon-kazan icon-size-3"></i>
+                            <h4>Host Guarantee</h4>
+                            <div class="text-lead text-color-light">
+                                Your peace of mind is priceless. So we don&rsquo;t charge for it. Every eligible booking
+                                on Airbnb is covered by our Host Guarantee - at no additional cost to you.
+                            </div>
+                        </div>
+                        <div class="col-md-4 text-center">
+                            <i class="icon icon-lock icon-kazan icon-size-3"></i>
+                            <h4>Secure Payments</h4>
+                            <div class="text-lead text-color-light">
+                                Our fast, flexible payment system puts money in your bank account 24 hours after guests
+                                check in.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<% include footer.ejs %>
+
+<div id="gmap-preload" class="hide"></div>
+
+<div class="ipad-interstitial-wrapper"><span data-reactid=".1"></span></div>
+
+<div id="fb-root"></div>
+
+<script type="text/javascript"
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBXyRBiyRcEzHDJ8iU00zECMUP4cXBIm6A&sensor=false&libraries=places"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+<script type="text/javascript" src="http://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
+
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.2/angular.min.js"></script>
+
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/angular-sanitize/1.3.2/angular-sanitize.min.js"></script>
+
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/ResponsiveSlides.js/1.53/responsiveslides.min.js"></script>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.login_popup_head').click(function (e) {
+            e.preventDefault();
+            $("body").addClass("pos-fix");
+            $(".login_popup").show();
+            $(".signup_popup").hide();
+            $(".signup_popup2").hide();
+        });
+        $('.login-close').click(function (event) {
+            $("body").removeClass("pos-fix");
+            $(".login_popup").hide();
+        });
+        $('.top-home').click(function (event) {
+            event.stopPropagation();
+        });
+    });
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.forgot-password-popup').click(function (e) {
+            e.preventDefault();
+            $("body").addClass("pos-fix");
+            $(".login_popup").hide();
+            $(".forgot-passward").show();
+        });
+        $('.login-close').click(function (event) {
+            $("body").removeClass("pos-fix");
+            $(".forgot-passward").hide();
+        });
+        $('.top-home').click(function (event) {
+            event.stopPropagation();
+        });
+    });
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.signup_popup_head').click(function (e) {
+            e.preventDefault();
+            $("body").addClass("pos-fix");
+            $(".signup_popup").show();
+            $(".login_popup").hide();
+        });
+        $('.login-close').click(function () {
+            $("body").removeClass("pos-fix");
+            $(".signup_popup").hide();
+        });
+        $('.top-home').click(function (event) {
+            event.stopPropagation();
+        });
+    });
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.signup_popup_head2').click(function (e) {
+            e.preventDefault();
+            $("body").addClass("pos-fix");
+            $(".signup_popup2").show();
+            $(".signup_popup").hide();
+        });
+        $('.login-close').click(function () {
+            $("body").removeClass("pos-fix");
+            $(".signup_popup2").hide();
+        });
+        $('.top-home').click(function (event) {
+            event.stopPropagation();
+        });
+    });
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('ul.menu-group li a').click(function () {
+            $('.nav--sm').css('visibility', 'hidden');
+        });
+    });
+</script>
+
+<script src="js/common.js"></script>
+
+<script type="application/javascript" src="controller/common_controller.js"></script>
+
+<script src="https://angular-file-upload.appspot.com/js/ng-file-upload-shim.js"></script>
+<script src="https://angular-file-upload.appspot.com/js/ng-file-upload.js"></script>
+
+<div class="tooltip tooltip-bottom-middle" role="tooltip" aria-hidden="true">
+    <p class="panel-body">To sign up, you must be 18 or older. Other people won’t see your birthday.</p>
+</div>
+</body>
+</html>

@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+
+<html lang="en-IN" xmlns:fb="http://ogp.me/ns/fb#"><!--<![endif]-->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="dns-prefetch" href="https://maps.googleapis.com/">
+    <link rel="dns-prefetch" href="https://maps.gstatic.com/">
+    <link rel="dns-prefetch" href="https://mts0.googleapis.com/">
+    <link rel="dns-prefetch" href="https://mts1.googleapis.com/">
+
+    
+
+    <!--[if IE]><![endif]-->
+    <meta charset="utf-8">
+
+    <!--[if IE 8]>
+    <link media="all" type="text/css" rel="stylesheet" href="http://makent.trioangle.com/css/common_ie8.css">
+
+    <![endif]-->
+    <!--[if !(IE 8)]><!-->
+    <link media="all" type="text/css" rel="stylesheet" href="css/common.css">
+
+    <link media="all" type="text/css" rel="stylesheet" href="css/home.css">
+
+    <link media="all" type="text/css" rel="stylesheet" href="css/themes.css">
+
+    <link media="all" type="text/css" rel="stylesheet" href="css/dynamic.css">
+
+    <!--<![endif]-->
+
+    <!--[if lt IE 9]>
+    <link media="all" type="text/css" rel="stylesheet" href="http://makent.trioangle.com/css/airglyphs-ie8.css">
+
+    <![endif]-->
+
+
+    <link media="all" type="text/css" rel="stylesheet" href="http://makent.trioangle.com/css/payments.css">
+
+    <link media="all" type="text/css" rel="stylesheet" href="http://makent.trioangle.com/css/p4.css">
+
+    <link media="all" type="text/css" rel="stylesheet" href="http://makent.trioangle.com/css/StyleSheet.css">
+
+
+    <style type="text/css">
+        .ui-selecting {
+            background: #FECA40;
+        }
+
+        .ui-selected {
+            background: #F39814;
+            color: white;
+        }
+    </style>
+
+    <title>Booking </title>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+
+    <meta name="description" content="Booking">
+    <meta name="keywords" content="">
+
+
+    <meta name="twitter:widgets:csp" content="on">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="search" type="application/opensearchdescription+xml" href="#" title="">
+
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <meta name="theme-color" content="#f5f5f5">
+
+</head>
+<body class="" ng-app="App">
+<% include header.ejs %>
+<% include modal.ejs %>
+
+<main id="site-content" role="main" ng-controller="payment_controller" ng-init="loadPaymentPage()">
+
+    <div id="main-view" class="main-view page-container-responsive row-space-top-6 row-space-6">
+
+        <form>
+            <input name="room_id" type="hidden" value="10002">
+            <input name="checkin" type="hidden" value="29-11-2016">
+            <input name="special_offer_id" type="hidden" value="">
+            <input name="checkout" type="hidden" value="30-11-2016">
+            <input name="number_of_guests" type="hidden" value="1">
+            <input name="nights" type="hidden" value="1">
+            <input name="currency" type="hidden" value="USD">
+            <input name="hostId" type="hidden" ng-model="hostId">
+
+
+            <input name="_token" type="hidden" value="o1E0PMYFpqTGH62DbzoykMU0BY2r4LlU871dzvoO">
+
+            <div class="row">
+                <div class="col-md-5 col-md-push-7 col-lg-4 col-lg-push-8 row-space-2">
+                    <div class="panel payments-listing">
+                        <div class="media-photo media-photo-block text-center payments-listing-image">
+                            <img src="images/{{imageUrl}}"
+                                 class="img-responsive-height" alt="large, comfy br in fun neighborhood">
+                        </div>
+                        <div class="panel-body">
+                            <section id="your-trip" class="your-trip">
+                                <div class="hosting-info">
+                                    <div class="payments-listing-name h4 row-space-1">{{propertName}}</div>
+                                    <div class="hide-sm">
+                                        <p>{{location}}</p>
+                                        <hr>
+                                        <div class="row-space-1">
+                                            <strong>Entire home/apt</strong> for <strong>{{guest}} Guests</strong>
+                                        </div>
+                                        <div>
+                                            <strong>{{checkin}}</strong> to <strong>{{checkout}}</strong>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <table class="reso-info-table">
+                                        <tbody>
+                                        <tr>
+                                            <td>Cancellation Policy</td>
+                                            <td>
+                                                <a href="#"
+                                                   class="cancel-policy-link">Flexible</a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>House Rules</td>
+                                            <td>
+                                                <a href="#" class="house-rules-link">Read
+                                                    policy</a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Nights
+                                            </td>
+                                            <td>
+                                                {{days}}
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                    <hr>
+                                    <section id="billing-summary" class="billing-summary">
+                                        <div class="tooltip tooltip-top-middle taxes-breakdown" role="tooltip"
+                                             data-sticky="true" data-trigger="#tax-tooltip" aria-hidden="true">
+                                            <div class="panel-body">
+                                                <table>
+                                                    <tbody>
+                                                    <tr>
+                                                        <td colspan="2"></td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <div class="tooltip tooltip-top-middle makent-credit-breakdown" role="tooltip"
+                                             data-sticky="true" data-trigger="#makent-credit-tooltip"
+                                             aria-hidden="true">
+                                            <div class="panel-body">
+                                                <table class="table makent-credit-breakdown">
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <table id="billing-table" class="reso-info-table billing-table">
+                                            <tbody>
+
+                                            <tr class="base-price">
+                                                <td class="name pos-rel">
+                                                    &#36;{{totalperday}} x {{days}} night
+                                                    <i id="service-fee-tooltip"
+                                                       class="icon icon-question tool-amenity2"></i>
+                                                    <div class="tooltip-amenity tooltip-amenity2 tooltip-left-middle"
+                                                         data-sticky="true" aria-hidden="true"
+                                                         style="left: 132px;top: -13px;">
+                                                        <dl class="panel-body">
+                                                            <dt>Average nightly rate is rounded</dt>
+                                                        </dl>
+                                                    </div>
+                                                </td>
+                                                <td class="val text-right">
+                                                    &#36;{{totalperday * days}}
+                                                </td>
+                                            </tr>
+
+                                            </tbody>
+                                        </table>
+
+                                        <hr>
+
+                                        <table id="payment-total-table" class="reso-info-table billing-table">
+                                            <tbody>
+                                            <tr class="total">
+                                                <td class="name"><span class="h3">Total</span></td>
+                                                <td class="text-special icon-dark-gray text-right"><span class="h3">&#36;</span>
+                                                    <span class="h3" id="payment_total">{{totalperday * days}}</span>
+                                                </td>
+                                            </tr>
+
+                                            </tbody>
+                                        </table>
+
+                                    </section>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+                <div id="content-container" class="col-md-7 col-md-pull-5 col-lg-pull-4">
+                    <div class="alert alert-with-icon alert-error alert-block hide row-space-2" id="form-errors">
+                        <i class="icon alert-icon icon-alert-alt"></i>
+                        <div class="h5 row-space-1 error-header">
+                            Almost done!
+                        </div>
+                        <ul></ul>
+
+                    </div>
+                    <div class="alert alert-with-icon alert-error alert-block hide row-space-2" id="server-error">
+                        <i class="icon alert-icon icon-alert-alt"></i>
+                        Unfortunately, a server error prevented your request from being completed. Airbnb may be
+                        undergoing maintenance or your connection may have timed out. Please try again.
+                    </div>
+                    <div class="alert alert-with-icon alert-error alert-block hide row-space-2" id="verification-error">
+                        <i class="icon alert-icon icon-alert-alt"></i>
+
+                        Your card could not be verified. Please try another card. Your card was not charged.
+                    </div>
+                    <section id="payment" class="checkout-main__section payment">
+                        <h2 class="section-title">Payment</h2>
+
+                        <div class="payment-section">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <label for="country-select">
+                                        Country
+                                    </label>
+
+                                    <div class="select select-block">
+                                        <select id="country-select" name="payment_country">
+
+                                            <option value="US" selected="selected">United States</option>
+
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="payment-controls">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <label for="payment-method-select">
+                                            Payment type
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="row" id="payment-type-select">
+                                    <div class="col-lg-6 row-space-2">
+                                        <div class="select select-block">
+                                            <select name="payment_type" class="grouped-field"
+                                                    id="payment-method-select">
+                                                <option value="cc" data-payment-type="payment-method"
+                                                        data-cc-type="visa" data-cc-name="" data-cc-expire="">
+                                                    Credit Card
+                                                </option>
+
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="payment-method grouped-field cc active">
+                                            <div class="payment-logo unionpay hide"></div>
+                                            <div class="payment-logo visa">Credit Card</div>
+                                            <div class="payment-logo master"></div>
+                                            <div class="payment-logo american_express"></div>
+                                            <div class="payment-logo discover"></div>
+                                            <div class="payment-logo jcb hide"></div>
+                                            <div class="payment-logo postepay hide"></div>
+                                            <i class="icon icon-lock icon-light-gray h3"></i>
+                                            <div class="cc-data hide">
+                                                <div class="cc-info">
+                                                    Name: <span id="selected-cc-name"></span>
+                                                </div>
+                                                <div class="cc-info">
+                                                    Expires: <span id="selected-cc-expires"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="payment-method grouped-field digital_river_cc">
+                                            <div class="payment-logo visa"></div>
+                                            <div class="payment-logo master"></div>
+                                            <div class="payment-logo american_express"></div>
+                                            <div class="payment-logo hipercard"></div>
+                                            <div class="payment-logo elo"></div>
+                                            <div class="payment-logo aura"></div>
+                                            <i class="icon icon-lock icon-light-gray h3"></i>
+                                        </div>
+                                        <div class="payment-method grouped-field paypal">
+                                            <div class="payment-logo paypal inactive">PayPal</div>
+                                        </div>
+                                    </div>
+                                    <div class="control-group cc-zip col-md-6 cc-zip-retry hide">
+                                        <label for="credit-card-zip">
+                                            Postal code
+                                        </label>
+
+                                        <input type="text" class="cc-zip-text cc-short cc-short-half" name="zip_retry"
+                                               id="credit-card-zip-retry">
+                                        <div class="label label-warning inline-error hide"></div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div id="payment-methods-content">
+                                <div class="payment-method cc active" id="payment-method-cc">
+                                    <div class="payment-method-container">
+
+                                        <input type="hidden" name="payment_method_nonce" id="payment_method_nonce">
+
+                                        <div class="new-card">
+                                            <div class="cc-details row">
+                                                <div class="control-group cc-type col-md-6">
+                                                    <label class="control-label" for="credit-card-type">
+                                                        Card type
+                                                    </label>
+                                                    <div class="select select-block">
+                                                        <select id="credit-card-type" class="cc-med" name="cc_type">
+                                                            <option value="visa" selected="selected">
+                                                                Visa
+                                                            </option>
+                                                            <option value="master">
+                                                                MasterCard
+                                                            </option>
+                                                            <option value="american_express">
+                                                                American Express
+                                                            </option>
+                                                            <option value="discover">
+                                                                Discover
+                                                            </option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="control-group cc-number col-md-6">
+                                                    <label for="credit-card-number">
+                                                        Card number
+                                                    </label>
+                                                    <input class="cc-med" id="credit-card-number" autocomplete="off"
+                                                           name="cc_number" type="text" ng-model="cardNumber">
+                                                    <p style="color:red" ng-show="card_wrong">Please Enter Valid Card Details</p>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="control-group cc-expiration col-md-6">
+                                                    <label aria-hidden="true">
+                                                        Expires on
+                                                    </label>
+                                                    <div class="row row-condensed">
+                                                        <div class="col-sm-6">
+                                                            <div class="select select-block">
+                                                                <label for="credit-card-expire-month"
+                                                                       class="screen-reader-only">
+                                                                    messages.login.month
+                                                                </label>
+                                                                <select class="cc-short" id="credit-card-expire-month"
+                                                                        name="cc_expire_month" ng-model="expMonth">
+                                                                    <option value="" selected="selected">mm</option>
+                                                                    <option value="1">1</option>
+                                                                    <option value="2">2</option>
+                                                                    <option value="3">3</option>
+                                                                    <option value="4">4</option>
+                                                                    <option value="5">5</option>
+                                                                    <option value="6">6</option>
+                                                                    <option value="7">7</option>
+                                                                    <option value="8">8</option>
+                                                                    <option value="9">9</option>
+                                                                    <option value="10">10</option>
+                                                                    <option value="11">11</option>
+                                                                    <option value="12">12</option>
+                                                                </select>
+                                                                <p style="color:red" ng-show="dates_wrong">Please Enter Valid Expire Dates</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-6">
+                                                            <div class="select select-block">
+                                                                <label for="credit-card-expire-year"
+                                                                       class="screen-reader-only">
+                                                                    messages.login.year
+                                                                </label>
+                                                                <select class="cc-short" id="credit-card-expire-year"
+                                                                        name="cc_expire_year" ng-model="expYear">
+                                                                    <option value="" selected="selected">yyyy</option>
+                                                                    <option value="2016">2016</option>
+                                                                    <option value="2017">2017</option>
+                                                                    <option value="2018">2018</option>
+                                                                    <option value="2019">2019</option>
+                                                                    <option value="2020">2020</option>
+                                                                    <option value="2021">2021</option>
+                                                                    <option value="2022">2022</option>
+                                                                    <option value="2023">2023</option>
+                                                                    <option value="2024">2024</option>
+                                                                    <option value="2025">2025</option>
+                                                                    <option value="2026">2026</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="control-group cc-security-code col-md-4">
+                                                    <label class="control-label" for="credit-card-security-code">
+                                                        Security code
+                                                    </label>
+                                                    <div class="row">
+                                                        <div class="col-sm-6 col-md-8">
+                                                            <input class="cc-short" id="credit-card-security-code"
+                                                                   autocomplete="off" pattern="[0-9]*"
+                                                                   name="cc_security_code" type="text" ng-model="cvv">
+                                                            <p style="color:red" ng-show="cvv_wrong">Please Enter Valid Security Code</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                            <hr>
+                                            <div class="row">
+                                                <div class="col-sm-12">
+                                                    <h2>Billing Information</h2>
+                                                    <p></p>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="row">
+                                                <div class="control-group cc-first-name col-md-6">
+                                                    <label class="control-label" for="credit-card-first-name">
+                                                        First name
+                                                    </label>
+
+                                                    <input id="credit-card-first-name" name="first_name" type="text"
+                                                           ng-model="firstName">
+
+                                                </div>
+
+                                                <div class="control-group cc-last-name col-md-6">
+                                                    <label class="control-label" for="credit-card-last-name">
+                                                        Last name
+                                                    </label>
+
+                                                    <input id="credit-card-last-name" name="last_name" type="text"
+                                                           ng-model="lastName">
+
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+
+
+                                                <div class="control-group cc-zip cc-zip-new
+
+                         col-md-6 col-lg-3">
+                                                    <label for="credit-card-zip">
+                                                        Postal code
+                                                    </label>
+
+                                                    <input id="credit-card-zip" class="cc-short cc-zip-text" name="zip"
+                                                           type="text" ng-model="zip">
+
+                                                </div>
+
+                                                <div class="col-md-6 col-lg-3">
+                                                    <label aria-hidden="true">
+                                                        <span class="screen-reader-only"></span>
+                                                        &nbsp;
+                                                    </label>
+                                                    <div class="help-inline credit-card-country-name">
+                                                        <strong id="billing-country"></strong>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="payment-method paypal" id="payment-method-paypal">
+                                    <div class="paypal-instructions row-space-top-2">
+                                        <p>
+                                            You will be redirected to PayPal.
+                                            <strong></strong>
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <input name="payment_method" type="hidden" value="cc">
+                                <input name="country" type="hidden" value="">
+                                <input name="digital_river[country]" type="hidden" value="">
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="house-rules-agreement" class="checkout-main__section">
+                        <h2 class="section-title">
+                            House Rules
+                        </h2>
+                        <p>
+                            By booking this space you&rsquo;re agreeing to follow House Rules..
+                        </p>
+                        <div class="row-space-2">
+                            <div class="expandable expandable-trigger-more house-rules-panel-body expanded">
+                                <div class="expandable-content" data-threshold="50">
+                                    <p></p>
+                                    <div class="expandable-indicator"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section id="policies" class="policies row-space-3">
+                        <div class="terms media">
+
+                            <div class="media-body">
+                                <label for="agrees-to-terms">
+                                    By clicking on &quot;Continue&quot;, you agree to pay the total amount shown, which
+                                    includes Service Fees, on the right and to the <a
+                                            href="#" class="terms_link"
+                                    >Terms of Service</a>, <a href="#"
+                                                              class="house-rules-link">House
+                                        Rules</a>, <a
+                                            href="#"
+                                            class="cancel-policy-link">Cancellation Policy</a> and <a
+                                            href="#" class="refund_policy_link"
+                                    >Guest Refund Policy</a>.
+                                </label>
+                            </div>
+                        </div>
+                    </section>
+                    <p>
+                    </p>
+                    <div id="paypal-container"></div>
+                    <button class="btn btn-large btn-primary" ng-click="confirmBooking()">
+                        Confirm
+                    </button>
+                    <p></p>
+
+                    <p class="book-now-explanation default">
+
+                    </p>
+                    <p class="book-now-explanation immediate_charge hide">
+                        Clicking <strong>Continue</strong> will charge your payment method, but you&#039;ll get an
+                        automatic refund if the host declines or doesn&#039;t respond within 24 hours.
+                    </p>
+                    <p class="book-now-explanation deferred_payment hide">
+                        The host will have 24 hours to reply. If they accept your request, you&#039;ll be asked to
+                        complete your payment and confirm the reservation. If the host declines or does not respond, you
+                        won&#039;t be charged.
+                    </p>
+                </div>
+            </div>
+        </form>
+
+        <div id="house-rules-modal" class="modal" role="dialog" aria-hidden="true">
+            <div class="modal-table">
+                <div class="modal-cell">
+                    <div class="modal-content">
+                        <div class="panel-header">
+                            <a href="javascript:void(0);" class="panel-close" data-behavior="modal-close">
+                                ×
+                                <span class="screen-reader-only">
+                messages.payments.house_rules
+              </span>
+                            </a>
+                            messages.payments.house_rules
+                        </div>
+                        <div class="panel-body"><p></p></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="security-deposit-modal" class="modal" role="dialog" data-trigger="#security-deposit-modal-trigger"
+             aria-hidden="true">
+            <div class="modal-table">
+                <div class="modal-cell">
+                    <div class="modal-content">
+                        <div class="panel-header">
+                            <a href=""
+                               class="panel-close" data-behavior="modal-close">
+                                ×
+                                <span class="screen-reader-only">
+                Security Deposit
+              </span>
+                            </a>
+                            Security Deposit
+                        </div>
+                        <div class="panel-body">
+                            <p>
+                                The security deposit will be collected by Airbnb the day before arrival by authorizing
+                                your credit card for the listed amount. The authorization will be voided within 48 hours
+                                of checkout so long as the host does not report any problems.
+                            </p>
+                            <p>
+                                If the host reports a problem, we will capture the entire authorized amount while we
+                                gather additional information from both parties. If a compromise is reached, we will
+                                refund the agreed upon amount. Although it is primarily up to the host to determine the
+                                extent of the damage, Airbnb tracks every claim that is made, and if a host develops a
+                                trend of claiming damages in order to keep the security deposit, the host may be removed
+                                from Airbnb.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</main>
+
+<% include footer.ejs %>
+
+<div id="fb-root"></div>
+
+<div class="ipad-interstitial-wrapper"><span data-reactid=".1"></span></div>
+
+
+<script type="text/javascript"
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBXyRBiyRcEzHDJ8iU00zECMUP4cXBIm6A&sensor=false&libraries=places"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+<script type="text/javascript" src="http://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
+
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.2/angular.min.js"></script>
+
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/angular-sanitize/1.3.2/angular-sanitize.min.js"></script>
+
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/ResponsiveSlides.js/1.53/responsiveslides.min.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.login_popup_head').click(function (e) {
+            e.preventDefault();
+            $("body").addClass("pos-fix");
+            $(".login_popup").show();
+            $(".signup_popup").hide();
+            $(".signup_popup2").hide();
+        });
+        $('.login-close').click(function (event) {
+            $("body").removeClass("pos-fix");
+            $(".login_popup").hide();
+        });
+        $('.top-home').click(function (event) {
+            event.stopPropagation();
+        });
+    });
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.forgot-password-popup').click(function (e) {
+            e.preventDefault();
+            $("body").addClass("pos-fix");
+            $(".login_popup").hide();
+            $(".forgot-passward").show();
+        });
+        $('.login-close').click(function (event) {
+            $("body").removeClass("pos-fix");
+            $(".forgot-passward").hide();
+        });
+        $('.top-home').click(function (event) {
+            event.stopPropagation();
+        });
+    });
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.signup_popup_head').click(function (e) {
+            e.preventDefault();
+            $("body").addClass("pos-fix");
+            $(".signup_popup").show();
+            $(".login_popup").hide();
+        });
+        $('.login-close').click(function () {
+            $("body").removeClass("pos-fix");
+            $(".signup_popup").hide();
+        });
+        $('.top-home').click(function (event) {
+            event.stopPropagation();
+        });
+    });
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.signup_popup_head2').click(function (e) {
+            e.preventDefault();
+            $("body").addClass("pos-fix");
+            $(".signup_popup2").show();
+            $(".signup_popup").hide();
+        });
+        $('.login-close').click(function () {
+            $("body").removeClass("pos-fix");
+            $(".signup_popup2").hide();
+        });
+        $('.top-home').click(function (event) {
+            event.stopPropagation();
+        });
+    });
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('ul.menu-group li a').click(function () {
+            $('.nav--sm').css('visibility', 'hidden');
+        });
+    });
+</script>
+<script>
+    var app = angular.module('App', ['ngSanitize']);
+    var APP_URL = "http:\/\/localhost:3000";
+    $.datepicker.setDefaults($.datepicker.regional["en"])
+</script>
+
+
+<script src="js/common.js"></script>
+<script src="controller/common_controller.js"></script>
+
+<script src="https://angular-file-upload.appspot.com/js/ng-file-upload-shim.js"></script>
+<script src="https://angular-file-upload.appspot.com/js/ng-file-upload.js"></script>
+
+
+<!-- ver. 87c23752f8dfbd60bf83837d2c8b2dcd0ec660a9 -->
+<div class="tooltip tooltip-bottom-middle" role="tooltip" aria-hidden="true">
+    <p class="panel-body">To sign up, you must be 18 or older. Other people won’t see your birthday.</p>
+</div>
+</body>
+</html>

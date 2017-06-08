@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+
+<html ng-app="App" lang="en-IN" xmlns:fb="http://ogp.me/ns/fb#"><!--<![endif]-->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="dns-prefetch" href="https://maps.googleapis.com/">
+    <link rel="dns-prefetch" href="https://maps.gstatic.com/">
+    <link rel="dns-prefetch" href="https://mts0.googleapis.com/">
+    <link rel="dns-prefetch" href="https://mts1.googleapis.com/">
+
+    <meta charset="utf-8">
+    <link media="all" type="text/css" rel="stylesheet" href="css/common.css">
+
+    <link media="all" type="text/css" rel="stylesheet" href="css/home.css">
+
+    <link media="all" type="text/css" rel="stylesheet" href="css/themes.css">
+
+    <link media="all" type="text/css" rel="stylesheet" href="css/dynamic.css">
+    <style type="text/css">
+        .ui-selecting {
+            background: #FECA40;
+        }
+
+        .ui-selected {
+            background: #F39814;
+            color: white;
+        }
+    </style>
+    <title>Your Trips </title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="description" content="Your Trips">
+    <meta name="keywords" content="">
+    <meta name="twitter:widgets:csp" content="on">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="search" type="application/opensearchdescription+xml" href="#" title="">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#f5f5f5">
+</head>
+<body class="" ng-controller="yourTrips_controller">
+<% include header.ejs %>
+
+<main id="site-content" role="main" ng-hide="isItinerary">
+
+    <div class="subnav hide-print">
+        <div class="page-container-responsive">
+            <ul class="subnav-list">
+                <li>
+                    <a href="/getDashBoardPage" aria-selected="false" class="subnav-item">Dashboard</a>
+                </li>
+                <li>
+                    <a href="/yourListings" aria-selected="false" class="subnav-item">Your Listings</a>
+                </li>
+                <li>
+                    <a href="#" aria-selected="true" class="subnav-item">Your Trips</a>
+                </li>
+                <li>
+                    <a href="/editProfilePage" aria-selected="false" class="subnav-item">Profile</a>
+                </li>
+                <li>
+                    <a href="/Account_Transactions" aria-selected="false" class="subnav-item">Account</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+
+    <div class="page-container-responsive space-top-4 space-4">
+        <div class="alert alert-success" ng-show="reviewadded">"Your Review has been Submitted"</div>
+        <br>
+        <div class="row">
+            <div class="col-md-1">
+
+
+            </div>
+
+            <div class="col-md-10">
+                <div class="panel row-space-4">
+                    <div class="panel-header">
+                        Your Trips
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table panel-body panel-light">
+                            <tbody>
+                            <tr>
+                                <th>Status</th>
+                                <th>Location</th>
+                                <th>Host</th>
+                                <th>Dates</th>
+                                <th>Options</th>
+                            </tr>
+
+                            <tr ng-repeat="trip in trips" ng-init="writeReview=[]">
+                                <td class="status">
+                                <span class="label label-orange label-success">
+                                  {{trip.isAccepted}}
+                                </span>
+                                    <br>
+                                </td>
+                                <td class="location">
+                                    {{trip.propertyId.address}}, {{trip.propertyId.city}}
+                                </td>
+                                <td class="host"><a href="/profile/{{trip.hostId.userId}}" target="_blank">{{trip.hostId.firstName}}
+                                        {{trip.hostId.lastName}}</a></td>
+                                <td class="dates">{{trip.checkIn | date:"shortDate" }} to {{trip.checkOut |
+                                    date:"shortDate"}}
+                                </td>
+
+                                <td>
+                                    <ul class="unstyled button-list list-unstyled">
+                                        <li ng-show="{{trip.isAccepted === 'Accepted'}}" class="row-space-1">
+                                            <a ng-click="writeReview[$index]=!writeReview[$index]" href="#">Write Review
+                                                to Host</a>
+                                            <div ng-show="writeReview[$index]"><textarea ng-model="review[trip._id]"
+                                                                                         rows="4"
+                                                                                         cols="10"></textarea>
+                                                <select ng-model="rating">
+                                                    <option>1</option>
+                                                    <option>2</option>
+                                                    <option>3</option>
+                                                    <option>4</option>
+                                                    <option>5</option>
+                                                </select>
+                                                <button ng-click="submitReviewtoHost(review[trip._id], trip.hostId._id, rating,$index)"
+                                                        type="button" class="btn btn-primary btn">
+                                                    Submit Review
+                                                </button>
+                                            </div>
+                                        </li>
+                                        <li ng-show="{{trip.isAccepted === 'Accepted'}}" class="row-space-1">
+                                            <a ng-click="writeReviewPro[$index]=!writeReviewPro[$index]" href="#">Write
+                                                Review to Property</a>
+                                            <div ng-show="writeReviewPro[$index]"><textarea ng-model="review[trip._id]"
+                                                                                            rows="4"
+                                                                                            cols="10"></textarea>
+                                                <select ng-model="rating">
+                                                    <option>1</option>
+                                                    <option>2</option>
+                                                    <option>3</option>
+                                                    <option>4</option>
+                                                    <option>5</option>
+                                                </select>
+                                                <button class="button" ngf-select ng-model="images[$index]"
+                                                        name="images"
+                                                        ngf-pattern="'image/*'" multiple="false"
+                                                        ngf-accept="'image/*'" ngf-max-size="10MB"
+                                                        ngf-min-height="100"
+                                                        ngf-resize="{width: 40%, height: 40%}">Select Images
+                                                </button>
+                                                <button ng-click="submitReviewtoProperty(review[trip._id], trip.hostId._id, rating, trip.propertyId._id,$index)"
+                                                        type="button" class="btn btn-primary btn">
+                                                    Submit Review
+                                                </button>
+                                            </div>
+                                        </li>
+                                        <li ng-show="{{trip.isAccepted === 'Accepted'}}" class="row-space-1">
+                                            <a class="button-steel" href="/receipt?tripId={{trip._id}}">View
+                                                receipt</a>
+                                        </li>
+                                        <li class="row-space-1">
+                                            <a class="button-steel" ng-click="deleteTrip(trip._id)">Delete Trip</a>
+                                        </li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</main>
+
+<div ng-bind-html="tripItinerary" ng-show="isItinerary">
+
+</div>
+
+<% include footer.ejs %>
+
+<div id="gmap-preload" class="hide"></div>
+
+<div class="ipad-interstitial-wrapper"><span data-reactid=".1"></span></div>
+
+<div id="fb-root"></div>
+
+<!--<script type="text/javascript"     src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&sensor=false"></script>-->
+<script type="text/javascript"
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBXyRBiyRcEzHDJ8iU00zECMUP4cXBIm6A&sensor=false&libraries=places"></script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+<script type="text/javascript" src="http://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
+
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.2/angular.min.js"></script>
+
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/angular-sanitize/1.3.2/angular-sanitize.min.js"></script>
+
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/ResponsiveSlides.js/1.53/responsiveslides.min.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.login_popup_head').click(function (e) {
+            e.preventDefault();
+            $("body").addClass("pos-fix");
+            $(".login_popup").show();
+            $(".signup_popup").hide();
+            $(".signup_popup2").hide();
+        });
+        $('.login-close').click(function (event) {
+            $("body").removeClass("pos-fix");
+            $(".login_popup").hide();
+        });
+        $('.top-home').click(function (event) {
+            event.stopPropagation();
+        });
+    });
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.forgot-password-popup').click(function (e) {
+            e.preventDefault();
+            $("body").addClass("pos-fix");
+            $(".login_popup").hide();
+            $(".forgot-passward").show();
+        });
+        $('.login-close').click(function (event) {
+            $("body").removeClass("pos-fix");
+            $(".forgot-passward").hide();
+        });
+        $('.top-home').click(function (event) {
+            event.stopPropagation();
+        });
+    });
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.signup_popup_head').click(function (e) {
+            e.preventDefault();
+            $("body").addClass("pos-fix");
+            $(".signup_popup").show();
+            $(".login_popup").hide();
+        });
+        $('.login-close').click(function () {
+            $("body").removeClass("pos-fix");
+            $(".signup_popup").hide();
+        });
+        $('.top-home').click(function (event) {
+            event.stopPropagation();
+        });
+    });
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.signup_popup_head2').click(function (e) {
+            e.preventDefault();
+            $("body").addClass("pos-fix");
+            $(".signup_popup2").show();
+            $(".signup_popup").hide();
+        });
+        $('.login-close').click(function () {
+            $("body").removeClass("pos-fix");
+            $(".signup_popup2").hide();
+        });
+        $('.top-home').click(function (event) {
+            event.stopPropagation();
+        });
+    });
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('ul.menu-group li a').click(function () {
+            $('.nav--sm').css('visibility', 'hidden');
+        });
+    });
+</script>
+<script>
+    var app = angular.module('App', ['ngSanitize']);
+    var APP_URL = "http:\/\/localhost:3000";
+    $.datepicker.setDefaults($.datepicker.regional["en"])
+</script>
+
+
+<script src="../js/common.js"></script>
+<script type="application/javascript" src="controller/common_controller.js"></script>
+
+<script src="https://angular-file-upload.appspot.com/js/ng-file-upload-shim.js"></script>
+<script src="https://angular-file-upload.appspot.com/js/ng-file-upload.js"></script>
+
+<div class="tooltip tooltip-bottom-middle" role="tooltip" aria-hidden="true">
+    <p class="panel-body">To sign up, you must be 18 or older. Other people won’t see your birthday.</p>
+</div>
+</body>
+</html>

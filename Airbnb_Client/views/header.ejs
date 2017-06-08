@@ -1,0 +1,204 @@
+<div id="header" class="makent-header new shift-with-hiw">
+    <header class="regular-header clearfix hide-sm" id="old-header" role="banner">
+
+        <a aria-label="Homepage" href="/" class="header-belo pull-left home-logo"
+           style="background:rgba(0, 0, 0, 0) url('http://localhost:3000/images/logos/logo.png') no-repeat scroll 0 0;">
+    <span class="screen-reader-only">
+      Airbnb
+    </span>
+        </a>
+        <!-- hide-sm -->
+        <div class="pull-left search-input-home" style="padding-left:15px">
+            <ul class="nav pull-left  list-unstyled search-form-container" id="search-form-header">
+                <li id="header-search" class="search-bar-wrapper pull-left medium-right-margin">
+                    <form action="/search" class="search-form">
+                        <div class="search-bar">
+                            <i class="icon icon-search icon-gray h4"></i>
+                            <label class="screen-reader-only" for="header-search-form">Where to?</label>
+                            <input type="text" placeholder="Where to?" autocomplete="off" name="location"
+                                   id="header-search-form" class="location" value="">
+                        </div>
+                        <div id="header-search-settings" class="panel search-settings header-menu">
+                            <div class="panel-body clearfix basic-settings">
+                                <div class="setting checkin">
+                                    <label for="header-search-checkin" class="field-label">
+                                        <strong>Check In</strong>
+                                    </label>
+                                    <input type="text" autocomplete="off" id="header-search-checkin"
+                                           data-field-name="check_in_dates" name="checkin"
+                                           class="checkin ui-datepicker-target" placeholder="dd-mm-yyyy"></div>
+
+                                <div class="setting checkout">
+                                    <label for="header-search-checkout" class="field-label">
+                                        <strong>Check Out</strong>
+                                    </label>
+                                    <input type="text" autocomplete="off" id="header-search-checkout"
+                                           data-field-name="check_out_dates" class="checkout ui-datepicker-target"
+                                           name="checkout" placeholder="dd-mm-yyyy"></div>
+
+                                <div class="setting guests">
+                                    <label for="header-search-guests" class="field-label">
+                                        <strong>Guests</strong>
+                                    </label>
+                                    <div class="select select-block">
+                                        <select id="header-search-guests" data-field-name="number_of_guests"
+                                                name="guests">
+                                            <option value="1"> 1</option>
+                                            <option value="2"> 2</option>
+                                            <option value="3"> 3</option>
+                                            <option value="4"> 4</option>
+                                            <option value="5"> 5</option>
+                                            <option value="6"> 6</option>
+                                            <option value="7"> 7</option>
+                                            <option value="8"> 8</option>
+                                            <option value="9"> 9</option>
+                                            <option value="10"> 10</option>
+                                            <option value="11"> 11</option>
+                                            <option value="12"> 12</option>
+                                            <option value="13"> 13</option>
+                                            <option value="14"> 14</option>
+                                            <option value="15"> 15</option>
+                                            <option value="16"> 16+</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="panel-header menu-header normal-line-height">
+                                <small>
+                                    <strong>Room type</strong>
+                                </small>
+                            </div>
+
+                            <div class="panel-body">
+                                <div class="row-space-4">
+                                    <label class="checkbox menu-item" for="header_room_type_1">
+                                        <input type="checkbox" id="header_room_type_1" name="room_types[]"
+                                               value="Entire home/apt">
+                                        <i class="icon icon-entire-place horizontal-margin-medium"></i>
+                                        <span>Entire home/apt</span>
+                                    </label>
+                                    <label class="checkbox menu-item" for="header_room_type_2">
+                                        <input type="checkbox" id="header_room_type_2" name="room_types[]"
+                                               value="Private room">
+                                        <i class="icon icon-private-room horizontal-margin-medium"></i>
+                                        <span>Private room</span>
+                                    </label>
+                                    <label class="checkbox menu-item" for="header_room_type_3">
+                                        <input type="checkbox" id="header_room_type_3" name="room_types[]"
+                                               value="Shared room">
+                                        <i class="icon icon-shared-room horizontal-margin-medium"></i>
+                                        <span>Shared room</span>
+                                    </label>
+                                </div>
+                                <button type="submit" class="btn btn-primary btn-block">
+                                    <i class="icon icon-search"></i>
+                                    <span>Find a place</span>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </li>
+            </ul>
+        </div>
+        <div class="pull-right">
+            <ul ng-show="<%= isLoggedIn %>" class="nav pull-left help-menu list-unstyled">
+
+                <li class="list-your-space pull-left">
+                    <a id="list-your-space" class="become" href="/becomeHost" style="border-left:none !important;">
+        <span id="list-your-space" class="btn btn-special list-your-space-btn">
+          Become a Host
+          </span>
+                    </a>
+                </li>
+                <li id="header-help-menu" class="help-menu-container pull-left dropdown-trigger">
+                    <a class="help-toggle link-reset" href="">
+                        Help
+                    </a>
+                </li>
+
+            </ul>
+
+            <ul ng-hide="<%= isLoggedIn %>" class="nav pull-left logged-out list-unstyled">
+                <li id="sign_up" class="pull-left">
+                    <a data-signup-modal="" data-header-view="true" href="" data-redirect=""
+                       class="link-reset signup_popup_head">
+                        Sign Up
+                    </a>
+                </li>
+                <li id="login" class="pull-left">
+                    <a data-login-modal="" href="" data-redirect="" class="link-reset login_popup_head">
+                        Log In
+                    </a>
+                </li>
+            </ul>
+
+            <ul ng-show="<%= isLoggedIn %>" class="nav pull-left list-unstyled">
+                <li class="pull-left dropdown-trigger">
+                    <a class="link-reset trip-drop" href="/yourTrips">
+                        <span class="trip-pos"> Trips</span>
+                        <i class="trips-icon">
+                            <i class="alert-count fade">0</i>
+                        </i>
+                    </a>
+                </li>
+            </ul>
+
+
+            <ul ng-show="<%= isLoggedIn %>" class="nav pull-left list-unstyled" role="navigation">
+                <li class="user-item pull-left medium-right-margin dropdown-trigger">
+                    <a class="link-reset header-avatar-trigger" id="header-avatar-trigger" href="">
+                    <span class="value_name">
+                        <%= firstname %>
+                      </span>
+                        <div class="media-photo media-round user-profile-image"
+                             style="background: rgba(0, 0, 0, 0) url('http://localhost:3000/images/<%= profileImg %>') no-repeat scroll 0 0 / cover"></div>
+                        <!--<i class="icon icon-caret-down icon-light-gray h5"></i>-->
+                    </a>
+                    <ul class="tooltip tooltip-top-right dropdown-menu list-unstyled header-dropdown drop-down-menu-login">
+                        <li>
+                            <a href="/getDashBoardPage" rel="nofollow"
+                               class="no-crawl link-reset menu-item item-dashboard">
+                                Dashboard
+                            </a>
+                        </li>
+                        <li class="listings">
+                            <a href="/yourListings" rel="nofollow" class="no-crawl link-reset menu-item item-listing">
+                      <span class="plural">
+                        Your Listings
+                      </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/yourTrips" rel="nofollow" class="no-crawl link-reset menu-item item-trips">
+                                Your Trips
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/editProfilePage" rel="nofollow"
+                               class="no-crawl link-reset menu-item item-user-edit">
+                                Edit Profile
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/Account_Transactions" rel="nofollow"
+                               class="no-crawl link-reset menu-item item-account">
+                                Account
+                            </a>
+                        </li>
+                        <li class="business-travel hide">
+                            <a href="" rel="nofollow" class="no-crawl link-reset menu-item item-business-travel">
+                                Business Travel
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/signout" rel="nofollow" class="no-crawl link-reset menu-item header-logout">
+                                Log Out
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </header>
+</div>

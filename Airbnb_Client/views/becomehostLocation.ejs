@@ -1,0 +1,1067 @@
+<!DOCTYPE html>
+
+<html lang="en-IN" xmlns:fb="http://ogp.me/ns/fb#"><!--<![endif]-->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="dns-prefetch" href="https://maps.googleapis.com/">
+    <link rel="dns-prefetch" href="https://maps.gstatic.com/">
+    <link rel="dns-prefetch" href="https://mts0.googleapis.com/">
+    <link rel="dns-prefetch" href="https://mts1.googleapis.com/">
+
+
+    <!--[if IE]><![endif]-->
+    <meta charset="utf-8">
+
+
+    <link media="all" type="text/css" rel="stylesheet" href="css/common.css">
+
+    <link media="all" type="text/css" rel="stylesheet" href="css/home.css">
+
+    <link media="all" type="text/css" rel="stylesheet" href="css/themes.css">
+
+    <link media="all" type="text/css" rel="stylesheet" href="css/pcss.css">
+
+
+    <link media="all" type="text/css" rel="stylesheet" href="css/manage_listing.css">
+
+
+    <style type="text/css">
+        .ui-selecting {
+            background: #FECA40;
+        }
+
+        .ui-selected {
+            background: #F39814;
+            color: white;
+        }
+    </style>
+
+    <title>Edit Listing </title>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+
+    <meta name="description" content="Edit Listing">
+    <meta name="keywords" content="">
+
+
+    <meta name="twitter:widgets:csp" content="on">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="search" type="application/opensearchdescription+xml" href="#" title="">
+
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <meta name="theme-color" content="#f5f5f5">
+
+</head>
+<body class="" ng-app="App">
+<% include header.ejs %>
+
+<main id="site-content" role="main" ng-controller="manage_listing" class="ng-scope">
+
+    <div class="manage-listing  never-listed" id="js-manage-listing">
+        <div class="manage-listing-alerts">
+            <div id="js-disaster-alert"></div>
+        </div>
+
+        <div id="ajax_header">
+            <div class="manage-listing-header" id="js-manage-listing-header">
+                <div class="subnav ml-header-subnav">
+                    <ul class="subnav-list ">
+                        <li class="show-if-collapsed-nav" id="collapsed-nav">
+                            <a href="#" data-prevent-default="" class="subnav-item show-collapsed-nav-link"
+                               id="price-id">
+                                <i class="icon icon-reorder show-collapsed-nav-link--icon"></i>
+                                <span class="show-collapsed-nav-link--text">
+          Pricing, listing details…
+        </span>
+                            </a>
+                        </li>
+                        <li class="subnav-text">
+      <span id="listing-name">
+      <span ng-hide="name">Entire home/apt in San Jose</span>
+      <span ng-show="name" class="ng-hide"><span ng-bind="name" class="ng-binding"></span></span>
+      </span>
+                            <span class="see-all-listings-link">
+        <span class="text-very-muted">(</span><span class="text-muted"><a href="#" class="text-normal link-underline">see all listings</a></span><span
+                                        class="text-very-muted">)</span>
+      </span>
+                        </li>
+                        <li>
+                            <a href="#" data-track="preview" class="subnav-item pull-right" id="preview-btn"
+                               title="Preview your listing as it will appear when active." target="_blank">
+
+                                <i class="icon icon-eye"></i>
+
+                                Preview
+
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="subnav-list has-collapsed-nav hide-md">
+                        <li class="show-if-collapsed-nav" id="collapsed-nav">
+                            <a href="#" data-prevent-default="" class="subnav-item show-collapsed-nav-link">
+                                <i class="icon icon-reorder show-collapsed-nav-link--icon"></i>
+                                <span class="show-collapsed-nav-link--text">
+          Pricing, listing details…
+        </span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Center Part Starting  -->
+        <div class="manage-listing-row-container">
+            <div class="col-lg-2 col-md-3 listing-nav-sm nopad pos-abs" id="js-manage-listing-nav">
+
+                <div class="nav-sections">
+
+
+                    <div class="h6 section-header row-space-1 pre-listed">
+                        Listing
+                    </div>
+                    <ul class="list-unstyled margin-bot-5 list-nav-link">
+                        <li class="nav-item nav-basics pre-listed" data-track="basics"
+                            ng-class="(step == 'basics') ? 'nav-active' : ''">
+                            <a href="" id="href_basics">
+                                <div class="row nav-item">
+                                    <div class="col-sm-12 va-container">
+                                        <span class="va-middle">Basics</span>
+
+                                        <div class="instant-book-status pull-right">
+                                            <div class="instant-book-status__on hide">
+                                                <i class="icon icon-bolt icon-beach h3"></i>
+                                            </div>
+                                            <div class="instant-book-status__off hide">
+                                                <i class="icon icon-bolt icon-light-gray h3"></i>
+                                            </div>
+                                        </div>
+                                        <div class="js-new-section-icon not-post-listed pull-right transition visible">
+                                            <i class="nav-icon icon icon-add icon-grey"></i>
+                                        </div>
+
+                                        <div class="pull-right">
+                                            <i class="nav-icon icon icon-ok-alt icon-babu not-post-listed hide"></i>
+                                            <i class="dot dot-success hide"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+
+
+                        <li class="nav-item nav-description pre-listed" data-track="description"
+                            ng-class="(step == &#39;description&#39;) ? &#39;nav-active&#39; : &#39;&#39;">
+                            <a href="#" id="href_description">
+                                <div class="row nav-item">
+                                    <div class="col-sm-12 va-container">
+                                        <span class="va-middle">Description</span>
+
+                                        <div class="instant-book-status pull-right">
+                                            <div class="instant-book-status__on hide">
+                                                <i class="icon icon-bolt icon-beach h3"></i>
+                                            </div>
+                                            <div class="instant-book-status__off hide">
+                                                <i class="icon icon-bolt icon-light-gray h3"></i>
+                                            </div>
+                                        </div>
+                                        <div class="js-new-section-icon not-post-listed pull-right transition visible">
+                                            <i class="nav-icon icon icon-add icon-grey"></i>
+                                        </div>
+
+                                        <div class="pull-right">
+                                            <i class="nav-icon icon icon-ok-alt icon-babu not-post-listed hide"></i>
+                                            <i class="dot dot-success hide"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+
+                        <li class="nav-item nav-location pre-listed nav-active" data-track="location"
+                            ng-class="(step == &#39;location&#39;) ? &#39;nav-active&#39; : &#39;&#39;">
+                            <a href="#" id="href_location">
+                                <div class="row nav-item">
+                                    <div class="col-sm-12 va-container">
+                                        <span class="va-middle">Location</span>
+
+                                        <div class="instant-book-status pull-right">
+                                            <div class="instant-book-status__on hide">
+                                                <i class="icon icon-bolt icon-beach h3"></i>
+                                            </div>
+                                            <div class="instant-book-status__off hide">
+                                                <i class="icon icon-bolt icon-light-gray h3"></i>
+                                            </div>
+                                        </div>
+                                        <div class="js-new-section-icon not-post-listed pull-right transition visible">
+                                            <i class="nav-icon icon icon-add icon-grey"></i>
+                                        </div>
+
+                                        <div class="pull-right">
+                                            <i class="nav-icon icon icon-ok-alt icon-babu not-post-listed hide"></i>
+                                            <i class="dot dot-success hide"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+
+                        <li class="nav-item nav-amenities pre-listed" data-track="amenities"
+                            ng-class="(step == 'amenities') ? 'nav-active' : ''">
+                            <a ng-click="reloadRoute()"
+                               href="" id="href_amenities">
+                                <div class="row nav-item">
+                                    <div class="col-sm-12 va-container">
+                                        <span class="va-middle">Amenities</span>
+
+                                        <div class="instant-book-status pull-right">
+                                            <div class="instant-book-status__on hide">
+                                                <i class="icon icon-bolt icon-beach h3"></i>
+                                            </div>
+                                            <div class="instant-book-status__off hide">
+                                                <i class="icon icon-bolt icon-light-gray h3"></i>
+                                            </div>
+                                        </div>
+
+                                        <div class="pull-right">
+                                            <i class="nav-icon icon icon-ok-alt icon-babu nav-icon-checked not-post-listed"></i>
+                                            <i class="dot dot-success hide"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+
+
+                        <li class="nav-item nav-photos pre-listed" data-track="photos"
+                            ng-class="(step == &#39;photos&#39;) ? &#39;nav-active&#39; : &#39;&#39;">
+                            <a href="#" id="href_photos">
+                                <div class="row nav-item">
+                                    <div class="col-sm-12 va-container">
+                                        <span class="va-middle">Photos</span>
+
+                                        <div class="instant-book-status pull-right">
+                                            <div class="instant-book-status__on hide">
+                                                <i class="icon icon-bolt icon-beach h3"></i>
+                                            </div>
+                                            <div class="instant-book-status__off hide">
+                                                <i class="icon icon-bolt icon-light-gray h3"></i>
+                                            </div>
+                                        </div>
+                                        <div class="js-new-section-icon not-post-listed pull-right transition visible">
+                                            <i class="nav-icon icon icon-add icon-grey"></i>
+                                        </div>
+
+                                        <div class="pull-right">
+                                            <i class="nav-icon icon icon-ok-alt icon-babu not-post-listed hide"></i>
+                                            <i class="dot dot-success hide"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+
+
+                    </ul>
+
+
+                    <div class="h6 section-header row-space-1 pre-listed">
+                        Hosting
+                    </div>
+                    <ul class="list-unstyled margin-bot-5 list-nav-link list-nav-link">
+
+                        <li class="nav-item nav-pricing pre-listed" data-track="pricing"
+                            ng-class="(step == &#39;pricing&#39;) ? &#39;nav-active&#39; : &#39;&#39;">
+                            <a href="#" id="href_pricing">
+                                <div class="row nav-item">
+                                    <div class="col-sm-12 va-container">
+                                        <span class="va-middle">Pricing</span>
+
+                                        <div class="instant-book-status pull-right">
+                                            <div class="instant-book-status__on hide">
+                                                <i class="icon icon-bolt icon-beach h3"></i>
+                                            </div>
+                                            <div class="instant-book-status__off hide">
+                                                <i class="icon icon-bolt icon-light-gray h3"></i>
+                                            </div>
+                                        </div>
+
+                                        <div class="js-new-section-icon not-post-listed pull-right transition visible">
+                                            <i class="nav-icon icon icon-add icon-grey"></i>
+                                        </div>
+
+                                        <div class="pull-right">
+                                            <i class="nav-icon icon icon-ok-alt icon-babu not-post-listed hide"></i>
+                                            <i class="dot dot-success hide"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+
+                        <li class="nav-item nav-calendar pre-listed" id="remove-manage" data-track="calendar"
+                            ng-class="(step == &#39;calendar&#39;) ? &#39;nav-active&#39; : &#39;&#39;">
+                            <a href="#" id="href_calendar">
+                                <div class="row nav-item">
+                                    <div class="col-sm-12 va-container">
+                                        <span class="va-middle">Calendar</span>
+
+                                        <div class="instant-book-status pull-right">
+                                            <div class="instant-book-status__on hide">
+                                                <i class="icon icon-bolt icon-beach h3"></i>
+                                            </div>
+                                            <div class="instant-book-status__off hide">
+                                                <i class="icon icon-bolt icon-light-gray h3"></i>
+                                            </div>
+                                        </div>
+
+                                        <div class="js-new-section-icon not-post-listed pull-right transition visible">
+                                            <i class="nav-icon icon icon-add icon-grey"></i>
+                                        </div>
+
+                                        <div class="pull-right">
+                                            <i class="nav-icon icon icon-ok-alt icon-babu not-post-listed hide"></i>
+                                            <i class="dot dot-success hide"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+            <div id="ajax_container" class="col-lg-10 col-md-9 mar-left-cont">
+                <div id="js-manage-listing-content-container" class="manage-listing-content-container ng-scope">
+                    <div class="manage-listing-content-wrapper">
+                        <div id="js-manage-listing-content" class="manage-listing-content col-lg-7 col-md-7">
+                            <div>
+                                <div class="row-space-4">
+                                    <div class="row">
+
+                                        <h3 class="col-12">Set Your Listing Location</h3>
+
+                                    </div>
+                                    <p class="text-muted">You’re not only sharing your space, you’re sharing your
+                                        neighborhood. Travelers will use this information to find a place that’s in the
+                                        right spot.</p>
+                                </div>
+
+                                <hr>
+
+                                <div id="js-location-container" class="js-section">
+                                    <div style="display: none;" class="js-saving-progress saving-progress">
+                                        <h5>Saving...</h5>
+                                    </div>
+
+                                    <h4>Address</h4>
+
+                                    <p>While guests can see approximately where your listing is located in search
+                                        results, your exact address is private and will only be shown to guests after
+                                        they book your listing.</p>
+
+                                    <div class="media-photo address-static-map">
+
+                                        <div class="location-map-container-v2 empty-map"></div>
+                                        <div class="location-map-pin-v2 map-pin moving"></div>
+
+
+                                    </div>
+                                    <div class="panel">
+                                        <div class="panel-body text-center">
+
+                                            <div class="text-center">
+                                                <button id="js-add-address" class="btn btn-large">
+                                                    Add Address
+                                                </button>
+                                            </div>
+
+                                            <address class="hide">
+                                                <span class="address-line"
+                                                      ng-init="address_line_1 = &#39;&#39;; address_line_2 = &#39;&#39;"> </span>
+                                                <span class="address-line"
+                                                      ng-init="city = &#39;San Jose&#39;; state = &#39;California&#39;">San Jose California</span>
+                                                <span class="address-line" ng-init="postal_code = &#39;&#39;"></span>
+                                                <span class="address-line"
+                                                      ng-init="country=&#39;US&#39;;latitude=&#39;37.3382082&#39;;longitude=&#39;-121.88632860000001&#39;">United States</span>
+                                            </address>
+
+                                            <a data-event-name="edit_address_click" id="js-edit-address"
+                                               class="js-edit-address-link edit-address-link hide" href="#">
+                                                Edit Address
+                                            </a>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div id="address-flow-view"></div>
+
+                                <div class="not-post-listed row row-space-top-6 progress-buttons">
+                                    <div class="col-12">
+                                        <div class="separator"></div>
+                                    </div>
+                                    <div class="col-2 row-space-top-1 next_step">
+
+                                        <a data-prevent-default="" href="#" class="back-section-button">Back</a>
+
+                                    </div>
+                                    <div class="col-10 text-right next_step">
+
+
+                                        <a data-prevent-default="" href="#"
+                                           class="btn btn-large btn-primary next-section-button">
+                                            Next
+                                        </a>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div id="js-manage-listing-help" class="manage-listing-help hide"></div>
+                    </div>
+                    <div class="manage-listing-content-background"></div>
+                </div>
+            </div>
+
+        </div>
+        <!-- Center Part Ending -->
+
+        <div class="manage-listing-footer" id="js-manage-listing-footer">
+            <div class="container-brand-dark footer-panel">
+                <div class="row row-table">
+                    <div class="col-2 col-foot site"><span class="text-muted">© Airbnb, Inc.</span></div>
+                    <div class="col-8 col-foot site-list text-center text-muted">
+                        <a href="#" class="text-muted">
+                            Terms of Service
+                        </a> |
+                        <a href="#" class="text-muted">
+                            Privacy Policy
+                        </a> |
+                        <a href="#" class="text-muted">
+                            Host Guarantee
+                        </a> |
+                        <a href="#" class="text-muted">
+                            Guest Refund
+                        </a> |
+                        <a href="#" class="text-muted">
+                            Copyright Policy
+                        </a> |
+                        <a href="#" class="text-muted">
+                            Consent Disagree
+                        </a> |
+                        <a href="#" class="text-muted">
+                            About Us
+                        </a>
+                    </div>
+                    <div class="col-2 col-foot">
+                        <div class="language-curr-picker pull-right">
+                            <div class="select select-large select-block row-space-2">
+                                <label id="language-selector-label" class="screen-reader-only">
+                                    messages.footer.change_language
+                                </label>
+                                <select class="language-selector" aria-labelledby="language-selector-label"
+                                        id="language_footer" name="language">
+                                    <option value="id">Bahasa Indonesia</option>
+                                    <option value="ms">Bahasa Melayu</option>
+                                    <option value="ca">Català</option>
+                                    <option value="da">Dansk</option>
+                                    <option value="de">Deutsch</option>
+                                    <option value="en" selected="selected">English</option>
+                                    <option value="es">Español</option>
+                                    <option value="el">Eλληνικά</option>
+                                    <option value="fr">Français</option>
+                                    <option value="it">Italiano</option>
+                                    <option value="hu">Magyar</option>
+                                    <option value="nl">Nederlands</option>
+                                    <option value="pl">Polski</option>
+                                    <option value="pt">Português</option>
+                                    <option value="fi">Suomi</option>
+                                    <option value="tr">Türkçe</option>
+                                    <option value="ru">Русский</option>
+                                    <option value="th">ภาษาไทย</option>
+                                    <option value="zh">中文 (简体)</option>
+                                </select>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            var map_key = "AIzaSyBXyRBiyRcEzHDJ8iU00zECMUP4cXBIm6A";
+        </script>
+    </div>
+
+    <div id="gmap-preload" class="hide"></div>
+
+    <div class="ipad-interstitial-wrapper"><span data-reactid=".2"></span></div>
+
+
+    <div id="address-flow-view">
+        <div aria-hidden="true" style="display: none;" class="modal" role="dialog" data-sticky="true">
+            <div class="modal-table">
+                <div class="modal-cell" style="padding-top:30px; padding-bottom:10px;">
+                    <div class="modal-content">
+                        <div id="js-address-container" class="enter_address">
+                            <div class="panel ng-scope">
+                                <div class="panel-header">
+                                    <a data-behavior="modal-close" class="modal-close" href="#"></a>
+                                    <div class="h4 js-address-nav-heading">
+                                        Enter Address<br>
+                                        <small>What is your listing's address?</small>
+                                    </div>
+                                </div>
+                                <div class="flash-container" id="js-flash-error-clicked-frozen-field"></div>
+                                <div class="panel-body">
+                                    <div id="js-disaster-address-alert" class="media row-space-2 hide">
+                                        <i class="icon icon-flag icon-beach pull-left icon-size-2"></i>
+                                        <div class="media-body">
+                                            <strong>Your new location is outside of the disaster area.</strong><br>
+                                            <span class="text-muted">Your price has been reset to the daily rate.</span>
+                                        </div>
+                                    </div>
+
+                                    <form id="js-address-fields-form" name="enter_address" class="ng-pristine ng-valid">
+                                        <div class="row-space-1">
+                                            <label for="country">Country</label>
+                                            <div id="country-select">
+                                                <div class="select select-block">
+                                                    <select id="country" name="country_code">
+                                                        <option value="AF">Afghanistan</option>
+                                                        <option value="AL">Albania</option>
+                                                        <option value="DZ">Algeria</option>
+                                                        <option value="AS">American Samoa</option>
+                                                        <option value="AD">Andorra</option>
+                                                        <option value="AO">Angola</option>
+                                                        <option value="AI">Anguilla</option>
+                                                        <option value="AQ">Antarctica</option>
+                                                        <option value="AG">Antigua and Barbuda</option>
+                                                        <option value="AR">Argentina</option>
+                                                        <option value="AM">Armenia</option>
+                                                        <option value="AW">Aruba</option>
+                                                        <option value="AU">Australia</option>
+                                                        <option value="AT">Austria</option>
+                                                        <option value="AZ">Azerbaijan</option>
+                                                        <option value="BS">Bahamas</option>
+                                                        <option value="BH">Bahrain</option>
+                                                        <option value="BD">Bangladesh</option>
+                                                        <option value="BB">Barbados</option>
+                                                        <option value="BY">Belarus</option>
+                                                        <option value="BE">Belgium</option>
+                                                        <option value="BZ">Belize</option>
+                                                        <option value="BJ">Benin</option>
+                                                        <option value="BM">Bermuda</option>
+                                                        <option value="BT">Bhutan</option>
+                                                        <option value="BO">Bolivia</option>
+                                                        <option value="BA">Bosnia and Herzegovina</option>
+                                                        <option value="BW">Botswana</option>
+                                                        <option value="BV">Bouvet Island</option>
+                                                        <option value="BR">Brazil</option>
+                                                        <option value="IO">British Indian Ocean Territory</option>
+                                                        <option value="BN">Brunei Darussalam</option>
+                                                        <option value="BG">Bulgaria</option>
+                                                        <option value="BF">Burkina Faso</option>
+                                                        <option value="BI">Burundi</option>
+                                                        <option value="KH">Cambodia</option>
+                                                        <option value="CM">Cameroon</option>
+                                                        <option value="CA">Canada</option>
+                                                        <option value="CV">Cape Verde</option>
+                                                        <option value="KY">Cayman Islands</option>
+                                                        <option value="CF">Central African Republic</option>
+                                                        <option value="TD">Chad</option>
+                                                        <option value="CL">Chile</option>
+                                                        <option value="CN">China</option>
+                                                        <option value="CX">Christmas Island</option>
+                                                        <option value="CC">Cocos (Keeling) Islands</option>
+                                                        <option value="CO">Colombia</option>
+                                                        <option value="KM">Comoros</option>
+                                                        <option value="CG">Congo</option>
+                                                        <option value="CD">Congo, the Democratic Republic of the
+                                                        </option>
+                                                        <option value="CK">Cook Islands</option>
+                                                        <option value="CR">Costa Rica</option>
+                                                        <option value="CI">Cote D'Ivoire</option>
+                                                        <option value="HR">Croatia</option>
+                                                        <option value="CU">Cuba</option>
+                                                        <option value="CY">Cyprus</option>
+                                                        <option value="CZ">Czech Republic</option>
+                                                        <option value="DK">Denmark</option>
+                                                        <option value="DJ">Djibouti</option>
+                                                        <option value="DM">Dominica</option>
+                                                        <option value="DO">Dominican Republic</option>
+                                                        <option value="EC">Ecuador</option>
+                                                        <option value="EG">Egypt</option>
+                                                        <option value="SV">El Salvador</option>
+                                                        <option value="GQ">Equatorial Guinea</option>
+                                                        <option value="ER">Eritrea</option>
+                                                        <option value="EE">Estonia</option>
+                                                        <option value="ET">Ethiopia</option>
+                                                        <option value="FK">Falkland Islands (Malvinas)</option>
+                                                        <option value="FO">Faroe Islands</option>
+                                                        <option value="FJ">Fiji</option>
+                                                        <option value="FI">Finland</option>
+                                                        <option value="FR">France</option>
+                                                        <option value="GF">French Guiana</option>
+                                                        <option value="PF">French Polynesia</option>
+                                                        <option value="TF">French Southern Territories</option>
+                                                        <option value="GA">Gabon</option>
+                                                        <option value="GM">Gambia</option>
+                                                        <option value="GE">Georgia</option>
+                                                        <option value="DE">Germany</option>
+                                                        <option value="GH">Ghana</option>
+                                                        <option value="GI">Gibraltar</option>
+                                                        <option value="GR">Greece</option>
+                                                        <option value="GL">Greenland</option>
+                                                        <option value="GD">Grenada</option>
+                                                        <option value="GP">Guadeloupe</option>
+                                                        <option value="GU">Guam</option>
+                                                        <option value="GT">Guatemala</option>
+                                                        <option value="GN">Guinea</option>
+                                                        <option value="GW">Guinea-Bissau</option>
+                                                        <option value="GY">Guyana</option>
+                                                        <option value="HT">Haiti</option>
+                                                        <option value="HM">Heard Island and Mcdonald Islands</option>
+                                                        <option value="VA">Holy See (Vatican City State)</option>
+                                                        <option value="HN">Honduras</option>
+                                                        <option value="HK">Hong Kong</option>
+                                                        <option value="HU">Hungary</option>
+                                                        <option value="IS">Iceland</option>
+                                                        <option value="IN">India</option>
+                                                        <option value="ID">Indonesia</option>
+                                                        <option value="IR">Iran, Islamic Republic of</option>
+                                                        <option value="IQ">Iraq</option>
+                                                        <option value="IE">Ireland</option>
+                                                        <option value="IL">Israel</option>
+                                                        <option value="IT">Italy</option>
+                                                        <option value="JM">Jamaica</option>
+                                                        <option value="JP">Japan</option>
+                                                        <option value="JO">Jordan</option>
+                                                        <option value="KZ">Kazakhstan</option>
+                                                        <option value="KE">Kenya</option>
+                                                        <option value="KI">Kiribati</option>
+                                                        <option value="KP">Korea, Democratic People's Republic of
+                                                        </option>
+                                                        <option value="KR">Korea, Republic of</option>
+                                                        <option value="KW">Kuwait</option>
+                                                        <option value="KG">Kyrgyzstan</option>
+                                                        <option value="LA">Lao People's Democratic Republic</option>
+                                                        <option value="LV">Latvia</option>
+                                                        <option value="LB">Lebanon</option>
+                                                        <option value="LS">Lesotho</option>
+                                                        <option value="LR">Liberia</option>
+                                                        <option value="LY">Libyan Arab Jamahiriya</option>
+                                                        <option value="LI">Liechtenstein</option>
+                                                        <option value="LT">Lithuania</option>
+                                                        <option value="LU">Luxembourg</option>
+                                                        <option value="MO">Macao</option>
+                                                        <option value="MK">Macedonia, the Former Yugoslav Republic of
+                                                        </option>
+                                                        <option value="MG">Madagascar</option>
+                                                        <option value="MW">Malawi</option>
+                                                        <option value="MY">Malaysia</option>
+                                                        <option value="MV">Maldives</option>
+                                                        <option value="ML">Mali</option>
+                                                        <option value="MT">Malta</option>
+                                                        <option value="MH">Marshall Islands</option>
+                                                        <option value="MQ">Martinique</option>
+                                                        <option value="MR">Mauritania</option>
+                                                        <option value="MU">Mauritius</option>
+                                                        <option value="YT">Mayotte</option>
+                                                        <option value="MX">Mexico</option>
+                                                        <option value="FM">Micronesia, Federated States of</option>
+                                                        <option value="MD">Moldova, Republic of</option>
+                                                        <option value="MC">Monaco</option>
+                                                        <option value="MN">Mongolia</option>
+                                                        <option value="MS">Montserrat</option>
+                                                        <option value="MA">Morocco</option>
+                                                        <option value="MZ">Mozambique</option>
+                                                        <option value="MM">Myanmar</option>
+                                                        <option value="NA">Namibia</option>
+                                                        <option value="NR">Nauru</option>
+                                                        <option value="NP">Nepal</option>
+                                                        <option value="NL">Netherlands</option>
+                                                        <option value="AN">Netherlands Antilles</option>
+                                                        <option value="NC">New Caledonia</option>
+                                                        <option value="NZ">New Zealand</option>
+                                                        <option value="NI">Nicaragua</option>
+                                                        <option value="NE">Niger</option>
+                                                        <option value="NG">Nigeria</option>
+                                                        <option value="NU">Niue</option>
+                                                        <option value="NF">Norfolk Island</option>
+                                                        <option value="MP">Northern Mariana Islands</option>
+                                                        <option value="NO">Norway</option>
+                                                        <option value="OM">Oman</option>
+                                                        <option value="PK">Pakistan</option>
+                                                        <option value="PW">Palau</option>
+                                                        <option value="PS">Palestinian Territory, Occupied</option>
+                                                        <option value="PA">Panama</option>
+                                                        <option value="PG">Papua New Guinea</option>
+                                                        <option value="PY">Paraguay</option>
+                                                        <option value="PE">Peru</option>
+                                                        <option value="PH">Philippines</option>
+                                                        <option value="PN">Pitcairn</option>
+                                                        <option value="PL">Poland</option>
+                                                        <option value="PT">Portugal</option>
+                                                        <option value="PR">Puerto Rico</option>
+                                                        <option value="QA">Qatar</option>
+                                                        <option value="RE">Reunion</option>
+                                                        <option value="RO">Romania</option>
+                                                        <option value="RU">Russian Federation</option>
+                                                        <option value="RW">Rwanda</option>
+                                                        <option value="SH">Saint Helena</option>
+                                                        <option value="KN">Saint Kitts and Nevis</option>
+                                                        <option value="LC">Saint Lucia</option>
+                                                        <option value="PM">Saint Pierre and Miquelon</option>
+                                                        <option value="VC">Saint Vincent and the Grenadines</option>
+                                                        <option value="WS">Samoa</option>
+                                                        <option value="SM">San Marino</option>
+                                                        <option value="ST">Sao Tome and Principe</option>
+                                                        <option value="SA">Saudi Arabia</option>
+                                                        <option value="SN">Senegal</option>
+                                                        <option value="RS">Serbia and Montenegro</option>
+                                                        <option value="SC">Seychelles</option>
+                                                        <option value="SL">Sierra Leone</option>
+                                                        <option value="SG">Singapore</option>
+                                                        <option value="SK">Slovakia</option>
+                                                        <option value="SI">Slovenia</option>
+                                                        <option value="SB">Solomon Islands</option>
+                                                        <option value="SO">Somalia</option>
+                                                        <option value="ZA">South Africa</option>
+                                                        <option value="GS">South Georgia and the South Sandwich
+                                                            Islands
+                                                        </option>
+                                                        <option value="ES">Spain</option>
+                                                        <option value="LK">Sri Lanka</option>
+                                                        <option value="SD">Sudan</option>
+                                                        <option value="SR">Suriname</option>
+                                                        <option value="SJ">Svalbard and Jan Mayen</option>
+                                                        <option value="SZ">Swaziland</option>
+                                                        <option value="SE">Sweden</option>
+                                                        <option value="CH">Switzerland</option>
+                                                        <option value="SY">Syrian Arab Republic</option>
+                                                        <option value="TW">Taiwan, Province of China</option>
+                                                        <option value="TJ">Tajikistan</option>
+                                                        <option value="TZ">Tanzania, United Republic of</option>
+                                                        <option value="TH">Thailand</option>
+                                                        <option value="TL">Timor-Leste</option>
+                                                        <option value="TG">Togo</option>
+                                                        <option value="TK">Tokelau</option>
+                                                        <option value="TO">Tonga</option>
+                                                        <option value="TT">Trinidad and Tobago</option>
+                                                        <option value="TN">Tunisia</option>
+                                                        <option value="TR">Turkey</option>
+                                                        <option value="TM">Turkmenistan</option>
+                                                        <option value="TC">Turks and Caicos Islands</option>
+                                                        <option value="TV">Tuvalu</option>
+                                                        <option value="UG">Uganda</option>
+                                                        <option value="UA">Ukraine</option>
+                                                        <option value="AE">United Arab Emirates</option>
+                                                        <option value="GB">United Kingdom</option>
+                                                        <option value="US" selected="selected">United States</option>
+                                                        <option value="UM">United States Minor Outlying Islands</option>
+                                                        <option value="UY">Uruguay</option>
+                                                        <option value="UZ">Uzbekistan</option>
+                                                        <option value="VU">Vanuatu</option>
+                                                        <option value="VE">Venezuela</option>
+                                                        <option value="VN">Viet Nam</option>
+                                                        <option value="VG">Virgin Islands, British</option>
+                                                        <option value="VI">Virgin Islands, U.s.</option>
+                                                        <option value="WF">Wallis and Futuna</option>
+                                                        <option value="EH">Western Sahara</option>
+                                                        <option value="YE">Yemen</option>
+                                                        <option value="ZM">Zambia</option>
+                                                        <option value="ZW">Zimbabwe</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="localized-fields">
+                                            <div class="row-space-1">
+                                                <label for="address_line_1">Address Line 1</label>
+                                                <input type="text" placeholder="House name/number + street/road"
+                                                       value="" class="focus" id="address_line_1" name="address_line_1"
+                                                       autocomplete="off">
+                                            </div>
+
+                                            <div class="row-space-1">
+                                                <label for="address_line_2">Address Line 2</label>
+                                                <input type="text" placeholder="Apt., suite, building access code"
+                                                       value="" class="focus" id="address_line_2" name="address_line_2">
+                                            </div>
+
+                                            <div class="row-space-1">
+                                                <label for="city">City / Town / District</label>
+                                                <input type="text" placeholder="" class="focus" value="San Jose"
+                                                       id="city" name="city" required="true">
+                                            </div>
+
+                                            <div class="row-space-1">
+                                                <label for="state">State / Province / County / Region</label>
+                                                <input type="text" placeholder="" class="focus" value="California"
+                                                       id="state" name="state" required="true">
+                                            </div>
+
+                                            <div class="row-space-1">
+                                                <label for="postal_code">ZIP / Postal Code</label>
+                                                <input type="text" placeholder="" class="focus" value=""
+                                                       id="postal_code" name="postal_code">
+                                            </div>
+
+                                        </div>
+                                    </form>
+                                </div>
+
+                                <div class="panel-footer">
+                                    <div class="force-oneline">
+                                        <button data-behavior="modal-close" class="btn js-secondary-btn">
+                                            Cancel
+                                        </button>
+                                        <button id="js-next-btn" class="btn btn-primary js-next-btn">
+                                            Next
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="js-error" class="modal show" aria-hidden="true" style="display: none;" tabindex="-1">
+        <div class="modal-table">
+            <div class="modal-cell">
+                <div class="modal-content">
+                    <div class="panel-header">
+
+                    </div>
+                    <div class="panel-body">
+                        <p></p>
+                    </div>
+                    <div class="panel-footer">
+                        <button data-behavior="modal-close" class="btn">
+                            Close
+                        </button>
+                        <button class="btn btn-primary js-delete-photo-confirm hide" data-id="">
+                            Delete
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal finish-modal hide" aria-hidden="true" style="" tabindex="-1">
+        <div class="modal-table">
+            <div class="modal-cell">
+                <div class="modal-content content-container">
+                    <div class="panel">
+                        <a data-behavior="modal-close" class="modal-close" href="#"></a>
+
+                        <div class="finish-modal-header"></div>
+                        <div class="listing-card-container">
+
+                            <div class="listing">
+
+                                <div class="panel-image listing-img">
+
+                                    <a class="media-photo media-cover" target="" href="#">
+                                        <div class="listing-img-container media-cover text-center">
+
+                                            <img alt="" class="img-responsive-height" data-current="0" itemprop="image">
+
+                                        </div>
+                                    </a>
+
+                                    <a class="link-reset panel-overlay-bottom-left panel-overlay-label panel-overlay-listing-label"
+                                       target="" href="#">
+                                        <div>
+                                            <sup class="h6 text-contrast"><span id="symbol_finish"></span></sup>
+                                            <span class="h3 text-contrast price-amount ng-binding"></span>
+                                            <sup class="h6 text-contrast"></sup>
+
+                                        </div>
+
+                                    </a>
+
+                                    <div class="panel-overlay-top-right wl-social-connection-panel">
+
+                                    </div>
+
+                                </div>
+
+                                <div class="panel-body panel-card-section">
+                                    <div class="media">
+
+                                        <a class="media-photo-badge pull-right card-profile-picture card-profile-picture-offset"
+                                           href="#">
+                                            <div class="media-photo media-round">
+                                                <img alt="" src="./Edit Listing_files/profile_pic_1462128586.jpg">
+                                            </div>
+
+                                        </a>
+
+                                        <h3 class="h5 listing-name text-truncate row-space-top-1" itemprop="name"
+                                            title="d">
+
+                                            <a class="text-normal ng-binding" target="" href="#">
+
+                                            </a>
+                                        </h3>
+                                        <div class="text-muted listing-location text-truncate ng-binding"
+                                             itemprop="description"> · ,
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <input type="hidden" id="room_id" value="10017">
+                        <input type="hidden" id="room_status" value="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<% include footer.ejs %>
+
+<div id="gmap-preload" class="hide"></div>
+
+<div class="ipad-interstitial-wrapper"><span data-reactid=".1"></span></div>
+
+<script type="text/javascript"
+        src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&sensor=false"></script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+<script type="text/javascript" src="http://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
+
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.2/angular.min.js"></script>
+
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/angular-sanitize/1.3.2/angular-sanitize.min.js"></script>
+
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/ResponsiveSlides.js/1.53/responsiveslides.min.js"></script>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.login_popup_head').click(function (e) {
+            e.preventDefault();
+            $("body").addClass("pos-fix");
+            $(".login_popup").show();
+            $(".signup_popup").hide();
+            $(".signup_popup2").hide();
+        });
+        $('.login-close').click(function (event) {
+            $("body").removeClass("pos-fix");
+            $(".login_popup").hide();
+        });
+        $('.top-home').click(function (event) {
+            event.stopPropagation();
+        });
+    });
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.forgot-password-popup').click(function (e) {
+            e.preventDefault();
+            $("body").addClass("pos-fix");
+            $(".login_popup").hide();
+            $(".forgot-passward").show();
+        });
+        $('.login-close').click(function (event) {
+            $("body").removeClass("pos-fix");
+            $(".forgot-passward").hide();
+        });
+        $('.top-home').click(function (event) {
+            event.stopPropagation();
+        });
+    });
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.signup_popup_head').click(function (e) {
+            e.preventDefault();
+            $("body").addClass("pos-fix");
+            $(".signup_popup").show();
+            $(".login_popup").hide();
+        });
+        $('.login-close').click(function () {
+            $("body").removeClass("pos-fix");
+            $(".signup_popup").hide();
+        });
+        $('.top-home').click(function (event) {
+            event.stopPropagation();
+        });
+    });
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.signup_popup_head2').click(function (e) {
+            e.preventDefault();
+            $("body").addClass("pos-fix");
+            $(".signup_popup2").show();
+            $(".signup_popup").hide();
+        });
+        $('.login-close').click(function () {
+            $("body").removeClass("pos-fix");
+            $(".signup_popup2").hide();
+        });
+        $('.top-home').click(function (event) {
+            event.stopPropagation();
+        });
+    });
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('ul.menu-group li a').click(function () {
+            $('.nav--sm').css('visibility', 'hidden');
+        });
+    });
+</script>
+<script>
+    var app = angular.module('App', ['ngSanitize']);
+    var APP_URL = "http:\/\/localhost:3000";
+    $.datepicker.setDefaults($.datepicker.regional["en"])
+</script>
+
+
+<script src="js/common.js"></script>
+
+<script src="js/manage_listing.js"></script>
+<script src="https://angular-file-upload.appspot.com/js/ng-file-upload-shim.js"></script>
+<script src="https://angular-file-upload.appspot.com/js/ng-file-upload.js"></script>
+
+<div class="tooltip tooltip-bottom-middle" role="tooltip" aria-hidden="true" style="opacity: 0;">
+    <p class="panel-body">To sign up, you must be 18 or older. Other people won’t see your birthday.</p>
+</div>
+<div class="pac-container pac-logo"
+     style="display: none; width: 526px; position: absolute; left: 120px; top: 60px;"></div>
+<div class="pac-container pac-logo" style="display: none; width: 0px; position: absolute; left: 0px; top: 0px;"></div>
+<div class="pac-container pac-logo" style="display: none; width: 0px; position: absolute; left: 0px; top: 0px;"></div>
+<div class="pac-container pac-logo" style="display: none; width: 0px; position: absolute; left: 0px; top: 0px;"></div>
+</body>
+</html>

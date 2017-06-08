@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+
+<html lang="en-IN" xmlns:fb="http://ogp.me/ns/fb#"><!--<![endif]-->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="dns-prefetch" href="https://maps.googleapis.com/">
+    <link rel="dns-prefetch" href="https://maps.gstatic.com/">
+    <link rel="dns-prefetch" href="https://mts0.googleapis.com/">
+    <link rel="dns-prefetch" href="https://mts1.googleapis.com/">
+
+    <!--[if IE]><![endif]-->
+    <meta charset="utf-8">
+
+    <!--[if IE 8]>
+    <link media="all" type="text/css" rel="stylesheet" href="http://makent.trioangle.com/css/common_ie8.css">
+
+    <![endif]-->
+    <!--[if !(IE 8)]><!-->
+    <link media="all" type="text/css" rel="stylesheet" href="css/common.css">
+
+    <link media="all" type="text/css" rel="stylesheet" href="css/home.css">
+
+    <link media="all" type="text/css" rel="stylesheet" href="css/themes.css">
+
+    <link media="all" type="text/css" rel="stylesheet" href="css/dynamic.css">
+
+    <!--<![endif]-->
+
+    <!--[if lt IE 9]>
+    <link media="all" type="text/css" rel="stylesheet" href="http://makent.trioangle.com/css/airglyphs-ie8.css">
+
+    <![endif]-->
+
+
+    <link media="all" type="text/css" rel="stylesheet" href="css/main.css">
+
+    <style type="text/css">
+        .ui-selecting {
+            background: #FECA40;
+        }
+
+        .ui-selected {
+            background: #F39814;
+            color: white;
+        }
+    </style>
+
+    <title>Vacation Rentals, Homes, Apartments &amp; Rooms for Rent </title>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+
+    <meta name="description" content="Vacation Rentals, Homes, Apartments &amp; Rooms for Rent">
+    <meta name="keywords" content="">
+
+
+    <meta name="twitter:widgets:csp" content="on">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="search" type="application/opensearchdescription+xml" href="#" title="">
+
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <meta name="theme-color" content="#f5f5f5">
+
+
+</head>
+<body class="home_view v2 simple-header p1" ng-app="App">
+<% include header.ejs %>
+<% include modal.ejs %>
+
+<main id="site-content" role="main">
+
+    <div class="hero shift-with-hiw js-hero">
+        <div class="hero__background" data-native-currency="ZAR" aria-hidden="true">
+
+            <ul class="rslides" id="home_slider">
+                <li>
+                    <img alt="" src="/images/homepage_1.jpg" width="100%">
+                </li>
+                <li>
+                    <img alt="" src="/images/homepage_2.jpg" width="100%">
+                </li>
+                <li>
+                    <img alt="" src="/images/homepage_3.jpg" width="100%">
+                </li>
+            </ul>
+        </div>
+
+        <div class="hero__content page-container page-container-full text-center">
+            <div class="va-container va-container-v va-container-h">
+                <div class="va-middle">
+                    <h2 class="text-branding text-jumbo text-contrast space-1">
+                        Welcome home
+                    </h2>
+                    <div class="h4 text-contrast space-4">
+                        Rent unique places to stay from local hosts in 190+ countries.
+                    </div>
+                    <a href="javascript:void(0);"
+                       class="btn hide-sm btn-contrast btn-large btn-semi-transparent js-show-how-it-works">
+                        How It Works
+                    </a>
+                </div>
+            </div>
+            <div class="hero__content-footer hide-sm">
+                <div class="col-sm-12">
+                    <div id="searchbar">
+                        <div class="searchbar" data-reactid=".1">
+                            <form action="/search" class="simple-search" method="get" id="searchbar-form"
+                                  name="simple-search">
+                                <div class="saved-search-wrapper searchbar__input-wrapper">
+                                    <label class="input-placeholder-group searchbar__location">
+                                        <span class="input-placeholder-label screen-reader-only">Where do you want to go?</span>
+                                        <input class="menu-autocomplete-input form-inline location input-large input-contrast"
+                                               placeholder="Where do you want to go?" type="text" name="location"
+                                               id="location" aria-autocomplete="both" autocomplete="off" value="">
+                                    </label>
+                                    <div class="searchbar__location-error hide">Please set location</div>
+                                    <label class="input-placeholder-group searchbar__checkin">
+                                        <span class="input-placeholder-label screen-reader-only">Check In</span>
+                                        <input type="text" id="checkin"
+                                               class="checkin input-large input-contrast ui-datepicker-target"
+                                               name="checkin" placeholder="Check In">
+                                    </label>
+                                    <label class="input-placeholder-group searchbar__checkout">
+                                        <span class="input-placeholder-label screen-reader-only"> Check Out</span>
+                                        <input type="text" id="checkout"
+                                               class="checkout input-large input-contrast ui-datepicker-target"
+                                               name="checkout" placeholder=" Check Out">
+                                    </label>
+                                    <label class="searchbar__guests">
+                                        <span class="screen-reader-only">Number of guests</span>
+                                        <div class="select select-large">
+                                            <select id="guests" name="guests">
+                                                <option value="1"> 1 Guest</option>
+                                                <option value="2"> 2 Guests</option>
+                                                <option value="3"> 3 Guests</option>
+                                                <option value="4"> 4 Guests</option>
+                                                <option value="5"> 5 Guests</option>
+                                                <option value="6"> 6 Guests</option>
+                                                <option value="7"> 7 Guests</option>
+                                                <option value="8"> 8 Guests</option>
+                                                <option value="9"> 9 Guests</option>
+                                                <option value="10"> 10 Guests</option>
+                                                <option value="11"> 11 Guests</option>
+                                                <option value="12"> 12 Guests</option>
+                                                <option value="13"> 13 Guests</option>
+                                                <option value="14"> 14 Guests</option>
+                                                <option value="15"> 15 Guests</option>
+                                                <option value="16"> 16+ Guests</option>
+                                            </select>
+                                        </div>
+                                    </label>
+                                    <div id="autocomplete-menu-sbea76915" aria-expanded="false" class="menu hide"
+                                         aria-role="listbox">
+                                        <div class="menu-section">
+                                        </div>
+                                    </div>
+                                </div>
+                                <input type="hidden" name="source" value="bb">
+                                <button id="submit_location" type="submit"
+                                        class="searchbar__submit btn btn-primary btn-large">Search
+                                </button>
+                            </form>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="hide show-md show-lg">
+
+        <section class="how-it-works how-it-works--overlay js-how-it-works" aria-hidden="true"
+                 style="top: 0px;display:none;height:361px;">
+            <a href="javascript:void(0);" class="how-it-works__close panel-close js-close-how-it-works">
+      <span class="screen-reader-only">
+        Close How It Works
+      </span>
+            </a>
+
+            <div class="page-container-responsive panel-contrast text-contrast">
+
+                <h2 class="screen-reader-only">
+                    How It Works
+                </h2>
+
+                <div class="row space-top-8 text-center">
+
+                    <div class="how-it-works__step how-it-works__step-one col-md-4">
+                        <div class="panel-body">
+                            <div class="how-it-works__image"></div>
+                            <h3>
+                                Discover Amazing Places
+                            </h3>
+                            <p>
+                                Find hosts with extra rooms, entire homes, and unique accommodations like castles and
+                                igloos.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="how-it-works__step how-it-works__step-two col-md-4">
+                        <div class="panel-body">
+                            <div class="how-it-works__image"></div>
+                            <h3>
+                                Book a Stay
+                            </h3>
+                            <p>
+                                Connect with hosts, confirm travel dates, and pay&mdash;all through Airbnb&rsquo;s
+                                trusted services.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="how-it-works__step how-it-works__step-three col-md-4">
+                        <div class="panel-body">
+                            <div class="how-it-works__image"></div>
+                            <h3>
+                                Travel
+                            </h3>
+                            <p>
+                                Feel at home, anywhere you go in the world.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+    </div>
+
+    <div class="panel panel-dark pull-left" style="width:100%;">
+        <div id="discovery-container">
+            <!-- <div class="discovery-section hide page-container-responsive page-container-no-padding" id="discovery-saved-searches">
+            </div>
+
+            <div class="discovery-section hide page-container-responsive page-container-no-padding" id="weekend-recommendations">
+            </div> -->
+
+            <!-- <div class="discovery-section page-container-responsive page-container-no-padding" id="host-banners">
+              <div class="row row-condensed space-top-8">
+                  <div class="col-md-7 col-lg-8 col-sm-12 hide-sm row-condensed">
+                      <ul class="host_banner_slides" id="host_banner_slider">
+                                              <li>
+                              <img alt="Hosting opens up a world of opportunity " src="http://makent.trioangle.com/images/host_banners/host_banners_1.jpg" width="100%">
+                            </li>
+                                              <li>
+                              <img alt="Earn money as an Makent host" src="http://makent.trioangle.com/images/host_banners/host_banners_2.jpg" width="100%">
+                            </li>
+                                              <li>
+                              <img alt="We&rsquo;re here to help" src="http://makent.trioangle.com/images/host_banners/host_banners_3.jpg" width="100%">
+                            </li>
+                                        </ul>
+                  </div>
+                  <input type="hidden" id="host_banners_count" value="2" >
+                  <div class="col-md-5 col-lg-4 col-sm-12 hide-sm host-banner-slider-content row-condensed">
+                      <ul class="host_banner_slides" id="host_banner_content_slider">
+                                                               <li class="host_banner_content_slider_item" id="host_banner_content_slider_item_0" >
+
+                                <div class="host-banner-content text-left">
+                                  <div class="space-4 host-banner-content-title"><strong>Hosting opens up a world of opportunity </strong></div>
+                                  <div class="space-4 host-banner-content-description">Earn money sharing your extra space with travelers. </div >
+                                  <a class="btn btn-host-banner host-banner-content-btn" href="http://makent.trioangle.com/rooms/new" target="_blank" >See What You Can Earn</a>
+                                </div>
+
+                            </li>
+                                                               <li class="host_banner_content_slider_item" id="host_banner_content_slider_item_1" >
+
+                                <div class="host-banner-content text-left">
+                                  <div class="space-4 host-banner-content-title"><strong>Earn money as an Makent host</strong></div>
+                                  <div class="space-4 host-banner-content-description">From saving for home repairs to taking a dream trip, hosts use extra income to fund their passions.</div >
+                                  <a class="btn btn-host-banner host-banner-content-btn" href="http://makent.trioangle.com/why_host" target="_blank" >Why Host</a>
+                                </div>
+
+                            </li>
+                                                               <li class="host_banner_content_slider_item" id="host_banner_content_slider_item_2" >
+
+                                <div class="host-banner-content text-left">
+                                  <div class="space-4 host-banner-content-title"><strong>We&rsquo;re here to help</strong></div>
+                                  <div class="space-4 host-banner-content-description">Makent provides tips and help along the way. From getting your home ready to choosing a price&mdash;we&rsquo;ve got tools for you.</div >
+                                  <a class="btn btn-host-banner host-banner-content-btn" href="http://makent.trioangle.com/help" target="_blank" >Help</a>
+                                </div>
+
+                            </li>
+                                        </ul>
+
+                  </div>
+              </div>
+            </div> -->
+
+            <div class="discovery-section page-container-responsive page-container-no-padding row-space-6"
+                 id="discover-recommendations">
+                <div class="section-intro text-center row-space-6 row-space-top-8">
+                    <h2 class="row-space-1">
+                        <strong>Explore the world</strong>
+                    </h2>
+                    <p class="text-lead">
+                        See where people are traveling, all around the world.
+                    </p>
+                </div>
+                <div class="discovery-tiles">
+
+                    <div class="row">
+
+
+                        <div class="col-lg-8 col-md-12 rm-padding-sm">
+
+                            <!-- repeat this div to display  -->
+                            <div class="discovery-card rm-padding-sm row-space-4 darken-on-hover "
+                                 style="background-image:url(/images/newyork.jpg);">
+                                <a href="/search?location=New York&checkin={{ checkin }}&checkout={{ checkout }}&guests={{ guests }}&room_type={{room_type}}"
+                                   class="link-reset"
+                                   data-hook="discovery-card">
+                                    <div class="va-container va-container-v va-container-h">
+                                        <div class="va-middle text-center text-contrast">
+                                            <div class="h2">
+                                                <strong>
+                                                    New York
+                                                </strong>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+
+                        </div>
+
+
+                        <div class="col-lg-4 col-md-6 col-sm-12 rm-padding-sm">
+
+                            <div class="discovery-card rm-padding-sm row-space-4 darken-on-hover "
+                                 style="background-image:url(/images/amsterdam.jpg);">
+                                <a href="/search?location=Amsterdam&checkin={{ checkin }}&checkout={{ checkout }}&guests={{ guests }}&room_type={{room_type}}"
+                                   class="link-reset" data-hook="discovery-card">
+                                    <div class="va-container va-container-v va-container-h">
+                                        <div class="va-middle text-center text-contrast">
+                                            <div class="h2">
+                                                <strong>
+                                                    Amsterdam
+                                                </strong>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+
+                        </div>
+
+
+                        <div class="col-lg-4 col-md-6 col-sm-12 rm-padding-sm">
+
+                            <div class="discovery-card rm-padding-sm row-space-4 darken-on-hover "
+                                 style="background-image:url(/images/prague.jpg);">
+                                <a href="/search?location=Prague&checkin={{ checkin }}&checkout={{ checkout }}&guests={{ guests }}&room_type={{room_type}}"
+                                   class="link-reset" data-hook="discovery-card">
+                                    <div class="va-container va-container-v va-container-h">
+                                        <div class="va-middle text-center text-contrast">
+                                            <div class="h2">
+                                                <strong>
+                                                    Prague
+                                                </strong>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+
+                        </div>
+
+
+                        <div class="col-lg-4 col-md-6 col-sm-12 rm-padding-sm">
+
+                            <div class="discovery-card rm-padding-sm row-space-4 darken-on-hover "
+                                 style="background-image:url(/images/dubai.jpg);">
+                                <a href="/search?location=Dubai&checkin={{ checkin }}&checkout={{ checkout }}&guests={{ guests }}&room_type={{room_type}}"
+                                   class="link-reset" data-hook="discovery-card">
+                                    <div class="va-container va-container-v va-container-h">
+                                        <div class="va-middle text-center text-contrast">
+                                            <div class="h2">
+                                                <strong>
+                                                    Dubai
+                                                </strong>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+
+                        </div>
+
+
+                        <div class="col-lg-4 col-md-6 col-sm-12 rm-padding-sm">
+
+                            <div class="discovery-card rm-padding-sm row-space-4 darken-on-hover "
+                                 style="background-image:url(/images/florence.jpg);">
+                                <a href="/search?location=Florence&checkin={{ checkin }}&checkout={{ checkout }}&guests={{ guests }}&room_type={{room_type}}"
+                                   class="link-reset" data-hook="discovery-card">
+                                    <div class="va-container va-container-v va-container-h">
+                                        <div class="va-middle text-center text-contrast">
+                                            <div class="h2">
+                                                <strong>
+                                                    Florence
+                                                </strong>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+
+                        </div>
+
+
+                        <div class="col-lg-4 col-md-6 col-sm-12 rm-padding-sm">
+
+                            <div class="discovery-card rm-padding-sm row-space-4 darken-on-hover "
+                                 style="background-image:url(/images/roidejaneiro.jpg);">
+                                <a href="/search?location=Roi De Janeiro.&checkin={{ checkin }}&checkout={{ checkout }}&guests={{ guests }}&room_type={{room_type}}"
+                                   class="link-reset" data-hook="discovery-card">
+                                    <div class="va-container va-container-v va-container-h">
+                                        <div class="va-middle text-center text-contrast">
+                                            <div class="h2">
+                                                <strong>
+                                                    Roi De Janeiro
+                                                </strong>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+
+                        </div>
+
+
+                        <div class=" col-lg-8 col-md-12 rm-padding-sm hide-sm">
+
+
+                            <div class="discovery-card rm-padding-sm row-space-4 darken-on-hover "
+                                 style="background-image:url(/images/london.jpg);">
+                                <a href="/search?location=London&checkin={{ checkin }}&checkout={{ checkout }}&guests={{ guests }}&room_type={{room_type}}"
+                                   class="link-reset"
+                                   data-hook="discovery-card">
+                                    <div class="va-container va-container-v va-container-h">
+                                        <div class="va-middle text-center text-contrast">
+                                            <div class="h2">
+                                                <strong>
+                                                    London
+                                                </strong>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+
+                        </div>
+
+
+                        <div class="col-lg-4 col-md-6 hide-sm rm-padding-sm col-switch col-md-push-6 col-lg-push-0">
+
+                            <div class="discovery-card rm-padding-sm row-space-4 darken-on-hover "
+                                 style="background-image:url(/images/sanfrancisco.jpg);">
+                                <a href="/search?location=San Francisco&checkin={{ checkin }}&checkout={{ checkout }}&guests={{ guests }}&room_type={{room_type}}"
+                                   class="link-reset" data-hook="discovery-card">
+                                    <div class="va-container va-container-v va-container-h">
+                                        <div class="va-middle text-center text-contrast">
+                                            <div class="h2">
+                                                <strong>
+                                                    San Francisco
+                                                </strong>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+
+                        </div>
+
+
+                        <div class="col-lg-4 col-md-6 col-sm-12 rm-padding-sm">
+
+                            <div class="discovery-card rm-padding-sm row-space-4 darken-on-hover "
+                                 style="background-image:url(/images/venice.jpg);">
+                                <a href="/search?location=Venice&checkin={{ checkin }}&checkout={{ checkout }}&guests={{ guests }}&room_type={{room_type}}"
+                                   class="link-reset" data-hook="discovery-card">
+                                    <div class="va-container va-container-v va-container-h">
+                                        <div class="va-middle text-center text-contrast">
+                                            <div class="h2">
+                                                <strong>
+                                                    Venice
+                                                </strong>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+
+                        </div>
+
+
+                        <div class="col-lg-4 col-md-6 col-sm-12 rm-padding-sm">
+
+                            <div class="discovery-card rm-padding-sm row-space-4 darken-on-hover "
+                                 style="background-image:url(/images/budapest.jpg);">
+                                <a href="/search?location=Budapest&checkin={{ checkin }}&checkout={{ checkout }}&guests={{ guests }}&room_type={{room_type}}"
+                                   class="link-reset" data-hook="discovery-card">
+                                    <div class="va-container va-container-v va-container-h">
+                                        <div class="va-middle text-center text-contrast">
+                                            <div class="h2">
+                                                <strong>
+                                                    Budapest
+                                                </strong>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="hero shift-with-hiw js-hero col-lg-12 col-md-12 col-sm-12" style="padding:0px;">
+        <div class="hero__background_slider" data-native-currency="ZAR" aria-hidden="true" style="height: 100%;">
+            <ul class="rslides" id="bottom_slider" style="height: 100%;">
+                <li style="height:100%;">
+                    <img alt="" src="/images/belonganywhere.jpg" width="100%"
+                         style="height: 100%;">
+                    <div class="bot-slider-text">
+                        <h2 class="text-branding text-jumbo text-contrast space-1">
+                            Belong anywhere
+                        </h2>
+                        <div class="h4 text-contrast space-4">
+                            See how Airbnb hosts create a sense of belonging around the world
+                        </div>
+                    </div>
+                </li>
+                <li style="height:100%;">
+                    <img alt="" src="/images/belonging.jpg" width="100%"
+                         style="height: 100%;">
+                    <div class="bot-slider-text">
+                        <h2 class="text-branding text-jumbo text-contrast space-1">
+                            Introducing the B&eacute;lo
+                        </h2>
+                        <div class="h4 text-contrast space-4">
+                            The story of a symbol of belonging.
+                        </div>
+                    </div>
+                </li>
+                <li style="height:100%;">
+                    <img alt="" src="/images/home.jpg" width="100%"
+                         style="height: 100%;">
+                    <div class="bot-slider-text">
+                        <h2 class="text-branding text-jumbo text-contrast space-1">
+                            Your Home
+                        </h2>
+                        <div class="h4 text-contrast space-4">
+                            See how Airbnb hosts create a sense of belonging around the world
+                        </div>
+                    </div>
+                </li>
+
+            </ul>
+            <a href="javascript:void(0);" class="bottom_slider_nav  prev">Previous</a>
+            <a href="javascript:void(0);" class="bottom_slider_nav next">Next</a>
+        </div>
+
+    </div>
+
+    <div class="row" style="padding: 50px;"></div>
+    <!--&lt;!&ndash; <div class="col-lg-12 col-md-12 col-sm-12" style="background:#fff;">
+         <div class="discovery-section page-container-responsive page-container-no-padding row-space-6"
+              style="padding:0px !important;">
+
+             <div class="col-lg-12 nopad text-center" style="padding:0px !important;">
+                 <h2 class="row-space-1" style="padding:40px 0px 15px;"><strong>Our Community</strong></h2>
+                 <div class="col-lg-4 pos-rel com-img pad-left col-md-4">
+                     <a class="com-link-img" href="http://demo.trioangle.com/makent/terms_of_service" target="_blank">
+                         <img src="/images/Garry&Lianne.jpg"
+                              width="100%">
+                     </a>
+                     <div class="com-header">
+                         &lt;!&ndash; <a>Travelling</a> &ndash;&gt;
+                     </div>
+                     <div class="com-sub">
+                         <h2>Ching &amp; Nikole</h2>
+                         <p>Across an ocean or across town, Ching & Nikole are always in search in local experiences <br>
+                             Learn more about travel on Airbnb</p>
+                     </div>
+                 </div>
+                 <div class="col-lg-4 pos-rel com-img pad-left col-md-4">
+                     <a class="com-link-img" href="http://demo.trioangle.com/makent/privacy_policy" target="_blank">
+                         <img src="/images/business.jpg"
+                              width="100%">
+                     </a>
+                     <div class="com-header">
+                         &lt;!&ndash; <a>Travelling</a> &ndash;&gt;
+                     </div>
+                     <div class="com-sub">
+                         <h2>Airbnb for Business</h2>
+                         <p>Feel at home. wherever your work takes you <br> Get your team on Airbnb</p>
+                     </div>
+                 </div>
+                 <div class="col-lg-4 pos-rel com-img pad-left col-md-4">
+                     <a class="com-link-img" href="http://demo.trioangle.com/makent/host_guarantee" target="_blank">
+                         <img src="http://makent.trioangle.com/images/our_community_banners/our_community_bannners_3.jpg"
+                              width="100%">
+                     </a>
+                     <div class="com-header">
+                         &lt;!&ndash; <a>Travelling</a> &ndash;&gt;
+                     </div>
+                     <div class="com-sub">
+                         <h2>Patricia</h2>
+                         <p>A professional photographer, patricia loves helping guests explore Shanghai's arts scene.
+                             <br> Learn more about hosting on Airbnb</p>
+                     </div>
+                 </div>
+             </div>
+         </div>
+     </div>&ndash;&gt;
+     &lt;!&ndash;[if (gt IE 8)|!(IE)]>&lt;!&ndash;dash;&gt;
+     <div id="belong-video-player" class="fullscreen-video-player fullscreen-video-player&#45;&#45;hidden" aria-hidden="true">
+         <div class="row row-table row-full-height">
+             <div class="col-sm-12 col-middle text-center">
+                 <video preload="none">
+                     <source src="http://makent.trioangle.com/uploads/video/home_video.mp4" type="video/mp4">
+                 </video>
+
+                 <i id="play-button-belong"
+                    class="fullscreen-video-player__icon icon icon-video-play icon-white hide"></i>
+                 <a id="close-fullscreen-belong" class="fullscreen-video-player__close link-reset"
+                    href="http://makent.trioangle.com/#">
+                     <i class="icon icon-remove"></i>
+                     <span class="screen-reader-only">
+           Exit full screen
+         </span>
+                 </a>
+             </div>
+         </div>
+     </div>
+     <div id="belo-video-player" class="fullscreen-video-player fullscreen-video-player&#45;&#45;hidden" aria-hidden="true">
+         <div class="row row-table row-full-height">
+             <div class="col-sm-12 col-middle text-center">
+                 <video preload="none">
+                     <source src="http://makent.trioangle.com/uploads/video/home_video.mp4" type="video/mp4">
+                 </video>
+
+                 <i id="play-button-belo" class="fullscreen-video-player__icon icon icon-video-play icon-white hide"></i>
+                 <a id="close-fullscreen-belo" class="fullscreen-video-player__close link-reset"
+                    href="http://makent.trioangle.com/#">
+                     <i class="icon icon-remove"></i>
+                     <span class="screen-reader-only">
+           Exit full screen
+         </span>
+                 </a>
+             </div>
+         </div>
+     </div>
+ -->
+    <!--<![endif]-->
+    <!--<div class="hero shift-with-hiw js-hero">
+  <div class="hero__background_slider" data-native-currency="ZAR" aria-hidden="true">
+          <ul class="rslides" id="home_slider">
+                      <li>
+              <img alt="" src="http://makent.trioangle.com/images/bottom_slider/banner_inn.png" width="100%">
+              <div class="va-middle">
+              <h2 class="text-branding text-jumbo text-contrast space-1">
+                Belong anywhere
+                 </h2>
+              <div class="h4 text-contrast space-4">
+                See how Makent hosts create a sense of belonging around the world
+                </div>
+               </div>
+            </li>
+                      <li>
+              <img alt="" src="http://makent.trioangle.com/images/bottom_slider/banner2_inn.png" width="100%">
+              <div class="va-middle">
+              <h2 class="text-branding text-jumbo text-contrast space-1">
+                Introducing the B&eacute;lo
+                 </h2>
+              <div class="h4 text-contrast space-4">
+                The story of a symbol of belonging.
+                </div>
+               </div>
+            </li>
+                      <li>
+              <img alt="" src="http://makent.trioangle.com/images/bottom_slider/banner3_inn.png" width="100%">
+              <div class="va-middle">
+              <h2 class="text-branding text-jumbo text-contrast space-1">
+                Your Home
+                 </h2>
+              <div class="h4 text-contrast space-4">
+                See how Makent hosts create a sense of belonging around the world
+                </div>
+               </div>
+            </li>
+                    </ul>
+    </div>
+
+    </div>-->
+
+</main>
+<% include footer.ejs %>
+<div id="gmap-preload" class="hide"></div>
+
+<div class="ipad-interstitial-wrapper"><span data-reactid=".1"></span></div>
+
+<div id="fb-root"></div>
+
+<script type="text/javascript"
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBXyRBiyRcEzHDJ8iU00zECMUP4cXBIm6A&sensor=false&libraries=places"></script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+<script type="text/javascript" src="http://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
+
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.2/angular.min.js"></script>
+
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/angular-sanitize/1.3.2/angular-sanitize.min.js"></script>
+
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/ResponsiveSlides.js/1.53/responsiveslides.min.js"></script>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.login_popup_head').click(function (e) {
+            e.preventDefault();
+            $("body").addClass("pos-fix");
+            $(".login_popup").show();
+            $(".signup_popup").hide();
+            $(".signup_popup2").hide();
+        });
+        $('.login-close').click(function (event) {
+            $("body").removeClass("pos-fix");
+            $(".login_popup").hide();
+        });
+        $('.top-home').click(function (event) {
+            event.stopPropagation();
+        });
+    });
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.forgot-password-popup').click(function (e) {
+            e.preventDefault();
+            $("body").addClass("pos-fix");
+            $(".login_popup").hide();
+            $(".forgot-passward").show();
+        });
+        $('.login-close').click(function (event) {
+            $("body").removeClass("pos-fix");
+            $(".forgot-passward").hide();
+        });
+        $('.top-home').click(function (event) {
+            event.stopPropagation();
+        });
+    });
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.signup_popup_head').click(function (e) {
+            e.preventDefault();
+            $("body").addClass("pos-fix");
+            $(".signup_popup").show();
+            $(".login_popup").hide();
+        });
+        $('.login-close').click(function () {
+            $("body").removeClass("pos-fix");
+            $(".signup_popup").hide();
+        });
+        $('.top-home').click(function (event) {
+            event.stopPropagation();
+        });
+    });
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.signup_popup_head2').click(function (e) {
+            e.preventDefault();
+            $("body").addClass("pos-fix");
+            $(".signup_popup2").show();
+            $(".signup_popup").hide();
+        });
+        $('.login-close').click(function () {
+            $("body").removeClass("pos-fix");
+            $(".signup_popup2").hide();
+        });
+        $('.top-home').click(function (event) {
+            event.stopPropagation();
+        });
+    });
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('ul.menu-group li a').click(function () {
+            $('.nav--sm').css('visibility', 'hidden');
+        });
+    });
+</script>
+<script>
+    var app = angular.module('App', ['ngSanitize']);
+    var APP_URL = "http:\/\/localhost:3000";
+    $.datepicker.setDefaults($.datepicker.regional["en"])
+</script>
+
+
+<script type="application/javascript" src="js/common.js"></script>
+
+<script type="application/javascript" src="controller/common_controller.js"></script>
+
+<script src="https://angular-file-upload.appspot.com/js/ng-file-upload-shim.js"></script>
+<script src="https://angular-file-upload.appspot.com/js/ng-file-upload.js"></script>
+
+
+<!-- ver. 87c23752f8dfbd60bf83837d2c8b2dcd0ec660a9 -->
+<div class="tooltip tooltip-bottom-middle" role="tooltip" aria-hidden="true">
+    <p class="panel-body">To sign up, you must be 18 or older. Other people won’t see your birthday.</p>
+</div>
+</body>
+</html>

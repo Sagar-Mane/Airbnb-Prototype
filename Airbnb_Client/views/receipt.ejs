@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+
+<html lang="en-IN" xmlns:fb="http://ogp.me/ns/fb#"><!--<![endif]-->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="dns-prefetch" href="https://maps.googleapis.com/">
+    <link rel="dns-prefetch" href="https://maps.gstatic.com/">
+    <link rel="dns-prefetch" href="https://mts0.googleapis.com/">
+    <link rel="dns-prefetch" href="https://mts1.googleapis.com/">
+
+    <!--[if IE]><![endif]-->
+    <meta charset="utf-8">
+
+    <link media="all" type="text/css" rel="stylesheet" href="../css/common.css">
+
+    <link media="all" type="text/css" rel="stylesheet" href="../css/home.css">
+
+    <link media="all" type="text/css" rel="stylesheet" href="../css/themes.css">
+
+    <link media="all" type="text/css" rel="stylesheet" href="../css/dynamic.css">
+
+    <link media="all" type="text/css" rel="stylesheet" href="../css/pcss.css">
+    <link media="all" type="text/css" rel="stylesheet" href="../css/new.css">
+
+
+    <link media="all" type="text/css" rel="stylesheet" href="../css/receipt.css">
+
+    <link media="print" type="text/css" rel="stylesheet" href="../css/receipt-print.css">
+
+    <style type="text/css">
+        .ui-selecting {
+            background: #FECA40;
+        }
+
+        .ui-selected {
+            background: #F39814;
+            color: white;
+        }
+    </style>
+
+    <title>Receipt, Confirmation Code 8R9696</title>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+
+    <meta name="description" content="Receipt, Confirmation Code">
+    <meta name="keywords" content="">
+
+
+    <meta name="twitter:widgets:csp" content="on">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="search" type="application/opensearchdescription+xml" href="#" title="">
+
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <meta name="theme-color" content="#f5f5f5">
+
+</head>
+<body class="" ng-app="App">
+
+<% include header.ejs %>
+
+<main role="main" id="site-content" ng-controller="receipt_controller">
+    <div class="page-container page-container-responsive row-space-top-8">
+        <div class="row row-condensed row-table row-space-4" id="receipt-id">
+            <div class="col-3 col-bottom">
+                Billing ID: <%= data[0].billingId %><br>
+            </div>
+            <div class="col-3 col-bottom">
+            </div>
+            <div class="col-6 col-bottom text-right">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="panel">
+                <div class="panel-body">
+                    <h2>Customer Receipt</h2>
+                    <div class="pull-right hide-print">
+                        <a id="print_receipt" onclick="print_receipt()" class="btn" href="#">Receipt</a>
+                        <a id="delete_bill" onclick="deleteBill(data[0]._id)" class="btn-danger" href="#">Delete
+                            Receipt</a>
+                    </div>
+
+                    <div class="h6 row-space-1">
+                        Confirmation Code
+                    </div>
+                    <div class="h4">
+                        <%= data[0].billingId %>
+                    </div>
+                </div>
+
+                <div class="panel-body">
+                    <div class="row row-space-condensed row-space-3">
+                        <div class="col-3">
+                            <h6>
+                                Name
+                            </h6>
+                            <p class="text-lead">
+                                <%= data[0].userId.firstName %> <%= data[0].userId.lastName %>
+                            </p>
+                        </div>
+                        <div class="col-3">
+                            <h6>
+                                Travel Destination
+                            </h6>
+                            <p class="text-lead">
+                                <b><%= data[0].propertyId.city %> <%= data[0].propertyId.state %> <%= data[0].propertyId.country %></b>
+                            </p>
+                        </div>
+                        <div class="col-3">
+                            <h6>
+                                Nights
+                            </h6>
+                            <p class="text-lead">
+                                <%= Math.floor(data[0].total / data[0].propertyId.price) %>
+                            </p>
+                        </div>
+                        <div class="col-3">
+                            <h6>
+                                Accommodation Type
+                            </h6>
+                            <p class="text-lead">
+                                <%= data[0].propertyId.category %>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="row row-space-condensed">
+                        <div class="col-3">
+                            <h6>
+                                Accommodation Address
+                            </h6>
+                            <p class="text-lead">
+                                <strong><%= data[0].propertyId.address %><br>
+                                    <strong><%= data[0].propertyId.city %> <%= data[0].propertyId.state %>
+                                        <br><%= data[0].propertyId.country %><br></strong>
+                                </strong>
+
+                            </p>
+
+                        </div>
+                        <div class="col-3">
+                            <h6>
+                                Accommodation Host
+                            </h6>
+                            <p class="text-lead">
+                                <%= data[0].hostId.firstName %> <%= data[0].hostId.lastName %>
+                            </p>
+                        </div>
+                        <div class="col-3">
+                            <h6>
+                                Check In
+                            </h6>
+                            <p class="text-lead">
+                                <strong><%= new Date(data[0].fromDate).toLocaleDateString() %></strong><br>Flexible
+                                check in time
+                            </p>
+                        </div>
+                        <div class="col-3">
+                            <h6>
+                                Check Out
+                            </h6>
+                            <p class="text-lead">
+                                <strong> <%= new Date(data[0].toDate).toLocaleDateString() %></strong><br>Flexible check
+                                out time
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="row row-space-condensed row-space-top-4">
+                        <div class="col-12">
+                            <h2>
+                                Reservation Charges
+                            </h2>
+
+                            <table class="table table-bordered payment-table">
+                                <tbody>
+                                <tr>
+                                    <th class="receipt-label"><%= data[0].tripId.days %>
+                                        Nights X $<%= data[0].propertyId.price %></th>
+                                    <td class="receipt-amount">
+                                        &#36;<%= (data[0].total) %>
+                                    </td>
+                                </tr>
+                                </tbody>
+                                <tfoot>
+                                <tr>
+                                    <th class="receipt-label">Total</th>
+                                    <td class="receipt-amount">&#36;<%= (data[0].total) %></td>
+                                </tr>
+                                </tfoot>
+                            </table>
+
+                            <table class="table table-bordered payment-table">
+                                <tbody>
+                                <tr>
+                                    <th class="receipt-label">
+                                        Payment Received:
+                                        <%= new Date(data[0].createdDate).toLocaleDateString() %>
+
+                                    </th>
+                                    <td class="receipt-amount">
+                                        &#36;<%= (data[0].total) %>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row-space-top-4" id="legal-disclaimer">
+            <p>
+                Airbnb is authorized to accept Accommodation Fees on behalf of the Host as its limited agent. This means
+                that your payment obligation to the Host is satisfied by your payment to Airbnb. Any disagreements by
+                the Host regarding that payment must be settled between the Host and Airbnb.
+            </p>
+        </div>
+    </div>
+
+</main>
+
+<script>
+    function print_receipt() {
+        window.print();
+    }
+</script>
+
+
+<div id="gmap-preload" class="hide"></div>
+
+<div class="ipad-interstitial-wrapper"><span data-reactid=".1"></span></div>
+
+<div id="fb-root"></div>
+
+<script type="text/javascript"
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBXyRBiyRcEzHDJ8iU00zECMUP4cXBIm6A&sensor=false&libraries=places"></script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+<script type="text/javascript" src="http://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
+
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.2/angular.min.js"></script>
+
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/angular-sanitize/1.3.2/angular-sanitize.min.js"></script>
+
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/ResponsiveSlides.js/1.53/responsiveslides.min.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.login_popup_head').click(function (e) {
+            e.preventDefault();
+            $("body").addClass("pos-fix");
+            $(".login_popup").show();
+            $(".signup_popup").hide();
+            $(".signup_popup2").hide();
+        });
+        $('.login-close').click(function (event) {
+            $("body").removeClass("pos-fix");
+            $(".login_popup").hide();
+        });
+        $('.top-home').click(function (event) {
+            event.stopPropagation();
+        });
+    });
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.forgot-password-popup').click(function (e) {
+            e.preventDefault();
+            $("body").addClass("pos-fix");
+            $(".login_popup").hide();
+            $(".forgot-passward").show();
+        });
+        $('.login-close').click(function (event) {
+            $("body").removeClass("pos-fix");
+            $(".forgot-passward").hide();
+        });
+        $('.top-home').click(function (event) {
+            event.stopPropagation();
+        });
+    });
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.signup_popup_head').click(function (e) {
+            e.preventDefault();
+            $("body").addClass("pos-fix");
+            $(".signup_popup").show();
+            $(".login_popup").hide();
+        });
+        $('.login-close').click(function () {
+            $("body").removeClass("pos-fix");
+            $(".signup_popup").hide();
+        });
+        $('.top-home').click(function (event) {
+            event.stopPropagation();
+        });
+    });
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.signup_popup_head2').click(function (e) {
+            e.preventDefault();
+            $("body").addClass("pos-fix");
+            $(".signup_popup2").show();
+            $(".signup_popup").hide();
+        });
+        $('.login-close').click(function () {
+            $("body").removeClass("pos-fix");
+            $(".signup_popup2").hide();
+        });
+        $('.top-home').click(function (event) {
+            event.stopPropagation();
+        });
+    });
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('ul.menu-group li a').click(function () {
+            $('.nav--sm').css('visibility', 'hidden');
+        });
+    });
+</script>
+<script>
+    var app = angular.module('App', ['ngSanitize']);
+    var APP_URL = "http:\/\/localhost:3000";
+    $.datepicker.setDefaults($.datepicker.regional["en"])
+</script>
+
+<script type="application/javascript" src="../js/common.js"></script>
+
+<script type="application/javascript" src="../controller/common_controller.js"></script>
+
+<script src="https://angular-file-upload.appspot.com/js/ng-file-upload-shim.js"></script>
+<script src="https://angular-file-upload.appspot.com/js/ng-file-upload.js"></script>
+
+<div class="tooltip tooltip-bottom-middle" role="tooltip" aria-hidden="true">
+    <p class="panel-body">To sign up, you must be 18 or older. Other people won’t see your birthday.</p>
+</div>
+</body>
+</html>

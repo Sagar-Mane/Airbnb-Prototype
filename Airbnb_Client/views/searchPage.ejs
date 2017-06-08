@@ -1,0 +1,1323 @@
+<!DOCTYPE html>
+
+<html lang="en-IN" xmlns:fb="http://ogp.me/ns/fb#"><!--<![endif]-->
+<head>
+    <style type="text/css">
+        @media (max-width: 1099px) {
+            #room-type-tooltip {
+                display: none !important;
+            }
+        }
+    </style>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="dns-prefetch" href="https://maps.googleapis.com/">
+    <link rel="dns-prefetch" href="https://maps.gstatic.com/">
+    <link rel="dns-prefetch" href="https://mts0.googleapis.com/">
+    <link rel="dns-prefetch" href="https://mts1.googleapis.com/">
+
+
+    <!--[if IE]><![endif]-->
+    <meta charset="utf-8">
+
+    <!--[if IE 8]>
+    <link media="all" type="text/css" rel="stylesheet" href="http://makent.trioangle.com/css/common_ie8.css">
+
+    <![endif]-->
+    <!--[if !(IE 8)]><!-->
+    <link media="all" type="text/css" rel="stylesheet" href="css/common.css">
+
+    <link media="all" type="text/css" rel="stylesheet" href="css/home.css">
+
+    <link media="all" type="text/css" rel="stylesheet" href="css/themes.css">
+
+    <link media="all" type="text/css" rel="stylesheet" href="css/dynamic.css">
+
+    <!--<![endif]-->
+
+    <!--[if lt IE 9]>
+    <link media="all" type="text/css" rel="stylesheet" href="http://makent.trioangle.com/css/airglyphs-ie8.css">
+
+    <![endif]-->
+
+
+    <link media="all" type="text/css" rel="stylesheet" href="css/map-search.css">
+
+
+    <style type="text/css">
+        .ui-selecting {
+            background: #FECA40;
+        }
+
+        .ui-selected {
+            background: #F39814;
+            color: white;
+        }
+
+        .labels {
+            color: white;
+            background-color: red;
+            font-family: "Lucida Grande", "Arial", sans-serif;
+            font-size: 10px;
+            text-align: center;
+            width: 35px;
+            font-weight: 900;
+            white-space: nowrap;
+        }
+    </style>
+
+    <title>Search </title>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+    <meta name="description" content="Search">
+    <meta name="keywords" content="">
+
+    <meta name="twitter:widgets:csp" content="on">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="search" type="application/opensearchdescription+xml" href="#" title="">
+
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <meta name="theme-color" content="#f5f5f5">
+
+</head>
+<body class="" ng-app="App">
+
+<% include header.ejs %>
+<% include modal.ejs %>
+
+<main id="site-content" role="main" ng-controller="search-page">
+    <div class="map-search">
+        <div class="sidebar">
+            <input type="hidden" id="location" value="<%= location %>">
+            <input type="hidden" id="lat" value="<%= lat %>">
+            <input type="hidden" id="long" value="<%= long %>">
+            <input type="hidden" id="viewport" value="<%= viewport %>" ng-model="viewport">
+
+            <div class="filters collapse" style="bottom: 606px;">
+
+                <div class="panel-header filters-section show-sm">
+                    Filters
+                </div>
+                <div class="filters-section intro-filter panel-body panel-light">
+                    <div class="row">
+                        <div class="col-lg-2 col-md-12 text-center-sm text-center-md row-space-sm-1 filter-label">
+                            <label>Dates</label>
+                        </div>
+
+                        <form class="col-lg-9 trip-form">
+                            <div class="row row-condensed">
+                                <div class="col-md-4 col-sm-6 row-space-1-sm">
+                                    <label for="map-search-checkin" class="screen-reader-only">
+                                        Check In
+                                    </label>
+                                    <input ng-model="checkin" autocomplete="off" id="checkin" type="text"
+                                           class="checkin tour-target ui-datepicker-target" placeholder="Check In"
+                                           ng-init="checkin = ''">
+                                </div>
+
+                                <div class="col-md-4 col-sm-6 row-space-1-sm">
+                                    <label for="map-search-checkout" class="screen-reader-only">
+                                        Check Out
+                                    </label>
+                                    <input ng-model="checkout" autocomplete="off" id="checkout" type="text"
+                                           class="checkout tour-target ui-datepicker-target" placeholder="Check Out"
+                                           ng-init="checkout = ''">
+                                </div>
+
+                                <div class="col-md-4 col-sm-12">
+                                    <div class="select select-block">
+                                        <label for="guest-select" class="screen-reader-only">
+                                            Number of guests
+                                        </label>
+                                        <select ng-model="guests" class="guest-select" id="guest-select" data-prefill=""
+                                                ng-init="guests = ''">
+                                            <option value="" disabled>Guest</option>
+                                            <option value="1"> 1 Guest</option>
+                                            <option value="2"> 2 Guests</option>
+                                            <option value="3"> 3 Guests</option>
+                                            <option value="4"> 4 Guests</option>
+                                            <option value="5"> 5 Guests</option>
+                                            <option value="6"> 6 Guests</option>
+                                            <option value="7"> 7 Guests</option>
+                                            <option value="8"> 8 Guests</option>
+                                            <option value="9"> 9 Guests</option>
+                                            <option value="10"> 10 Guests</option>
+                                            <option value="11"> 11 Guests</option>
+                                            <option value="12"> 12 Guests</option>
+                                            <option value="13"> 13 Guests</option>
+                                            <option value="14"> 14 Guests</option>
+                                            <option value="15"> 15 Guests</option>
+                                            <option value="16"> 16+ Guests</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="simple-dates-message-container hide">
+                                <div class="text-kazan space-top-2">
+                                    <strong>
+                                        <i class="icon icon-currency-inr"></i>
+                                        Enter dates for accurate prices and availability.
+                                    </strong>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="filters-section room-type-group intro-filter panel-body panel-light">
+                    <div class="row">
+                        <div class="col-lg-2 col-md-12 text-center-sm text-center-md filter-label">
+                            <label>
+                                Room Type
+                                <span class="icon icon-question" id="room-type-tooltip"></span>
+                                <div class="tooltip-room tooltip-left-middle" role="tooltip"
+                                     data-trigger="#room-type-tooltip" data-sticky="true" aria-hidden="true"
+                                     style="left: 120px; top: 60.925px;">
+                                    <dl class="panel-body">
+                                        <dt>Entire Home</dt>
+                                        <dd>Listings where you have the whole place to yourself.</dd>
+                                        <dt>Private Room</dt>
+                                        <dd>Listings where you have your own room but share some common spaces.</dd>
+                                        <dt>Shared Room</dt>
+                                        <dd>Listings where you'll share your room or your room may be a common space.
+                                        </dd>
+                                    </dl>
+                                </div>
+                            </label>
+
+
+                        </div>
+
+                        <div class="col-lg-9">
+                            <div class="row row-condensed" id="room-options">
+                                <div class="col-middle-alt col-sm-4">
+                                    <label class="checkbox panel panel-dark">
+                                        <input class="pull-right room-type" type="checkbox" ng-model="room_type_1"
+                                               value="Entire home/apt" ng-checked=""
+                                               ng-init="room_type_1 = 'Entire home/apt'">
+                                        <i class="icon icon-entire-place h5 needsclick"></i>
+                                        Entire home/apt
+                                    </label>
+                                </div>
+                                <div class="col-middle-alt col-sm-4">
+                                    <label class="checkbox panel panel-dark">
+                                        <input class="pull-right room-type" type="checkbox" ng-model="room_type_2"
+                                               value="Private room" ng-checked=""
+                                               ng-init="room_type_2 = 'Private room'">
+                                        <i class="icon icon-private-room h5 needsclick"></i>
+                                        Private room
+                                    </label>
+                                </div>
+                                <div class="col-middle-alt col-sm-4">
+                                    <label class="checkbox panel panel-dark">
+                                        <input class="pull-right room-type" type="checkbox" ng-model="room_type_3"
+                                               value="Shared room" ng-checked="" ng-init="room_type_3 = 'Shared room'">
+                                        <i class="icon icon-shared-room h5 needsclick"></i>
+                                        Shared room
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="filters-section room-type-group intro-filter panel-body panel-light">
+                    <div class="row row-condensed space-sm-7">
+                        <div class="col-sm-6">
+                            <button class="btn btn-block cancel-btn" id="cancel-filter">Cancel</button>
+                        </div>
+                        <div class="col-sm-6">
+                            <button class="btn btn-block btn-primary apply-filters-btn" id="more_filter_submit"
+                                    ng-click="apply_filter()">
+                                Apply Filters
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- <div class="filters-section intro-filter panel-body panel-light">
+                  <div class="row">
+                    <div class="col-lg-2 col-md-12 text-center-sm text-center-md filter-label">
+                      <label>Price Range</label>
+                    </div>
+                    <div class="col-lg-9 col-md-12">
+                               <div id="slider-3" class="price-range-slider p2-slider-new"></div>
+                  <div class="row" style="margin-top: 20px;">
+                  <div class="col-6">
+                  <span> <span>&#36;</span> <span class="price" id="min_text">10</span> <span></span></span><input type="hidden" id="min_value" value="10"></div>
+                  <div class="col-6 text-right"><span>
+                  <span>&#36;</span><span class="price" id="max_text">750+</span><span></span></span><input type="hidden" id="max_value" value="750">
+                  </div>
+                  </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="filters-section intro-filter panel-body panel-light " >
+
+                  <div class="row">
+                    <div class="col-lg-2 col-md-12 text-center-sm text-center-md space-sm-1 ">
+                      <div id="filter-section-header-ib-select">
+                        <i class="icon icon-instant-book icon-beach h4"></i>
+                        <span>Instant Book</span>
+                      </div>
+                    </div>
+                    <div class="col-lg-9 col-md-11">
+                      <div class="row row-condensed ib_p2_filter">
+                        <div class="pull-right text_padding">
+                          <label class="toggle toggle--color-babu" for="instant_book" ng-class="instant_book == 1 ? 'toggle--checked' : ''"  >
+                            <input type="checkbox" class="toggle__checkbox" value="1" name="instant_book" id="instant_book" ng-model="instant_book" ng-init="instant_book = ''" ng-checked="instant_book == 1" ng-change="search_result();"  >
+                            <div class="toggle__track" ></div>
+                            <div class="toggle__handle" for="instant_book" >
+                              <span ng-bind-html="instant_book == 1  ? 'On' : 'Off'" ></span>
+                            </div>
+                          </label>
+                        </div>
+                        <div class="button_padding" style="padding-top:5px;">
+                          <span>Book without waiting for your reservation to be accepted</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div> -->
+
+                <!-- <div id="search_more_filter">
+                  <div class="filters-section size-group toggle-group panel-body panel-light">
+                    <div class="row">
+                      <div class="col-lg-2 col-md-12 text-center-sm text-center-md filter-label">
+                        <label>Size</label>
+                      </div>
+
+                      <form class="col-lg-9">
+                        <div class="row row-condensed">
+                          <div class="col-md-4 col-sm-12 row-space-1">
+                            <div class="select select-block">
+                              <label for="map-search-min-bedrooms" class="screen-reader-only">
+                                Minimum number of bedrooms
+                              </label>
+                              <select name="min_bedrooms" ng-model="bedrooms" class="min-bedrooms" id="map-search-min-bedrooms" ng-init="bedrooms = ''">
+                                <option value="">Bedrooms</option>
+                                                  <option value="1" >
+                              1 Bedrooms
+                              </option>
+                                        <option value="2" >
+                              2 Bedrooms
+                              </option>
+                                        <option value="3" >
+                              3 Bedrooms
+                              </option>
+                                        <option value="4" >
+                              4 Bedrooms
+                              </option>
+                                        <option value="5" >
+                              5 Bedrooms
+                              </option>
+                                        <option value="6" >
+                              6 Bedrooms
+                              </option>
+                                        <option value="7" >
+                              7 Bedrooms
+                              </option>
+                                        <option value="8" >
+                              8 Bedrooms
+                              </option>
+                                        <option value="9" >
+                              9 Bedrooms
+                              </option>
+                                        <option value="10" >
+                              10 Bedrooms
+                              </option>
+
+                                  </select>
+                            </div>
+                          </div>
+
+                          <div class="col-md-4 col-sm-12 row-space-1">
+                            <div class="select select-block">
+                              <label for="map-search-min-bathrooms" class="screen-reader-only">
+                                Minimum number of bathrooms
+                              </label>
+                              <select name="min_bathrooms" ng-model="bathrooms" class="min-bathrooms input-medium" id="map-search-min-bathrooms" ng-init="bathrooms = ''">
+                                <option value="">Bathrooms</option>
+
+                                      <option class="bathrooms" value="0.5" >
+                            0.5 Bathrooms
+                            </option>
+                                       <option class="bathrooms" value="1" >
+                            1 Bathrooms
+                            </option>
+                                       <option class="bathrooms" value="1.5" >
+                            1.5 Bathrooms
+                            </option>
+                                       <option class="bathrooms" value="2" >
+                            2 Bathrooms
+                            </option>
+                                       <option class="bathrooms" value="2.5" >
+                            2.5 Bathrooms
+                            </option>
+                                       <option class="bathrooms" value="3" >
+                            3 Bathrooms
+                            </option>
+                                       <option class="bathrooms" value="3.5" >
+                            3.5 Bathrooms
+                            </option>
+                                       <option class="bathrooms" value="4" >
+                            4 Bathrooms
+                            </option>
+                                       <option class="bathrooms" value="4.5" >
+                            4.5 Bathrooms
+                            </option>
+                                       <option class="bathrooms" value="5" >
+                            5 Bathrooms
+                            </option>
+                                       <option class="bathrooms" value="5.5" >
+                            5.5 Bathrooms
+                            </option>
+                                       <option class="bathrooms" value="6" >
+                            6 Bathrooms
+                            </option>
+                                       <option class="bathrooms" value="6.5" >
+                            6.5 Bathrooms
+                            </option>
+                                       <option class="bathrooms" value="7" >
+                            7 Bathrooms
+                            </option>
+                                       <option class="bathrooms" value="7.5" >
+                            7.5 Bathrooms
+                            </option>
+                                       <option class="bathrooms" value="8" >
+                            8+ Bathrooms
+                            </option>
+
+                              </select>
+                            </div>
+                          </div>
+
+                          <div class="col-md-4 col-sm-12">
+                            <div class="select select-block">
+                              <label for="map-search-min-beds" class="screen-reader-only">
+                                Minimum number of beds
+                              </label>
+                              <select name="min_beds" ng-model="beds" class="min-beds input-medium" id="map-search-min-beds" ng-init="beds = ''">
+                                 <option value="">Beds</option>
+                                            <option value="1" >
+                            1 Beds
+                            </option>
+                                    <option value="2" >
+                            2 Beds
+                            </option>
+                                    <option value="3" >
+                            3 Beds
+                            </option>
+                                    <option value="4" >
+                            4 Beds
+                            </option>
+                                    <option value="5" >
+                            5 Beds
+                            </option>
+                                    <option value="6" >
+                            6 Beds
+                            </option>
+                                    <option value="7" >
+                            7 Beds
+                            </option>
+                                    <option value="8" >
+                            8 Beds
+                            </option>
+                                    <option value="9" >
+                            9 Beds
+                            </option>
+                                    <option value="10" >
+                            10 Beds
+                            </option>
+                                    <option value="11" >
+                            11 Beds
+                            </option>
+                                    <option value="12" >
+                            12 Beds
+                            </option>
+                                    <option value="13" >
+                            13 Beds
+                            </option>
+                                    <option value="14" >
+                            14 Beds
+                            </option>
+                                    <option value="15" >
+                            15 Beds
+                            </option>
+                                    <option value="16" >
+                            16+ Beds
+                            </option>
+
+                                 </select>
+                            </div>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+
+                  <div class="checkbox-group hosting_amenities filters-section panel-body panel-light toggle-group" data-name="hosting_amenities">
+                    <div class="row">
+                      <div class="col-lg-2 col-md-12 filter-label">
+                        <label>Amenities</label>
+                      </div>
+
+                      <div class="col-lg-9 col-md-11">
+                        <div class="row row-condensed filters-columns">
+
+                          <div class="col-md-4">
+                            <label class="media checkbox text-truncate" title="Essentials">
+                              <input type="checkbox" name="more_filter[]" value="1" class="pull-left amenities" id="map-search-amenities-1" ng-checked="false">
+                              Essentials
+                            </label>
+                          </div>
+
+                          <div class="col-md-4">
+                            <label class="media checkbox text-truncate" title="TV">
+                              <input type="checkbox" name="more_filter[]" value="2" class="pull-left amenities" id="map-search-amenities-2" ng-checked="false">
+                              TV
+                            </label>
+                          </div>
+
+                          <div class="col-md-4">
+                            <label class="media checkbox text-truncate" title="Cable TV">
+                              <input type="checkbox" name="more_filter[]" value="3" class="pull-left amenities" id="map-search-amenities-3" ng-checked="false">
+                              Cable TV
+                            </label>
+                          </div>
+
+                        </div>
+
+                        <div class="filters-more collapse">
+                          <hr>
+                          <div class="row row-condensed filters-columns">
+
+
+                            <div class="col-md-4">
+                            <label class="media checkbox text-truncate" title="Air Conditioning ">
+                              <input type="checkbox" name="more_filter[]" value="4" class="pull-left amenities" id="map-search-amenities-4" ng-checked="false">
+                              Air Conditioning
+                            </label>
+                          </div>
+
+                            <div class="col-md-4">
+                            <label class="media checkbox text-truncate" title="Heating">
+                              <input type="checkbox" name="more_filter[]" value="5" class="pull-left amenities" id="map-search-amenities-5" ng-checked="false">
+                              Heating
+                            </label>
+                          </div>
+
+                            <div class="col-md-4">
+                            <label class="media checkbox text-truncate" title="Kitchen">
+                              <input type="checkbox" name="more_filter[]" value="6" class="pull-left amenities" id="map-search-amenities-6" ng-checked="false">
+                              Kitchen
+                            </label>
+                          </div>
+
+                            <div class="col-md-4">
+                            <label class="media checkbox text-truncate" title="Internet">
+                              <input type="checkbox" name="more_filter[]" value="7" class="pull-left amenities" id="map-search-amenities-7" ng-checked="false">
+                              Internet
+                            </label>
+                          </div>
+
+                            <div class="col-md-4">
+                            <label class="media checkbox text-truncate" title="Wireless Internet">
+                              <input type="checkbox" name="more_filter[]" value="8" class="pull-left amenities" id="map-search-amenities-8" ng-checked="false">
+                              Wireless Internet
+                            </label>
+                          </div>
+
+                            <div class="col-md-4">
+                            <label class="media checkbox text-truncate" title="Hot Tub">
+                              <input type="checkbox" name="more_filter[]" value="9" class="pull-left amenities" id="map-search-amenities-9" ng-checked="false">
+                              Hot Tub
+                            </label>
+                          </div>
+
+                            <div class="col-md-4">
+                            <label class="media checkbox text-truncate" title="Washer">
+                              <input type="checkbox" name="more_filter[]" value="10" class="pull-left amenities" id="map-search-amenities-10" ng-checked="false">
+                              Washer
+                            </label>
+                          </div>
+
+                            <div class="col-md-4">
+                            <label class="media checkbox text-truncate" title="Pool">
+                              <input type="checkbox" name="more_filter[]" value="11" class="pull-left amenities" id="map-search-amenities-11" ng-checked="false">
+                              Pool
+                            </label>
+                          </div>
+
+                            <div class="col-md-4">
+                            <label class="media checkbox text-truncate" title="Dryer">
+                              <input type="checkbox" name="more_filter[]" value="12" class="pull-left amenities" id="map-search-amenities-12" ng-checked="false">
+                              Dryer
+                            </label>
+                          </div>
+
+                            <div class="col-md-4">
+                            <label class="media checkbox text-truncate" title="Breakfast">
+                              <input type="checkbox" name="more_filter[]" value="13" class="pull-left amenities" id="map-search-amenities-13" ng-checked="false">
+                              Breakfast
+                            </label>
+                          </div>
+
+                            <div class="col-md-4">
+                            <label class="media checkbox text-truncate" title="Free Parking on Premises">
+                              <input type="checkbox" name="more_filter[]" value="14" class="pull-left amenities" id="map-search-amenities-14" ng-checked="false">
+                              Free Parking on Premises
+                            </label>
+                          </div>
+
+                            <div class="col-md-4">
+                            <label class="media checkbox text-truncate" title="Gym">
+                              <input type="checkbox" name="more_filter[]" value="15" class="pull-left amenities" id="map-search-amenities-15" ng-checked="false">
+                              Gym
+                            </label>
+                          </div>
+
+                            <div class="col-md-4">
+                            <label class="media checkbox text-truncate" title="Elevator in Building">
+                              <input type="checkbox" name="more_filter[]" value="16" class="pull-left amenities" id="map-search-amenities-16" ng-checked="false">
+                              Elevator in Building
+                            </label>
+                          </div>
+
+                            <div class="col-md-4">
+                            <label class="media checkbox text-truncate" title="Indoor Fireplace">
+                              <input type="checkbox" name="more_filter[]" value="17" class="pull-left amenities" id="map-search-amenities-17" ng-checked="false">
+                              Indoor Fireplace
+                            </label>
+                          </div>
+
+                            <div class="col-md-4">
+                            <label class="media checkbox text-truncate" title="Buzzer/Wireless Intercom">
+                              <input type="checkbox" name="more_filter[]" value="18" class="pull-left amenities" id="map-search-amenities-18" ng-checked="false">
+                              Buzzer/Wireless Intercom
+                            </label>
+                          </div>
+
+                            <div class="col-md-4">
+                            <label class="media checkbox text-truncate" title="Doorman">
+                              <input type="checkbox" name="more_filter[]" value="19" class="pull-left amenities" id="map-search-amenities-19" ng-checked="false">
+                              Doorman
+                            </label>
+                          </div>
+
+                            <div class="col-md-4">
+                            <label class="media checkbox text-truncate" title="Shampoo">
+                              <input type="checkbox" name="more_filter[]" value="20" class="pull-left amenities" id="map-search-amenities-20" ng-checked="false">
+                              Shampoo
+                            </label>
+                          </div>
+
+                            <div class="col-md-4">
+                            <label class="media checkbox text-truncate" title="Family/Kid Friendly">
+                              <input type="checkbox" name="more_filter[]" value="21" class="pull-left amenities" id="map-search-amenities-21" ng-checked="false">
+                              Family/Kid Friendly
+                            </label>
+                          </div>
+
+                            <div class="col-md-4">
+                            <label class="media checkbox text-truncate" title="Smoking Allowed">
+                              <input type="checkbox" name="more_filter[]" value="22" class="pull-left amenities" id="map-search-amenities-22" ng-checked="false">
+                              Smoking Allowed
+                            </label>
+                          </div>
+
+                            <div class="col-md-4">
+                            <label class="media checkbox text-truncate" title="Suitable for Events">
+                              <input type="checkbox" name="more_filter[]" value="23" class="pull-left amenities" id="map-search-amenities-23" ng-checked="false">
+                              Suitable for Events
+                            </label>
+                          </div>
+
+                            <div class="col-md-4">
+                            <label class="media checkbox text-truncate" title="Pets Allowed">
+                              <input type="checkbox" name="more_filter[]" value="24" class="pull-left amenities" id="map-search-amenities-24" ng-checked="false">
+                              Pets Allowed
+                            </label>
+                          </div>
+
+                            <div class="col-md-4">
+                            <label class="media checkbox text-truncate" title="Pets live on this property">
+                              <input type="checkbox" name="more_filter[]" value="25" class="pull-left amenities" id="map-search-amenities-25" ng-checked="false">
+                              Pets live on this property
+                            </label>
+                          </div>
+
+                            <div class="col-md-4">
+                            <label class="media checkbox text-truncate" title="Wheelchair Accessible">
+                              <input type="checkbox" name="more_filter[]" value="26" class="pull-left amenities" id="map-search-amenities-26" ng-checked="false">
+                              Wheelchair Accessible
+                            </label>
+                          </div>
+
+                            <div class="col-md-4">
+                            <label class="media checkbox text-truncate" title="Smoke Detector">
+                              <input type="checkbox" name="more_filter[]" value="27" class="pull-left amenities" id="map-search-amenities-27" ng-checked="false">
+                              Smoke Detector
+                            </label>
+                          </div>
+
+                            <div class="col-md-4">
+                            <label class="media checkbox text-truncate" title="Carbon Monoxide Detector">
+                              <input type="checkbox" name="more_filter[]" value="28" class="pull-left amenities" id="map-search-amenities-28" ng-checked="false">
+                              Carbon Monoxide Detector
+                            </label>
+                          </div>
+
+                            <div class="col-md-4">
+                            <label class="media checkbox text-truncate" title="First Aid Kit">
+                              <input type="checkbox" name="more_filter[]" value="29" class="pull-left amenities" id="map-search-amenities-29" ng-checked="false">
+                              First Aid Kit
+                            </label>
+                          </div>
+
+                            <div class="col-md-4">
+                            <label class="media checkbox text-truncate" title="Safety Card">
+                              <input type="checkbox" name="more_filter[]" value="30" class="pull-left amenities" id="map-search-amenities-30" ng-checked="false">
+                              Safety Card
+                            </label>
+                          </div>
+
+                            <div class="col-md-4">
+                            <label class="media checkbox text-truncate" title="Fire Extinguisher">
+                              <input type="checkbox" name="more_filter[]" value="31" class="pull-left amenities" id="map-search-amenities-31" ng-checked="false">
+                              Fire Extinguisher
+                            </label>
+                          </div>
+
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-md-1">
+                        <label class="show-more">
+                          <span>
+                            <i class="icon icon-caret-down hide-sm"></i>
+                            <strong class="text-muted show-sm">+ More</strong>
+                          </span>
+                          <span class="hide"><i class="icon icon-caret-up"></i></span>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="checkbox-group property_type_id filters-section panel-body panel-light toggle-group" data-name="property_type_id">
+                    <div class="row">
+                      <div class="col-lg-2 col-md-12 filter-label">
+                        <label>Property Type</label>
+                      </div>
+
+                      <div class="col-lg-9 col-md-11">
+                        <div class="row row-condensed filters-columns">
+
+                          <div class="col-md-4">
+                            <label class="media checkbox text-truncate" title="Apartment">
+                              <input type="checkbox" ng-model="property_type_1" value="1" class="pull-left property_type" id="map-search-property_type-1" ng-checked="false">
+                              Apartment
+                            </label>
+                          </div>
+
+                          <div class="col-md-4">
+                            <label class="media checkbox text-truncate" title="House">
+                              <input type="checkbox" ng-model="property_type_2" value="2" class="pull-left property_type" id="map-search-property_type-2" ng-checked="false">
+                              House
+                            </label>
+                          </div>
+
+                          <div class="col-md-4">
+                            <label class="media checkbox text-truncate" title="Bed &amp; Break Fast">
+                              <input type="checkbox" ng-model="property_type_3" value="3" class="pull-left property_type" id="map-search-property_type-3" ng-checked="false">
+                              Bed &amp; Break Fast
+                            </label>
+                          </div>
+
+                        </div>
+
+                        <div class="filters-more collapse">
+                          <hr>
+                          <div class="row row-condensed filters-columns">
+
+
+
+
+                          <div class="col-md-4">
+                            <label class="media checkbox text-truncate" title="Loft">
+                              <input type="checkbox" ng-model="property_type_4" value="4" class="pull-left property_type" id="map-search-property_type-4" ng-checked="false">
+                              Loft
+                            </label>
+                          </div>
+
+
+                          <div class="col-md-4">
+                            <label class="media checkbox text-truncate" title="Townhouse">
+                              <input type="checkbox" ng-model="property_type_5" value="5" class="pull-left property_type" id="map-search-property_type-5" ng-checked="false">
+                              Townhouse
+                            </label>
+                          </div>
+
+
+                          <div class="col-md-4">
+                            <label class="media checkbox text-truncate" title="Condominium">
+                              <input type="checkbox" ng-model="property_type_6" value="6" class="pull-left property_type" id="map-search-property_type-6" ng-checked="false">
+                              Condominium
+                            </label>
+                          </div>
+
+
+                          <div class="col-md-4">
+                            <label class="media checkbox text-truncate" title="Bungalow">
+                              <input type="checkbox" ng-model="property_type_7" value="7" class="pull-left property_type" id="map-search-property_type-7" ng-checked="false">
+                              Bungalow
+                            </label>
+                          </div>
+
+
+                          <div class="col-md-4">
+                            <label class="media checkbox text-truncate" title="Cabin">
+                              <input type="checkbox" ng-model="property_type_8" value="8" class="pull-left property_type" id="map-search-property_type-8" ng-checked="false">
+                              Cabin
+                            </label>
+                          </div>
+
+
+                          <div class="col-md-4">
+                            <label class="media checkbox text-truncate" title="Villa">
+                              <input type="checkbox" ng-model="property_type_9" value="9" class="pull-left property_type" id="map-search-property_type-9" ng-checked="false">
+                              Villa
+                            </label>
+                          </div>
+
+
+                          <div class="col-md-4">
+                            <label class="media checkbox text-truncate" title="Castle">
+                              <input type="checkbox" ng-model="property_type_10" value="10" class="pull-left property_type" id="map-search-property_type-10" ng-checked="false">
+                              Castle
+                            </label>
+                          </div>
+
+
+                          <div class="col-md-4">
+                            <label class="media checkbox text-truncate" title="Dorm">
+                              <input type="checkbox" ng-model="property_type_11" value="11" class="pull-left property_type" id="map-search-property_type-11" ng-checked="false">
+                              Dorm
+                            </label>
+                          </div>
+
+
+                          <div class="col-md-4">
+                            <label class="media checkbox text-truncate" title="Treehouse">
+                              <input type="checkbox" ng-model="property_type_12" value="12" class="pull-left property_type" id="map-search-property_type-12" ng-checked="false">
+                              Treehouse
+                            </label>
+                          </div>
+
+
+                          <div class="col-md-4">
+                            <label class="media checkbox text-truncate" title="Boat">
+                              <input type="checkbox" ng-model="property_type_13" value="13" class="pull-left property_type" id="map-search-property_type-13" ng-checked="false">
+                              Boat
+                            </label>
+                          </div>
+
+
+                          <div class="col-md-4">
+                            <label class="media checkbox text-truncate" title="Plane">
+                              <input type="checkbox" ng-model="property_type_14" value="14" class="pull-left property_type" id="map-search-property_type-14" ng-checked="false">
+                              Plane
+                            </label>
+                          </div>
+
+
+                          <div class="col-md-4">
+                            <label class="media checkbox text-truncate" title="Camper/RV">
+                              <input type="checkbox" ng-model="property_type_15" value="15" class="pull-left property_type" id="map-search-property_type-15" ng-checked="false">
+                              Camper/RV
+                            </label>
+                          </div>
+
+
+                          <div class="col-md-4">
+                            <label class="media checkbox text-truncate" title="Lgloo">
+                              <input type="checkbox" ng-model="property_type_16" value="16" class="pull-left property_type" id="map-search-property_type-16" ng-checked="false">
+                              Lgloo
+                            </label>
+                          </div>
+
+
+                          <div class="col-md-4">
+                            <label class="media checkbox text-truncate" title="Lighthouse">
+                              <input type="checkbox" ng-model="property_type_17" value="17" class="pull-left property_type" id="map-search-property_type-17" ng-checked="false">
+                              Lighthouse
+                            </label>
+                          </div>
+
+
+                          <div class="col-md-4">
+                            <label class="media checkbox text-truncate" title="Yurt">
+                              <input type="checkbox" ng-model="property_type_18" value="18" class="pull-left property_type" id="map-search-property_type-18" ng-checked="false">
+                              Yurt
+                            </label>
+                          </div>
+
+
+                          <div class="col-md-4">
+                            <label class="media checkbox text-truncate" title="Tipi">
+                              <input type="checkbox" ng-model="property_type_19" value="19" class="pull-left property_type" id="map-search-property_type-19" ng-checked="false">
+                              Tipi
+                            </label>
+                          </div>
+
+
+                          <div class="col-md-4">
+                            <label class="media checkbox text-truncate" title="Cave">
+                              <input type="checkbox" ng-model="property_type_20" value="20" class="pull-left property_type" id="map-search-property_type-20" ng-checked="false">
+                              Cave
+                            </label>
+                          </div>
+
+
+                          <div class="col-md-4">
+                            <label class="media checkbox text-truncate" title="Island">
+                              <input type="checkbox" ng-model="property_type_21" value="21" class="pull-left property_type" id="map-search-property_type-21" ng-checked="false">
+                              Island
+                            </label>
+                          </div>
+
+
+                          <div class="col-md-4">
+                            <label class="media checkbox text-truncate" title="Chalet">
+                              <input type="checkbox" ng-model="property_type_22" value="22" class="pull-left property_type" id="map-search-property_type-22" ng-checked="false">
+                              Chalet
+                            </label>
+                          </div>
+
+
+                          <div class="col-md-4">
+                            <label class="media checkbox text-truncate" title="Earth House">
+                              <input type="checkbox" ng-model="property_type_23" value="23" class="pull-left property_type" id="map-search-property_type-23" ng-checked="false">
+                              Earth House
+                            </label>
+                          </div>
+
+
+                          <div class="col-md-4">
+                            <label class="media checkbox text-truncate" title="Hut">
+                              <input type="checkbox" ng-model="property_type_24" value="24" class="pull-left property_type" id="map-search-property_type-24" ng-checked="false">
+                              Hut
+                            </label>
+                          </div>
+
+
+                          <div class="col-md-4">
+                            <label class="media checkbox text-truncate" title="Train">
+                              <input type="checkbox" ng-model="property_type_25" value="25" class="pull-left property_type" id="map-search-property_type-25" ng-checked="false">
+                              Train
+                            </label>
+                          </div>
+
+
+                          <div class="col-md-4">
+                            <label class="media checkbox text-truncate" title="Tent">
+                              <input type="checkbox" ng-model="property_type_26" value="26" class="pull-left property_type" id="map-search-property_type-26" ng-checked="false">
+                              Tent
+                            </label>
+                          </div>
+
+
+                          <div class="col-md-4">
+                            <label class="media checkbox text-truncate" title="Other">
+                              <input type="checkbox" ng-model="property_type_27" value="27" class="pull-left property_type" id="map-search-property_type-27" ng-checked="false">
+                              Other
+                            </label>
+                          </div>
+
+                                       </div>
+                        </div>
+                      </div>
+
+                      <div class="col-md-1">
+                        <label class="show-more">
+                          <span>
+                            <i class="icon icon-caret-down hide-sm"></i>
+                            <strong class="text-muted show-sm">+ More</strong>
+                          </span>
+                          <span class="hide"><i class="icon icon-caret-up"></i></span>
+                        </label>
+                      </div>
+                    </div>
+
+                  </div>
+
+                  <div class="panel-body panel-light show-sm toggle-group">
+                    <div class="sticky-apply-filters-placeholder"></div>
+                  </div>
+
+                      <div class="panel-light panel-btn-sm filters-footer filters-footer-sm toggle-group">
+                        <div class="row row-condensed">
+                          <div class="col-md-8 col-lg-7 col-md-offset-4 col-lg-offset-5">
+                            <div class="row row-condensed space-sm-7">
+                              <div class="col-sm-6">
+                                <button class="btn btn-block cancel-btn" id="cancel-filter">Cancel</button>
+                              </div>
+                              <div class="col-sm-6">
+                                <button class="btn btn-block btn-primary apply-filters-btn" id="more_filter_submit"  ng-click="apply_filter();">
+                                  Apply Filters
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div> -->
+            </div>
+            <!-- <div class="filters-placeholder hide hide-sm"></div>
+            <a id="docked-filters"></a>
+
+            <div class="sidebar-header toggle-hide panel-body hide-sm clearfix panel-bg-medium">
+              <button class="btn show-filters pull-left" id="more_filters">
+                <span class="text-more-filters">More Filters</span>
+                <span class="text-filters">Filters</span>
+              </button>
+
+            </div>
+          <div class="sidebar-header-placeholder"></div> -->
+            <div class="search-results toggle-hide">
+                <div class="outer-listings-container row-space-2">
+
+                    <div class="listings-container">
+                        <div class="row">
+
+                            <div class="col-sm-12 row-space-2 col-md-6" ng-repeat="rooms in room_result.data" ng-cloak>
+                                <div class="listing list_view" ng-mouseover="on_mouse($index);"
+                                     ng-mouseleave="out_mouse($index);" data-room_id="{{rooms.id}}">
+
+                                    <div class="panel-image listing-img">
+                                        <div class="listing-description wl-data-{{ rooms.id }}">
+                                            <div class="summary">
+                                                <p>
+                                                    {{ rooms.summary }}
+                                                    <a
+                                                            id="tooltip-sticky-{{ rooms.id }}" class="learn-more">Learn
+                                                        More</a>
+                                                </p>
+
+                                            </div>
+                                            <p class="address">{{rooms.city}}</p>
+
+                                        </div>
+                                        <a href="/property?propertyId={{rooms.id}}&checkin={{checkin}}&checkout={{checkout}}&guests={{guests}}"
+                                           class="media-photo media-cover">
+                                            <div class="listing-img-container media-cover text-center">
+                                                <img id="rooms_image_{{ rooms.id}}"
+                                                     src="http://localhost:3000/images/{{ rooms.photo_name }}"
+                                                     class="img-responsive-height" alt="{{ rooms.name }}">
+                                            </div>
+                                        </a>
+
+                                        <div class="target-prev target-control rooms-slider block-link"
+                                             data-room_images="{{rooms.images}}" data-room_id="{{rooms.id}}">
+                                            <i class="icon icon-chevron-left icon-size-2 icon-white"></i>
+                                        </div>
+
+                                        <a href="/property?propertyId={{rooms.id}}&checkin={{ checkin }}&checkout={{ checkout }}&guests={{ guests }}"
+                                           class="link-reset panel-overlay-bottom-left panel-overlay-label panel-overlay-listing-label">
+                                            <div>
+                                                <sup class="h6 text-contrast"><span
+                                                            ng-bind-html="rooms.rooms_price.currency.symbol"></span></sup>
+                                                <span class="h3 text-contrast price-amount"> $ {{ rooms.rooms_price.night }}</span>
+                                                <sup class="h6 text-contrast"></sup>
+                                                <span aria-label="Book Instantly" data-behavior="tooltip"
+                                                      class="h3 icon-beach"
+                                                      ng-if="rooms.booking_type == 'instant_book'">
+                      <i class="icon icon-instant-book icon-flush-sides"></i>
+                  </span>
+                                            </div>
+
+                                        </a>
+                                        <div class="target-next target-control rooms-slider block-link"
+                                             data-room_images="{{rooms.images}}" data-room_id="{{rooms.id}}">
+                                            <i class="icon icon-chevron-right icon-size-2 icon-white"></i>
+                                        </div>
+
+                                        <div class="panel-overlay-top-right wl-social-connection-panel">
+                  <span class="rich-toggle wish_list_button wishlist-button not_saved">
+                    <input type="checkbox" id="wishlist-widget-{{ rooms.id }}" name="wishlist-widget-{{ rooms.id }}"
+                           data-for-hosting="{{ rooms.id }}" ng-checked="rooms.saved_wishlists">
+                    <label for="wishlist-widget-{{ rooms.id }}" class="hide-sm">
+                      <span class="screen-reader-only">Wishlist</span>
+                      <i class="icon icon-heart icon-rausch icon-size-2 rich-toggle-checked"></i>
+                      <i class="icon icon-heart wishlist-heart-unchecked icon-size-2 rich-toggle-unchecked"></i>
+                      <i class="icon icon-heart-alt icon-white icon-size-2"
+                         id="wishlist-widget-icon-{{ rooms.id }}"></i>
+                    </label>
+                  </span>
+
+                                        </div>
+
+                                    </div>
+
+                                    <div class="panel-body panel-card-section">
+                                        <div class="media">
+                                            <a href="/profile?hostId={{rooms.id}}"
+                                               class="media-photo-badge pull-right card-profile-picture card-profile-picture-offset">
+                                                <div class="media-photo media-round">
+                                                    <img src="images/{{ rooms.users.profile_picture.src }}" alt="">
+                                                </div>
+                                            </a>
+                                            <a href="/property?propertyId={{rooms.id}}&checkin={{ checkin }}&checkout={{ checkout }}&guests={{ guests }}&room_type={{room_type}}"
+                                               class="text-normal">
+                                                <h3 title="{{ rooms.name }}" itemprop="name"
+                                                    class="h5 listing-name text-truncate row-space-top-1">
+                                                    {{ rooms.name }}
+                                                </h3>
+                                            </a>
+                                            <div itemprop="description"
+                                                 class="text-muted listing-location text-truncate"><a
+                                                        href="/property?propertyId={{rooms.id}}&checkin={{ checkin }}&checkout={{ checkout }}&guests={{ guests }}&room_type={{room_type}}"
+                                                        class="text-normal link-reset">
+                                                    {{ rooms.room_type_name }}
+                                                    <span ng-show="rooms.overall_star_rating">
+  ·
+                                                      <span ng-bind-html="rooms.overall_star_rating"></span>
+                                                      </span>
+                                                    <span ng-show="rooms.reviews_count">
+                                                      ·
+                                                      {{ rooms.reviews_count }} Review{{ (rooms.reviews_count > 1) ? 's' : '' }}
+                                                      </span>
+                                                </a>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <h2 ng-hide="room_result.data.length" class="text-center" id="no_results" ng-cloak>
+                                No Results Found
+                            </h2>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- <div class="results-footer">
+
+            <div class="pagination-buttons-container row-space-8" ng-cloak>
+              <div class="results_count">
+                <p>
+                  {{ room_result.from }} – {{ room_result.to }} of {{ room_result.total }} Rentals
+                </p>
+              </div>
+              <div>
+                <posts-pagination></posts-pagination>
+              </div>
+            </div>
+
+            <div class="nearby-links">
+              <div class="breadcrumbs row-space-top-1" itemprop="breadcrumb" ng-cloak>
+                  <span itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <a href="http://makent.trioangle.com/s?location={{ room_result.data[0].rooms_address.country_name }}" itemprop="url">
+                      <span itemprop="title">{{ room_result.data[0].rooms_address.country_name }}</span>
+                    </a>
+                    <i class="icon icon-chevron-right breadcrumb-spacer"></i>
+                  </span>
+                  <span itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <a href="http://makent.trioangle.com/s?location={{ room_result.data[0].rooms_address.state }}-{{ room_result.data[0].rooms_address.country_name }}" itemprop="url">
+                      <span itemprop="title">{{ room_result.data[0].rooms_address.state }}</span>
+                    </a>
+                    <i class="icon icon-chevron-right breadcrumb-spacer"></i>
+                  </span>
+                    <span>{{ room_result.data[0].rooms_address.city }}</span>
+              </div>
+            </div>
+
+          </div> -->
+
+
+            </div>
+
+            <div class="panel-btn-sm hide filters-btn fixed">
+                <button class="js-small-filter-toggle btn btn-large btn-block btn-primary">Filters</button>
+            </div>
+        </div>
+
+        <div class="map hide-sm">
+
+            <div id="map_canvas" role="presentation" class="map-canvas"
+                 style="position: relative; overflow: hidden; transform: translateZ(0px); background-color: rgb(164, 221, 245);">
+            </div>
+
+        </div>
+
+        <!--<button class="hide-sm btn footer-toggle">-->
+        <!--<span class="open-content">-->
+        <!--<i class="icon icon-globe"></i> Language and Currency-->
+        <!--</span>-->
+        <!--<span class="close-content"><i class="icon icon-remove"></i> Close</span>-->
+        <!--</button>-->
+    </div>
+
+
+    <div id="js-ib-icon-tooltip" class="tooltip tooltip-left-middle ib-icon-tooltip" role="tooltip" aria-hidden="true">
+        <div class="panel-body">
+            <h5>Instant Book</h5>
+            <p class="text-muted">
+                Book without waiting for your reservation to be accepted
+            </p>
+        </div>
+    </div>
+
+</main>
+
+
+<div id="gmap-preload" class="hide"></div>
+
+<div class="ipad-interstitial-wrapper"><span data-reactid=".1"></span></div>
+
+<div id="fb-root"></div>
+
+<script type="text/javascript"
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBXyRBiyRcEzHDJ8iU00zECMUP4cXBIm6A&sensor=false&libraries=places"></script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<!--<script async defer-->
+<!--src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBXyRBiyRcEzHDJ8iU00zECMUP4cXBIm6A&callback=initMap">-->
+<!--</script>-->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+<script type="text/javascript" src="http://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
+
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.2/angular.min.js"></script>
+
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/angular-sanitize/1.3.2/angular-sanitize.min.js"></script>
+
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/ResponsiveSlides.js/1.53/responsiveslides.min.js"></script>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.login_popup_head').click(function (e) {
+            e.preventDefault();
+            $("body").addClass("pos-fix");
+            $(".login_popup").show();
+            $(".signup_popup").hide();
+            $(".signup_popup2").hide();
+        });
+        $('.login-close').click(function (event) {
+            $("body").removeClass("pos-fix");
+            $(".login_popup").hide();
+        });
+        $('.top-home').click(function (event) {
+            event.stopPropagation();
+        });
+    });
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.forgot-password-popup').click(function (e) {
+            e.preventDefault();
+            $("body").addClass("pos-fix");
+            $(".login_popup").hide();
+            $(".forgot-passward").show();
+        });
+        $('.login-close').click(function (event) {
+            $("body").removeClass("pos-fix");
+            $(".forgot-passward").hide();
+        });
+        $('.top-home').click(function (event) {
+            event.stopPropagation();
+        });
+    });
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.signup_popup_head').click(function (e) {
+            e.preventDefault();
+            $("body").addClass("pos-fix");
+            $(".signup_popup").show();
+            $(".login_popup").hide();
+        });
+        $('.login-close').click(function () {
+            $("body").removeClass("pos-fix");
+            $(".signup_popup").hide();
+        });
+        $('.top-home').click(function (event) {
+            event.stopPropagation();
+        });
+    });
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.signup_popup_head2').click(function (e) {
+            e.preventDefault();
+            $("body").addClass("pos-fix");
+            $(".signup_popup2").show();
+            $(".signup_popup").hide();
+        });
+        $('.login-close').click(function () {
+            $("body").removeClass("pos-fix");
+            $(".signup_popup2").hide();
+        });
+        $('.top-home').click(function (event) {
+            event.stopPropagation();
+        });
+    });
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('ul.menu-group li a').click(function () {
+            $('.nav--sm').css('visibility', 'hidden');
+        });
+    });
+</script>
+<script>
+    var app = angular.module('App', ['ngSanitize']);
+    var APP_URL = "http:\/\/localhost:3000";
+    $.datepicker.setDefaults($.datepicker.regional["en"])
+</script>
+
+
+<script src="js/common.js"></script>
+<script src="https://cdn.rawgit.com/googlemaps/v3-utility-library/master/markerwithlabel/src/markerwithlabel.js"></script>
+
+<!--<script src="js/search.js"></script>-->
+
+<script src="controller/common_controller.js"></script>
+
+<script src="js/infobubble.js"></script>
+
+<script src="https://angular-file-upload.appspot.com/js/ng-file-upload-shim.js"></script>
+<script src="https://angular-file-upload.appspot.com/js/ng-file-upload.js"></script>
+
+<script type="text/javascript">
+    var min_slider_price = 10;
+    var max_slider_price = 750;
+    var min_slider_price_value = 10;
+    var max_slider_price_value = 750;
+</script>
+
+
+<!-- ver. 87c23752f8dfbd60bf83837d2c8b2dcd0ec660a9 -->
+<div class="tooltip tooltip-bottom-middle" role="tooltip" aria-hidden="true">
+    <p class="panel-body">To sign up, you must be 18 or older. Other people won’t see your birthday.</p>
+</div>
+</body>
+</html>
