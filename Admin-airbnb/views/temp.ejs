@@ -1,0 +1,1597 @@
+<!DOCTYPE html>
+
+<html lang="en-IN" xmlns:fb="http://ogp.me/ns/fb#"><!--<![endif]-->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="dns-prefetch" href="https://maps.googleapis.com/">
+    <link rel="dns-prefetch" href="https://maps.gstatic.com/">
+    <link rel="dns-prefetch" href="https://mts0.googleapis.com/">
+    <link rel="dns-prefetch" href="https://mts1.googleapis.com/">
+
+    <link rel="shortcut icon" href="http://makent.trioangle.com/images/logos/favicon.ico">
+
+    <!--[if IE]><![endif]-->
+    <meta charset="utf-8">
+
+    <!--[if IE 8]>
+    <link media="all" type="text/css" rel="stylesheet" href="http://makent.trioangle.com/css/common_ie8.css">
+    <![endif]-->
+    <!--[if !(IE 8)]><!-->
+    <link media="all" type="text/css" rel="stylesheet" href="css/common.css">
+
+    <link media="all" type="text/css" rel="stylesheet" href="css/home.css">
+
+    <link media="all" type="text/css" rel="stylesheet" href="css/themes.css">
+
+    <link media="all" type="text/css" rel="stylesheet" href="css/dynamic.css">
+
+    <!--<![endif]-->
+
+    <!--[if lt IE 9]>
+    <link media="all" type="text/css" rel="stylesheet" href="http://makent.trioangle.com/css/airglyphs-ie8.css">
+    <![endif]-->
+
+
+    <link media="all" type="text/css" rel="stylesheet" href="css/room_detail.css">
+
+    <link media="all" type="text/css" rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/nivo-lightbox/1.3.1/nivo-lightbox.css">
+
+
+    <link media="all" type="text/css" rel="stylesheet" href="css/default.css">
+
+    <link media="all" type="text/css" rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/bxslider/4.2.5/jquery.bxslider.css">
+    <link media="all" type="text/css" rel="stylesheet" href="http://makent.trioangle.com/css/jquery.bxslider.css">
+
+    <link media="all" type="text/css" rel="stylesheet" href="css/p3.css">
+
+
+    <!--    <link media="all" type="text/css" rel="stylesheet" href="http://makent.trioangle.com/css/rooms_detail.css">
+   <link media="all" type="text/css" rel="stylesheet" href="http://makent.trioangle.com/css/slider/nivo-lightbox.css">
+   <link media="all" type="text/css" rel="stylesheet" href="http://makent.trioangle.com/css/slider/default.css">
+   <link media="all" type="text/css" rel="stylesheet" href="http://makent.trioangle.com/css/jquery.bxslider.css">
+   <link media="all" type="text/css" rel="stylesheet" href="http://makent.trioangle.com/css/p3.css">
+      -->
+
+
+    <style type="text/css">
+        .ui-selecting {
+            background: #FECA40;
+        }
+
+        .ui-selected {
+            background: #F39814;
+            color: white;
+        }
+    </style>
+
+    <title>Property Details</title>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+
+
+    <meta name="twitter:widgets:csp" content="on">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="og:image" content="http://makent.trioangle.com/images/rooms/10008/1455189940_a8136267_original.jpg">
+    <meta itemprop="image" src="http://makent.trioangle.com/images/rooms/10008/1455189940_a8136267_original.jpg">
+    <link rel="image_src" href="#"
+          src="http://makent.trioangle.com/images/rooms/10008/1455189940_a8136267_original.jpg">
+
+    <link rel="search" type="application/opensearchdescription+xml" href="#" title="">
+
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <meta name="theme-color" content="#f5f5f5">
+
+</head>
+<body class="" ng-app="App">
+
+<% include header.ejs %>
+<% include modal.ejs %>
+
+<main id="site-content" role="main" ng-controller="room_details_controller">
+
+    <div class="subnav-container">
+
+        <div data-sticky="true" data-transition-at="#summary" aria-hidden="true" class="subnav section-titles hide-md">
+            <div class="page-container-responsive">
+                <ul class="subnav-list">
+                    <li>
+                        <a href="#photos" aria-selected="true" class="subnav-item">
+                            Photos
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#summary" class="subnav-item" data-extra="#summary-extend">
+                            About this listing
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#reviews" class="subnav-item">
+                            Reviews
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#host-profile" class="subnav-item">
+                            The Host
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#neighborhood" class="subnav-item">
+                            Location
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="og_pro_photo_prompt" class="container"></div>
+
+    <div id="room" itemscope="" itemtype="http://schema.org/Product">
+
+        <div id="photos" class="with-photos with-modal">
+
+    <span class="cover-img-container img-box1" data-hook="cover-img-container">
+     <a href="images/user/{{room_result.images[0]}}" oncontextmenu="return false" class="gallery"
+        data-lightbox-type="iframe">
+      <div id="frontimage_slider" class="cover-img" data-hook="img-lg" style="background-image:
+                  url(images/user/{{room_result.images[0]}})">
+
+      </div></a>
+
+        </span>
+        </div>
+        <div id="summary" class="panel room-section">
+            <div class="page-container-responsive">
+                <div class="row">
+                    <div class="col-lg-8">
+
+                        <div class="row-space-4 row-space-top-4 summary-component">
+                            <div class="row">
+
+                                <div class="col-md-3 space-sm-4 text-center space-sm-2">
+
+                                    <div class="media-photo-badge">
+
+                                        <a href="http://makent.trioangle.com/users/show/10003"
+                                           class="media-photo media-round">
+
+                                            <img alt="User Profile Image" class="host-profile-image"
+                                                 data-pin-nopin="true" height="115"
+                                                 src="images/user/{{room_result.users.profile_picture.src}}"
+                                                 title="{{room_result.users.first_name}}" width="115">
+                                        </a>
+                                    </div>
+
+                                </div>
+
+                                <div class="col-md-9">
+
+
+                                    <h1 itemprop="name" class="overflow h3 row-space-1 text-center-sm"
+                                        id="listing_name">
+                                        {{room_result.name}}
+                                    </h1>
+
+
+                                    <div id="display-address" class="row-space-2 text-muted text-center-sm"
+                                         itemprop="aggregateRating" itemscope="">
+
+                                        <a href="" class="link-reset">{{room_result.rooms_address.city + ", "+
+                                            room_result.rooms_address.state +
+                                            ", "+room_result.rooms_address.country}}</a>
+                                        &nbsp;
+                                    </div>
+
+                                    <div class="row row-condensed text-muted text-center">
+                                        <div class="col-sm-3">
+                                            <i class="icon icon-private-room icon-size-2"></i>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <i class="icon icon-group icon-size-2"></i>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <i class="icon icon-double-bed icon-size-2"></i>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="row">
+
+                                <div class="col-md-3 text-muted text-center hide-sm">
+                                    <a href="" class="link-reset text-wrap">{{room_result.users.first_name}}</a>
+                                </div>
+
+                                <div class="col-md-9">
+                                    <div class="row row-condensed text-muted text-center">
+                                        <div class="col-sm-3">
+                                            {{room_result.property_type}}
+                                        </div>
+                                        <div class="col-sm-3">
+                                            {{room_result.accommodates}} guests
+                                        </div>
+                                        <div class="col-sm-3">
+                                            {{room_result.beds}} beds
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-lg-4">
+
+                        <div id="tax-descriptions-tip" class="tooltip tooltip-top-middle" role="tooltip"
+                             data-sticky="true" data-trigger="#tax-descriptions-tooltip">
+                        </div>
+                        <form accept-charset="UTF-8"  id="book_it_form" >
+                            <input name="_token" type="hidden" value="KCfDxt7DPBy3C0FLEEhwZcUsYvE7ZmwnhXTBYbri">
+                            <h4 class="screen-reader-only">
+                                Request to Book
+                            </h4>
+                            <div id="pricing" itemprop="offers" itemscope="" class="">
+                                <div id="price_amount" class="book-it-price-amount pull-left h3 text-special">&#36;
+                                    <span id="rooms_price_amount" value="">{{room_result.rooms_price.maxBidPrice}}</span>
+                                </div>
+                                <i class="icon icon-bolt icon-beach pull-left h3 pricing__bolt"></i>
+
+                                <div id="payment-period-container" class="pull-right">
+                                    <div id="per_night" class="per-night">
+                                        Per Night
+                                    </div>
+                                    <div id="per_month" class="per-month hide">
+                                        Per Month
+                                        <i id="price-info-tooltip" class="icon icon-question hide"
+                                           data-behavior="tooltip"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="editListing" class="display-subtotal" style="top: 0px;"
+                                 ng-show="room_result.users.userSSN==<%=userSSN%>"
+                                 ng-hide="room_result.users.userSSN!=<%=userSSN%>">
+
+                                <div class="js-book-it-btn-container ">
+                                    <div ng-click="redirectEditProperty(room_result.propertyId)"  class="js-book-it-btn btn btn-large btn-block btn-primary" >
+                                        Edit Listing
+                                        <h4><%=userSSN%></h4>
+                                        <h4>{{room_result.users.userSSN}}</h4>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="book_it" class="display-subtotal" style="top: 0px;"  ng-show="room_result.users.userSSN!=<%=userSSN%>"
+                                 ng-hide="room_result.users.userSSN==<%=userSSN%>">
+                                <div ng-show="room_result.isBidding === false"
+                                     ng-hide="room_result.isBidding === true" class="panel book-it-panel">
+                                    <div class="panel-body panel-light">
+                                        <div class="form-fields">
+                                            <div class="row row-condensed space-3">
+                                                <div class="col-md-9">
+                                                    <div class="row row-condensed">
+                                                        <div class="col-sm-6 space-1-sm">
+                                                            <label for="checkin">
+                                                                Check In
+                                                            </label>
+                                                            <input ng-model="checkin"
+                                                                   class="checkin ui-datepicker-target hasDatepicker"
+                                                                   autocomplete="off" id="list_checkin" name="checkin"
+                                                                   placeholder="dd-mm-yyyy" type="text">
+                                                        </div>
+
+                                                        <input type="hidden" ng-model="room_id"
+                                                               ng-init="room_id = 10008">
+                                                        <input type="hidden" id="room_blocked_dates" value="">
+                                                        <input type="hidden" id="calendar_available_price" value="">
+                                                        <input type="hidden" id="room_available_price" value="">
+                                                        <input type="hidden" id="price_tooltip" value="">
+                                                        <input type="hidden" id="url_checkin" value="">
+                                                        <input type="hidden" id="url_checkout" value="">
+                                                        <input type="hidden" id="url_guests" value="">
+                                                        <input type="hidden" name="booking_type" id="booking_type"
+                                                               value="">
+
+                                                        <div class="col-sm-6 space-1-sm">
+                                                            <label for="checkout">
+                                                                Check Out
+                                                            </label>
+                                                            <input ng-model="checkout"
+                                                                   class="checkout ui-datepicker-target hasDatepicker"
+                                                                   autocomplete="off" id="list_checkout" name="checkout"
+                                                                   placeholder="dd-mm-yyyy" type="text">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <label for="number_of_guests">
+                                                        Guests
+                                                    </label>
+                                                    <div class="select select-block">
+                                                        <select ng-model="guests" id="number_of_guests"
+                                                                name="number_of_guests">
+                                                            <option value="1">1</option>
+                                                            <option value="2">2</option>
+                                                            <option value="3">3</option>
+                                                            <option value="4">4</option>
+                                                            <option value="5">5</option>
+                                                            <option value="6">6</option>
+                                                            <option value="7">7</option>
+                                                            <option value="8">8</option>
+                                                            <option value="9">9</option>
+                                                            <option value="10">10</option>
+                                                            <option value="11">11</option>
+                                                            <option value="12">12</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="simple-dates-message-container hide">
+                                                <div class="media text-kazan space-top-2 space-2">
+                                                    <div class="pull-left message-icon">
+                                                        <i class="icon icon-currency-inr"></i>
+                                                    </div>
+                                                    <div class="media-body">
+                                                        <strong>
+                                                            Enter dates for accurate prices and availability.
+                                                        </strong>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="js-book-it-status">
+                                            <div class="js-book-it-enabled clearfix">
+                                                <div class="js-subtotal-container book-it__subtotal panel-padding-fit"
+                                                     style="display:none;">
+                                                    <table class="table table-bordered price_table">
+                                                        <tbody>
+                                                        <tr>
+                                                            <td class="pos-rel">
+                                                                &#36; <span id="rooms_price_amount_1"
+                                                                            value="">136</span> x <span
+                                                                        id="total_night_count" value="">0</span> night
+                                                                <i id="service-fee-tooltip"
+                                                                   class="icon icon-question tool-amenity2"></i>
+                                                                <div class="tooltip-amenity tooltip-amenity2 tooltip-left-middle"
+                                                                     data-sticky="true" aria-hidden="true"
+                                                                     style="left: 132px;top: -13px;">
+                                                                    <dl class="panel-body">
+                                                                        <dt>Average nightly rate is rounded</dt>
+                                                                    </dl>
+                                                                </div>
+                                                            </td>
+                                                            <td>&#36;<span id="total_night_price" value="">0</span></td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td class="pos-rel">
+                                                                Service fee
+
+                                                                <i id="service-fee-tooltip"
+                                                                   class="icon icon-question tool-amenity1"></i>
+                                                                <div class="tooltip-amenity1 tooltip-amenity tooltip-left-middle"
+                                                                     data-sticky="true" aria-hidden="true" style="left: 110px;
+top: -34px;">
+                                                                    <dl class="panel-body">
+                                                                        <dt>This helps us run our platform and offer
+                                                                            services like 24/7 support on your trip
+                                                                        </dt>
+                                                                    </dl>
+                                                                </div>
+
+                                                            </td>
+                                                            <td>&#36;<span id="service_fee" value="">0</span></td>
+                                                        </tr>
+
+                                                        <tr class="additional_price">
+                                                            <td>
+                                                                Additional Guest fee
+                                                            </td>
+                                                            <td>&#36;<span id="additional_guest" value="">0</span></td>
+                                                        </tr>
+
+                                                        <tr class="security_price">
+                                                            <td>
+                                                                Security fee
+                                                            </td>
+                                                            <td>&#36;<span id="security_fee" value="">0</span></td>
+                                                        </tr>
+
+                                                        <tr class="cleaning_price">
+                                                            <td>
+                                                                Cleaning fee
+                                                            </td>
+                                                            <td>&#36;<span id="cleaning_fee" value="">0</span></td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>Total</td>
+                                                            <td>&#36;<span id="total" value="">0</span></td>
+                                                        </tr>
+
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+
+                                                <div id="book_it_disabled" class="text-center" style="display:none;">
+                                                    <p id="book_it_disabled_message" class="icon-rausch">
+                                                        Those dates are not available
+                                                    </p>
+                                                    <a href="http://makent.trioangle.com/s?location=North Bergen"
+                                                       class="btn btn-large btn-block" id="view_other_listings_button">
+                                                        View Other Listings
+                                                    </a>
+                                                </div>
+
+                                                <div class="js-book-it-btn-container ">
+                                                    <button type="submit"
+                                                            ng-click="book()"
+                                                            class="js-book-it-btn btn btn-large btn-block btn-primary">
+                                                            <span class="book-it__btn-text ">
+                                                              Request to Book
+
+                                                            </span>
+                                                    </button>
+                                                </div>
+                                                <p class="text-muted book-it__btn-text--instant-alt space-1 space-top-3 text-center ">
+                                                    <small>
+                                                        You&rsquo;ll be able to review before paying.
+                                                    </small>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div ng-show="room_result.isBidding === true "
+                                     ng-hide="room_result.isBidding === false" class="panel book-it-panel">
+                                    <div class="panel-body panel-light">
+                                        <div class="form-fields">
+                                            <div class="row row-condensed space-3">
+                                                <div class="col-md-1"></div>
+                                                <div class="col-md-10">
+                                                    <div class="row">
+                                                        <div class="space-1-sm">
+                                                            <label for="bid">
+                                                                Bid Amount
+                                                                <h4><%=userSSN%></h4>
+                                                                <h4>{{room_result.users.userSSN}}</h4>
+                                                            </label>
+                                                            <input ng-model="bidAmount"
+                                                                   class="checkin"
+                                                                   autocomplete="off" id="bid" name="bid"
+                                                                   placeholder="Bid Amount" type="text">
+                                                            </br>
+                                                            <label for="bid">
+                                                                Start Date : {{room_result.startDate | date : 'mediumDate'}}
+                                                            </label>
+
+                                                            <label for="bid">
+                                                                End Date : {{room_result.endDate | date : 'mediumDate'}}
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-1"></div>
+                                            </div>
+                                        </div>
+                                        <div class="js-book-it-status">
+                                            <div class="js-book-it-enabled clearfix">
+                                                <div class="js-book-it-btn-container ">
+                                                    <button type="button"
+                                                            ng-click="placeBid()"
+                                                            class="js-book-it-btn btn btn-large btn-block btn-primary">
+                                                            <span class="book-it__btn-text ">
+                                                              Place Bid
+                                                            </span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <input id="hosting_id" name="hosting_id" type="hidden" value="{{room_result.id}}">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="details" class="details-section webkit-render-fix">
+            <div id="summary-extend" class="page-container-responsive">
+                <div class="row">
+                    <div class="col-lg-8" id="details-column">
+
+                        <div class="row-space-8 row-space-top-8">
+
+                            <h4 class="row-space-4 text-center-sm">
+                                About this listing
+                            </h4>
+
+                            <!-- property description -->
+                            <p>{{room_result.summary}}</p>
+
+                            <p class="text-center-sm">
+                                <a id="contact-host-link" href="javascript:void(0);">
+                                    <strong>Contact Host</strong>
+                                </a>
+                            </p>
+
+
+                            <hr>
+
+
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="text-muted">
+                                        The Space
+                                    </div>
+
+                                </div>
+                                <div class="col-md-9">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div>Bed type: <strong>{{room_result.bed_type}}</strong></div>
+                                            <div>Property type: <strong><a href="#" class="link-reset">{{room_result.property_type_name}}</a></strong>
+                                            </div>
+
+                                            <div>Accommodates: <strong>{{room_result.accommodates}}</strong></div>
+                                        </div>
+                                        <div class="col-md-6">
+
+                                            <div>Bedrooms: <strong>{{room_result.bedrooms}}</strong></div>
+
+                                            <div>Bathrooms: <strong>{{room_result.bathrooms}}</strong></div>
+
+                                            <div>Beds: <strong>{{room_result.beds}}</strong></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <hr>
+
+
+                            <div class="row amenities">
+                                <div class="col-md-3 text-muted">
+                                    Amenities
+                                </div>
+
+
+                                <div class="col-md-9 expandable expandable-trigger-more">
+                                    <div class="expandable-content-summary">
+                                        <div class="row rooms_amenities_before">
+
+
+                                            <div class="col-sm-6">
+
+
+                                                <div class="row-space-1">
+
+                                                    <i class="icon h3 icon-essentials"></i>
+                                                    &nbsp;
+                                                    <span class="js-present-safety-feature"><strong>
+                                                Essentials
+                                              </strong></span>
+
+                                                </div>
+
+
+                                            </div>
+                                            <div class="col-sm-6">
+
+
+                                                <div class="row-space-1">
+
+                                                    <i class="icon h3 icon-tv"></i>
+                                                    &nbsp;
+                                                    <span class="js-present-safety-feature"><strong>
+                                                TV
+                                              </strong></span>
+
+                                                </div>
+
+
+                                            </div>
+                                            <div class="col-sm-6">
+
+
+                                                <div class="row-space-1">
+
+                                                    <i class="icon h3 icon-desktop"></i>
+                                                    &nbsp;
+                                                    <span class="js-present-safety-feature"><strong>
+                                                Cable TV
+                                              </strong></span>
+
+                                                </div>
+
+
+                                            </div>
+                                            <div class="col-sm-6">
+
+
+                                                <div class="row-space-1 text-muted">
+
+                                                    <i class="icon h3 icon-air-conditioning"></i>
+                                                    &nbsp;
+                                                    <span class="js-present-safety-feature"><strong>
+
+                                                Air Conditioning
+
+                                              </strong></span>
+
+                                                </div>
+
+
+                                            </div>
+                                            <div class="col-sm-6">
+
+
+                                                <div class="row-space-1 text-muted">
+
+                                                    <i class="icon h3 icon-heating"></i>
+                                                    &nbsp;
+                                                    <span class="js-present-safety-feature"><strong>
+
+                                                Heating
+
+
+                                              </strong></span>
+
+                                                </div>
+
+
+                                            </div>
+                                            <div class="col-sm-6">
+
+
+                                                <a class="expandable-trigger-more amenities_trigger" href="">
+                                                    <strong>+ More</strong>
+                                                </a>
+
+                                            </div>
+
+                                        </div>
+
+                                        <div class="row rooms_amenities_after hide" style="display:block;">
+
+
+                                            <div class="col-sm-6">
+
+
+                                                <div class="row-space-1">
+                                                    <i class="icon h3 icon-essentials"></i>
+                                                    &nbsp;
+                                                    <span class="js-present-safety-feature"><strong>
+                                                 Essentials
+                                              </strong></span>
+
+                                                </div>
+
+
+                                            </div>
+                                            <div class="col-sm-6">
+
+
+                                                <div class="row-space-1">
+                                                    <i class="icon h3 icon-tv"></i>
+                                                    &nbsp;
+                                                    <span class="js-present-safety-feature"><strong>
+                                                 TV
+                                              </strong></span>
+
+                                                </div>
+
+
+                                            </div>
+                                            <div class="col-sm-6">
+
+
+                                                <div class="row-space-1">
+                                                    <i class="icon h3 icon-desktop"></i>
+                                                    &nbsp;
+                                                    <span class="js-present-safety-feature"><strong>
+                                                 Cable TV
+                                              </strong></span>
+
+                                                </div>
+
+
+                                            </div>
+                                            <div class="col-sm-6">
+
+
+                                                <div class="row-space-1 text-muted">
+                                                    <i class="icon h3 icon-air-conditioning"></i>
+                                                    &nbsp;
+                                                    <span class="js-present-safety-feature"><strong>
+
+                                                Air Conditioning
+
+                                              </strong></span>
+
+                                                </div>
+
+
+                                            </div>
+                                            <div class="col-sm-6">
+
+
+                                                <div class="row-space-1 text-muted">
+                                                    <i class="icon h3 icon-heating"></i>
+                                                    &nbsp;
+                                                    <span class="js-present-safety-feature"><strong>
+
+
+                                                Heating
+
+                                              </strong></span>
+
+                                                </div>
+
+
+                                            </div>
+                                            <div class="col-sm-6">
+
+
+                                                <div class="row-space-1 text-muted">
+                                                    <i class="icon h3 icon-meal"></i>
+                                                    &nbsp;
+                                                    <span class="js-present-safety-feature"><strong>
+
+                                                Kitchen
+
+                                              </strong></span>
+
+                                                </div>
+
+
+                                            </div>
+                                            <div class="col-sm-6">
+
+
+                                                <div class="row-space-1">
+                                                    <i class="icon h3 icon-internet"></i>
+                                                    &nbsp;
+                                                    <span class="js-present-safety-feature"><strong>
+                                                 Internet
+                                              </strong></span>
+
+                                                </div>
+
+
+                                            </div>
+                                            <div class="col-sm-6">
+
+
+                                                <div class="row-space-1">
+                                                    <i class="icon h3 icon-wifi"></i>
+                                                    &nbsp;
+                                                    <span class="js-present-safety-feature"><strong>
+                                                 Wireless Internet
+                                              </strong></span>
+
+                                                </div>
+
+
+                                            </div>
+                                            <div class="col-sm-6">
+
+
+                                                <div class="row-space-1 text-muted">
+                                                    <i class="icon h3 icon-hot-tub"></i>
+                                                    &nbsp;
+                                                    <span class="js-present-safety-feature"><strong>
+
+                                                Hot Tub
+
+                                              </strong></span>
+
+                                                </div>
+
+
+                                            </div>
+                                            <div class="col-sm-6">
+
+
+                                                <div class="row-space-1">
+                                                    <i class="icon h3 icon-washer"></i>
+                                                    &nbsp;
+                                                    <span class="js-present-safety-feature"><strong>
+                                                 Washer
+                                              </strong></span>
+
+                                                </div>
+
+
+                                            </div>
+                                            <div class="col-sm-6">
+
+
+                                                <div class="row-space-1">
+                                                    <i class="icon h3 icon-pool"></i>
+                                                    &nbsp;
+                                                    <span class="js-present-safety-feature"><strong>
+                                                 Pool
+                                              </strong></span>
+
+                                                </div>
+
+
+                                            </div>
+                                            <div class="col-sm-6">
+
+
+                                                <div class="row-space-1">
+                                                    <i class="icon h3 icon-dryer"></i>
+                                                    &nbsp;
+                                                    <span class="js-present-safety-feature"><strong>
+                                                 Dryer
+                                              </strong></span>
+
+                                                </div>
+
+
+                                            </div>
+                                            <div class="col-sm-6">
+
+
+                                                <div class="row-space-1 text-muted">
+                                                    <i class="icon h3 icon-cup"></i>
+                                                    &nbsp;
+                                                    <span class="js-present-safety-feature"><strong>
+
+                                                Breakfast
+
+                                              </strong></span>
+
+                                                </div>
+
+
+                                            </div>
+                                            <div class="col-sm-6">
+
+
+                                                <div class="row-space-1 text-muted">
+                                                    <i class="icon h3 icon-parking"></i>
+                                                    &nbsp;
+                                                    <span class="js-present-safety-feature"><strong>
+
+                                                Free Parking on Premises
+
+                                              </strong></span>
+
+                                                </div>
+
+
+                                            </div>
+                                            <div class="col-sm-6">
+
+
+                                                <div class="row-space-1 text-muted">
+                                                    <i class="icon h3 icon-gym"></i>
+                                                    &nbsp;
+                                                    <span class="js-present-safety-feature"><strong>
+
+                                                Gym
+
+                                              </strong></span>
+
+                                                </div>
+
+
+                                            </div>
+                                            <div class="col-sm-6">
+
+
+                                                <div class="row-space-1 text-muted">
+                                                    <i class="icon h3 icon-elevator"></i>
+                                                    &nbsp;
+                                                    <span class="js-present-safety-feature"><strong>
+
+                                                Elevator in Building
+
+                                              </strong></span>
+
+                                                </div>
+
+
+                                            </div>
+                                            <div class="col-sm-6">
+
+
+                                                <div class="row-space-1 text-muted">
+                                                    <i class="icon h3 icon-fireplace"></i>
+                                                    &nbsp;
+                                                    <span class="js-present-safety-feature"><strong>
+
+                                                Indoor Fireplace
+
+                                              </strong></span>
+
+                                                </div>
+
+
+                                            </div>
+                                            <div class="col-sm-6">
+
+
+                                                <div class="row-space-1 text-muted">
+                                                    <i class="icon h3 icon-intercom"></i>
+                                                    &nbsp;
+                                                    <span class="js-present-safety-feature"><strong>
+
+                                                Buzzer/Wireless Intercom
+
+                                              </strong></span>
+
+                                                </div>
+
+
+                                            </div>
+                                            <div class="col-sm-6">
+
+
+                                                <div class="row-space-1 text-muted">
+                                                    <i class="icon h3 icon-doorman"></i>
+                                                    &nbsp;
+                                                    <span class="js-present-safety-feature"><strong>
+
+                                                Doorman
+
+                                              </strong></span>
+
+                                                </div>
+
+
+                                            </div>
+                                            <div class="col-sm-6">
+
+
+                                                <div class="row-space-1 text-muted">
+                                                    <i class="icon h3 icon-shampoo"></i>
+                                                    &nbsp;
+                                                    <span class="js-present-safety-feature"><strong>
+
+                                                Shampoo
+
+                                              </strong></span>
+
+                                                </div>
+
+
+                                            </div>
+                                            <div class="col-sm-6">
+
+
+                                                <div class="row-space-1 text-muted">
+                                                    <i class="icon h3 icon-family"></i>
+                                                    &nbsp;
+                                                    <span class="js-present-safety-feature"><strong>
+
+                                                Family/Kid Friendly
+
+                                              </strong></span>
+
+                                                </div>
+
+
+                                            </div>
+                                            <div class="col-sm-6">
+
+
+                                                <div class="row-space-1">
+                                                    <i class="icon h3 icon-smoking"></i>
+                                                    &nbsp;
+                                                    <span class="js-present-safety-feature"><strong>
+                                                 Smoking Allowed
+                                              </strong></span>
+
+                                                </div>
+
+
+                                            </div>
+                                            <div class="col-sm-6">
+
+
+                                                <div class="row-space-1">
+                                                    <i class="icon h3 icon-balloons"></i>
+                                                    &nbsp;
+                                                    <span class="js-present-safety-feature"><strong>
+                                                 Suitable for Events
+                                              </strong></span>
+
+                                                </div>
+
+
+                                            </div>
+                                            <div class="col-sm-6">
+
+
+                                                <div class="row-space-1">
+                                                    <i class="icon h3 icon-paw"></i>
+                                                    &nbsp;
+                                                    <span class="js-present-safety-feature"><strong>
+                                                 Pets Allowed
+                                              </strong></span>
+
+                                                </div>
+
+
+                                            </div>
+                                            <div class="col-sm-6">
+
+
+                                                <div class="row-space-1">
+                                                    <i class="icon h3 icon-ok"></i>
+                                                    &nbsp;
+                                                    <span class="js-present-safety-feature"><strong>
+                                                 Pets live on this property
+                                              </strong></span>
+
+                                                </div>
+
+
+                                            </div>
+                                            <div class="col-sm-6">
+
+
+                                                <div class="row-space-1 text-muted">
+                                                    <i class="icon h3 icon-accessible"></i>
+                                                    &nbsp;
+                                                    <span class="js-present-safety-feature"><strong>
+
+                                                Wheelchair Accessible
+
+                                              </strong></span>
+
+                                                </div>
+
+
+                                            </div>
+                                            <div class="col-sm-6">
+
+
+                                                <div class="row-space-1 text-muted">
+                                                    <i class="icon h3 icon-ok"></i>
+                                                    &nbsp;
+                                                    <span class="js-present-safety-feature"><strong>
+                                                 <del>
+                                                Smoke Detector
+                                                </del>
+                                              </strong></span>
+
+                                                </div>
+
+
+                                            </div>
+                                            <div class="col-sm-6">
+
+
+                                                <div class="row-space-1">
+                                                    <i class="icon h3 icon-ok"></i>
+                                                    &nbsp;
+                                                    <span class="js-present-safety-feature"><strong>
+                                                 Carbon Monoxide Detector
+                                              </strong></span>
+
+                                                </div>
+
+
+                                            </div>
+                                            <div class="col-sm-6">
+
+
+                                                <div class="row-space-1">
+                                                    <i class="icon h3 icon-ok"></i>
+                                                    &nbsp;
+                                                    <span class="js-present-safety-feature"><strong>
+                                                 First Aid Kit
+                                              </strong></span>
+
+                                                </div>
+
+
+                                            </div>
+                                            <div class="col-sm-6">
+
+
+                                                <div class="row-space-1">
+                                                    <i class="icon h3 icon-ok"></i>
+                                                    &nbsp;
+                                                    <span class="js-present-safety-feature"><strong>
+                                                 Safety Card
+                                              </strong></span>
+
+                                                </div>
+
+
+                                            </div>
+                                            <div class="col-sm-6">
+
+
+                                                <div class="row-space-1 text-muted">
+                                                    <i class="icon h3 icon-ok"></i>
+                                                    &nbsp;
+                                                    <span class="js-present-safety-feature"><strong>
+                                                 <del>
+                                                Fire Extinguisher
+                                                </del>
+                                              </strong></span>
+
+                                                </div>
+
+
+                                            </div>
+                                            <div class="col-sm-6">
+
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <hr>
+
+
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="text-muted">
+                                        Prices
+                                    </div>
+
+                                </div>
+                                <div class="col-md-9">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div>Extra people: <strong>
+                                                    <span>No Charge</span>
+                                                </strong></div>
+                                            <div>Weekly Price:
+                                                <strong><span id="weekly_price_string">&#36; {{room_result.rooms_price.night * 7}}</span>
+                                                    /week</strong>
+
+                                            </div>
+
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div>Monthly Price:
+                                                <strong><span id="weekly_price_string">&#36; {{room_result.rooms_price.night * 30}}</span>
+                                                    /month</strong>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <hr>
+
+
+                            <div class="js-p3-safety-features-section">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="text-muted">
+                                            Safety Features
+                                        </div>
+
+                                    </div>
+                                    <div class="col-md-9">
+                                        <div class="js-no-safety-features-text hide">
+                                            None
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-6">
+
+
+                                                <div class="row-space-1 text-muted">
+                                                    <i class="icon h3 icon-ok"></i>
+                                                    &nbsp;
+                                                    <span class="js-present-safety-feature"><strong>
+                                                 <del>
+                                                Smoke Detector
+                                                </del>
+                                              </strong></span>
+
+                                                </div>
+
+
+                                            </div>
+                                            <div class="col-sm-6">
+
+
+                                                <div class="row-space-1">
+                                                    <i class="icon h3 icon-ok"></i>
+                                                    &nbsp;
+                                                    <span class="js-present-safety-feature"><strong>
+                                                 Carbon Monoxide Detector
+                                              </strong></span>
+
+                                                </div>
+
+
+                                            </div>
+                                            <div class="col-sm-6">
+
+
+                                                <div class="row-space-1">
+                                                    <i class="icon h3 icon-ok"></i>
+                                                    &nbsp;
+                                                    <span class="js-present-safety-feature"><strong>
+                                                 First Aid Kit
+                                              </strong></span>
+
+                                                </div>
+
+
+                                            </div>
+                                            <div class="col-sm-6">
+
+
+                                                <div class="row-space-1">
+                                                    <i class="icon h3 icon-ok"></i>
+                                                    &nbsp;
+                                                    <span class="js-present-safety-feature"><strong>
+                                                 Safety Card
+                                              </strong></span>
+
+                                                </div>
+
+
+                                            </div>
+                                            <div class="col-sm-6">
+
+
+                                                <div class="row-space-1 text-muted">
+                                                    <i class="icon h3 icon-ok"></i>
+                                                    &nbsp;
+                                                    <span class="js-present-safety-feature"><strong>
+                                                 <del>
+                                                Fire Extinguisher
+                                                </del>
+                                              </strong></span>
+
+                                                </div>
+
+
+                                            </div>
+                                            <div class="col-sm-6">
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <hr>
+
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="text-muted">
+                                            Availability
+                                        </div>
+
+                                    </div>
+                                    <div class="col-md-9">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <strong>1 night</strong> minimum stay
+                                            </div>
+                                            <div class="col-md-6">
+                                                <a id="view-calendar" href="#"><strong>View Calendar</strong></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div id="photo-gallery" class="photo-grid row-space-4 row-space-top-4 hide-sm ">
+
+
+                                    <!--  -->
+                                    <!-- 5 -->
+
+
+                                    <div class="row featured-height">
+                                        <div class="col-12 row-full-height img-box1">
+                                            <a class="photo-grid-photo photo-trigger gallery"
+                                               style="background-image: url(images/user/{{room_result.images[0]}})"
+                                               href="images/user/{{room_result.images[0]}}" data-index="1"
+                                               data-lightbox-type="iframe">
+
+                                            </a>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-6 supporting-height img-box1" ng-repeat="image in room_result.images">
+                                        <a class="photo-grid-photo photo-trigger gallery"
+                                           style="background-image: url(images/user/{{image}})"
+                                           href="images/user/{{image}}" data-index="2"
+                                           data-lightbox-type="iframe">
+
+                                        </a>
+                                    </div>
+
+
+                                    <!--<div class="col-6 supporting-height img-box1">
+                                        <div class="media-photo media-photo-block row-full-height">
+                                            <div class="media-cover media-cover-dark img-box1">
+                                                <a class="photo-grid-photo photo-trigger gallery"
+                                                   style="background-image: url(http://makent.trioangle.com/images/rooms/10008/1455189958_e2760ad0_original.jpg)"
+                                                   href="http://makent.trioangle.com/rooms/10008/slider"
+                                                   data-index="5" data-lightbox-type="iframe">
+                                                    <img src="url(http://makent.trioangle.com/images/rooms/10008/1455189958_e2760ad0_original.jpg)"
+                                                         class="hide"
+                                                         alt="Private shower/Longterm/Decent B&amp;B">
+                                                </a>
+                                            </div>
+                                    </div>-->
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="reviews" class="room-section webkit-render-fix">
+                <div class="panel">
+                    <div class="page-container-responsive row-space-2">
+                        <div class="row">
+                            <div class="col-lg-8">
+                                <div class="review-content">
+                                    <div class="panel-body">
+                                        <!--<h4 class="row-space-4 text-center-sm">-->
+                                        <!--No Reviews Yet-->
+                                        <!--</h4>-->
+                                        <ul class="list-layout reviews-list row-space-top-4">
+                                            <li class="media reviews-list-item row-space-top-2"
+                                                ng-repeat="review in room_result.reviews">
+                                                <div class="pull-left text-center">
+                                                    <a class="media-photo media-round" href="#">
+                                                        <img width="68" height="68" title="Mick"
+                                                             src="images//user/{{review.userImg}}" alt="Mick">
+                                                    </a>
+                                                    <div class="name"><a class="text-muted" href="#">{{review.firstName}}
+                                                            {{review.lastName}}</a></div>
+                                                </div>
+                                                <div class="media-body response">
+                                                    <p>{{review.review}}</p>
+                                                    <hr>
+
+                                                    <div class="row-space-top-2">
+                                                        <p>
+                                                            <strong>
+                                                                <i aria-label="Private" data-behavior="tooltip"
+                                                                   class="icon icon-lock icon-rausch"></i>
+                                                                Rating: {{review.rating}}
+                                                            </strong>
+                                                            <br>
+
+                                                        </p>
+                                                    </div>
+                                                    <p class="clearfix text-muted">
+                                                        {{review.createdDate}}
+                                                    </p>
+                                                </div>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="host-profile" class="room-section webkit-render-fix">
+                <div class="page-container-responsive space-top-8 space-8">
+                    <div class="row">
+                        <div class="col-lg-8">
+                            <h4 class="row-space-4 text-center-sm">
+                                About the Host, {{room_result.users.first_name}}
+                            </h4>
+                            <div class="row">
+                                <div class="col-md-3 text-center">
+                                    <a href="/profile/{{room_result.users.userSSN}}"
+                                       class="media-photo media-round"><img alt="{{room_result.users.first_name}}"
+                                                                            data-pin-nopin="true" height="90"
+                                                                            src="images/user/{{room_result.users.profile_picture.src}}"
+                                                                            title="{{room_result.users.name}}" width="90"></a>
+                                </div>
+                                <div class="col-md-9">
+                                    <div class="row row-condensed space-2">
+                                        <div class="col-md-6">
+                                            <div>
+                                                Member since {{room_result.users.created_at}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="contact_wrapper">
+                                        <button id="host-profile-contact-btn" class="btn btn-small btn-primary">
+                                            Contact Host
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <hr class="space-4 space-top-4">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="text-muted">
+                                        Trust
+                                    </div>
+                                </div>
+                                <div class="col-md-9">
+                                    <div class="row row-condensed">
+                                        <div class="col-sm-4 col-md-3">
+                                            <a class="link-reset" rel="nofollow"
+                                               href="/profile/{{room_result.users.userSSN}}">
+                                                <div class="text-center text-wrap">
+                                                    <div class="badge-pill h3">
+                                                        <span class="badge-pill-count">{{hostReviews.count}}</span>
+                                                    </div>
+                                                    <div class="row-space-top-1">Reviews</div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+    </div>
+    </div>
+
+
+</main>
+<% include footer.ejs %>
+
+<div id="gmap-preload" class="hide"></div>
+
+<div class="ipad-interstitial-wrapper"><span data-reactid=".1"></span></div>
+
+<div id="fb-root"></div>
+
+<script type="text/javascript"
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBXyRBiyRcEzHDJ8iU00zECMUP4cXBIm6A&sensor=false&libraries=places"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+<script src="http://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.2/angular.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-sanitize/1.3.2/angular-sanitize.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ResponsiveSlides.js/1.53/responsiveslides.min.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.login_popup_head').click(function (e) {
+            e.preventDefault();
+            $("body").addClass("pos-fix");
+            $(".login_popup").show();
+            $(".signup_popup").hide();
+            $(".signup_popup2").hide();
+        });
+        $('.login-close').click(function (event) {
+            $("body").removeClass("pos-fix");
+            $(".login_popup").hide();
+        });
+        $('.top-home').click(function (event) {
+            event.stopPropagation();
+        });
+    });
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.forgot-password-popup').click(function (e) {
+            e.preventDefault();
+            $("body").addClass("pos-fix");
+            $(".login_popup").hide();
+            $(".forgot-passward").show();
+        });
+        $('.login-close').click(function (event) {
+            $("body").removeClass("pos-fix");
+            $(".forgot-passward").hide();
+        });
+        $('.top-home').click(function (event) {
+            event.stopPropagation();
+        });
+    });
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.signup_popup_head').click(function (e) {
+            e.preventDefault();
+            $("body").addClass("pos-fix");
+            $(".signup_popup").show();
+            $(".login_popup").hide();
+        });
+        $('.login-close').click(function () {
+            $("body").removeClass("pos-fix");
+            $(".signup_popup").hide();
+        });
+        $('.top-home').click(function (event) {
+            event.stopPropagation();
+        });
+    });
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.signup_popup_head2').click(function (e) {
+            e.preventDefault();
+            $("body").addClass("pos-fix");
+            $(".signup_popup2").show();
+            $(".signup_popup").hide();
+        });
+        $('.login-close').click(function () {
+            $("body").removeClass("pos-fix");
+            $(".signup_popup2").hide();
+        });
+        $('.top-home').click(function (event) {
+            event.stopPropagation();
+        });
+    });
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('ul.menu-group li a').click(function () {
+            $('.nav--sm').css('visibility', 'hidden');
+        });
+    });
+</script>
+<script>
+    var app = angular.module('App', ['ngSanitize']);
+    var APP_URL = "http:\/\/localhost:3000";
+    $.datepicker.setDefaults($.datepicker.regional["en"])
+</script>
+
+<script src="js/room.js"></script>
+
+<script src="js/common.js"></script>
+
+<script src="controller/common_controller.js"></script>
+
+
+<script src="http://makent.trioangle.com/js/jquery.bxslider.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bxslider/4.2.5/jquery.bxslider.min.js"></script>
+
+<script src="https://angular-file-upload.appspot.com/js/ng-file-upload-shim.js"></script>
+<script src="https://angular-file-upload.appspot.com/js/ng-file-upload.js"></script>
+<!-- ver. 87c23752f8dfbd60bf83837d2c8b2dcd0ec660a9 -->
+<div class="tooltip tooltip-bottom-middle" role="tooltip" aria-hidden="true">
+    <p class="panel-body">To sign up, you must be 18 or older. Other people won’t see your birthday.</p>
+</div>
+</body>
+</html>

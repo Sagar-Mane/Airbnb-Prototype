@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/highcharts-3d.js"></script>
+    <script src="https://code.highcharts.com/highcharts-more.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.8.1/nv.d3.min.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.8.1/nv.d3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-nvd3/1.0.5/angular-nvd3.min.js"></script>
+
+
+    <title>Airbnb | Admin</title>
+    <link href="css/css/bootstrap.css" rel="stylesheet">
+    <link href="css/css.css" rel="stylesheet">
+    <link href="css/css1.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+    <link href="css/style.min.css" rel="stylesheet">
+    <link href="css/prettify.css" rel="stylesheet">
+    <link href="css/blue.css" rel="stylesheet">
+    <link href="css/daterangepicker-bs3.css" rel="stylesheet">
+    <link href="css/fullcalendar.css" rel="stylesheet">
+    <link href="css/dataTables.bootstrap.css" rel="stylesheet">
+    <link href="css/dataTables.fontAwesome.css" rel="stylesheet">
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/site.css" rel="stylesheet">
+    <script src="angularjs/dashboard.js"></script>
+    <script src="js/jquery-1.10.2.min.js"></script>
+    <script>
+
+    </script>
+</head>
+<body ng-app="dashboardapp" ng-controller="dashboard"
+      ng-init="topTenProperties(); cityRevenue(); topTenHost(); totalHosts(); totalUsers(); totalProperties(); totalRevenue();">
+
+<header id="topnav"
+        class="navbar navbar-midnightblue navbar-fixed-top clearfix"
+        role="banner">
+
+		<span id="trigger-sidebar" class="toolbar-trigger toolbar-icon-bg"> <a
+                    data-toggle="tooltips" data-placement="right" title="Toggle Sidebar"><span
+                        class="icon-bg"><i class="fa fa-fw fa-bars"></i> </span> </a>
+		</span>
+    <a href="" style="font-size:18px;color:#ffffff;float: left;height:50px;padding:15px;line-height:20px;">Airbnb</a>
+    <ul class="nav navbar-nav toolbar pull-right">
+
+
+        <li class="dropdown toolbar-icon-bgs">
+
+        </li>
+
+
+        <li><a href="/admin_logout"><span class="pull-left">Sign Out</span></a></li>
+
+    </ul>
+
+</header>
+
+<div id="wrapper">
+    <div id="layout-static">
+        <div class="static-sidebar-wrapper sidebar-midnightblue">
+            <div class="static-sidebar">
+                <div class="sidebar">
+                    <div class="widget stay-on-collapse" id="widget-welcomebox">
+                        <div class="widget-body welcome-box tabular">
+                            <div class="tabular-row">
+                                <div class="tabular-cell welcome-avatar">
+                                    <a href="/admin/dashboard"><img src="images/profile.jpg" class="avatar"></a>
+                                </div>
+                                <div class="tabular-cell welcome-options">
+                                    <span class="welcome-text">Welcome,</span>
+                                    <a href="/admin/dashboard" class="name">Admin</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="widget stay-on-collapse" id="widget-sidebar">
+                        <nav role="navigation" class="widget-body">
+                            <ul class="acc-menu">
+                                <li class="nav-separator">Explore</li>
+
+
+                                <li class="active"><a href="/admin_dashboard"><i class="fa fa-dashboard"></i><span>Dashboard</span></a>
+                                </li>
+                                <li><a href="/admin_activeUserManagement"><i class="fa fa-users"></i><span>User Management</span></a>
+                                </li>
+
+                                <li><a href="javascript:void(0);"><i
+                                                class="fa fa-users"></i><span>Host Management</span></a>
+                                    <ul class="acc-menu">
+                                        <li>
+                                            <a href="/admin_activeHostManagement"><span>Active Host Management</span></a>
+                                        </li>
+                                        <li><a href="/admin_pendingHost"><span>Pending Host Requests</span></a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="javascript:void(0);"><i
+                                                class="fa fa-home"></i><span>Property Management</span></a>
+                                    <ul class="acc-menu">
+                                        <li>
+                                            <a href="/admin_activePropertyManagement"><span>Active Property Management</span></a>
+                                        </li>
+                                        <li><a href="/admin_pendingProperty"><span>Pending Property Requests</span></a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li><a href="/admin_invoiceManagement"><i class="fa fa-barcode"></i><span>Invoice management</span></a>
+                                </li>
+
+                                <li><a href="javascript:void(0);"><i
+                                                class="fa fa-user"></i><span>Admin Management</span></a>
+                                    <ul class="acc-menu">
+                                        <li><a href="/viewAddAdminPage"><span>Add Admin</span></a>
+                                        </li>
+                                    </ul>
+                                </li>
+
+
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="static-content-wrapper">
+            <div class="static-content">
+                <div class="page-content">
+
+                    <div class="page-heading">
+                        <h1>
+                            Dashboard </h1>
+                        <!--div class="options">
+                            <div class="btn-toolbar">
+                                <a href="#" class="btn btn-default"><i
+                                    class="fa fa-fw fa-wrench"></i> </a>
+                            </div>
+                        </div-->
+                    </div>
+                    <div class="container-fluid">
+                        <div data-widget-group="group1">
+
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="amazo-tile tile-success">
+                                        <div class="tile-heading">
+                                            <div class="title">Total Hosts</div>
+                                            <div class="secondary"></div>
+                                        </div>
+                                        <div class="tile-body">
+                                            <div class="content">{{hosts.totalH}}</div>
+                                        </div>
+                                        <div class="tile-footer">
+                                            <span class="info-text text-right"><!--<i class="fa fa-level-up"></i>--></span>
+                                            <div id="sparkline-revenue" class="sparkline-line"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="amazo-tile tile-info" href="#">
+                                        <div class="tile-heading">
+                                            <div class="title">Total Users</div>
+                                            <div class="secondary"></div>
+                                        </div>
+                                        <div class="tile-body">
+                                            <div class="content">{{users.totalUsers}}</div>
+                                        </div>
+                                        <div class="tile-footer">
+                                            <span class="info-text text-right"></span>
+                                            <div class="progress">
+                                                <div class="progress-bar" style="width: 82%"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <div class="amazo-tile tile-white">
+                                        <div class="tile-heading">
+                                            <div class="title">Total Properties</div>
+                                            <div class="secondary"></div>
+                                        </div>
+                                        <div class="tile-body">
+                                            <span class="content">{{properties.totalProperties}}</span>
+                                        </div>
+                                        <div class="tile-footer text-center">
+                                            <span class="info-text text-right" style="color: #f04743"><!--<i class="fa fa-level-down"></i>--></span>
+                                            <div id="sparkline-item" class="sparkline-bar"></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="col-md-3">
+                                    <div class="amazo-tile tile-white">
+                                        <div class="tile-heading">
+                                            <span class="title">Total Revenue</span>
+                                            <span class="secondary"></span>
+                                        </div>
+                                        <div class="tile-body">
+                                            <span class="content">{{revenue.totalRevenue}}</span>
+                                        </div>
+                                        <div class="tile-footer">
+                                            <span class="info-text text-right" style="color: #94c355"><!-- <i class="fa fa-level-up"></i>--></span>
+                                            <div id="sparkline-commission" class="sparkline"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="panel panel-default demo-dashboard-graph" data-widget=''>
+                                    <div class="panel-heading">
+                                        <h2>
+                                            <ul class="nav nav-tabs" id="chartist-tab">
+                                                <li><a href="#tab-revenues" data-toggle="tab"><i
+                                                                class="fa fa-bar-chart-o visible-xs"></i>
+                                                        <span class="hidden-xs">First 10 Properties with their revenue</span></a>
+                                                </li>
+                                            </ul>
+                                        </h2>
+                                    </div>
+                                    <div class="panel-body">
+                                        <div class="tab-content">
+                                            <div id="tab-revenues" class="tab-pane active">
+                                                <div id="container"
+                                                     style="min-width: 300px; height: 400px; margin: 0 auto"></div>
+                                                <!--<nvd3 options="options" data="data"></nvd3>-->
+
+
+                                                <!--<div class="demo-chartist-sales" id="chart2"></div>-->
+                                                <!--<div class="requested"></div><div class="txtcls">Requested</div>-->
+                                                <!--<div class="accepted"></div><div class="txtcls">Accepted</div>-->
+                                                <!--<div class="declined"></div><div class="txtcls">Declined</div>-->
+                                                <!--<div class="cancelled"></div><div class="txtcls">Cancelled</div>-->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="panel panel-default demo-dashboard-graph" data-widget=''>
+                                    <div class="panel-heading">
+                                        <h2>
+                                            <ul class="nav nav-tabs" id="chartist-tab">
+                                                <li><a href="#tab-revenues" data-toggle="tab"><i
+                                                                class="fa fa-bar-chart-o visible-xs"></i>
+                                                        <span class="hidden-xs">Top Ten Hosts with their revenue</span></a>
+                                                </li>
+                                            </ul>
+                                        </h2>
+                                    </div>
+                                    <div class="panel-body">
+                                        <div class="tab-content">
+                                            <div id="tab-revenues" class="tab-pane active">
+                                                <div id="container2"
+                                                     style="min-width: 300px; height: 400px; margin: 0 auto"></div>
+                                                <!--<nvd3 options="options" data="data"></nvd3>-->
+
+
+                                                <!--<div class="demo-chartist-sales" id="chart2"></div>-->
+                                                <!--<div class="requested"></div><div class="txtcls">Requested</div>-->
+                                                <!--<div class="accepted"></div><div class="txtcls">Accepted</div>-->
+                                                <!--<div class="declined"></div><div class="txtcls">Declined</div>-->
+                                                <!--<div class="cancelled"></div><div class="txtcls">Cancelled</div>-->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!-- Switcher -->
+                        <div class="demo-options">
+                            <!--div class="demo-options-icon"><i class="fa fa-spin fa-fw fa-smile-o"></i></div-->
+                            <div class="demo-heading">Demo Settings</div>
+
+                            <div class="demo-body">
+                                <div class="tabular">
+                                    <div class="tabular-row">
+                                        <div class="tabular-cell">Fixed Header</div>
+                                        <div class="tabular-cell demo-switches"><input class="bootstrap-switch"
+                                                                                       type="checkbox" checked
+                                                                                       data-size="mini"
+                                                                                       data-on-color="success"
+                                                                                       data-off-color="default"
+                                                                                       name="demo-fixedheader"
+                                                                                       data-on-text="I"
+                                                                                       data-off-text="O"></div>
+                                    </div>
+                                    <div class="tabular-row">
+                                        <div class="tabular-cell">Boxed Layout</div>
+                                        <div class="tabular-cell demo-switches"><input class="bootstrap-switch"
+                                                                                       type="checkbox" data-size="mini"
+                                                                                       data-on-color="success"
+                                                                                       data-off-color="default"
+                                                                                       name="demo-boxedlayout"
+                                                                                       data-on-text="I"
+                                                                                       data-off-text="O"></div>
+                                    </div>
+                                    <div class="tabular-row">
+                                        <div class="tabular-cell">Collapse Leftbar</div>
+                                        <div class="tabular-cell demo-switches"><input class="bootstrap-switch"
+                                                                                       type="checkbox" data-size="mini"
+                                                                                       data-on-color="success"
+                                                                                       data-off-color="default"
+                                                                                       name="demo-collapseleftbar"
+                                                                                       data-on-text="I"
+                                                                                       data-off-text="O"></div>
+                                    </div>
+                                    <div class="tabular-row">
+                                        <div class="tabular-cell">Collapse Rightbar</div>
+                                        <div class="tabular-cell demo-switches"><input class="bootstrap-switch"
+                                                                                       type="checkbox" checked
+                                                                                       data-size="mini"
+                                                                                       data-on-color="success"
+                                                                                       data-off-color="default"
+                                                                                       name="demo-collapserightbar"
+                                                                                       data-on-text="I"
+                                                                                       data-off-text="O"></div>
+                                    </div>
+                                    <div class="tabular-row hide" id="demo-horizicon">
+                                        <div class="tabular-cell">Horizontal Icons</div>
+                                        <div class="tabular-cell demo-switches"><input class="bootstrap-switch"
+                                                                                       type="checkbox" checked
+                                                                                       data-size="mini"
+                                                                                       data-on-color="primary"
+                                                                                       data-off-color="warning"
+                                                                                       data-on-text="S"
+                                                                                       data-off-text="L"
+                                                                                       name="demo-horizicons"></div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="demo-body">
+                                <div class="option-title">Header Colors</div>
+                                <ul id="demo-header-color" class="demo-color-list">
+                                    <li><span class="demo-white"></span></li>
+                                    <li><span class="demo-black"></span></li>
+                                    <li><span class="demo-midnightblue"></span></li>
+                                    <li><span class="demo-primary"></span></li>
+                                    <li><span class="demo-info"></span></li>
+                                    <li><span class="demo-alizarin"></span></li>
+                                    <li><span class="demo-green"></span></li>
+                                    <li><span class="demo-violet"></span></li>
+                                    <li><span class="demo-indigo"></span></li>
+                                </ul>
+                            </div>
+
+                            <div class="demo-body">
+                                <div class="option-title">Sidebar Colors</div>
+                                <ul id="demo-sidebar-color" class="demo-color-list">
+                                    <li><span class="demo-white"></span></li>
+                                    <li><span class="demo-black"></span></li>
+                                    <li><span class="demo-midnightblue"></span></li>
+                                    <li><span class="demo-primary"></span></li>
+                                    <li><span class="demo-info"></span></li>
+                                    <li><span class="demo-alizarin"></span></li>
+                                    <li><span class="demo-green"></span></li>
+                                    <li><span class="demo-violet"></span></li>
+                                    <li><span class="demo-indigo"></span></li>
+                                </ul>
+                            </div>
+
+                            <div class="demo-body hide" id="demo-boxes">
+                                <div class="option-title">Boxed Layout Options</div>
+                                <ul id="demo-boxed-bg" class="demo-color-list">
+                                    <li><span class="pattern-brickwall"></span></li>
+                                    <li><span class="pattern-dark-stripes"></span></li>
+                                    <li><span class="pattern-rockywall"></span></li>
+                                    <li><span class="pattern-subtle-carbon"></span></li>
+                                    <li><span class="pattern-tweed"></span></li>
+                                    <li><span class="pattern-vertical-cloth"></span></li>
+                                    <li><span class="pattern-grey_wash_wall"></span></li>
+                                    <li><span class="pattern-pw_maze_black"></span></li>
+                                    <li><span class="patther-wild_oliva"></span></li>
+                                    <li><span class="pattern-stressed_linen"></span></li>
+                                    <li><span class="pattern-sos"></span></li>
+                                </ul>
+                            </div>
+
+                        </div>
+                        <!-- /Switcher -->
+                        <!--<script type="text/javascript" src="../js/chartist.min.js"></script>-->
+                        <!--<script type="text/javascript" src="../js/chartist-plugin-tooltip.js"></script>-->
+                        <script type="text/javascript" src="../js/demo-index.js"></script>
+                        <script type="text/javascript">
+                            var chartistData2 = {
+                                labels: ["May", "Jun", "Jul", "Aug", "Sep", "Oct"],
+                                series: [
+                                    [0, 1, 1, 2, 0, 0],
+                                    [0, 0, 9, 15, 84, 96],
+                                    [0, 0, 6, 4, 73, 102],
+                                    [2, 1, 4, 4, 33, 47]]
+                            };
+
+                            var chartistOptions2 = {
+                                height: 300,
+                                seriesBarDistance: 15,
+                                axisX: {
+                                    offset: 20
+                                },
+                                axisY: {
+                                    offset: 20,
+                                    /*labelInterpolationFnc: function(value) {
+                                     return '$' + value + 'K'
+                                     },*/
+                                    scaleMinSpace: 0
+                                },
+                                plugins: [
+                                    Chartist.plugins.tooltip({})
+                                ]
+                            };
+
+                            var chartistData3 = {
+                                labels: ["May", "Jun", "Jul", "Aug", "Sep", "Oct"],
+                                series: [
+                                    [0, 640.98, 2772.25, 10286.66, 37160.55, 94969.64],
+
+                                ]
+                            };
+
+                            var chartistOptions3 = {
+                                height: 300,
+                                seriesBarDistance: 15,
+                                axisX: {
+                                    offset: 20
+                                },
+                                axisY: {
+                                    offset: 20,
+                                    /*labelInterpolationFnc: function(value) {
+                                     return '$' + value + 'K'
+                                     },*/
+                                    scaleMinSpace: 0
+                                },
+                                plugins: [
+                                    Chartist.plugins.tooltip({})
+                                ]
+                            };
+
+                            var Chartist2 = new Chartist.Bar('#chart2', chartistData2, chartistOptions2);
+                            var Chartist1 = new Chartist.Bar('#chart3', chartistData3, chartistOptions3);
+                        </script>
+                    </div>
+                    <!-- .container-fluid -->
+                </div>
+                <!-- #page-content -->
+            </div>
+            <footer role="contentinfo">
+                <div class="clearfix">
+                    <ul class="list-unstyled list-inline pull-left">
+                        <li><h6 style="margin: 0;">&copy; 2016 Airbnb</h6></li>
+                    </ul>
+                    <button class="pull-right btn btn-link btn-xs hidden-print"
+                            id="back-to-top">
+                        <i class="fa fa-arrow-up"></i>
+                    </button>
+                </div>
+            </footer>
+        </div>
+    </div>
+</div>
+<script src="js/jquery.js"></script>
+<script src="js/yii.js"></script>
+</body>
+</html>
+
+<!--script type="text/javascript" src="/admin/js/jquery-1.10.2.min.js"></script-->
+<script type="text/javascript" src="js/jqueryui-1.9.2.min.js"></script>
+<script type="text/javascript" src="js/admin.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/jquery.easypiechart.js"></script>
+<script type="text/javascript" src="js/jquery.sparklines.min.js"></script>
+<script type="text/javascript" src="js/jstree.min.js"></script>
+<script type="text/javascript" src="js/prettify.js"></script>
+<script type="text/javascript" src="js/bootstrap-switch.js"></script>
+<script type="text/javascript" src="js/bootstrap-tabdrop.js"></script>
+<script type="text/javascript" src="js/icheck.min.js"></script>
+<script type="text/javascript" src="js/enquire.min.js"></script>
+<script type="text/javascript" src="js/bootbox.js"></script>
+<script type="text/javascript" src="js/jquery.simpleWeather.min.js"></script>
+<script type="text/javascript" src="js/jquery.nanoscroller.min.js"></script>
+<script type="text/javascript" src="js/jquery.mousewheel.min.js"></script>
+<script type="text/javascript" src="js/application.js"></script>
+<script type="text/javascript" src="js/demo.js"></script>
+<script type="text/javascript" src="js/demo-switcher.js"></script>
+<script type="text/javascript" src="js/fullcalendar.min.js"></script>
+<script type="text/javascript" src="js/wijets.js"></script>
+<script type="text/javascript" src="js/chartist.min.js"></script>
+<script type="text/javascript" src="js/chartist-plugin-tooltip.js"></script>
+<script type="text/javascript" src="js/moment.min.js"></script>
+<script type="text/javascript" src="js/daterangepicker.js"></script>
+<script type="text/javascript" src="js/jquery.dataTables.js"></script>
+<script type="text/javascript" src="js/dataTables.bootstrap.js"></script>
+<script type="text/javascript" src="js/demo-datatables.js"></script>
+<script type="text/javascript" src="js/fileinput.min.js"></script>
+<script type="text/javascript" src="js/ckeditor.js"></script>
+<style type="text/css">
+    .alert-success {
+        /*position: absolute;*/
+        right: -50%;
+        width: 100%;
+        transition: all 0.5s !important;
+        overflow: hidden !important;
+    }
+
+    .flashcss {
+        right: 0%;
+    }
+</style>
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        setTimeout(function () {
+            $(".alert-success").css("display", "none");
+        }, 3000);
+        $("#closebutton").click(function () {
+            $(".alert-success").css("display", "none");
+        });
+    });
+</script>
+<script type="text/javascript">
+    function onchangelang() {
+        $("#languagechange").submit();
+    }
+</script>

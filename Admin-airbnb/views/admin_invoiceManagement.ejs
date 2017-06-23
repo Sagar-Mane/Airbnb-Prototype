@@ -1,0 +1,360 @@
+
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="description" content="Avenger Admin Theme">
+    <meta name="author" content="KaijuThemes">
+    <meta name="csrf-param" content="_csrf">
+    <meta name="csrf-token" content="bE5SZ0FYUjRVORcLCD80TRo3C1EWFGRMAHs9EDkaIFUkFAQBGDVrYQ==">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+    <title>Active Property Management</title>
+    <link href=".." rel="stylesheet">
+    <link href="css/css.css" rel="stylesheet">
+    <link href="css/css1.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+    <link href="css/style.min.css" rel="stylesheet">
+    <link href="css/prettify.css" rel="stylesheet">
+    <link href="css/blue.css" rel="stylesheet">
+    <link href="css/daterangepicker-bs3.css" rel="stylesheet">
+    <link href="css/fullcalendar.css" rel="stylesheet">
+    <link href="css/chartist.min.css" rel="stylesheet">
+    <link href="css/dataTables.bootstrap.css" rel="stylesheet">
+    <link href="css/dataTables.fontAwesome.css" rel="stylesheet">
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/site.css" rel="stylesheet">
+    <script src="js/jquery-1.10.2.min.js"></script><script>
+
+    </script>
+    <script src="angularjs/invoiceManagement.js"></script>
+</head>
+<body ng-app="invoiceManagementapp" ng-controller="invoiceManagement" ng-init="invoices()">
+
+<header id="topnav"
+        class="navbar navbar-midnightblue navbar-fixed-top clearfix"
+        role="banner">
+
+		<span id="trigger-sidebar" class="toolbar-trigger toolbar-icon-bg"> <a
+                    data-toggle="tooltips" data-placement="right" title="Toggle Sidebar"><span
+                        class="icon-bg"><i class="fa fa-fw fa-bars"></i> </span> </a>
+		</span>
+    <a href="" style="font-size:18px;color:#ffffff;float: left;height:50px;padding:15px;line-height:20px;">Airbnb</a>
+    <ul class="nav navbar-nav toolbar pull-right">
+
+        <li class="dropdown toolbar-icon-bgs">
+
+        </li>
+
+        <li><a href="/admin/logout"><span class="pull-left">Sign Out</span></a></li>
+
+    </ul>
+
+</header>
+
+<div id="wrapper">
+    <div id="layout-static">
+        <div class="static-sidebar-wrapper sidebar-midnightblue">
+            <div class="static-sidebar">
+                <div class="sidebar">
+                    <div class="widget stay-on-collapse" id="widget-welcomebox">
+                        <div class="widget-body welcome-box tabular">
+                            <div class="tabular-row">
+                                <div class="tabular-cell welcome-avatar">
+                                    <a href="/admin/dashboard"><img src="images/profile.jpg" class="avatar"></a>
+                                </div>
+                                <div class="tabular-cell welcome-options">
+                                    <span class="welcome-text">Welcome,</span>
+                                    <a href="/admin/dashboard" class="name">Admin</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="widget stay-on-collapse" id="widget-sidebar">
+                        <nav role="navigation" class="widget-body">
+                            <ul class="acc-menu">
+                                <li class="nav-separator">Explore</li>
+
+
+                                <li><a href="/admin_dashboard"><i class="fa fa-dashboard"></i><span>Dashboard</span></a>
+                                </li>
+                                <li><a href="/admin_activeUserManagement"><i class="fa fa-users"></i><span>User Management</span></a>
+                                </li>
+
+                                <li><a href="javascript:void(0);"><i
+                                                class="fa fa-users"></i><span>Host Management</span></a>
+                                    <ul class="acc-menu">
+                                        <li>
+                                            <a href="/admin_activeHostManagement"><span>Active Host Management</span></a>
+                                        </li>
+                                        <li><a href="/admin_pendingHost"><span>Pending Host Requests</span></a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="javascript:void(0);"><i
+                                                class="fa fa-home"></i><span>Property Management</span></a>
+                                    <ul class="acc-menu">
+                                        <li>
+                                            <a href="/admin_activePropertyManagement"><span>Active Property Management</span></a>
+                                        </li>
+                                        <li><a href="/admin_pendingProperty"><span>Pending Property Requests</span></a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="active"><a href="/admin_invoiceManagement"><i class="fa fa-barcode"></i><span>Invoice management</span></a>
+                                </li>
+
+                                <li><a href="javascript:void(0);"><i
+                                                class="fa fa-user"></i><span>Admin Management</span></a>
+                                    <ul class="acc-menu">
+                                        <li><a href="/viewAddAdminPage"><span>Add Admin</span></a>
+                                        </li>
+                                    </ul>
+                                </li>
+
+
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="static-content-wrapper">
+            <div class="static-content">
+                <div class="page-content">
+
+                    <div class="page-heading">
+                        <h1>
+                            Invoice Management	</h1>
+                        <!--div class="options">
+                            <div class="btn-toolbar">
+                                <a href="#" class="btn btn-default"><i
+                                    class="fa fa-fw fa-wrench"></i> </a>
+                            </div>
+                        </div-->
+                    </div>
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h2>Manage Invoices</h2>
+                                        <div class="panel-ctrls">
+                                        </div>
+                                    </div>
+                                    <div class="panel-body panel-no-padding"><div id="usermanage">    <div id="w0" class="grid-view"><div class="summary"></div>
+                                                <br>
+                                                <div class="container col-md-12">
+                                                    <form action="">
+                                                        <div class="form-group well">
+                                                            <div class="input-group">
+                                                                <div class="input-group-addon"><span class="fa fa-search"></span></div>
+                                                                <input type="text" class="form-control" ng-model="searchUserTerm" placeholder="Search user..."/>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                    <table class="table table-striped">
+                                                        <thead>
+                                                        <tr>
+                                                            <th>
+                                                                <a href="#" ng-click="sortName = 'firstName'; sortReverse = !sortReverse">Id
+                                                                    <span class="fa fa-caret-down" ng-show="!sortReverse"></span>
+                                                                    <span class="fa fa-caret-up" ng-show="sortReverse"></span>
+                                                                </a>
+                                                            </th>
+                                                            <th>
+                                                                <a href="#" ng-click="sortName = 'lastName'; sortReverse = !sortReverse">Name
+                                                                    <span class="fa fa-caret-down" ng-show="!sortReverse"></span>
+                                                                    <span class="fa fa-caret-up" ng-show="sortReverse"></span>
+                                                                </a>
+                                                            </th>
+                                                            <th>
+                                                                <a href="#" ng-click="sortName = 'age'; sortReverse = !sortReverse">Date created
+                                                                    <span class="fa fa-caret-down" ng-show="!sortReverse"></span>
+                                                                    <span class="fa fa-caret-up" ng-show="sortReverse"></span>
+                                                                </a>
+                                                            </th>
+                                                            <th>
+                                                                <a href="#" ng-click="sortName = 'age'; sortReverse = !sortReverse">Action
+                                                                    <span class="fa fa-caret-down" ng-show="!sortReverse"></span>
+                                                                    <span class="fa fa-caret-up" ng-show="sortReverse"></span>
+                                                                </a>
+                                                            </th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        <tr ng-repeat="x in invoice |orderBy:sortName:sortReverse|filter: searchUserTerm">
+                                                            <td ng-bind="x._id"></td>
+                                                            <td>{{x.hostId.firstName}} {{x.hostId.lastName}}</td>
+                                                            <td>{{x.createdDate}}</td>
+
+                                                            <td><input type="button" class="btn btn-success" value="View" data-toggle="modal" data-target="#myModal" ng-click="getInvoice(x._id)"></td>
+                                                        </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+
+                                                </tbody></table>
+
+                                                <!--<table class="table table-striped table-bordered"><thead>-->
+                                                    <!--<tr><th><a href="/admin_activeUserManagement?sort=firstName" data-sort="firstName">Invoice Id</th><th><a href="/admin_activeUserManagement?sort=firstName" data-sort="firstName">Host Id</a></th><th><a href="/admin_activeUserManagement?sort=state" data-sort="state">Created Date</a></th><th>Actions</th></tr><tr id="w0-filters" class="filters"><td><input type="text" class="form-control" name="Userssearch[firstName]"></td><td><input type="text" class="form-control" name="Userssearch[firstName]"></td><td><input type="text" class="form-control" name="Userssearch[state]"></td><td>&nbsp;</td><td>&nbsp;</td></tr>-->
+                                                    <!--</thead>-->
+                                                    <!--<tbody>-->
+                                                    <!--<tr ng-repeat="x in invoice">-->
+                                                        <!--<td>{{x._id}}</td>-->
+                                                        <!--<td>{{x.hostId.firstName}} {{x.hostId.lastName}}</td>-->
+                                                        <!--<td>{{x.createdDate | date:'yyyy-MM-dd HH:mm a '}}</td>-->
+                                                        <!--<td><input type="button" class="btn btn-success" value="View" data-toggle="modal" data-target="#myModal" ng-click=""></td></tr>-->
+                                                    <!--<tr id="5" data-key="5"><td>2</td><td>Muthu</td><td><span class="not-set">(not set)</span></td><td>0</td><td><input type="button" class="btn btn-success" value="Block" onclick="changeuserstatus('block',5)">-->
+                                                    <!--<input type="button" class="btn btn-info" value="View" onclick="view_user(5)"></td></tr>-->
+                                                    <!--<tr id="12" data-key="12"><td>3</td><td>Lakshmi2</td><td>Tamilnadu</td><td>0</td><td><input type="button" class="btn btn-success" value="Block" onclick="changeuserstatus('block',12)">-->
+                                                    <!--<input type="button" class="btn btn-info" value="View" onclick="view_user(12)"></td></tr>-->
+                                                    <!--<tr id="38" data-key="38"><td>4</td><td>test</td><td><span class="not-set">(not set)</span></td><td>0</td><td><input type="button" class="btn btn-success" value="Block" onclick="changeuserstatus('block',38)">-->
+                                                    <!--<input type="button" class="btn btn-info" value="View" onclick="view_user(38)"></td></tr>-->
+                                                    <!--<tr id="45" data-key="45"><td>5</td><td>lakshmi</td><td><span class="not-set">(not set)</span></td><td>0</td><td><input type="button" class="btn btn-success" value="Block" onclick="changeuserstatus('block',45)">-->
+                                                    <!--<input type="button" class="btn btn-info" value="View" onclick="view_user(45)"></td></tr>-->
+                                                    <!--<tr id="46" data-key="46"><td>6</td><td>Yamini</td><td>Tamilnadu, India</td><td>2</td><td><input type="button" class="btn btn-success" value="Block" onclick="changeuserstatus('block',46)">-->
+                                                    <!--<input type="button" class="btn btn-info" value="View" onclick="view_user(46)"></td></tr>-->
+                                                    <!--<tr id="48" data-key="48"><td>7</td><td>SivaSiva Hitasoft Technol</td><td>Hii</td><td>6</td><td><input type="button" class="btn btn-success" value="Block" onclick="changeuserstatus('block',48)">-->
+                                                    <!--<input type="button" class="btn btn-info" value="View" onclick="view_user(48)"></td></tr>-->
+                                                    <!--<tr id="49" data-key="49"><td>8</td><td>suriya</td><td>Tamilnadu</td><td>2</td><td><input type="button" class="btn btn-success" value="Block" onclick="changeuserstatus('block',49)">-->
+                                                    <!--<input type="button" class="btn btn-info" value="View" onclick="view_user(49)"></td></tr>-->
+                                                    <!--<tr id="50" data-key="50"><td>9</td><td>kiran</td><td>Tell ?</td><td>30</td><td><input type="button" class="btn btn-success" value="Block" onclick="changeuserstatus('block',50)">-->
+                                                    <!--<input type="button" class="btn btn-info" value="View" onclick="view_user(50)"></td></tr>-->
+                                                    <!--<tr id="51" data-key="51"><td>10</td><td>Roja</td><td>Tamilnadu</td><td>0</td><td><input type="button" class="btn btn-success" value="Block" onclick="changeuserstatus('block',51)">-->
+                                                    <!--<input type="button" class="btn btn-info" value="View" onclick="view_user(51)"></td></tr>-->
+
+                                                <!--<ul class="pagination"><li class="prev disabled"><span>&laquo;</span></li>-->
+                                                <!--<li class="active"><a href="/admin/admins/usermanagement?page=1" data-page="0">1</a></li>-->
+                                                <!--<li><a href="/admin/admins/usermanagement?page=2" data-page="1">2</a></li>-->
+                                                <!--<li><a href="/admin/admins/usermanagement?page=3" data-page="2">3</a></li>-->
+                                                <!--<li><a href="/admin/admins/usermanagement?page=4" data-page="3">4</a></li>-->
+                                                <!--<li><a href="/admin/admins/usermanagement?page=5" data-page="4">5</a></li>-->
+                                                <!--<li><a href="/admin/admins/usermanagement?page=6" data-page="5">6</a></li>-->
+                                                <!--<li><a href="/admin/admins/usermanagement?page=7" data-page="6">7</a></li>-->
+                                                <!--<li><a href="/admin/admins/usermanagement?page=8" data-page="7">8</a></li>-->
+                                                <!--<li><a href="/admin/admins/usermanagement?page=9" data-page="8">9</a></li>-->
+                                                <!--<li><a href="/admin/admins/usermanagement?page=10" data-page="9">10</a></li>-->
+                                                <!--<li class="next"><a href="/admin/admins/usermanagement?page=2" data-page="1">&raquo;</a></li></ul>-->
+                                            </div></div></div>
+                                </div>
+                            </div>
+                        </div><!--?php
+
+
+
+						</div>
+						<!-- .container-fluid -->
+                    </div>
+                    <footer role="contentinfo">
+                        <div class="clearfix">
+                            <ul class="list-unstyled list-inline pull-left">
+                                <li><h6 style="margin: 0;">&copy; 2016 Airbnb</h6></li>
+                            </ul>
+                            <button class="pull-right btn btn-link btn-xs hidden-print"
+                                    id="back-to-top">
+                                <i class="fa fa-arrow-up"></i>
+                            </button>
+                        </div>
+                    </footer>
+                </div>
+            </div>
+        </div>
+        <script src="js/jquery.js"></script>
+        <script src="js/yii.js"></script></div>
+
+    <!--script type="text/javascript" src="/admin/js/jquery-1.10.2.min.js"></script-->
+    <script type="text/javascript" src="js/jqueryui-1.9.2.min.js"></script>
+    <script type="text/javascript" src="js/admin.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/jquery.easypiechart.js"></script>
+    <script type="text/javascript" src="js/jquery.sparklines.min.js"></script>
+    <script type="text/javascript" src="js/jstree.min.js"></script>
+    <script type="text/javascript" src="js/prettify.js"></script>
+    <script type="text/javascript" src="js/bootstrap-switch.js"></script>
+    <script type="text/javascript" src="js/bootstrap-tabdrop.js"></script>
+    <script type="text/javascript" src="js/icheck.min.js"></script>
+    <script type="text/javascript" src="js/enquire.min.js"></script>
+    <script type="text/javascript" src="js/bootbox.js"></script>
+    <script type="text/javascript" src="js/jquery.simpleWeather.min.js"></script>
+    <script type="text/javascript" src="js/jquery.nanoscroller.min.js"></script>
+    <script type="text/javascript" src="js/jquery.mousewheel.min.js"></script>
+    <script type="text/javascript" src="js/application.js"></script>
+    <script type="text/javascript" src="js/demo.js"></script>
+    <script type="text/javascript" src="js/demo-switcher.js"></script>
+    <script type="text/javascript" src="js/fullcalendar.min.js"></script>
+    <script type="text/javascript" src="js/wijets.js"></script>
+    <script type="text/javascript" src="js/chartist.min.js"></script>
+    <script type="text/javascript" src="js/chartist-plugin-tooltip.js"></script>
+    <script type="text/javascript" src="js/moment.min.js"></script>
+    <script type="text/javascript" src="js/daterangepicker.js"></script>
+    <script type="text/javascript" src="js/jquery.dataTables.js"></script>
+    <script type="text/javascript" src="js/dataTables.bootstrap.js"></script>
+    <script type="text/javascript" src="js/demo-datatables.js"></script>
+    <script type="text/javascript" src="js/fileinput.min.js"></script>
+    <script type="text/javascript" src="js/ckeditor.js"></script>
+
+    <style type="text/css">
+        .alert-success {
+            /*position: absolute;*/
+            right: -50%;
+            width: 100%;
+            transition: all 0.5s !important;
+            overflow: hidden !important;
+        }
+
+        .flashcss {
+            right: 0%;
+        }
+    </style>
+    <script type="text/javascript">
+        $(document).ready(function(){
+
+            setTimeout(function() {
+                $(".alert-success").css("display","none");
+            }, 3000);
+            $("#closebutton").click(function(){
+                $(".alert-success").css("display","none");
+            });
+        });
+    </script>
+    <script type="text/javascript">
+        function onchangelang(){
+            $( "#languagechange" ).submit();
+        }
+    </script>
+</div>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Invoice info</h4>
+            </div>
+            <div class="modal-body">
+                <p>Billing Id: {{a[0].billingId}}</p>
+                <p>Date created: {{a[0].createdDate | date:'MM/dd/yyyy @ h:mma'}}</p>
+                <p>Property Name: {{a[0].propertyId.name}}</p>
+                <p>Address: {{a[0].propertyId.address}}, {{a[0].propertyId.city}}, {{a[0].propertyId.state}}-{{a[0].propertyId.zip}}</p>
+                <p>Host Name: {{a[0].hostId.firstName}} {{a[0].hostId.lastName}}</p>
+                <p>Customer Name: {{a[0].userId.firstName}} {{a[0].userId.lastName}}</p>
+                <p>Total Charge: {{a[0].total}}</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+
+
+</body>
+</html>

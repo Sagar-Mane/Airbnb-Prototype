@@ -1,0 +1,107 @@
+<html>
+<title>Add Admin</title>
+<script type="text/javascript" src="../js/admin.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script src="http://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+<link rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+<script src="angularjs/adminManagement.js"></script>
+<body class="bg_gray1" style="background:#f8f8f8;" ng-app="adminManagement" ng-controller="admin">
+
+</div>
+<div class="logincontain" style="">
+    <div class="headercont"><b>Add New Admin</b></div>
+    <div class="bodycont">
+        <form id="login-form" method="post" role="form" ng-submit="addAdmin()">
+
+            <p><input type="text" class="txtbox" placeholder="Email" ng-model="email"></p>
+
+            <p><input type="password" class="txtbox" placeholder="Password" ng-model="password"></p>
+
+            <p><input type="text" class="txtbox" placeholder="First Name" ng-model="firstName"></p>
+
+            <p><input type="text" class="txtbox" placeholder="Last Name" ng-model="lastName"></p>
+
+            <p><input type="text" class="txtbox" placeholder="Address" ng-model="address"></p>
+
+            <p><input type="text" class="txtbox" placeholder="City" ng-model="city"></p>
+
+            <p><input type="text" class="txtbox" placeholder="State" ng-model="state"></p>
+
+            <p><input type="number" class="txtbox" placeholder="Zip Code" ng-model="zip"></p>
+
+            <p><input type="number" class="txtbox" placeholder="Phone number" ng-model="contactNumber"></p>
+
+            <div class="form-group">
+                <button type="submit" class="btn-login" name="login-button">Add Admin</button>
+            </div>
+
+
+        </form>
+    </div>
+</div>
+</body>
+</html>
+
+<style type="text/css">
+    .logincontain {
+        border-radius: 4px;
+        width: 33%;
+        margin: 100px auto;
+        border: 1px solid #ddd;
+        box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+    }
+
+    .headercont {
+        background: #f3f3f3;
+        padding: 15px;
+        font-size: 18px;
+    }
+
+    .bodycont {
+        background: #ffffff;
+        padding: 15px;
+    }
+
+    .txtbox {
+        background-color: #fff;
+        background-image: none;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+        color: #555;
+        display: block;
+        font-size: 14px;
+        height: 34px;
+        line-height: 1.42857;
+        padding: 6px 12px;
+        transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+        width: 100%;
+    }
+
+    .btn-login {
+        background-color: #ff5a5f;
+        border-radius: 3px;
+        color: #fff;
+        font-size: 14px !important;
+        font-weight: bold !important;
+        -moz-user-select: none;
+        border: 1px solid transparent;
+        cursor: pointer;
+        display: inline-block;
+        font-size: 14px;
+        font-weight: normal;
+        line-height: 1.42857;
+        margin-bottom: 0;
+        padding: 6px 12px;
+        text-align: center;
+        vertical-align: middle;
+        white-space: nowrap;
+        width: 100%;
+    }
+
+</style>
