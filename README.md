@@ -8,7 +8,6 @@ Airbnb is a peer-to-peer accommodation market place that connects hosts (vendors
 
 ## Table of contents
 - [Getting Started](#getting-started)
-- [Project Deliverables](#project-deliverables)
 - [Architecture Flow Diagram](#architecture-flow-diagram)
 - [Screenshots](#screenshots)
 - [Features](#features)
@@ -21,8 +20,6 @@ Airbnb is a peer-to-peer accommodation market place that connects hosts (vendors
 4. Start Airbnb Server by running server.js from root folder 
 5. Start Airbnb Admin by running www from bin folder
 6. Client will run on port 3000 and Admin will run on port 3001
-
-## Project Deliverables 
 
 ## Architecture Flow Diagram
 <p align="center"><img src="https://github.com/Sagar-Mane/Airbnb-Prototype/blob/master/docs/Architecture%20Diagram.jpg" /></p>
