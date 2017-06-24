@@ -15,6 +15,12 @@ Airbnb is a peer-to-peer accommodation market place that connects hosts (vendors
 - [Future Enhancements](#future-enhancements)
 
 ## Getting Started
+1. Download all the modules (Client, Server, Admin)
+2. Install MongoDB and start MongoDB server
+3. Start Airbnb Client by running www from bin folder
+4. Start Airbnb Server by running server.js from root folder 
+5. Start Airbnb Admin by running www from bin folder
+6. Client will run on port 3000 and Admin will run on port 3001
 
 ## Project Deliverables 
 
