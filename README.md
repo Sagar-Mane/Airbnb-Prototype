@@ -25,6 +25,7 @@ Airbnb is a peer-to-peer accommodation market place that connects hosts (vendors
 ## Project Deliverables 
 
 ## Architecture Flow Diagram
+<p align="center"><img src="https://github.com/Sagar-Mane/Airbnb-Prototype/blob/master/docs/Architecture%20Diagram.jpg" /></p>
 
 ## Screenshots
 
