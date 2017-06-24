@@ -6,3 +6,22 @@ Airbnb is a peer-to-peer accommodation market place that connects hosts (vendors
 
 **Airbnb-Prototype provides all the core features of [Airbnb](www.airbnb.com) and one extra feature of auctioning for properties .**
 
+## Table of contents
+- [Getting Started](#getting-started)
+- [Project Deliverables](#project-deliverables)
+- [Architecture Flow Diagram](#architecture-flow-diagram)
+- [Screenshots](#screenshots)
+- [Features](#features)
+- [Future Enhancements](#future-enhancements)
+
+## Getting Started
+
+## Project Deliverables 
+
+## Architecture Flow Diagram
+
+## Screenshots
+
+## Features
+
+## Future Enhancements
