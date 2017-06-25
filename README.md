@@ -41,5 +41,51 @@ Airbnb is a peer-to-peer accommodation market place that connects hosts (vendors
 
 
 ## Features
+#### User Module
+- Create a new User
+- Delete an existing User
+- User can place the bid
+- Change a user’s information (name, address,profile image etc)
+- Search for a property based on attributes.
+- Display information about a User.
+- Reviews and rating.
+
+#### Host Module
+- Create a new Host.
+- Delete an existing Host
+- Dashboard : Able to see analytics activities.
+- Generate Bill for a User (Every Trip).
+- Upload introductory video.
+- Approval of requested property by user. (Accept/Denied)
+
+#### Billing Module
+- Create a new Bill for each trip.
+- Delete an existing Bill.
+- Search an existing Bill.
+
+#### Admin Module
+- Add host to the system.
+- Search for enrolled host area wise.
+- Review host/customer account
+- Search for a Bill based on attributes (fetch all bills By date, By months)
+- Display information about a Bill.
+
+#### Trips Module
+- Create Edit and Delete Trip.
+- History of trips (Display in user’s account)
+- History of trips (Display in host’s account)
+
+#### Log Processing Service
+
+#### Admin Dashboard
+- Retrieve data from database and show first 10 properties with its revenue/year
+- City wise revenue/year.
+- 10 hosts who sold maximum number of properties last month with its revenue.
+
+#### Bidding 
+- User is able to place bid
+- Bid timings will be 4 days
+- After completing the bid user is able to see pending trip bid in his trip history.
+
 
 ## Future Enhancements
