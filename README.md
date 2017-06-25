@@ -26,11 +26,26 @@ Airbnb is a peer-to-peer accommodation market place that connects hosts (vendors
 <p align="center"><img src="https://github.com/Sagar-Mane/Airbnb-Prototype/blob/master/docs/Architecture%20Diagram.jpg" /></p>
 
 ## Technology Stack
-- MEAN 
-- Rabbit MQ 
-- D3 JS
-- Redis
-- Jmeter
+| Domain               | Technology         |
+| ---------------------|:-------------:     |
+| FrontEnd             | Angular JS         |
+| Backend              | Node JS            |
+| UI/UX                | CSS and Bootstrap  |
+| Markup Language      | HTML5              |
+| Scripting Language   | JavaScript         |
+| UI/UX                | CSS and Bootstrap  |
+| Database             | MongoDB            |
+| Password Encryption  | Bcrypt             |
+| Authentication       | Passport JS        |
+| Messaging Protocol   | AMQP               |
+| Middleware           | RabbitMQ           |
+| SQL Caching          | Redis              |
+| Visualization Graphs | D3 JS              |
+| Load Testing         | JMeter             |
+| API Testing          | Mocha              |
+
+
+
 ## Screenshots
 <p align="center"><h4 align="center">HomePage</h4><img src="https://github.com/Sagar-Mane/Airbnb-Prototype/blob/master/docs/Screenshots/Homepage.png"/>
 <h4 align="center">Sign Up</h4><img src="https://github.com/Sagar-Mane/Airbnb-Prototype/blob/master/docs/Screenshots/Sign%20UP.png"/>
