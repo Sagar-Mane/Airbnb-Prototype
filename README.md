@@ -26,7 +26,11 @@ Airbnb is a peer-to-peer accommodation market place that connects hosts (vendors
 <p align="center"><img src="https://github.com/Sagar-Mane/Airbnb-Prototype/blob/master/docs/Architecture%20Diagram.jpg" /></p>
 
 ## Technology Stack
-
+- MEAN 
+- Rabbit MQ 
+- D3 JS
+- Redis
+- Jmeter
 ## Screenshots
 
 ## Features
