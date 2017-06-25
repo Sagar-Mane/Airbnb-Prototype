@@ -12,7 +12,7 @@ Airbnb is a peer-to-peer accommodation market place that connects hosts (vendors
 - [Technology Stack](#technology-stack)
 - [Screenshots](#screenshots)
 - [Features](#features)
-- [Future Enhancements](#future-enhancements)
+- [Observations and Lessons Learned](#observations-and-lessons-learned)
 
 ## Getting Started
 1. Download all the modules (Client, Server, Admin)
@@ -103,4 +103,14 @@ Airbnb is a peer-to-peer accommodation market place that connects hosts (vendors
 - After completing the bid user is able to see pending trip bid in his trip history.
 
 
-## Future Enhancements
+## Observations and Lessons Learned
+- Airbnb Prototype Application helped us to develop an efficient, robust and a scalable web
+application.
+- We developed RESTful stateless services using MEAN stack.
+- The connection pooling in the MongoDB database helped us to optimize
+the performance.
+- RabbitMQ helped us in providing scalability and handling multiple
+concurrent requests at the same time.
+- We used Redis for cache management.
+- JMeter and Mocha helped us to continuously analyze the performance in
+different scenarios for all the APIs.
