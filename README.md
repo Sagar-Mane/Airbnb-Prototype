@@ -32,6 +32,13 @@ Airbnb is a peer-to-peer accommodation market place that connects hosts (vendors
 - Redis
 - Jmeter
 ## Screenshots
+<p align="center"><h4 align="center">HomePage</h4><img src="https://github.com/Sagar-Mane/Airbnb-Prototype/blob/master/docs/Screenshots/Homepage.png"/>
+<h4 align="center">Sign Up</h4><img src="https://github.com/Sagar-Mane/Airbnb-Prototype/blob/master/docs/Screenshots/Sign%20UP.png"/>
+<h4 align="center">Finding Property</h4><img src="https://github.com/Sagar-Mane/Airbnb-Prototype/blob/master/docs/Screenshots/Properties.png"/>
+<h4 align="center">Payment Page</h4><img src="https://github.com/Sagar-Mane/Airbnb-Prototype/blob/master/docs/Screenshots/Payment.png"/>
+<h4 align="center">Admin Analytics</h4><img src="https://github.com/Sagar-Mane/Airbnb-Prototype/blob/master/docs/Screenshots/Admin%20Dashboard.png"/>
+</p>
+
 
 ## Features
 
